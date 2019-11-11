@@ -1,5 +1,8 @@
 export const allLineHeights = {
-  1.55: 1.55
+  1: 1,
+  1.1: 1.1,
+  1.3: 1.3,
+  1.6: 1.6
 }
 
 const lineHeights = (x: keyof typeof allLineHeights) => allLineHeights[x]

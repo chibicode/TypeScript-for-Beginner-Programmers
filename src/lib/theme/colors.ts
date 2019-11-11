@@ -1,5 +1,5 @@
 export const allColors = {
-  black: '#1F0606',
+  black: '#260808',
   lightYellow1: '#FEF6E1'
 }
 

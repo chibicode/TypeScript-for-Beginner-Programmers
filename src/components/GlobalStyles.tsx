@@ -16,7 +16,7 @@ const GlobalStyles = ({ children }: { children: React.ReactNode }) => {
               font-size: 18px;
               color: ${colors('black')};
               background: ${colors('lightYellow1')};
-              line-height: ${lineHeights(1.55)};
+              line-height: ${lineHeights(1.6)};
             }
 
             body {
@@ -29,9 +29,7 @@ const GlobalStyles = ({ children }: { children: React.ReactNode }) => {
             textarea,
             select,
             button {
-              font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
-                'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo,
-                sans-serif;
+              font-family: system-ui, sans-serif;
             }
 
             ${ns} {

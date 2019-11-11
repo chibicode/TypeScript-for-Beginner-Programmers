@@ -39,7 +39,7 @@ const Container = ({
 Container.defaultProps = {
   Component: 'div',
   size: 'md',
-  horizontalPadding: 0.5
+  horizontalPadding: 0.75
 }
 
 export default Container

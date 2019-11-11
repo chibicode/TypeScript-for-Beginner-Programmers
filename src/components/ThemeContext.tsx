@@ -4,6 +4,8 @@ import colors from 'src/lib/theme/colors'
 import ns from 'src/lib/theme/ns'
 import maxWidths from 'src/lib/theme/maxWidths'
 import spaces from 'src/lib/theme/spaces'
+import fontSizes from 'src/lib/theme/fontSizes'
+import letterSpacings from 'src/lib/theme/letterSpacings'
 
 export interface ThemeProps {
   lineHeights: typeof lineHeights
@@ -11,6 +13,8 @@ export interface ThemeProps {
   ns: typeof ns
   maxWidths: typeof maxWidths
   spaces: typeof spaces
+  fontSizes: typeof fontSizes
+  letterSpacings: typeof letterSpacings
 }
 
 export const themeContextDefault: ThemeProps = {
@@ -18,7 +22,9 @@ export const themeContextDefault: ThemeProps = {
   colors,
   ns,
   maxWidths,
-  spaces
+  spaces,
+  fontSizes,
+  letterSpacings
 }
 
 export default createContext<ThemeProps>(themeContextDefault)
