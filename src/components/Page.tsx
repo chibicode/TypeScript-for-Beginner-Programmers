@@ -1,10 +1,11 @@
 import React from 'react'
 import GlobalStyles from 'src/components/GlobalStyles'
+import Container from 'src/components/Container'
 
-const Page = () => (
+const Page = ({ children }: { children: React.ReactNode }) => (
   <>
     <GlobalStyles>
-      <p>Welcome to Next.js!</p>
+      <Container>{children}</Container>
     </GlobalStyles>
   </>
 )

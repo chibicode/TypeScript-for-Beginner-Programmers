@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { css, Global, jsx } from '@emotion/core'
-import React, { useContext } from 'react'
+import React from 'react'
 import modernNormalize from 'src/lib/modernNormalize'
-import ThemeContext from 'src/components/ThemeContext'
+import useTheme from 'src/hooks/useTheme'
 
 const GlobalStyles = ({ children }: { children: React.ReactNode }) => {
-  const { ns, colors, lineHeights } = useContext(ThemeContext)
+  const { ns, colors, lineHeights } = useTheme()
   return (
     <>
       <Global
@@ -36,7 +36,7 @@ const GlobalStyles = ({ children }: { children: React.ReactNode }) => {
 
             ${ns} {
               html {
-                font-size: 22px;
+                font-size: 21px;
               }
             }
 
