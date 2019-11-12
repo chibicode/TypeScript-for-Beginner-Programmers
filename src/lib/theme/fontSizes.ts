@@ -8,6 +8,7 @@ export const allFontSizes = {
   2: 2,
   2.5: 2.5,
   3: 3,
+  4: 4,
   5: 5
 }
 

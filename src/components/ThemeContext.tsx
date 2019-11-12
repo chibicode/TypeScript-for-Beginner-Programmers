@@ -6,6 +6,7 @@ import maxWidths from 'src/lib/theme/maxWidths'
 import spaces from 'src/lib/theme/spaces'
 import fontSizes from 'src/lib/theme/fontSizes'
 import letterSpacings from 'src/lib/theme/letterSpacings'
+import radii from 'src/lib/theme/radii'
 
 export interface ThemeProps {
   lineHeights: typeof lineHeights
@@ -15,6 +16,7 @@ export interface ThemeProps {
   spaces: typeof spaces
   fontSizes: typeof fontSizes
   letterSpacings: typeof letterSpacings
+  radii: typeof radii
 }
 
 export const themeContextDefault: ThemeProps = {
@@ -24,7 +26,8 @@ export const themeContextDefault: ThemeProps = {
   maxWidths,
   spaces,
   fontSizes,
-  letterSpacings
+  letterSpacings,
+  radii
 }
 
 export default createContext<ThemeProps>(themeContextDefault)

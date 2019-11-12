@@ -38,6 +38,7 @@ export const allSpaces = {
   8: 8
 }
 
-const spaces = (x: keyof typeof allSpaces) => `${allSpaces[x]}rem`
+const spaces = (x: keyof typeof allSpaces, useEm?: boolean) =>
+  `${allSpaces[x]}${useEm ? 'em' : 'rem'}`
 
 export default spaces
