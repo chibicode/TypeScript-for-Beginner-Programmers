@@ -13,8 +13,18 @@ const Index = () => (
           children: (
             <>
               <P>
-                Hello World! Hello World! Hello World! Hello World! Hello World!
-                Hello World! Hello World! Hello World! Hello World! Hello World!{' '}
+                <strong>Hello!</strong> I write tutorials that might help{' '}
+                <em>beginner programmers</em> learn TypeScript. They might NOT
+                be as useful for experienced programmers who are new to
+                TypeScript.
+              </P>
+              <P>
+                <strong>Why targeting beginner programmers?</strong> As
+                TypeScript is becoming popular, I believe that more beginner
+                programmers (people with only a few months of coding experience)
+                will be learning it,{' '}
+                <em>possibly as one of their first languages</em>. So I wanted
+                to create tutorials specifically targeting beginner programmers.
               </P>
             </>
           )
