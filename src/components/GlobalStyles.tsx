@@ -15,7 +15,7 @@ const GlobalStyles = ({ children }: { children: React.ReactNode }) => {
             html {
               font-size: 18px;
               color: ${colors('black')};
-              background: ${colors('lightYellow1')};
+              background: ${colors('lightYellow2')};
               line-height: ${lineHeights(1.6)};
             }
 

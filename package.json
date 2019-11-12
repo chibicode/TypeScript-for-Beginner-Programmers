@@ -19,9 +19,11 @@
     "start": "next start",
     "tsc": "tsc",
     "eslint": "eslint --ext .js,.ts,.tsx .",
-    "eslint:fix": "eslint --ext .js,.ts,.tsx --fix ."
+    "eslint:fix": "eslint --ext .js,.ts,.tsx --fix .",
+    "svgr": "svgr --ext tsx --no-svgo --no-dimensions -d ."
   },
   "devDependencies": {
+    "@svgr/cli": "^4.3.3",
     "@types/color": "^3.0.0",
     "@types/luxon": "^1.15.2",
     "@types/node": "^12.12.7",
