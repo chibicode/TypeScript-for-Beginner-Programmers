@@ -6,14 +6,17 @@ import { siteTitle } from 'src/lib/meta'
 import InternalLink from 'src/components/InternalLink'
 
 const LogoLink = ({ children, ...props }: JSX.IntrinsicElements['h2']) => {
-  const { colors } = useTheme()
+  const { colors, spaces } = useTheme()
   return (
     <h2 {...props}>
       <InternalLink
         css={css`
           text-decoration: none;
+          display: inline-block;
+          padding: ${spaces(0.25)};
+          margin: ${spaces('-0.25')};
           &:hover {
-            background: ${colors('lightYellow1')};
+            background-color: ${colors('lightYellow1')};
           }
         `}
         href="/"
@@ -42,12 +45,12 @@ const Header = ({ useH1 }: { useH1?: boolean }) => {
       <Component
         css={css`
           margin: 0;
-          line-height: ${useH1 ? lineHeights(1.1) : 'inherit'};
+          line-height: ${useH1 ? lineHeights(3) : 'inherit'};
           font-size: ${fontSizes(useH1 ? 3 : 1)};
           letter-spacing: ${useH1 ? letterSpacings('title') : 0};
 
           ${ns} {
-            line-height: ${useH1 ? lineHeights(1) : 'inherit'};
+            line-height: ${useH1 ? lineHeights(5) : 'inherit'};
             font-size: ${fontSizes(useH1 ? 5 : 1)};
           }
         `}

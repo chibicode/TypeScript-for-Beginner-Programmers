@@ -25,7 +25,7 @@ const BubbleQuotes = ({
         margin-bottom: ${spaces(1.75, true)};
         ${ns} {
           font-size: ${size === 'lg' ? fontSizes(1.2) : fontSizes(1)};
-          line-height: ${size === 'lg' ? lineHeights(1.5) : lineHeights(1.6)};
+          line-height: ${size === 'lg' ? lineHeights(1.2) : lineHeights(1)};
         }
       `}
     >

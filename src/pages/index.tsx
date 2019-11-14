@@ -37,10 +37,11 @@ const ArticleLink = ({
           css={css`
             font-weight: bold;
             text-decoration: none;
-            line-height: ${lineHeights(1.3)};
-            font-size: ${fontSizes(1.4)};
+            line-height: ${lineHeights(1.6)};
+            font-size: ${fontSizes(1.6)};
             ${ns} {
-              font-size: ${fontSizes(1.6)};
+              line-height: ${lineHeights(2.5)};
+              font-size: ${fontSizes(2.5)};
             }
 
             &:hover {
