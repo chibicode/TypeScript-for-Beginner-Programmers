@@ -17,6 +17,18 @@ const Page = ({
   return (
     <>
       <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@chibicode" />
+        <meta name="twitter:creator" content="@chibicode" />
+        <meta property="fb:admins" content="1227210274" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
