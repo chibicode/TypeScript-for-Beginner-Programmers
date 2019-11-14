@@ -7,6 +7,8 @@ import InternalLink from 'src/components/InternalLink'
 import useTheme from 'src/hooks/useTheme'
 import { articlesList, articlesData } from 'src/lib/articles'
 import { dateString } from 'src/lib/date'
+import { siteTitle, baseUrl, siteDescription, siteOgImage } from 'src/lib/meta'
+import Head from 'next/head'
 
 const ArticleLink = ({
   title,
@@ -63,9 +65,20 @@ const ArticleLink = ({
 }
 
 const Index = () => {
-  const { spaces, fontSizes, letterSpacings, colors } = useTheme()
+  const { ns, spaces, fontSizes, letterSpacings, colors } = useTheme()
   return (
-    <Page>
+    <Page index>
+      <Head>
+        <title key="title">{siteTitle}</title>
+        <meta property="og:title" content={siteTitle} />
+        <meta property="og:site_name" content={siteTitle} />
+        <meta property="og:url" content={baseUrl} />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href={baseUrl} />
+        <meta property="og:description" content={siteDescription} />
+        <meta name="description" content={siteDescription} />
+        <meta property="og:image" content={siteOgImage} />
+      </Head>
       <BubbleQuotes
         size="lg"
         quotes={[
@@ -98,8 +111,13 @@ const Index = () => {
           font-size: ${fontSizes(0.85)};
           letter-spacing: ${letterSpacings('wide')};
           text-transform: uppercase;
-          margin: 0 0 ${spaces(1)};
+          margin-bottom: ${spaces(1)};
+          margin-top: ${spaces(2)};
           color: ${colors('brown')};
+
+          ${ns} {
+            margin-top: ${spaces(3)};
+          }
         `}
       >
         Articles

@@ -15,7 +15,7 @@ const BubbleQuotes = ({
   size = 'md'
 }: {
   quotes: readonly BubbleQuoteProps[]
-  size: Size
+  size?: Size
 }) => {
   const { ns, spaces, radii, colors, fontSizes, lineHeights } = useTheme()
   return (
