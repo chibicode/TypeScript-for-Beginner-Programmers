@@ -9,6 +9,7 @@ import { articlesList, articlesData } from 'src/lib/articles'
 import { dateString } from 'src/lib/date'
 import { siteTitle, baseUrl, siteDescription, siteOgImage } from 'src/lib/meta'
 import Head from 'next/head'
+import { useState } from 'react'
 
 const ArticleLink = ({
   title,
@@ -73,6 +74,55 @@ const ArticleLink = ({
   )
 }
 
+export const FirstParagraph = ({
+  defaultVisible = true
+}: {
+  defaultVisible?: boolean
+}) => {
+  const [visible, setVisible] = useState(defaultVisible)
+  const { colors } = useTheme()
+  return (
+    <>
+      <P>
+        <strong>Hello!</strong> I write tutorials that might help{' '}
+        <em>beginner programmers</em> learn TypeScript. They might NOT be as
+        useful for experienced programmers who are new to TypeScript.
+        {!visible && (
+          <>
+            {' '}
+            (
+            <span
+              css={css`
+                text-decoration: underline;
+                cursor: pointer;
+                &:hover {
+                  background: ${colors('lightYellow1')};
+                }
+              `}
+              tabIndex={0}
+              role="button"
+              aria-pressed="false"
+              onClick={() => setVisible(true)}
+            >
+              Read more…
+            </span>
+            )
+          </>
+        )}
+      </P>
+      {visible && (
+        <P>
+          <strong>Why targeting beginner programmers?</strong> As TypeScript is
+          becoming popular, I believe that more beginner programmers (people
+          with only a few months of coding experience) will be learning it,{' '}
+          <em>possibly as one of their first languages</em>. So I wanted to
+          create tutorials specifically targeting beginner programmers.
+        </P>
+      )}
+    </>
+  )
+}
+
 const Index = () => {
   const { ns, spaces, fontSizes, letterSpacings, colors } = useTheme()
   return (
@@ -95,21 +145,7 @@ const Index = () => {
             type: 'bird',
             children: (
               <>
-                <P>
-                  <strong>Hello!</strong> I write tutorials that might help{' '}
-                  <em>beginner programmers</em> learn TypeScript. They might NOT
-                  be as useful for experienced programmers who are new to
-                  TypeScript.
-                </P>
-                <P>
-                  <strong>Why targeting beginner programmers?</strong> As
-                  TypeScript is becoming popular, I believe that more beginner
-                  programmers (people with only a few months of coding
-                  experience) will be learning it,{' '}
-                  <em>possibly as one of their first languages</em>. So I wanted
-                  to create tutorials specifically targeting beginner
-                  programmers.
-                </P>
+                <FirstParagraph />
               </>
             )
           }

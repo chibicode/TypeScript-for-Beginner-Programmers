@@ -5,7 +5,9 @@ import Page from 'src/components/Page'
 import { siteTitle, baseUrl } from 'src/lib/meta'
 import { articlesData } from 'src/lib/articles'
 import { dateString, dateSchemaString } from 'src/lib/date'
+import BubbleQuotes from 'src/components/BubbleQuotes'
 import useTheme from 'src/hooks/useTheme'
+import { FirstParagraph } from 'src/pages/index'
 
 const PostPage = ({
   articleKey
@@ -59,7 +61,7 @@ const PostPage = ({
       </div>
       <h1
         css={css`
-          margin: 0 0 ${spaces(1)};
+          margin: 0;
           line-height: ${lineHeights(2)};
           font-size: ${fontSizes(2)};
           letter-spacing: ${letterSpacings('title')};
@@ -72,6 +74,19 @@ const PostPage = ({
       >
         {title}
       </h1>
+      <BubbleQuotes
+        quotes={[
+          {
+            type: 'bird',
+            backgroundColor: 'pink',
+            children: (
+              <>
+                <FirstParagraph defaultVisible={false} />
+              </>
+            )
+          }
+        ]}
+      ></BubbleQuotes>
     </Page>
   )
 }
