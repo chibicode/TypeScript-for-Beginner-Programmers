@@ -1,5 +1,5 @@
 export const allLetterSpacings = {
-  title: '-0.025em',
+  title: '-0.02em',
   wide: '0.15em'
 }
 

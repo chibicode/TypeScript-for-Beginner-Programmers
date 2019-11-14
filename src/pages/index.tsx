@@ -19,7 +19,14 @@ const ArticleLink = ({
   href: string
   date: string
 }) => {
-  const { colors, ns, fontSizes, spaces, lineHeights } = useTheme()
+  const {
+    colors,
+    ns,
+    fontSizes,
+    spaces,
+    lineHeights,
+    letterSpacings
+  } = useTheme()
   return (
     <li
       css={css`
@@ -39,6 +46,7 @@ const ArticleLink = ({
             text-decoration: none;
             line-height: ${lineHeights(1.6)};
             font-size: ${fontSizes(1.6)};
+            letter-spacing: ${letterSpacings('title')};
             ${ns} {
               line-height: ${lineHeights(2.5)};
               font-size: ${fontSizes(2.5)};
