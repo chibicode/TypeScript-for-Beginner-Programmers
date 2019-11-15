@@ -1,6 +1,7 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
 import { P } from 'src/components/ContentTags'
+import EmojiSeparator from 'src/components/EmojiSeparator'
 
 const Page = () => (
   <PostPage
@@ -25,8 +26,18 @@ const Page = () => (
               time. I was a beginner programmer then, and{' '}
               <em>generics felt very difficult</em>. So I gave up on actually
               understanding generics and used them without knowing what I was
-              doing.
+              doing. I never really understood generics until I had to use them
+              a lot for my job.
             </P>
+            <EmojiSeparator
+              emojis={['question', 'cryingCat', 'question']}
+              description={
+                <>
+                  I gave up on understanding generics when I was learning Java
+                  13 years ago
+                </>
+              }
+            />
             <P>
               Similarly, if you feel that TypeScript generics are too
               difficult—maybe you’ve only done frontend engineering in JS and

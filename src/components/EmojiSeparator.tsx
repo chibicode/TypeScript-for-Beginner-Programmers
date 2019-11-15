@@ -1,0 +1,96 @@
+/** @jsx jsx */
+import { css, jsx, SerializedStyles } from '@emotion/core'
+import React from 'react'
+import Emoji, { emojiToComponent } from 'src/components/Emoji'
+import { allFontSizes } from 'src/lib/theme/fontSizes'
+import { allSpaces } from 'src/lib/theme/spaces'
+import useTheme from 'src/hooks/useTheme'
+
+interface EmojiSeparatorProps {
+  emojis: ReadonlyArray<keyof typeof emojiToComponent>
+  size?: 'md'
+  cssOverrides?: SerializedStyles
+  description?: React.ReactNode
+}
+
+const fontSize = (
+  size: NonNullable<EmojiSeparatorProps['size']>
+): ReadonlyArray<keyof typeof allFontSizes> =>
+  ({
+    md: [2, 2.5] as const
+  }[size])
+
+const margins = (
+  size: NonNullable<EmojiSeparatorProps['size']>
+): ReadonlyArray<keyof typeof allSpaces> =>
+  ({
+    md: [1.25, 1.5] as const
+  }[size])
+
+const SideSpace = ({ children }: { children: React.ReactNode }) => (
+  <span
+    css={css`
+      margin-left: 0.1em;
+      margin-right: 0.1em;
+    `}
+  >
+    {children}
+  </span>
+)
+
+const EmojiSeparator = ({
+  emojis,
+  size = 'md',
+  cssOverrides,
+  description
+}: EmojiSeparatorProps) => {
+  const { spaces, ns, fontSizes, colors } = useTheme()
+  return (
+    <div
+      css={[
+        css`
+          text-align: center;
+          margin: ${spaces(margins(size)[0])} 0 ${spaces(margins(size)[1])};
+          font-size: ${fontSizes(fontSize(size)[0])};
+          ${ns} {
+            font-size: ${fontSizes(fontSize(size)[1])};
+          }
+        `,
+        cssOverrides
+      ]}
+    >
+      <>
+        <span
+          css={css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          `}
+        >
+          {emojis.map((emoji, index) => (
+            <SideSpace key={`${emoji}${index}`}>
+              <Emoji type={emoji} />
+            </SideSpace>
+          ))}
+        </span>
+        {description && (
+          <div
+            css={[
+              css`
+                font-size: ${fontSizes(0.85)};
+                color: ${colors('brown')};
+                padding-bottom: ${spaces(0.5)};
+                max-width: 18rem;
+                margin: 0 auto;
+              `
+            ]}
+          >
+            {description}
+          </div>
+        )}
+      </>
+    </div>
+  )
+}
+
+export default EmojiSeparator
