@@ -1,20 +1,40 @@
-import React from 'react'
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import Head from 'next/head'
 import Page from 'src/components/Page'
-import { P } from 'src/components/ContentTags'
 import { siteTitle, baseUrl } from 'src/lib/meta'
 import { articlesData } from 'src/lib/articles'
-import { dateSchemaString } from 'src/lib/date'
+import { dateString, dateSchemaString } from 'src/lib/date'
+import BubbleQuotes from 'src/components/BubbleQuotes'
+import useTheme from 'src/hooks/useTheme'
+import { FirstParagraph } from 'src/pages/index'
+import Card, { CardProps } from 'src/components/Card'
+
+export interface EpisodeCardType {
+  title?: React.ReactNode
+  content?: React.ReactNode
+  footer?: CardProps['footer']
+}
 
 const PostPage = ({
-  articleKey
+  articleKey,
+  cards
 }: {
   articleKey: keyof typeof articlesData
+  cards: readonly EpisodeCardType[]
 }) => {
   const url = `${baseUrl}/${articleKey}`
   const description = articlesData[articleKey]['description']
   const title = articlesData[articleKey]['title']
   const ogImage = `${baseUrl}/images/og-${articlesData[articleKey]['ogImage']}.png`
+  const {
+    colors,
+    fontSizes,
+    ns,
+    lineHeights,
+    letterSpacings,
+    spaces
+  } = useTheme()
 
   return (
     <Page index={false}>
@@ -33,7 +53,61 @@ const PostPage = ({
           content={dateSchemaString(articlesData[articleKey]['date'])}
         />
       </Head>
-      <P>Sorry, this page is under construction.</P>
+      <div
+        css={css`
+          font-size: ${fontSizes(0.85)};
+          font-weight: bold;
+          letter-spacing: ${letterSpacings('wide')};
+          text-transform: uppercase;
+          color: ${colors('brown')};
+          font-size: ${fontSizes(0.85)};
+          margin-bottom: ${spaces(0.25)};
+        `}
+      >
+        <time dateTime={dateSchemaString(articlesData[articleKey]['date'])}>
+          {dateString(articlesData[articleKey]['date'])}
+        </time>
+      </div>
+      <h1
+        css={css`
+          margin: 0;
+          line-height: ${lineHeights(2)};
+          font-size: ${fontSizes(2)};
+          letter-spacing: ${letterSpacings('title')};
+
+          ${ns} {
+            line-height: ${lineHeights(3)};
+            font-size: ${fontSizes(3)};
+          }
+        `}
+      >
+        {title}
+      </h1>
+      <BubbleQuotes
+        quotes={[
+          {
+            type: 'bird',
+            backgroundColor: 'pink',
+            children: (
+              <>
+                <FirstParagraph defaultVisible={false} />
+              </>
+            )
+          }
+        ]}
+      ></BubbleQuotes>
+      {cards.map(({ title, content, footer }, index) => (
+        <Card
+          key={`${articleKey}-${index}`}
+          title={title}
+          slideCount={cards.length}
+          slideNumber={index + 1}
+          footer={footer}
+          isLast={index === cards.length - 1}
+        >
+          {content}
+        </Card>
+      ))}
     </Page>
   )
 }

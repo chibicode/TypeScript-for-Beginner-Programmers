@@ -2,7 +2,7 @@
 import { css, jsx } from '@emotion/core'
 import useTheme from 'src/hooks/useTheme'
 
-export const P = (props: JSX.IntrinsicElements['p']) => {
+const P = (props: JSX.IntrinsicElements['p']) => {
   const { spaces } = useTheme()
   return (
     <p
@@ -15,3 +15,5 @@ export const P = (props: JSX.IntrinsicElements['p']) => {
     />
   )
 }
+
+export default P
