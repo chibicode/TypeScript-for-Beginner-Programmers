@@ -32,8 +32,8 @@ const Page = () => (
               for you! I’ll try to help you actually understand generics.
             </P>
             <P>
-              <strong>However:</strong> If you didn’t find TypeScript generics
-              to be very difficult, this tutorial might be too easy for you.
+              (<strong>However:</strong> If you didn’t find TypeScript generics
+              to be very difficult, this tutorial might be too easy for you.)
             </P>
           </>
         )
