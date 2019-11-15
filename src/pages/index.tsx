@@ -85,8 +85,8 @@ export const FirstParagraph = ({
     <>
       <P>
         <strong>Hello!</strong> I write tutorials to help{' '}
-        <em>beginner programmers</em> learn TypeScript. They might NOT be as
-        useful for experienced programmers learning TypeScript.
+        <em>beginner programmers</em> learn TypeScript. My tutorials might NOT
+        be as useful for experienced programmers learning TypeScript.
         {!visible && (
           <>
             {' '}
@@ -112,7 +112,7 @@ export const FirstParagraph = ({
       </P>
       {visible && (
         <P>
-          <strong>Why targeting beginner programmers?</strong> As TypeScript is
+          <strong>Why target beginner programmers?</strong> As TypeScript is
           becoming popular, I believe that more beginner programmers (people
           with only a few months of coding experience) will be learning it,{' '}
           <em>possibly as one of their first languages</em>. So I wanted to

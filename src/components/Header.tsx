@@ -6,7 +6,7 @@ import { siteTitle } from 'src/lib/meta'
 import InternalLink from 'src/components/InternalLink'
 
 const LogoLink = ({ children, ...props }: JSX.IntrinsicElements['h2']) => {
-  const { colors, spaces } = useTheme()
+  const { colors, spaces, radii } = useTheme()
   return (
     <h2 {...props}>
       <InternalLink
@@ -15,6 +15,7 @@ const LogoLink = ({ children, ...props }: JSX.IntrinsicElements['h2']) => {
           display: inline-block;
           padding: ${spaces(0.25)};
           margin: ${spaces('-0.25')};
+          border-radius: ${radii(0.25)};
           &:hover {
             background-color: ${colors('lightYellow1')};
           }

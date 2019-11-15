@@ -105,8 +105,8 @@ const Card = ({
           <div
             css={css`
               padding-top: ${spaces(1)};
-              padding-left: ${spaces(0.5)};
-              padding-right: ${spaces(0.5)};
+              padding-left: ${spaces(0.75)};
+              padding-right: ${spaces(0.75)};
               padding-bottom: ${spaces(0.5)};
 
               ${ns} {
