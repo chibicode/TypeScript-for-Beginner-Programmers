@@ -3,7 +3,10 @@ export const allColors = {
   lightYellow1: '#FEF5DD',
   lightYellow2: '#FFE8BF',
   brown: '#917340',
-  pink: '#FCCFC0'
+  pink: '#FCCFC0',
+  white: '#FFFFFF',
+  white75: 'rgba(255, 255, 255, 0.75)',
+  paleGreen: '#C8DCC7'
 }
 
 const colors = (x: keyof typeof allColors) => allColors[x]

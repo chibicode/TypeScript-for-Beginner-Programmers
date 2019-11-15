@@ -8,11 +8,20 @@ import { dateString, dateSchemaString } from 'src/lib/date'
 import BubbleQuotes from 'src/components/BubbleQuotes'
 import useTheme from 'src/hooks/useTheme'
 import { FirstParagraph } from 'src/pages/index'
+import Card, { CardProps } from 'src/components/Card'
+
+export interface EpisodeCardType {
+  title?: React.ReactNode
+  content?: React.ReactNode
+  footer?: CardProps['footer']
+}
 
 const PostPage = ({
-  articleKey
+  articleKey,
+  cards
 }: {
   articleKey: keyof typeof articlesData
+  cards: readonly EpisodeCardType[]
 }) => {
   const url = `${baseUrl}/${articleKey}`
   const description = articlesData[articleKey]['description']
@@ -87,6 +96,18 @@ const PostPage = ({
           }
         ]}
       ></BubbleQuotes>
+      {cards.map(({ title, content, footer }, index) => (
+        <Card
+          key={`${articleKey}-${index}`}
+          title={title}
+          slideCount={cards.length}
+          slideNumber={index + 1}
+          footer={footer}
+          isLast={index === cards.length - 1}
+        >
+          {content}
+        </Card>
+      ))}
     </Page>
   )
 }
