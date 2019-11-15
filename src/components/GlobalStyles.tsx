@@ -57,6 +57,32 @@ const GlobalStyles = ({ children }: { children: React.ReactNode }) => {
               font-size: inherit;
               line-height: inherit;
             }
+
+            @font-face {
+              font-family: 'Iosevka Web';
+              font-weight: 400;
+              font-style: normal;
+              font-display: fallback;
+              src: url('/fonts/iosevka-regular.woff2') format('woff2'),
+                url('/fonts/iosevka-regular.woff') format('woff'),
+                url('/fonts/iosevka-regular.ttf') format('truetype');
+            }
+
+            @font-face {
+              font-family: 'Iosevka Web';
+              font-weight: 700;
+              font-style: oblique;
+              font-display: fallback;
+              src: url('/fonts/iosevka-boldoblique.woff2') format('woff2'),
+                url('/fonts/iosevka-boldoblique.woff') format('woff'),
+                url('/fonts/iosevka-boldoblique.ttf') format('truetype');
+            }
+
+            code,
+            pre {
+              font-family: 'Iosevka Web', SFMono-Regular, Consolas,
+                Liberation Mono, Menlo, Courier, monospace;
+            }
           `
         ]}
       />

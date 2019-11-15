@@ -10,7 +10,9 @@ const Page = () => (
         title: 'TypeScript Generics Too Hard?',
         content: (
           <>
-            <P>TODO: Code block here</P>
+            <P>
+              <code>TODO CODE BLOCK</code>
+            </P>
             <P>
               If you’re (1) new to TypeScript, (2) new to{' '}
               <strong>generics</strong>, and (3) <em>struggling</em> to
