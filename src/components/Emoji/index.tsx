@@ -3,11 +3,13 @@ import { css, jsx } from '@emotion/core'
 import Bird from 'src/components/Emoji/Bird'
 import CryingCat from 'src/components/Emoji/CryingCat'
 import Question from 'src/components/Emoji/Question'
+import Run from 'src/components/Emoji/Run'
 
 export const emojiToComponent = {
   bird: Bird,
   cryingCat: CryingCat,
-  question: Question
+  question: Question,
+  run: Run
 }
 
 const Emoji = ({

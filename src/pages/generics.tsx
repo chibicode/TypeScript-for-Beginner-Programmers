@@ -2,6 +2,8 @@ import React from 'react'
 import PostPage from 'src/components/PostPage'
 import { P } from 'src/components/ContentTags'
 import EmojiSeparator from 'src/components/EmojiSeparator'
+import CodeBlock from 'src/components/CodeBlock'
+import underConstructionCard from 'src/lib/underConstructionCard'
 
 const Page = () => (
   <PostPage
@@ -11,9 +13,11 @@ const Page = () => (
         title: 'TypeScript Generics Too Hard?',
         content: (
           <>
-            <P>
-              <code>TODO CODE BLOCK</code>
-            </P>
+            <CodeBlock>{`// Confused by generics code like this?
+function getProperty<T, K extends keyof T>(
+  obj: T,
+  key: K
+) { /* ... */ }`}</CodeBlock>
             <P>
               If you’re (1) new to TypeScript, (2) new to{' '}
               <strong>generics</strong>, and (3) <em>struggling</em> to
@@ -45,12 +49,13 @@ const Page = () => (
               for you! I’ll try to help you actually understand generics.
             </P>
             <P>
-              (<strong>However:</strong> If you didn’t find TypeScript generics
-              to be very difficult, this tutorial might be too easy for you.)
+              (If you didn’t find TypeScript generics to be very difficult, this
+              tutorial might be too easy for you.)
             </P>
           </>
         )
-      }
+      },
+      underConstructionCard
     ]}
   />
 )

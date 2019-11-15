@@ -5,6 +5,7 @@ import Emoji, { emojiToComponent } from 'src/components/Emoji'
 import { allFontSizes } from 'src/lib/theme/fontSizes'
 import { allSpaces } from 'src/lib/theme/spaces'
 import useTheme from 'src/hooks/useTheme'
+import Caption from 'src/components/Caption'
 
 interface EmojiSeparatorProps {
   emojis: ReadonlyArray<keyof typeof emojiToComponent>
@@ -44,7 +45,7 @@ const EmojiSeparator = ({
   cssOverrides,
   description
 }: EmojiSeparatorProps) => {
-  const { spaces, ns, fontSizes, colors } = useTheme()
+  const { spaces, ns, fontSizes } = useTheme()
   return (
     <div
       css={[
@@ -73,21 +74,7 @@ const EmojiSeparator = ({
             </SideSpace>
           ))}
         </span>
-        {description && (
-          <div
-            css={[
-              css`
-                font-size: ${fontSizes(0.85)};
-                color: ${colors('brown')};
-                padding-bottom: ${spaces(0.5)};
-                max-width: 18rem;
-                margin: 0 auto;
-              `
-            ]}
-          >
-            {description}
-          </div>
-        )}
+        {description && <Caption>{description}</Caption>}
       </>
     </div>
   )

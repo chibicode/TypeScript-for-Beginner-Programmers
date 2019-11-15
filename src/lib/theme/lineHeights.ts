@@ -2,6 +2,7 @@ import { allFontSizes } from 'src/lib/theme/fontSizes'
 
 export const allLineHeights = {
   0.75: 1.6,
+  0.8: 1.6,
   0.85: 1.6,
   1: 1.6,
   1.2: 1.5,
