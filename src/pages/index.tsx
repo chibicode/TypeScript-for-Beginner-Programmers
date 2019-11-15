@@ -84,9 +84,9 @@ export const FirstParagraph = ({
   return (
     <>
       <P>
-        <strong>Hello!</strong> I write tutorials that might help{' '}
+        <strong>Hello!</strong> I write tutorials to help{' '}
         <em>beginner programmers</em> learn TypeScript. They might NOT be as
-        useful for experienced programmers who are new to TypeScript.
+        useful for experienced programmers learning TypeScript.
         {!visible && (
           <>
             {' '}
