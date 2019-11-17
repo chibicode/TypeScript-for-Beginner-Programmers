@@ -1,4 +1,12 @@
 {
   "semi": false,
-  "singleQuote": true
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "snippets/snippets/**/*.ts",
+      "options": {
+        "printWidth": 45
+      }
+    }
+  ]
 }

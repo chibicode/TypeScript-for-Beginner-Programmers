@@ -7,7 +7,7 @@ import PrismHighlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'src/lib/prismTheme'
 
 const CodeBlock = ({
-  children,
+  snippet,
   shouldHighlight,
   result,
   // pointToRunButton,
@@ -15,7 +15,7 @@ const CodeBlock = ({
   caption,
   noHighlight
 }: {
-  children: string
+  snippet: string
   shouldHighlight?: (lineNumber: number, tokenNumber: number) => boolean
   result?: string
   // pointToRunButton?: boolean
@@ -45,7 +45,7 @@ const CodeBlock = ({
       )}
       <PrismHighlight
         {...defaultProps}
-        code={children}
+        code={snippet}
         theme={theme}
         language={noHighlight ? 'diff' : 'javascript'}
       >

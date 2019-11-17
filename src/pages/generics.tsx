@@ -4,6 +4,7 @@ import { P } from 'src/components/ContentTags'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import CodeBlock from 'src/components/CodeBlock'
 import underConstructionCard from 'src/lib/underConstructionCard'
+import * as snippets from 'src/lib/snippets'
 
 const Page = () => (
   <PostPage
@@ -13,11 +14,7 @@ const Page = () => (
         title: 'TypeScript Generics Too Hard?',
         content: (
           <>
-            <CodeBlock>{`// Confused by generics code like this?
-function getProperty<T, K extends keyof T>(
-  obj: T,
-  key: K
-) { /* ... */ }`}</CodeBlock>
+            <CodeBlock snippet={snippets.kiyi} />
             <P>
               If you’re (1) new to TypeScript, (2) new to{' '}
               <strong>generics</strong>, and (3) <em>struggling</em> to
