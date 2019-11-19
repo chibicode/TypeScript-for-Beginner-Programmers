@@ -5,6 +5,7 @@ function createState() {
     return state
   }
 
+  // setState() expects a number
   function setState(x: number) {
     state = x
   }

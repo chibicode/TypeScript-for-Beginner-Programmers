@@ -2,13 +2,13 @@
 import { css, jsx } from '@emotion/core'
 import Emoji from 'src/components/Emoji'
 
-const RunButtonText = () => (
+const RunButtonText = ({ compile }: { compile?: boolean }) => (
   <span
     css={css`
       font-weight: bold;
     `}
   >
-    Run <Emoji type="run" />
+    {compile ? 'Compile' : 'Run'} <Emoji type="run" />
   </span>
 )
 

@@ -11,3 +11,8 @@ function createState() {
 
   return { getState, setState }
 }
+
+const { getState, setState } = createState()
+
+setState('foo')
+console.log(getState())
