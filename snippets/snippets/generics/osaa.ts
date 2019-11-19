@@ -1,11 +1,13 @@
 function createState() {
-  let state: number
+  // Change to string
+  let state: string
 
   function getState() {
     return state
   }
 
-  function setState(x: number) {
+  // Accepts a string
+  function setState(x: string) {
     state = x
   }
 
@@ -14,8 +16,5 @@ function createState() {
 
 const { getState, setState } = createState()
 
-setState(1)
-console.log(getState())
-
-setState(2)
+setState('foo')
 console.log(getState())

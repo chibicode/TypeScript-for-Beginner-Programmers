@@ -1,11 +1,13 @@
 function createState() {
-  let state: number
+  // Change to string
+  let state: string
 
   function getState() {
     return state
   }
 
-  function setState(x: number) {
+  // Accepts a string
+  function setState(x: string) {
     state = x
   }
 

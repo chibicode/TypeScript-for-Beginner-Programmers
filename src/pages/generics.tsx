@@ -41,17 +41,22 @@ const Page = () => (
               }
             />
             <P>
-              Similarly, if you feel that TypeScript generics are too
-              difficult—maybe you’ve only done frontend engineering in JS and
-              React/Vue, or you’re simply new to programming—this tutorial is
-              for you! I’ll try to help you actually understand generics.
-            </P>
-            <P>
-              (If you didn’t find TypeScript generics to be very difficult, this
-              tutorial might be too easy for you.)
+              Similarly, if you feel that TypeScript generics are too difficult,
+              this tutorial is for you! I’ll try to help you actually understand
+              generics.
             </P>
           </>
-        )
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>Note:</strong> If you didn’t find generics to be
+                difficult, this tutorial might be too easy for you.
+              </P>
+            </>
+          )
+        }
       },
       {
         title: (
@@ -109,6 +114,67 @@ const Page = () => (
             </>
           )
         }
+      },
+      {
+        title: <>What if we use a string?</>,
+        content: (
+          <>
+            <P>
+              Now, instead of numbers like <Code>1</Code> or <Code>2</Code>,{' '}
+              <Highlight>what happens if we use a string</Highlight> like{' '}
+              <Code>'foo'</Code>? Try to guess first, and then{' '}
+              <Highlight>
+                press the <RunButtonText compile /> button
+              </Highlight>
+              .
+            </P>
+            <CodeBlock
+              compile
+              resultError
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 3 && tokenNumber > 2 && tokenNumber < 4
+              }
+              shouldHighlightResult={(lineNumber, tokenNumber) =>
+                lineNumber === 3 && tokenNumber > 2 && tokenNumber < 4
+              }
+              snippet={snippets.stkh}
+              result={
+                <>
+                  Argument of type '"foo"' is not assignable to parameter of
+                  type 'number'.
+                </>
+              }
+            />
+            <P>
+              It failed to compile because <Code>setState()</Code> expects a
+              number as its argument.
+            </P>
+            <CodeBlock
+              snippet={snippets.nnyl}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 8 && tokenNumber > 4 && tokenNumber < 8
+              }
+            />
+            <P>
+              To fix this, we can change the types from <Code>number</Code> to{' '}
+              <Code>string</Code>:
+            </P>
+            <CodeBlock
+              snippet={snippets.gkgi}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                (lineNumber === 9 && tokenNumber > 4 && tokenNumber < 8) ||
+                (lineNumber === 2 && tokenNumber > 4 && tokenNumber < 6)
+              }
+            />
+            <P>
+              It’ll now work!{' '}
+              <Highlight>
+                Press <RunButtonText />.
+              </Highlight>
+            </P>
+            <CodeBlock snippet={snippets.xeax} result={<>foo</>} />
+          </>
+        )
       },
       underConstructionCard
     ]}
