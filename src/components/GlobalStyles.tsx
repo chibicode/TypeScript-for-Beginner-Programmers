@@ -71,11 +71,11 @@ const GlobalStyles = ({ children }: { children: React.ReactNode }) => {
             @font-face {
               font-family: 'Iosevka Web';
               font-weight: 700;
-              font-style: oblique;
+              font-style: normal;
               font-display: fallback;
-              src: url('/fonts/iosevka-boldoblique.woff2') format('woff2'),
-                url('/fonts/iosevka-boldoblique.woff') format('woff'),
-                url('/fonts/iosevka-boldoblique.ttf') format('truetype');
+              src: url('/fonts/iosevka-bold.woff2') format('woff2'),
+                url('/fonts/iosevka-bold.woff') format('woff'),
+                url('/fonts/iosevka-bold.ttf') format('truetype');
             }
 
             code,

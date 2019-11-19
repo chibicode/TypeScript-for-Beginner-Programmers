@@ -1,5 +1,5 @@
 export const allMaxWidths = {
-  sm: (1140 / 12) * 6,
+  sm: (1140 / 12) * 5,
   md: (1140 / 12) * 8,
   lg: 1140
 }

@@ -13,6 +13,7 @@ export const allFontSizes = {
   5: 5
 }
 
-const fontSizes = (x: keyof typeof allFontSizes) => `${allFontSizes[x]}rem`
+const fontSizes = (x: keyof typeof allFontSizes, useEm?: boolean) =>
+  `${allFontSizes[x]}${useEm ? 'em' : 'rem'}`
 
 export default fontSizes

@@ -18,13 +18,17 @@
     "build": "next build && next export",
     "start": "next start",
     "tsc": "tsc",
+    "ts-node": "ts-node",
     "eslint": "eslint --ext .js,.ts,.tsx .",
     "eslint:fix": "eslint --ext .js,.ts,.tsx --fix .",
-    "svgr": "svgr --ext tsx --no-svgo --no-dimensions -d ."
+    "svgr": "svgr --ext tsx --no-svgo --no-dimensions -d .",
+    "snippets": "runSnippet snippets/bin/generateSnippetsBundle.ts",
+    "runSnippet": "ts-node --project tsconfig.snippets.json"
   },
   "devDependencies": {
     "@svgr/cli": "^4.3.3",
     "@types/color": "^3.0.0",
+    "@types/glob": "^7.1.1",
     "@types/luxon": "^1.15.2",
     "@types/node": "^12.12.7",
     "@types/prettier": "^1.18.3",
@@ -34,13 +38,16 @@
     "@typescript-eslint/parser": "^2.7.0",
     "babel-eslint": "^10.0.3",
     "babel-plugin-emotion": "^10.0.23",
+    "chokidar": "^3.3.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "2.2.0",
+    "glob": "^7.1.6",
     "prettier": "^1.19.1",
+    "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
   }
 }
