@@ -1,4 +1,4 @@
-# [TypeScript for Beginner Programmers](https://ts.chibicode.com/)
+# TypeScript for Beginner Programmers
 
 ## License & Credits
 
