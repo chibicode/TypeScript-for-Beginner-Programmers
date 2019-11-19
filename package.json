@@ -22,7 +22,8 @@
     "eslint": "eslint --ext .js,.ts,.tsx .",
     "eslint:fix": "eslint --ext .js,.ts,.tsx --fix .",
     "svgr": "svgr --ext tsx --no-svgo --no-dimensions -d .",
-    "snippets": "ts-node --project tsconfig.snippets.json snippets/bin/generateSnippetsBundle.ts"
+    "snippets": "runSnippet snippets/bin/generateSnippetsBundle.ts",
+    "runSnippet": "ts-node --project tsconfig.snippets.json"
   },
   "devDependencies": {
     "@svgr/cli": "^4.3.3",

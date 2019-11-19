@@ -3,6 +3,8 @@ import { css, jsx } from '@emotion/core'
 import { useState } from 'react'
 import useTheme from 'src/hooks/useTheme'
 import Caption from 'src/components/Caption'
+import ButtonWithTouchActiveStates from 'src/components/ButtonWithTouchActiveStates'
+import Emoji from 'src/components/Emoji'
 import PrismHighlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'src/lib/prismTheme'
 
@@ -10,22 +12,22 @@ const CodeBlock = ({
   snippet,
   shouldHighlight,
   result,
-  // pointToRunButton,
+  pointToRunButton,
   defaultResultVisible,
   caption,
   noHighlight
 }: {
   snippet: string
   shouldHighlight?: (lineNumber: number, tokenNumber: number) => boolean
-  result?: string
-  // pointToRunButton?: boolean
+  result?: React.ReactNode
+  pointToRunButton?: boolean
   defaultResultVisible?: boolean
   caption?: React.ReactNode
   noHighlight?: boolean
 }) => {
-  const [resultVisible] = useState(defaultResultVisible)
+  const [resultVisible, setResultVisible] = useState(defaultResultVisible)
   const { radii, colors, ns, maxWidths, spaces, fontSizes } = useTheme()
-  // const buttonOnClick = () => setResultVisible(true)
+  const buttonOnClick = () => setResultVisible(true)
   return (
     <div
       css={css`
@@ -56,10 +58,8 @@ const CodeBlock = ({
                 padding: ${spaces(0.75)} ${spaces(0.75)};
                 line-height: 1.45;
 
-                ${ns} {
-                }
-                border: 2px solid ${colors('pink')};
-                background-color: ${colors('lightPink')};
+                border: 2px solid ${colors('lightBrown')};
+                background-color: ${colors('lightPink1')};
                 margin-top: ${caption ? 0 : spaces(1.75)};
                 margin-bottom: ${result ? 0 : spaces(1.75)};
                 font-size: ${fontSizes(0.8)};
@@ -82,6 +82,7 @@ const CodeBlock = ({
               (!(result && resultVisible) || !result) &&
                 css`
                   border-bottom-right-radius: ${radii(0.5)};
+                  border-bottom-left-radius: ${radii(0.5)};
                 `
             ]}
           >
@@ -127,83 +128,62 @@ const CodeBlock = ({
           </pre>
         )}
       </PrismHighlight>
-      {/* result && (
+      {result && (
         <>
           <div
             css={css`
-              max-width: ${maxWidths('xs')};
+              max-width: ${maxWidths('sm')};
               margin-bottom: ${spaces(1.75)};
-              margin-left: ${spaces('-0.25')};
-              margin-right: ${spaces('-0.25')};
-              ${ns} {
-                margin-left: 0;
-                margin-right: 0;
-              }
+              margin-left: ${spaces(0)};
+              margin-right: ${spaces(0)};
             `}
           >
             {resultVisible ? (
               <div
                 css={[
-                  alertSpacing,
                   css`
                     border-top-left-radius: 0;
                     border-top-right-radius: 0;
                     border-bottom-left-radius: ${radii(0.5)};
                     border-bottom-right-radius: ${radii(0.5)};
                     background: #fff;
-                    border-left: 0.25rem solid ${colors('lightPink')};
-                    border-bottom: 0.25rem solid ${colors('lightPink')};
-                    border-right: 0.25rem solid ${colors('lightPink')};
-                    padding-top: 0.425rem;
-                    padding-bottom: 0.425rem;
-                    margin-top: 0;
+                    border-left: 2px solid ${colors('lightBrown')};
+                    border-bottom: 2px solid ${colors('lightBrown')};
+                    border-right: 2px solid ${colors('lightBrown')};
+                    padding: ${spaces(0.5)} ${spaces(0.75)};
+                    font-size: ${fontSizes(0.8)};
 
                     ${ns} {
-                      padding-top: 0.65rem;
-                      padding-bottom: 0.65rem;
+                      padding: ${spaces(0.75)} ${spaces(1.25)};
+                      font-size: ${fontSizes(0.85)};
                     }
                   `
                 ]}
               >
-                <strong
-                  css={css`
-                    color: ${colors('indigo400')};
-                    font-size: ${fontSizes(0.85)};
-                    margin-left: -0.25rem;
-                  `}
-                >
-                  Result:{' '}
-                </strong>
-                <span
-                  css={css`
-                    color: ${colors('indigo500')};
-                  `}
-                >
-                  <InlineCode highlighted>{result}</InlineCode>
-                </span>
+                <code>{result}</code>
               </div>
             ) : (
-              <>
+              <div
+                css={css`
+                  text-align: center;
+                `}
+              >
                 <ButtonWithTouchActiveStates
                   onClick={buttonOnClick}
-                  activeBackgroundColor={colors('indigo50')}
+                  activeBackgroundColor={colors('lightPink1')}
                   css={[
-                    alertSpacing,
                     css`
-                      border-top-left-radius: 0;
-                      border-top-right-radius: 0;
-                      border-bottom-left-radius: ${radii(0.5)};
-                      border-bottom-right-radius: ${radii(0.5)};
+                      margin-top: ${spaces(0.5)};
+                      border-radius: ${radii(0.5)};
                       line-height: 1.1rem;
                       border: none;
-                      margin-top: 0;
                       margin-bottom: 0;
                       font-weight: bold;
                       font-size: ${fontSizes(0.85)};
-                      background: ${colors('codeButtonBg')};
-                      color: ${colors('indigo500')};
-                      padding-left: ${spaces(1.25)};
-                      padding-right: ${spaces(1.25)};
+                      background: ${colors('white')};
+                      border: 2px solid ${colors('lightBrown')};
+                      color: ${colors('black')};
+                      padding: ${spaces(0.75)} ${spaces(1.25)};
 
                       &:enabled {
                         cursor: pointer;
@@ -211,15 +191,15 @@ const CodeBlock = ({
 
                       @media (hover: hover) {
                         &:hover:enabled {
-                          background: ${colors('indigo50')};
+                          background: ${colors('lightPink1')};
                         }
                         &:focus {
-                          box-shadow: inset 0 0 0 1px ${colors('lightPink')};
+                          box-shadow: inset 0 0 0 1px ${colors('lightBrown')};
                           outline: none;
                         }
                       }
                       &:active:enabled {
-                        background: ${colors('indigo50')};
+                        background: ${colors('lightPink1')};
                       }
                     `
                   ]}
@@ -227,36 +207,40 @@ const CodeBlock = ({
                   Run <Emoji type="run" />
                 </ButtonWithTouchActiveStates>
                 {pointToRunButton && (
-                  <span
-                    css={[
-                      alertSpacing,
-                      css`
-                        font-size: ${fontSizes(0.85)};
-                        animation: pointToCodeRunButton 1s infinite;
-                        color: ${colors('brown')};
+                  <>
+                    <br />
+                    <span
+                      css={[
+                        css`
+                          display: inline-block;
+                          font-size: ${fontSizes(0.85)};
+                          animation: pointToCodeRunButton 1s infinite;
+                          color: ${colors('brown')};
+                          margin-top: ${spaces(1)};
 
-                        @keyframes pointToCodeRunButton {
-                          0% {
-                            margin-left: 0px;
+                          @keyframes pointToCodeRunButton {
+                            0% {
+                              transform: translateY(0);
+                            }
+                            50% {
+                              transform: translateY(-5px);
+                            }
+                            100% {
+                              transform: translateY(0px);
+                            }
                           }
-                          50% {
-                            margin-left: -5px;
-                          }
-                          100% {
-                            margin-left: 0px;
-                          }
-                        }
-                      `
-                    ]}
-                  >
-                    ← Press this button!
-                  </span>
+                        `
+                      ]}
+                    >
+                      ↑ Press this button!
+                    </span>
+                  </>
                 )}
-              </>
+              </div>
             )}
           </div>
         </>
-                  )*/}
+      )}
     </div>
   )
 }

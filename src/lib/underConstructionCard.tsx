@@ -5,7 +5,7 @@ const underConstructionCard = {
   title: 'Under Construction',
   content: (
     <>
-      <P>This article is currently under construction.</P>
+      <P>This article is still in draft. Check back again soon!</P>
     </>
   )
 }

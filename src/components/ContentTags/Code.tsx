@@ -10,8 +10,8 @@ const Code = (props: JSX.IntrinsicElements['code']) => {
       css={[
         css`
           font-size: 0.9em;
-          color: ${colors('red')};
           word-break: break-word;
+          background: ${colors('lightPink2')};
         `
       ]}
     />

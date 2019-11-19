@@ -5,6 +5,7 @@ import EmojiSeparator from 'src/components/EmojiSeparator'
 import CodeBlock from 'src/components/CodeBlock'
 import underConstructionCard from 'src/lib/underConstructionCard'
 import * as snippets from 'src/lib/snippets'
+import RunButtonText from 'src/components/RunButtonText'
 
 const Page = () => (
   <PostPage
@@ -61,20 +62,53 @@ const Page = () => (
         content: (
           <>
             <P>
-              We’ll use the following <Code>createState()</Code> function to
-              learn about generics. Take a look below:
+              First, I created a function called <Code>createState()</Code>{' '}
+              below. We’ll use this function to talk about generics.
             </P>
             <CodeBlock snippet={snippets.cupt} />
             <P>
-              Let’s check your understanding.{' '}
+              When you run <Code>createState()</Code>, it returns two functions:{' '}
+              <Code>getState()</Code> and <Code>setState()</Code>. You can use
+              these functions to set and get the variable called{' '}
+              <Code>state</Code>.
+            </P>
+            <P>
+              Let’s try it out!{' '}
               <Highlight>
                 What gets printed out to the console when you run the following
                 code?
+              </Highlight>{' '}
+              Try to guess first, and then{' '}
+              <Highlight>
+                press the <RunButtonText /> button
               </Highlight>
+              .
             </P>
-            <CodeBlock snippet={snippets.cbeq} />
+            <CodeBlock
+              snippet={snippets.cbeq}
+              pointToRunButton
+              result={
+                <>
+                  1<br />2
+                </>
+              }
+            />
+            <P>
+              It printed <Code>1</Code>, then <Code>2</Code>. Pretty simple,
+              right?
+            </P>
           </>
-        )
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>Note:</strong> If you’ve used React, you might realize
+                that it’s kind of like the <Code>useState()</Code> hook.
+              </P>
+            </>
+          )
+        }
       },
       underConstructionCard
     ]}

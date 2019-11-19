@@ -7,7 +7,7 @@ import { H3 } from 'src/components/ContentTags'
 
 export interface CardProps {
   children: React.ReactNode
-  color?: 'default'
+  color?: 'default' | 'pink'
   slideNumber?: number
   slideCount?: number
   isLast?: boolean
@@ -26,14 +26,16 @@ export const backgroundColor = (
   color: NonNullable<CardProps['color']>
 ): keyof typeof allColors =>
   ({
-    default: 'lightYellow1' as const
+    default: 'lightYellow1' as const,
+    pink: 'lightPink2' as const
   }[color])
 
 const slideLabelBgColor = (
   color: NonNullable<CardProps['color']>
 ): keyof typeof allColors =>
   ({
-    default: 'brown' as const
+    default: 'brown' as const,
+    pink: 'brown' as const
   }[color])
 
 const Card = ({
@@ -140,21 +142,16 @@ const Card = ({
           {footer && (
             <div
               css={css`
-                padding-top: ${spaces(0.75)};
-                padding-left: ${spaces(1)};
-                padding-right: ${spaces(1)};
-                padding-bottom: ${spaces(0.5)};
+                margin-top: ${spaces('-0.5')};
+                padding: ${spaces(0.75)};
 
                 ${ns} {
-                  margin-top: ${spaces('-0.25')};
                   padding-top: ${spaces(1.25)};
-                  padding-left: ${spaces(2)};
-                  padding-right: ${spaces(2)};
+                  padding-left: ${spaces(1.5)};
+                  padding-right: ${spaces(1.5)};
                   padding-bottom: ${spaces(1)};
                 }
-                background: ${colors(
-                  backgroundColor(footer.color || 'default')
-                )};
+                background: ${colors(backgroundColor(footer.color || 'pink'))};
                 border-bottom-right-radius: ${radii(0.5)};
                 border-bottom-left-radius: ${radii(0.5)};
               `}
