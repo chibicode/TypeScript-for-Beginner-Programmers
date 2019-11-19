@@ -41,17 +41,22 @@ const Page = () => (
               }
             />
             <P>
-              Similarly, if you feel that TypeScript generics are too
-              difficult—maybe you’ve only done frontend engineering in JS and
-              React/Vue, or you’re simply new to programming—this tutorial is
-              for you! I’ll try to help you actually understand generics.
-            </P>
-            <P>
-              (If you didn’t find TypeScript generics to be very difficult, this
-              tutorial might be too easy for you.)
+              Similarly, if you feel that TypeScript generics are too difficult,
+              this tutorial is for you! I’ll try to help you actually understand
+              generics.
             </P>
           </>
-        )
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>Note:</strong> If you didn’t find generics to be
+                difficult, this tutorial might be too easy for you.
+              </P>
+            </>
+          )
+        }
       },
       {
         title: (
