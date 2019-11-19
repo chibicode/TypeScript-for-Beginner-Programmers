@@ -1,6 +1,6 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
-import { P } from 'src/components/ContentTags'
+import { P, Code, Highlight } from 'src/components/ContentTags'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import CodeBlock from 'src/components/CodeBlock'
 import underConstructionCard from 'src/lib/underConstructionCard'
@@ -11,7 +11,7 @@ const Page = () => (
     articleKey="generics"
     cards={[
       {
-        title: 'TypeScript Generics Too Hard?',
+        title: <>TypeScript Generics Too Hard?</>,
         content: (
           <>
             <CodeBlock snippet={snippets.kiyi} />
@@ -49,6 +49,30 @@ const Page = () => (
               (If you didn’t find TypeScript generics to be very difficult, this
               tutorial might be too easy for you.)
             </P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            Let’s talk about <Code>createState()</Code>
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              We’ll use the following <Code>createState()</Code> function to
+              learn about generics. Take a look below:
+            </P>
+            <CodeBlock snippet={snippets.cupt} />
+            <P>
+              Let’s check your understanding.{' '}
+              <Highlight>
+                What gets printed out to the console when you run the following
+                code?
+              </Highlight>
+            </P>
+            <CodeBlock snippet={snippets.cbeq} />
           </>
         )
       },

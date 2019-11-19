@@ -47,18 +47,19 @@ const CodeBlock = ({
         {...defaultProps}
         code={snippet}
         theme={theme}
-        language={noHighlight ? 'diff' : 'javascript'}
+        language={noHighlight ? 'diff' : 'typescript'}
       >
         {({ tokens, getLineProps, getTokenProps }) => (
           <pre
             css={[
               css`
                 padding: ${spaces(0.75)} ${spaces(0.75)};
+                line-height: 1.45;
 
                 ${ns} {
                 }
-                border: 2px solid ${colors('lightPink2')};
-                background-color: ${colors('lightPink1')};
+                border: 2px solid ${colors('pink')};
+                background-color: ${colors('lightPink')};
                 margin-top: ${caption ? 0 : spaces(1.75)};
                 margin-bottom: ${result ? 0 : spaces(1.75)};
                 font-size: ${fontSizes(0.8)};
@@ -150,9 +151,9 @@ const CodeBlock = ({
                     border-bottom-left-radius: ${radii(0.5)};
                     border-bottom-right-radius: ${radii(0.5)};
                     background: #fff;
-                    border-left: 0.25rem solid ${colors('lightPink1')};
-                    border-bottom: 0.25rem solid ${colors('lightPink1')};
-                    border-right: 0.25rem solid ${colors('lightPink1')};
+                    border-left: 0.25rem solid ${colors('lightPink')};
+                    border-bottom: 0.25rem solid ${colors('lightPink')};
+                    border-right: 0.25rem solid ${colors('lightPink')};
                     padding-top: 0.425rem;
                     padding-bottom: 0.425rem;
                     margin-top: 0;
@@ -213,7 +214,7 @@ const CodeBlock = ({
                           background: ${colors('indigo50')};
                         }
                         &:focus {
-                          box-shadow: inset 0 0 0 1px ${colors('lightPink1')};
+                          box-shadow: inset 0 0 0 1px ${colors('lightPink')};
                           outline: none;
                         }
                       }
