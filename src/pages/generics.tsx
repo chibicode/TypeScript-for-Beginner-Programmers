@@ -1,6 +1,6 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
-import { P, Code, Highlight } from 'src/components/ContentTags'
+import { P, Code, Highlight, Ul, UlLi } from 'src/components/ContentTags'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import CodeBlock from 'src/components/CodeBlock'
 import underConstructionCard from 'src/lib/underConstructionCard'
@@ -299,7 +299,38 @@ const Page = () => (
               }
             />
           </>
-        )
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>You might be wondering:</strong> Why did we name the
+                type parameter as “<Code>S</Code>”? It could actually be any
+                name, but usually people use the first letter of a word that
+                describes what the type is representing.
+              </P>
+              <P>
+                In this case, I chose “<Code>S</Code>” because it’s describing
+                the type of a <strong>“S”</strong>tate. The following names are
+                also common:
+              </P>
+              <Ul>
+                <UlLi>
+                  <Code>T</Code> (for <strong>“T”</strong>ype)
+                </UlLi>
+                <UlLi>
+                  <Code>E</Code> (for <strong>“E”</strong>lement)
+                </UlLi>
+                <UlLi>
+                  <Code>K</Code> (for <strong>“K”</strong>ey)
+                </UlLi>
+                <UlLi>
+                  <Code>V</Code> (for <strong>“V”</strong>alue)
+                </UlLi>
+              </Ul>
+            </>
+          )
+        }
       },
       {
         title: <>But you can create a boolean state!</>,
