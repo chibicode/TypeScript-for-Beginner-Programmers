@@ -97,6 +97,7 @@ const CodeBlock = ({
             <div
               css={css`
                 overflow-x: auto;
+                overflow-y: hidden;
               `}
             >
               {tokens.map((line, i) => {
