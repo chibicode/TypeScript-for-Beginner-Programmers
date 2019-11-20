@@ -1,4 +1,4 @@
-function createState() {
+function makeState() {
   let state: number
 
   function getState() {

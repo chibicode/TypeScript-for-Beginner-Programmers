@@ -1,4 +1,6 @@
-function makeState<S>() {
+function makeState<
+  S extends number | string
+>() {
   let state: S
 
   function getState() {
@@ -11,3 +13,6 @@ function makeState<S>() {
 
   return { getState, setState }
 }
+
+// What happens if we now pass boolean to S?
+const boolState = makeState<boolean>()

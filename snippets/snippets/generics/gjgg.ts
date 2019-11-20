@@ -1,5 +1,5 @@
 // Creates a number-only state
-const numState = createState<number>()
+const numState = makeState<number>()
 numState.setState(1)
 console.log(numState.getState())
 

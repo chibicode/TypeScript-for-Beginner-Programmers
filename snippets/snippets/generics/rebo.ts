@@ -1,4 +1,4 @@
-// In the function definition of createState()
+// In the function definition of makeState()
 let state: S // <- number
 
 function setState(x: S /* <- number */) {

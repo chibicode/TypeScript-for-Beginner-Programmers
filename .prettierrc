@@ -5,7 +5,7 @@
     {
       "files": "snippets/snippets/**/*.ts",
       "options": {
-        "printWidth": 49
+        "printWidth": 48
       }
     }
   ]

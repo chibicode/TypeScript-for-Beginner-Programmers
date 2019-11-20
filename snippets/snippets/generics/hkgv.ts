@@ -1,5 +1,5 @@
 // Creates a string-only state
-const strState = createState<string>()
+const strState = makeState<string>()
 strState.setState('foo')
 console.log(strState.getState())
 

@@ -1,4 +1,4 @@
-const { getState, setState } = createState()
+const { getState, setState } = makeState()
 
 setState(1)
 console.log(getState())

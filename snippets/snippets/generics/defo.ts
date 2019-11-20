@@ -1,4 +1,4 @@
-function createState<S>() {
+function makeState<S>() {
   let state: S
 
   function getState() {
@@ -12,10 +12,10 @@ function createState<S>() {
   return { getState, setState }
 }
 
-const numState = createState<number>()
+const numState = makeState<number>()
 numState.setState(1)
 console.log(numState.getState())
 
-const strState = createState<string>()
+const strState = makeState<string>()
 strState.setState('foo')
 console.log(strState.getState())

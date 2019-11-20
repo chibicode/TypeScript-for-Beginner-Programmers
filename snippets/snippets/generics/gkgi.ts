@@ -1,4 +1,4 @@
-function createState() {
+function makeState() {
   // Change to string
   let state: string
 
