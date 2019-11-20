@@ -176,6 +176,59 @@ const Page = () => (
           </>
         )
       },
+      {
+        title: <>Challenge: Two different states</>,
+        content: (
+          <>
+            <P>Now that we got the basics down, here’s a challenge question:</P>
+            <P>
+              <Highlight>
+                Can we modify <Code>createState()</Code> such that, it can
+                create two different states:
+              </Highlight>{' '}
+              one that only allows numbers, and the other that only allows
+              strings?
+            </P>
+            <P>Here’s what I mean:</P>
+            <CodeBlock snippet={snippets.bfka} />
+            <P>
+              Our first <Code>createState()</Code> created number-only states,
+              and our second <Code>createState()</Code> created string-only
+              states. However, it couldn’t create both number-only states and
+              string-only states.
+            </P>
+            <P>
+              How can we modify <Code>createState()</Code> to achieve our goal?
+            </P>
+          </>
+        )
+      },
+      {
+        title: <>Attempt 1: Does this work?</>,
+        content: (
+          <>
+            <P>Here’s the first attempt. Does this work?</P>
+            <CodeBlock
+              snippet={snippets.ystu}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                (lineNumber === 7 && tokenNumber > 4 && tokenNumber < 10) ||
+                (lineNumber === 1 && tokenNumber > 4 && tokenNumber < 10)
+              }
+            />
+            <P>
+              <strong>This does NOT work.</strong> If you use this, you’ll end
+              up creating a state that allows both numbers and strings, which is
+              not what we want.
+            </P>
+            <CodeBlock snippet={snippets.qqic} />
+            <P>
+              Instead, we want <Code>createState()</Code> to support creating
+              two different states: one that allows only numbers, and the other
+              that allows only strings.
+            </P>
+          </>
+        )
+      },
       underConstructionCard
     ]}
   />
