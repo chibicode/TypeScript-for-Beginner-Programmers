@@ -301,6 +301,10 @@ const Page = () => (
           </>
         )
       },
+      {
+        title: <>But you can create a boolean state!</>,
+        content: <></>
+      },
       underConstructionCard
     ]}
   />
