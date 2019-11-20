@@ -1,5 +1,5 @@
 // Doesn't work because the created state…
-const numAndStrState = createState()
+const numAndStrState = makeState()
 
 // Supports both numbers…
 numAndStrState.setState(1)

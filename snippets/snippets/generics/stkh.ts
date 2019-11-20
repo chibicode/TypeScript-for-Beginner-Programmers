@@ -1,4 +1,4 @@
-const { getState, setState } = createState()
+const { getState, setState } = makeState()
 
 // What happens if we use a string instead?
 setState('foo')

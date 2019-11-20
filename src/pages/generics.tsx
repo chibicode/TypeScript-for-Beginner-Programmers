@@ -61,18 +61,18 @@ const Page = () => (
       {
         title: (
           <>
-            Let’s talk about <Code>createState()</Code>
+            Let’s talk about <Code>makeState()</Code>
           </>
         ),
         content: (
           <>
             <P>
-              First, I created a function called <Code>createState()</Code>{' '}
-              below. We’ll use this function to talk about generics.
+              First, I created a function called <Code>makeState()</Code> below.
+              We’ll use this function to talk about generics.
             </P>
             <CodeBlock snippet={snippets.cupt} />
             <P>
-              When you run <Code>createState()</Code>, it returns two functions:{' '}
+              When you run <Code>makeState()</Code>, it returns two functions:{' '}
               <Code>getState()</Code> and <Code>setState()</Code>. You can use
               these functions to set and get the variable called{' '}
               <Code>state</Code>.
@@ -183,8 +183,8 @@ const Page = () => (
             <P>Now that we got the basics down, here’s a challenge question:</P>
             <P>
               <Highlight>
-                Can we modify <Code>createState()</Code> such that, it can
-                create two different states:
+                Can we modify <Code>makeState()</Code> such that, it can create
+                two different states:
               </Highlight>{' '}
               one that only allows numbers, and the other that only allows
               strings?
@@ -192,13 +192,13 @@ const Page = () => (
             <P>Here’s what I mean:</P>
             <CodeBlock snippet={snippets.bfka} />
             <P>
-              Our first <Code>createState()</Code> created number-only states,
-              and our second <Code>createState()</Code> created string-only
-              states. However, it couldn’t create both number-only states and
+              Our first <Code>makeState()</Code> created number-only states, and
+              our second <Code>makeState()</Code> created string-only states.
+              However, it couldn’t create both number-only states and
               string-only states.
             </P>
             <P>
-              How can we modify <Code>createState()</Code> to achieve our goal?
+              How can we modify <Code>makeState()</Code> to achieve our goal?
             </P>
           </>
         )
@@ -222,9 +222,9 @@ const Page = () => (
             </P>
             <CodeBlock snippet={snippets.qqic} />
             <P>
-              Instead, we want <Code>createState()</Code> to support creating
-              two different states: one that allows only numbers, and the other
-              that allows only strings.
+              Instead, we want <Code>makeState()</Code> to support creating two
+              different states: one that allows only numbers, and the other that
+              allows only strings.
             </P>
           </>
         )
@@ -246,20 +246,20 @@ const Page = () => (
               }
             />
             <P>
-              <Code>createState()</Code> is now defined as{' '}
-              <Code>createState&lt;S&gt;()</Code>. You can think of{' '}
+              <Code>makeState()</Code> is now defined as{' '}
+              <Code>makeState&lt;S&gt;()</Code>. You can think of{' '}
               <Code>&lt;S&gt;</Code> as another argument that you have to pass
               in when you call the function. But instead of passing a value, you
               pass a <strong>type</strong> to it. It’s a type argument.
             </P>
             <P>
               For example, you can pass the type <Code>number</Code> as{' '}
-              <Code>S</Code> when you call <Code>createState()</Code>:
+              <Code>S</Code> when you call <Code>makeState()</Code>:
             </P>
             <CodeBlock snippet={snippets.jdhu} />
             <P>
-              Then, inside the function definition of <Code>createState()</Code>
-              , <Code>S</Code> will be come <Code>number</Code>:
+              Then, inside the function definition of <Code>makeState()</Code>,{' '}
+              <Code>S</Code> will be come <Code>number</Code>:
             </P>
             <CodeBlock snippet={snippets.rebo} />
             <P>
@@ -276,7 +276,7 @@ const Page = () => (
             <P>
               And to create a string-only state, you can pass{' '}
               <Code>number</Code> as <Code>S</Code> when you call{' '}
-              <Code>createState()</Code>:
+              <Code>makeState()</Code>:
             </P>
             <CodeBlock
               snippet={snippets.hkgv}
@@ -285,16 +285,16 @@ const Page = () => (
               }
             />
             <P>
-              That’s it! And we call <Code>createState&lt;S&gt;()</Code> a
+              That’s it! And we call <Code>makeState&lt;S&gt;()</Code> a
               “generic function” because it’s flexible—you have a choice to make
               it number-only or string-only. You know it’s a generic function if
               it takes a type parameter when you call it.
             </P>
             <CodeBlock
-              snippet={snippets.brze}
+              snippet={snippets.llvc}
               caption={
                 <>
-                  <Code>createState&lt;S&gt;()</Code> is a generic function
+                  <Code>makeState&lt;S&gt;()</Code> is a generic function
                 </>
               }
             />
@@ -303,7 +303,83 @@ const Page = () => (
       },
       {
         title: <>But you can create a boolean state!</>,
-        content: <></>
+        content: (
+          <>
+            <P>
+              <strong>But wait a minute:</strong> If you pass{' '}
+              <Code>boolean</Code> to <Code>S</Code>, you can create a
+              boolean-only state.
+            </P>
+            <CodeBlock snippet={snippets.llvc} />
+            <P>
+              <strong>Maybe we might NOT want this to be allowed.</strong>{' '}
+              Suppose that don’t want <Code>makeState()</Code> to be able to
+              create non-number or non-string states (like <Code>boolean</Code>
+              ). How can we make sure that this is the case?
+            </P>
+            <EmojiSeparator
+              emojis={['question', 'chickEgg', 'question']}
+              description={
+                <>
+                  How can we prevent <Code>makeState()</Code> from
+                  <br />
+                  creating non-number or non-string states?
+                </>
+              }
+            />
+            <P>
+              <strong>The solution:</strong>{' '}
+              <Highlight>
+                When you declare <Code>makeState()</Code>, you change the type
+                parameter <Code>&lt;S&gt;</Code> to{' '}
+                <Code>&lt;S extends number | string&gt;</Code>
+              </Highlight>
+              . That’s the only change you need to make.
+            </P>
+            <CodeBlock
+              snippet={snippets.mngc}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 0 && tokenNumber > 2 && tokenNumber < 12
+              }
+            />
+            <P>
+              By doing this, when you call <Code>makeState()</Code>, you’d only
+              be able to pass <Code>number</Code>, <Code>string</Code>, or any
+              other type that extends either <Code>number</Code> or{' '}
+              <Code>string</Code> into <Code>S</Code>.
+            </P>
+            <P>
+              Let’s see what happens now when you try to pass{' '}
+              <Code>boolean</Code> into <Code>S</Code>.{' '}
+              <Highlight>
+                Press <RunButtonText compile /> below
+              </Highlight>
+              .
+            </P>
+            <CodeBlock
+              snippet={snippets.dngl}
+              compile
+              resultError
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 17 && tokenNumber > 5 && tokenNumber < 7
+              }
+              shouldHighlightResult={(lineNumber, tokenNumber) =>
+                lineNumber === 17 && tokenNumber > 5 && tokenNumber < 7
+              }
+              result={
+                <>
+                  Type 'boolean' does not satisfy the constraint 'string |
+                  number'.
+                </>
+              }
+            />
+            <P>It resulted in an error, which is what we want!</P>
+            <P>
+              <strong>As you just saw,</strong> you can specify what’s allowed
+              for the type parameter(s) of a generic function.
+            </P>
+          </>
+        )
       },
       underConstructionCard
     ]}

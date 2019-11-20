@@ -1,4 +1,4 @@
-function createState() {
+function makeState() {
   // Change to string
   let state: string
 
@@ -14,7 +14,7 @@ function createState() {
   return { getState, setState }
 }
 
-const { getState, setState } = createState()
+const { getState, setState } = makeState()
 
 setState('foo')
 console.log(getState())

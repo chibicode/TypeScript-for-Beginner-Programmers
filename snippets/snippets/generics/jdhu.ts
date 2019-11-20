@@ -1,2 +1,2 @@
 // It sets S as number
-createState<number>()
+makeState<number>()
