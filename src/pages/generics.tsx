@@ -305,14 +305,14 @@ const Page = () => (
             <>
               <P>
                 <strong>You might be wondering:</strong> Why did we name the
-                type parameter as “<Code>S</Code>”? It could actually be any
-                name, but usually people use the first letter of a word that
-                describes what the type is representing.
+                type parameter as “<Code>S</Code>”?
               </P>
               <P>
-                In this case, I chose “<Code>S</Code>” because it’s describing
-                the type of a <strong>“S”</strong>tate. The following names are
-                also common:
+                <strong>Answer:</strong> It could actually be any name, but
+                usually people use the first letter of a word that describes
+                what the type is representing. In this case, I chose “
+                <Code>S</Code>” because it’s describing the type of a{' '}
+                <strong>“S”</strong>tate. The following names are also common:
               </P>
               <Ul>
                 <UlLi>
