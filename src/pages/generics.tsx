@@ -291,7 +291,7 @@ const Page = () => (
               it takes a type parameter when you call it.
             </P>
             <CodeBlock
-              snippet={snippets.llvc}
+              snippet={snippets.brze}
               caption={
                 <>
                   <Code>makeState&lt;S&gt;()</Code> is a generic function
