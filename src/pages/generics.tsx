@@ -331,7 +331,7 @@ const Page = () => (
               <strong>The solution:</strong>{' '}
               <Highlight>
                 When you declare <Code>makeState()</Code>, you change the type
-                parameter <Code>&lt;S&gt;</Code> to{' '}
+                argument <Code>&lt;S&gt;</Code> to{' '}
                 <Code>&lt;S extends number | string&gt;</Code>
               </Highlight>
               . That’s the only change you need to make.
@@ -376,7 +376,7 @@ const Page = () => (
             <P>It resulted in an error, which is what we want!</P>
             <P>
               <strong>As you just saw,</strong> you can specify what’s allowed
-              for the type parameter(s) of a generic function.
+              for the type argument(s) of a generic function.
             </P>
           </>
         )
