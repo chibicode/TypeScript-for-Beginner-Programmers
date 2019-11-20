@@ -13,6 +13,7 @@ const Caption = ({ children }: { children: React.ReactNode }) => {
           padding-bottom: ${spaces(0.5)};
           max-width: 18rem;
           margin: 0 auto;
+          text-align: center;
         `
       ]}
     >

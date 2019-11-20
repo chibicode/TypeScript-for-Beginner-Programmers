@@ -229,6 +229,78 @@ const Page = () => (
           </>
         )
       },
+      {
+        title: <>Attempt 2: Use generics</>,
+        content: (
+          <>
+            <P>
+              This is where <strong>generics</strong> come in. Take a look
+              below:
+            </P>
+            <CodeBlock
+              snippet={snippets.brze}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                (lineNumber === 7 && tokenNumber > 4 && tokenNumber < 8) ||
+                (lineNumber === 1 && tokenNumber > 4 && tokenNumber < 6) ||
+                (lineNumber === 0 && tokenNumber > 1 && tokenNumber < 5)
+              }
+            />
+            <P>
+              <Code>createState()</Code> is now defined as{' '}
+              <Code>createState&lt;S&gt;()</Code>. You can think of{' '}
+              <Code>&lt;S&gt;</Code> as another argument that you have to pass
+              in when you call the function. But instead of passing a value, you
+              pass a <strong>type</strong> to it. It’s a type argument.
+            </P>
+            <P>
+              For example, you can pass the type <Code>number</Code> as{' '}
+              <Code>S</Code> when you call <Code>createState()</Code>:
+            </P>
+            <CodeBlock snippet={snippets.jdhu} />
+            <P>
+              Then, inside the function definition of <Code>createState()</Code>
+              , <Code>S</Code> will be come <Code>number</Code>:
+            </P>
+            <CodeBlock snippet={snippets.rebo} />
+            <P>
+              Because <Code>state</Code> will be <Code>number</Code> and{' '}
+              <Code>setState</Code> will only take <Code>number</Code>, it
+              creates a number-only state.
+            </P>
+            <CodeBlock
+              snippet={snippets.gjgg}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 1 && tokenNumber > 5 && tokenNumber < 7
+              }
+            />
+            <P>
+              And to create a string-only state, you can pass{' '}
+              <Code>number</Code> as <Code>S</Code> when you call{' '}
+              <Code>createState()</Code>:
+            </P>
+            <CodeBlock
+              snippet={snippets.hkgv}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 1 && tokenNumber > 5 && tokenNumber < 7
+              }
+            />
+            <P>
+              That’s it! And we call <Code>createState&lt;S&gt;()</Code> a
+              “generic function” because it’s flexible—you have a choice to make
+              it number-only or string-only. You know it’s a generic function if
+              it takes a type parameter when you call it.
+            </P>
+            <CodeBlock
+              snippet={snippets.brze}
+              caption={
+                <>
+                  <Code>createState&lt;S&gt;()</Code> is a generic function
+                </>
+              }
+            />
+          </>
+        )
+      },
       underConstructionCard
     ]}
   />

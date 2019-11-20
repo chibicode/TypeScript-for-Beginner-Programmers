@@ -11,6 +11,20 @@ const strState = createState()
 strState.setState('foo')
 console.log(strState.getState()) // foo`
 
+export const brze = `function createState<S>() {
+  let state: S
+
+  function getState() {
+    return state
+  }
+
+  function setState(x: S) {
+    state = x
+  }
+
+  return { getState, setState }
+}`
+
 export const cbeq = `const { getState, setState } = createState()
 
 setState(1)
@@ -33,6 +47,35 @@ export const cupt = `function createState() {
   return { getState, setState }
 }`
 
+export const defo = `function createState<S>() {
+  let state: S
+
+  function getState() {
+    return state
+  }
+
+  function setState(x: S) {
+    state = x
+  }
+
+  return { getState, setState }
+}
+
+const numState = createState<number>()
+numState.setState(1)
+console.log(numState.getState())
+
+const strState = createState<string>()
+strState.setState('foo')
+console.log(strState.getState())`
+
+export const gjgg = `// Creates a number-only state
+const numState = createState<number>()
+numState.setState(1)
+console.log(numState.getState())
+
+// numState.setState('foo') will fail!`
+
 export const gkgi = `function createState() {
   // Change to string
   let state: string
@@ -48,6 +91,16 @@ export const gkgi = `function createState() {
 
   return { getState, setState }
 }`
+
+export const hkgv = `// Creates a string-only state
+const strState = createState<string>()
+strState.setState('foo')
+console.log(strState.getState())
+
+// strState.setState(1) will fail!`
+
+export const jdhu = `// It sets S as number
+createState<number>()`
 
 export const kiyi = `// Confused by generics code like this?
 function getProperty<T, K extends keyof T>(
@@ -104,6 +157,13 @@ console.log(numAndStrState.getState())
 
 // This is NOT what we want. We want to create
 // a number-only state, and a string-only state.`
+
+export const rebo = `// In the function definition of createState()
+let state: S // <- number
+
+function setState(x: S /* <- number */) {
+  state = x
+}`
 
 export const stkh = `const { getState, setState } = createState()
 
