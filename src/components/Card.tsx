@@ -7,7 +7,7 @@ import { H3 } from 'src/components/ContentTags'
 
 export interface CardProps {
   children: React.ReactNode
-  color?: 'default' | 'pink'
+  color?: 'default' | 'pink' | 'green'
   slideNumber?: number
   slideCount?: number
   isLast?: boolean
@@ -27,15 +27,8 @@ export const backgroundColor = (
 ): keyof typeof allColors =>
   ({
     default: 'lightYellow1' as const,
-    pink: 'lightPink2' as const
-  }[color])
-
-const slideLabelBgColor = (
-  color: NonNullable<CardProps['color']>
-): keyof typeof allColors =>
-  ({
-    default: 'brown' as const,
-    pink: 'brown' as const
+    pink: 'lightPink2' as const,
+    green: 'lightGreen' as const
   }[color])
 
 const Card = ({
@@ -71,7 +64,7 @@ const Card = ({
               font-size: ${fontSizes(0.75)};
               line-height: 1;
               color: ${colors('white')};
-              background: ${colors(slideLabelBgColor(color))};
+              background: ${colors('brown')};
               padding: ${spaces(0.25)} ${spaces(0.5)};
               border-radius: 9999px;
               user-select: none;
@@ -80,7 +73,7 @@ const Card = ({
             <>
               <span
                 css={css`
-                  color: ${colors('white75')};
+                  color: ${colors('white85')};
                 `}
               >
                 Slide{' '}
@@ -94,7 +87,7 @@ const Card = ({
               </span>{' '}
               <span
                 css={css`
-                  color: ${colors('white75')};
+                  color: ${colors('white85')};
                   font-weight: bold;
                 `}
               >

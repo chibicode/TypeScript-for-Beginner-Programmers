@@ -14,6 +14,7 @@ export interface EpisodeCardType {
   title?: React.ReactNode
   content?: React.ReactNode
   footer?: CardProps['footer']
+  color?: CardProps['color']
 }
 
 const PostPage = ({
@@ -96,8 +97,9 @@ const PostPage = ({
           }
         ]}
       ></BubbleQuotes>
-      {cards.map(({ title, content, footer }, index) => (
+      {cards.map(({ title, content, footer, color }, index) => (
         <Card
+          color={color}
           key={`${articleKey}-${index}`}
           title={title}
           slideCount={cards.length}
