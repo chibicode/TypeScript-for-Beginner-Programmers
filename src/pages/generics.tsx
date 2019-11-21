@@ -61,12 +61,12 @@ const Page = () => (
                   follower) who’s struggling with generics
                 </Highlight>
                 . If so, I’d appreciate it if you could share this article with
-                them.{' '}
+                them. You can{' '}
                 <TwitterLink
                   title={articlesData['generics']['title']}
                   url={`${baseUrl}/generics`}
                 >
-                  Click here to tweet this article.
+                  click here to tweet this article.
                 </TwitterLink>
               </P>
             </>
