@@ -51,8 +51,14 @@ const Page = () => (
           content: (
             <>
               <P>
-                <strong>Note:</strong> If you didn’t find generics to be
-                difficult, this tutorial might be too easy for you.
+                <strong>Note:</strong> If you already understand generics, you
+                won’t find anything new in this tutorial. However,{' '}
+                <Highlight color="white75">
+                  you might know someone (maybe your colleague or your Twitter
+                  follower) who’s struggling with generics
+                </Highlight>
+                . If so, I’d appreciate it if you could share this article with
+                them.
               </P>
             </>
           )
@@ -406,9 +412,48 @@ const Page = () => (
             />
             <P>It resulted in an error, which is what we want!</P>
             <P>
-              <strong>As you just saw,</strong> you can specify what’s allowed
-              for the type argument(s) of a generic function.
+              As you just saw, you can specify what’s allowed for the type
+              argument(s) of a generic function.
             </P>
+          </>
+        )
+      },
+      {
+        title: <>Default type</>,
+        content: (
+          <>
+            <P>
+              It can be annoying to specify type arguments like{' '}
+              <Code>&lt;number&gt;</Code> or <Code>&lt;string&gt;</Code> every
+              time you call <Code>makeState()</Code>.
+            </P>
+            <P>
+              <strong>So here’s an idea:</strong>{' '}
+              <Highlight>
+                Can we make it so that <Code>&lt;number&gt;</Code> is the
+                default type argument of <Code>makeState()</Code>?
+              </Highlight>{' '}
+              We want to make it so that, if the type argument is missing, it’s
+              set as <Code>number</Code> by default.
+            </P>
+            <CodeBlock snippet={snippets.xfwf} />
+            <P>
+              To make this happen, we can specify the default type of{' '}
+              <Code>S</Code> by adding <Code>= number</Code> at the end. It’s
+              kind of like setting default values for regular function
+              parameters, right?
+            </P>
+            <CodeBlock
+              snippet={snippets.thxf}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 2 && tokenNumber > 10 && tokenNumber < 14
+              }
+            />
+            <P>
+              By doing this, you can create a number-only state without
+              specifying the type:
+            </P>
+            <CodeBlock snippet={snippets.gzwe} />
           </>
         )
       },

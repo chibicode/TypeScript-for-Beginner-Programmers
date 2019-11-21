@@ -111,6 +111,12 @@ export const gkgi = `function makeState() {
   return { getState, setState }
 }`
 
+export const gzwe = `// Don’t need to use <number>
+const numState = makeState()
+
+numState.setState(1)
+console.log(numState.getState())`
+
 export const hkgv = `// Creates a string-only state
 const strState = makeState<string>()
 strState.setState('foo')
@@ -148,6 +154,33 @@ export const nnyl = `function makeState() {
 
   return { getState, setState }
 }`
+
+export const nuzz = `interface State<V, A> {
+  value?: V
+  author?: A
+}
+
+function makeState<
+  V extends number | string,
+  A extends string
+>() {
+  let state: State<V, A> = {}
+
+  function getState() {
+    return state
+  }
+
+  function setState(value: V, author: A) {
+    state.value = value
+    state.author = author
+  }
+
+  return { getState, setState }
+}
+
+const state = makeState<number, 'cat' | 'dog'>()
+state.setState(1, 'cat')
+console.log(state.getState())`
 
 export const osaa = `function makeState() {
   // Change to string
@@ -197,6 +230,11 @@ export const stkh = `const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
+export const thxf = `// Set default type of S as number
+function makeState<
+  S extends number | string = number
+>()`
+
 export const udpv = `function makeState() {
   let state: number
 
@@ -223,6 +261,13 @@ export const xeax = `const { getState, setState } = makeState()
 
 setState('foo')
 console.log(getState())`
+
+export const xfwf = `// Can we make it so that, <number> is the
+// default type paramter of makeState()?
+
+// We want these two statements to be equivalent
+const numState1 = makeState()
+const numState2 = makeState<number>()`
 
 export const ystu = `function makeState() {
   let state: number | string
