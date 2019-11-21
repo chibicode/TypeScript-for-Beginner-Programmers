@@ -1,11 +1,14 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
-import { P, Code, Highlight, Ul, UlLi } from 'src/components/ContentTags'
+import { P, Code, Highlight, Ul, UlLi, Hr } from 'src/components/ContentTags'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import CodeBlock from 'src/components/CodeBlock'
 import underConstructionCard from 'src/lib/underConstructionCard'
 import * as snippets from 'src/lib/snippets'
 import RunButtonText from 'src/components/RunButtonText'
+import TwitterLink from 'src/components/TwitterLink'
+import { articlesData } from 'src/lib/articles'
+import { baseUrl } from 'src/lib/meta'
 
 const Page = () => (
   <PostPage
@@ -53,12 +56,18 @@ const Page = () => (
               <P>
                 <strong>Note:</strong> If you already understand generics, you
                 won’t find anything new in this tutorial. However,{' '}
-                <Highlight color="white75">
+                <Highlight color="white85">
                   you might know someone (maybe your colleague or your Twitter
                   follower) who’s struggling with generics
                 </Highlight>
                 . If so, I’d appreciate it if you could share this article with
-                them.
+                them.{' '}
+                <TwitterLink
+                  title={articlesData['generics']['title']}
+                  url={`${baseUrl}/generics`}
+                >
+                  Click here to tweet this article.
+                </TwitterLink>
               </P>
             </>
           )
@@ -153,7 +162,7 @@ const Page = () => (
             />
             <P>
               It failed to compile because <Code>setState()</Code> expects a
-              number as its argument.
+              number:
             </P>
             <CodeBlock
               snippet={snippets.nnyl}
@@ -254,9 +263,9 @@ const Page = () => (
             <P>
               <Code>makeState()</Code> is now defined as{' '}
               <Code>makeState&lt;S&gt;()</Code>. You can think of{' '}
-              <Code>&lt;S&gt;</Code> as another argument that you have to pass
-              in when you call the function. But instead of passing a value, you
-              pass a <strong>type</strong> to it. It’s a type argument.
+              <Code>&lt;S&gt;</Code> as another thing that you have to pass in
+              when you call the function. But instead of passing a value, you
+              pass a <strong>type</strong> to it.
             </P>
             <P>
               For example, you can pass the type <Code>number</Code> as{' '}
@@ -368,7 +377,7 @@ const Page = () => (
               <strong>The solution:</strong>{' '}
               <Highlight>
                 When you declare <Code>makeState()</Code>, you change the type
-                argument <Code>&lt;S&gt;</Code> to{' '}
+                parameter <Code>&lt;S&gt;</Code> to{' '}
                 <Code>&lt;S extends number | string&gt;</Code>
               </Highlight>
               . That’s the only change you need to make.
@@ -413,7 +422,7 @@ const Page = () => (
             <P>It resulted in an error, which is what we want!</P>
             <P>
               As you just saw, you can specify what’s allowed for the type
-              argument(s) of a generic function.
+              parameter(s) of a generic function.
             </P>
           </>
         )
@@ -423,7 +432,7 @@ const Page = () => (
         content: (
           <>
             <P>
-              It can be annoying to specify type arguments like{' '}
+              It can be annoying to specify types like{' '}
               <Code>&lt;number&gt;</Code> or <Code>&lt;string&gt;</Code> every
               time you call <Code>makeState()</Code>.
             </P>
@@ -431,10 +440,10 @@ const Page = () => (
               <strong>So here’s an idea:</strong>{' '}
               <Highlight>
                 Can we make it so that <Code>&lt;number&gt;</Code> is the
-                default type argument of <Code>makeState()</Code>?
+                default type parameter of <Code>makeState()</Code>?
               </Highlight>{' '}
-              We want to make it so that, if the type argument is missing, it’s
-              set as <Code>number</Code> by default.
+              We want to make it so that, if the type is missing, it’s set as{' '}
+              <Code>number</Code> by default.
             </P>
             <CodeBlock snippet={snippets.xfwf} />
             <P>
@@ -454,6 +463,68 @@ const Page = () => (
               specifying the type:
             </P>
             <CodeBlock snippet={snippets.gzwe} />
+          </>
+        )
+      },
+      {
+        color: 'green',
+        title: 'Quick recap: Just like regular function parameters',
+        content: (
+          <>
+            <P>
+              We are about <em>two-thirds</em> of the way through this article.
+              Before we continue, let’s do a quick recap.
+            </P>
+            <P>
+              <strong>What you should remember is that</strong>,{' '}
+              <Highlight>
+                generics are just like regular function parameters.
+              </Highlight>{' '}
+              The difference is that{' '}
+              <Highlight>
+                regular function parameters deal with values, but generics deal
+                with types.
+              </Highlight>
+            </P>
+            <Hr />
+            <P>
+              <strong>Example 1:</strong> For example, here’s a regular function
+              that takes any value:
+            </P>
+            <CodeBlock snippet={snippets.wpru} />
+            <P>
+              Similarly, you can declare a generic function with a type
+              parameter:
+            </P>
+            <CodeBlock snippet={snippets.bqvz} />
+            <Hr />
+            <P>
+              <strong>Example 2:</strong> In regular functions, you can specify
+              the type of a parameter like this:
+            </P>
+            <CodeBlock snippet={snippets.qini} />
+            <P>
+              Similarly, you can specify what’s allowed for the type parameter
+              of a generic function:
+            </P>
+            <CodeBlock snippet={snippets.kbld} />
+            <Hr />
+            <P>
+              <strong>Example 3:</strong> In regular functions, you can specify
+              the default value of a parameter like this:
+            </P>
+            <CodeBlock snippet={snippets.pjcw} />
+            <P>
+              Similarly, you can specify the default type for a generic
+              function:
+            </P>
+            <CodeBlock snippet={snippets.nyih} />
+            <Hr />
+            <P>
+              Generics are not scary. They’re like regular function parameters,
+              but instead of values, it deals with types. If you understood this
+              much, you’re good to go!
+            </P>
           </>
         )
       },

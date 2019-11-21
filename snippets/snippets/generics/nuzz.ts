@@ -1,26 +1,20 @@
-interface State<V, A> {
-  value?: V
-  author?: A
-}
-
 function makeState<
-  V extends number | string,
-  A extends string
+  A extends number | string,
+  B extends number | string
 >() {
-  let state: State<V, A> = {}
+  let state: [A, B]
 
   function getState() {
     return state
   }
 
-  function setState(value: V, author: A) {
-    state.value = value
-    state.author = author
+  function setState(first: A, second: B) {
+    state = [first, second]
   }
 
   return { getState, setState }
 }
 
-const state = makeState<number, 'cat' | 'dog'>()
+const state = makeState<number, string>()
 state.setState(1, 'cat')
 console.log(state.getState())

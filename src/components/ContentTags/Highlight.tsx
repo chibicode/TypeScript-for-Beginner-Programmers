@@ -13,7 +13,7 @@ const Highlight = ({
       {...props}
       css={[
         css`
-          background: ${color ? colors(color) : colors('white')};
+          background: ${color ? colors(color) : colors('white85')};
         `
       ]}
     />
