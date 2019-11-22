@@ -23,16 +23,15 @@ const Page = () => (
             <P>
               If you’re (1) new to TypeScript, (2) new to{' '}
               <strong>generics</strong>, and (3) <em>struggling</em> to
-              understand generics, then you’re exactly like me from 13 years
-              ago.
+              understand generics, then you’re exactly like me when I was
+              learning Java 13 years ago.
             </P>
             <P>
-              Back then, I was studying the Java programming language in
-              college. Generics were a relatively new feature for Java at the
-              time. I was a beginner programmer then, and{' '}
-              <em>generics felt very difficult</em>. So I gave up on
-              understanding generics at the time. I had to re-learn generics
-              when I got a full time job.
+              When I was studying the Java programming language in college,
+              generics were a relatively new feature for Java. I was a beginner
+              programmer then, and <em>generics felt very difficult</em>. So I
+              gave up on understanding generics at the time. I had to re-learn
+              generics when I got a full time job.
             </P>
             <EmojiSeparator
               emojis={['question', 'cryingCat', 'question']}
