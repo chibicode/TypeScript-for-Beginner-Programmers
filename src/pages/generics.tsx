@@ -476,7 +476,7 @@ const Page = () => (
               Before we continue, let’s do a quick recap.
             </P>
             <P>
-              <strong>What you should remember is that</strong>,{' '}
+              What you should remember is that{' '}
               <Highlight>
                 generics are just like regular function parameters.
               </Highlight>{' '}
