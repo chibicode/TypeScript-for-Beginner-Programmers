@@ -4,7 +4,8 @@
     "target": "es2017",
     "module": "commonjs",
     "lib": ["es2017"],
-    "isolatedModules": false
+    "isolatedModules": false,
+    "strictPropertyInitialization": false
   },
   "include": ["./snippets"]
 }

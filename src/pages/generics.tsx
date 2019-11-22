@@ -708,14 +708,71 @@ const Page = () => (
         }
       },
       {
+        title: <>Generic classes</>,
+        content: (
+          <>
+            <P>
+              <Highlight>
+                The last thing we’ll cover is <strong>generic classes</strong>.
+              </Highlight>{' '}
+              First, let’s revisit the code for <Code>makeState()</Code>. This
+              is the generic version that doesn’t use <Code>extends</Code> or
+              default type parameters.
+            </P>
+            <CodeBlock
+              snippet={snippets.brze}
+              caption={
+                <>
+                  Let’s revisit <Code>makeState()</Code>
+                </>
+              }
+            />
+            <P>
+              We can turn <Code>makeState()</Code> into a generic class called{' '}
+              <Code>State</Code> like below. It looks similar to{' '}
+              <Code>makeState()</Code>, right?
+            </P>
+            <CodeBlock snippet={snippets.mroc} />
+            <P>
+              To use this, you just need to pass a type parameter on
+              initialization.
+            </P>
+            <CodeBlock snippet={snippets.zdbq} />
+            <P>
+              To summarize, generic classes are just like generic functions.
+              Generic functions take a type parameter when we call them, but
+              generic classes take a type parameter when we instantiate them.
+            </P>
+          </>
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>Note:</strong> You need to set{' '}
+                <Code color="lightYellow1">
+                  "strictPropertyInitialization": false
+                </Code>{' '}
+                on TypeScript config (
+                <Code color="lightYellow1">tsconfig.json</Code>) to get the
+                above code to compile.
+              </P>
+            </>
+          )
+        }
+      },
+      {
         title: <>That’s all you need to know!</>,
         content: (
           <>
             <EmojiSeparator emojis={['sparkles', 'smilingCat', 'sparkles']} />
             <P>
-              Thanks for reading! Hope I made generics less scary. If you’d like
-              me to write about some other topics on TypeScript, or if you have
-              feedback, please let me know on{' '}
+              Thanks for reading! That’s all you need to know about generics in
+              TypeScript. Hope I made generics less scary to you.
+            </P>
+            <P>
+              If you’d like me to write about some other topics on TypeScript,
+              or if you have feedback, please let me know on{' '}
               <A href="https://twitter.com/chibicode">
                 <Emoji type="twitter" /> Twitter at @chibicode
               </A>

@@ -187,6 +187,18 @@ console.log(boolState.getState())`
 
 export const mngc = `function makeState<S extends number | string>()`
 
+export const mroc = `class State<S> {
+  state: S
+
+  getState() {
+    return this.state
+  }
+
+  setState(x: S) {
+    this.state = x
+  }
+}`
+
 export const mrub = `function makePair<F, S>() {
   let pair: { first: F; second: S }
 
@@ -429,6 +441,14 @@ export const ystu = `function makeState() {
 
   return { getState, setState }
 }`
+
+export const zdbq = `// Pass a type parameter on initialization
+const numState = new State<number>()
+
+numState.setState(1)
+
+// Prints 1
+console.log(numState.getState())`
 
 export const zhql = `function makeState() {
   let state: number
