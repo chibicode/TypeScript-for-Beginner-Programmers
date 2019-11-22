@@ -616,9 +616,7 @@ const Page = () => (
             <CodeBlock snippet={snippets.nbvo} />
             <P>
               You can even make the second type (<Code>S</Code>) to be related
-              to the first type (<Code>F</Code>). In the following (slightly
-              complicated) case, whatever type you specify for <Code>F</Code>{' '}
-              determines the possible types of <Code>S</Code>.
+              to the first type (<Code>F</Code>). Here’s an example:
             </P>
             <CodeBlock snippet={snippets.xekh} />
           </>

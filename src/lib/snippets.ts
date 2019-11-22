@@ -36,7 +36,7 @@ export const brze = `function makeState<S>() {
 export const bwyu = `// Confused by generics code like this?
 function makePair<
   F extends number | string,
-  S extends { foo: F }
+  S extends boolean | F
 >()`
 
 export const cbeq = `const { getState, setState } = makeState()
@@ -362,25 +362,22 @@ export const xeax = `const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
-export const xekh = `// You can make type S to be related to type F.
-// Whatever type you specify for F determines
-// the possible types of S.
+export const xekh = `// The second parameter S must be either
+// boolean or whatever was specified for F
 function makePair<
   F extends number | string,
-  S extends { foo: F }
+  S extends boolean | F
 >()
 
-// Example usage: We’ll pass in number for F, so
-// for S, we must pass in a type that extends
-// or is equal to { foo: number }.
-const { getPair, setPair } = makePair<
-  number,
-  { foo: number }
->()
+// These will work
+makePair<number, boolean>()
+makePair<number, number>()
+makePair<string, boolean>()
+makePair<string, string>()
 
-// Now, setPair takes number and
-// an object containing { foo: number } pair
-setPair(1, { foo: 5 })`
+// This will fail because the second
+// parameter must be boolean | boolean
+makePair<number, string>()`
 
 export const xfwf = `// Can we make it so that, <number> is the
 // default type paramter of makeState()?
