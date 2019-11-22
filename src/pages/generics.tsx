@@ -57,11 +57,11 @@ const Page = () => (
                 <strong>Note:</strong> If you already understand generics, you
                 won’t find anything new in this tutorial. However,{' '}
                 <Highlight color="white85">
-                  you might know someone (maybe your colleague or your Twitter
-                  follower) who’s struggling with generics
+                  you might know someone (maybe one of your Twitter followers)
+                  who’s struggling with generics
                 </Highlight>
-                . If so, I’d appreciate it if you could share this article with
-                them. You can{' '}
+                . If you do, I’d appreciate it if you could share this article
+                with them. You can{' '}
                 <TwitterLink
                   title={articlesData['generics']['title']}
                   url={`${baseUrl}/generics`}
@@ -123,8 +123,10 @@ const Page = () => (
           content: (
             <>
               <P>
-                <strong>Note:</strong> If you’ve used React, you might realize
-                that it’s kind of like the <Code>useState()</Code> hook.
+                <strong>Note:</strong> If you’ve used React, you might have
+                realized that <Code color="lightYellow1">makeState()</Code> is
+                similar to the <Code color="lightYellow1">useState()</Code>{' '}
+                hook.
               </P>
             </>
           )
@@ -320,27 +322,32 @@ const Page = () => (
             <>
               <P>
                 <strong>You might be wondering:</strong> Why did we name the
-                type parameter as “<Code>S</Code>”?
+                type parameter as “<Code color="lightYellow1">S</Code>”?
               </P>
               <P>
                 <strong>Answer:</strong> It could actually be any name, but
                 usually people use the first letter of a word that describes
                 what the type is representing. In this case, I chose “
-                <Code>S</Code>” because it’s describing the type of a{' '}
-                <strong>“S”</strong>tate. The following names are also common:
+                <Code color="lightYellow1">S</Code>” because it’s describing the
+                type of a <strong>“S”</strong>tate. The following names are also
+                common:
               </P>
               <Ul>
                 <UlLi>
-                  <Code>T</Code> (for <strong>“T”</strong>ype)
+                  <Code color="lightYellow1">T</Code> (for <strong>“T”</strong>
+                  ype)
                 </UlLi>
                 <UlLi>
-                  <Code>E</Code> (for <strong>“E”</strong>lement)
+                  <Code color="lightYellow1">E</Code> (for <strong>“E”</strong>
+                  lement)
                 </UlLi>
                 <UlLi>
-                  <Code>K</Code> (for <strong>“K”</strong>ey)
+                  <Code color="lightYellow1">K</Code> (for <strong>“K”</strong>
+                  ey)
                 </UlLi>
                 <UlLi>
-                  <Code>V</Code> (for <strong>“V”</strong>alue)
+                  <Code color="lightYellow1">V</Code> (for <strong>“V”</strong>
+                  alue)
                 </UlLi>
               </Ul>
             </>
