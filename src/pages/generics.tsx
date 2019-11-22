@@ -684,7 +684,8 @@ const Page = () => (
                 <A href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html">
                   support for recursive type aliases
                 </A>
-                , you should be fine using type aliases 100% of the time.
+                , type aliases can cover pretty much all of the use cases of
+                interfaces.
               </P>
             </>
           )
@@ -694,6 +695,7 @@ const Page = () => (
         title: <>That’s all you need to know!</>,
         content: (
           <>
+            <EmojiSeparator emojis={['sparkles', 'smilingCat', 'sparkles']} />
             <P>
               Thanks for reading! Hope I made generics less scary. If you’d like
               me to write about some other topic on TypeScript, or if you have
