@@ -27,11 +27,12 @@ const Page = () => (
               learning Java 13 years ago.
             </P>
             <P>
-              When I was studying the Java programming language in college,
-              generics were a relatively new feature for Java. I was a beginner
-              programmer then, and <em>generics felt very difficult</em>. So I
-              gave up on understanding generics at the time. I had to re-learn
-              generics when I got a full time job.
+              Like TypeScript, the Java programming language supports generics.
+              When I was studying Java in college, I was a beginner programmer,
+              and <em>generics felt very difficult</em> to me. So I gave up on
+              understanding generics at the time and used them without knowing
+              what I was doing. I didn’t understand generics until I got a full
+              time job after college.
             </P>
             <EmojiSeparator
               emojis={['question', 'cryingCat', 'question']}
@@ -43,9 +44,9 @@ const Page = () => (
               }
             />
             <P>
-              Similarly, if you feel that TypeScript generics are too difficult,
-              this tutorial is for you! I’ll help you actually understand
-              generics.
+              Maybe you’re like me from 13 years ago and have felt that
+              TypeScript generics are too difficult. If so, this tutorial is for
+              you! I’ll try to help you actually understand generics.
             </P>
           </>
         ),
