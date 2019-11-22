@@ -1,5 +1,6 @@
 import React from 'react'
 import Emoji from 'src/components/Emoji'
+import { A } from 'src/components/ContentTags'
 
 const TwitterLink = ({
   title,
@@ -14,9 +15,9 @@ const TwitterLink = ({
     url
   )}&via=chibicode&text=${encodeURIComponent(title)}`
   return (
-    <a {...props} href={tweetUrl}>
+    <A {...props} href={tweetUrl}>
       <Emoji type="twitter" /> {children}
-    </a>
+    </A>
   )
 }
 

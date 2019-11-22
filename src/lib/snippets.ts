@@ -166,12 +166,32 @@ genericFunc<number>()
 // Error
 genericFunc<string>()`
 
+export const lldl = `// Extract into a generic interface
+// to make it reusable
+interface Pair<A, B> {
+  first: A
+  second: B
+}
+
+function makePair<F, S>() {
+  // Usage: Pass F for A and S for B
+  let pair: Pair<F, S>
+
+  // ...
+}`
+
 export const llvc = `// Creates a boolean-only state
 const boolState = makeState<boolean>()
 boolState.setState(true)
 console.log(boolState.getState())`
 
 export const mngc = `function makeState<S extends number | string>()`
+
+export const mrub = `function makePair<F, S>() {
+  let pair: { first: F; second: S }
+
+  // ...
+}`
 
 export const nbvo = `function makePair<
   F extends number | string = number,
@@ -246,6 +266,13 @@ function regularFunc(x = 2)
 
 // x will be 2 inside the function
 regularFunc()`
+
+export const qgea = `// Extract into a generic type alias. It’s
+// basically identical to using an interface
+type Pair<A, B> = {
+  first: A
+  second: B
+}`
 
 export const qgxj = `// makeState() has 1 type parameter
 function makeState<S>()

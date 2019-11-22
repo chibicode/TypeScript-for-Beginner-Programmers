@@ -17,7 +17,6 @@ export const allSpaces = {
   '-6': -6,
   '-7': -7,
   '-8': -8,
-  '-12': -12,
   0: 0,
   0.125: 0.125,
   0.25: 0.25,
@@ -36,8 +35,7 @@ export const allSpaces = {
   5: 5,
   6: 6,
   7: 7,
-  8: 8,
-  12: 12
+  8: 8
 }
 
 const spaces = (x: keyof typeof allSpaces, useEm?: boolean) =>

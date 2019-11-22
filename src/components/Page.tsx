@@ -4,6 +4,7 @@ import GlobalStyles from 'src/components/GlobalStyles'
 import Head from 'next/head'
 import Container from 'src/components/Container'
 import Header from 'src/components/Header'
+import Footer from 'src/components/Footer'
 import useTheme from 'src/hooks/useTheme'
 
 const Page = ({
@@ -54,11 +55,12 @@ const Page = ({
         <Header useH1={index} />
         <Container
           cssOverrides={css`
-            margin-bottom: ${spaces(12)};
+            margin-bottom: ${spaces(8)};
           `}
         >
           {children}
         </Container>
+        <Footer />
       </GlobalStyles>
     </>
   )

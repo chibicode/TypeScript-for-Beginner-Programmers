@@ -1,12 +1,12 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
-import { P, Code, Highlight, Ul, UlLi, Hr } from 'src/components/ContentTags'
+import { A, P, Code, Highlight, Ul, UlLi, Hr } from 'src/components/ContentTags'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import CodeBlock from 'src/components/CodeBlock'
-import underConstructionCard from 'src/lib/underConstructionCard'
 import * as snippets from 'src/lib/snippets'
 import RunButtonText from 'src/components/RunButtonText'
 import TwitterLink from 'src/components/TwitterLink'
+import Emoji from 'src/components/Emoji'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 
@@ -623,10 +623,104 @@ const Page = () => (
         )
       },
       {
-        title: <>Generic interfaces</>,
-        content: <></>
+        title: <>Generic interfaces and type aliases</>,
+        content: (
+          <>
+            <P>
+              Let’s go back to our previous implementation of{' '}
+              <Code>makePair()</Code>. Now, take a look at the type of{' '}
+              <Code>pair</Code>:
+            </P>
+            <CodeBlock
+              snippet={snippets.mrub}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 1 && tokenNumber > 4
+              }
+            />
+            <P>
+              This works as is, but if we want to,{' '}
+              <Highlight>
+                we can refactor <Code>{`{ first: F, second: S }`}</Code> into an{' '}
+                <strong>interface</strong> or a <strong>type alias</strong> so
+                it can be reused.
+              </Highlight>
+            </P>
+            <P>
+              Let’s first extract the type of <Code>pair</Code> into a{' '}
+              <strong>generic interface</strong>. I used <Code>A</Code> and{' '}
+              <Code>B</Code> as type parameter names to distinguish them from
+              the type parameters of <Code>makePair()</Code>. We can then use
+              this interface to declare the type for <Code>pair</Code>.
+            </P>
+            <CodeBlock snippet={snippets.lldl} />
+            <P>
+              By extracting into a generic interface (an interface that takes
+              type parameters), we can reuse it in other places if necessary.
+            </P>
+            <Hr />
+            <P>
+              Alternatively, we can extract it into a{' '}
+              <strong>generic type alias</strong>. For object types, type
+              aliases are basically identical to interfaces, so you can use
+              whichever one you prefer.
+            </P>
+            <CodeBlock snippet={snippets.qgea} />
+            <P>
+              So, you can create generic interfaces and type aliases, just as
+              you can create generic functions. You can also create generic
+              classes, but we won’t cover that here for brevity.
+            </P>
+          </>
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                To learn more about interfaces v.s. type aliases,{' '}
+                <A href="https://stackoverflow.com/a/52682220/114157">
+                  read this StackOverflow answer
+                </A>
+                . As of TypeScript 3.7, which added a{' '}
+                <A href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html">
+                  support for recursive type aliases
+                </A>
+                , you should be fine using type aliases 100% of the time.
+              </P>
+            </>
+          )
+        }
       },
-      underConstructionCard
+      {
+        title: <>That’s all you need to know!</>,
+        content: (
+          <>
+            <P>
+              Thanks for reading! Hope I made generics less scary. If you’d like
+              me to write about some other topic on TypeScript, or if you have
+              feedback, please let me know on{' '}
+              <A href="https://twitter.com/chibicode">
+                <Emoji type="twitter" /> Twitter at @chibicode
+              </A>
+              .
+            </P>
+          </>
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>About the author:</strong> I’m Shu Uesugi, a software
+                engineer. The most recent TypeScript project I worked on is an{' '}
+                <em>interactive computer science course</em> called{' '}
+                <A href="https://ycombinator.chibicode.com/">
+                  <strong>“Y Combinator for Non-programmers.”</strong>
+                </A>
+                .
+              </P>
+            </>
+          )
+        }
+      }
     ]}
   />
 )

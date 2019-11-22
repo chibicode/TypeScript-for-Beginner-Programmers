@@ -96,7 +96,7 @@ export const FirstParagraph = ({
                 text-decoration: underline;
                 cursor: pointer;
                 &:hover {
-                  background: ${colors('lightYellow1')};
+                  background: ${colors('white85')};
                 }
               `}
               tabIndex={0}
