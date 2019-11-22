@@ -1,7 +1,7 @@
 // Doesn't work because the created state…
 const numAndStrState = makeState()
 
-// Supports both numbers…
+// Allows both numbers…
 numAndStrState.setState(1)
 console.log(numAndStrState.getState())
 
@@ -10,4 +10,4 @@ numAndStrState.setState('foo')
 console.log(numAndStrState.getState())
 
 // This is NOT what we want. We want to create
-// a number-only state, and a string-only state.
+// a number-only state and a string-only state.

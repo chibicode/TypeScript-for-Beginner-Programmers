@@ -29,10 +29,9 @@ const Page = () => (
               Back then, I was studying the Java programming language in
               college. Generics were a relatively new feature for Java at the
               time. I was a beginner programmer then, and{' '}
-              <em>generics felt very difficult</em>. So I gave up on actually
-              understanding generics and used them without knowing what I was
-              doing. I never really understood generics until I had to use them
-              a lot for my job.
+              <em>generics felt very difficult</em>. So I gave up on
+              understanding generics at the time. I had to re-learn generics
+              when I got a full time job.
             </P>
             <EmojiSeparator
               emojis={['question', 'cryingCat', 'question']}
@@ -45,7 +44,7 @@ const Page = () => (
             />
             <P>
               Similarly, if you feel that TypeScript generics are too difficult,
-              this tutorial is for you! I’ll try to help you actually understand
+              this tutorial is for you! I’ll help you actually understand
               generics.
             </P>
           </>
@@ -173,8 +172,8 @@ const Page = () => (
               }
             />
             <P>
-              To fix this, we can change the types from <Code>number</Code> to{' '}
-              <Code>string</Code>:
+              To fix this, we can change the type of <Code>state</Code> and{' '}
+              <Code>x</Code> from <Code>number</Code> to <Code>string</Code>:
             </P>
             <CodeBlock
               snippet={snippets.gkgi}
@@ -197,8 +196,9 @@ const Page = () => (
         title: <>Challenge: Two different states</>,
         content: (
           <>
-            <P>Now that we got the basics down, here’s a challenge question:</P>
+            <P>Now that we got the basics down, here’s a challenge for you:</P>
             <P>
+              <strong>Question:</strong>{' '}
               <Highlight>
                 Can we modify <Code>makeState()</Code> such that, it can create
                 two different states:
@@ -209,10 +209,10 @@ const Page = () => (
             <P>Here’s what I mean:</P>
             <CodeBlock snippet={snippets.bfka} />
             <P>
-              Our first <Code>makeState()</Code> created number-only states, and
-              our second <Code>makeState()</Code> created string-only states.
-              However, it couldn’t create both number-only states and
-              string-only states.
+              Earlier, our first <Code>makeState()</Code> created number-only
+              states, and our second <Code>makeState()</Code> created
+              string-only states. However, it couldn’t create both number-only
+              states and string-only states.
             </P>
             <P>
               How can we modify <Code>makeState()</Code> to achieve our goal?
@@ -233,16 +233,13 @@ const Page = () => (
               }
             />
             <P>
-              <strong>This does NOT work.</strong> If you use this, you’ll end
-              up creating a state that allows both numbers and strings, which is
-              not what we want.
+              <strong>This does NOT work.</strong> You’ll end up creating a
+              state that allows both numbers and strings, which is not what we
+              want. Instead, we want <Code>makeState()</Code> to support
+              creating two different states: one that allows only numbers, and
+              the other that allows only strings.
             </P>
             <CodeBlock snippet={snippets.qqic} />
-            <P>
-              Instead, we want <Code>makeState()</Code> to support creating two
-              different states: one that allows only numbers, and the other that
-              allows only strings.
-            </P>
           </>
         )
       },
@@ -276,7 +273,7 @@ const Page = () => (
             <CodeBlock snippet={snippets.jdhu} />
             <P>
               Then, inside the function definition of <Code>makeState()</Code>,{' '}
-              <Code>S</Code> will be come <Code>number</Code>:
+              <Code>S</Code> will become <Code>number</Code>:
             </P>
             <CodeBlock snippet={snippets.rebo} />
             <P>
@@ -291,8 +288,8 @@ const Page = () => (
               }
             />
             <P>
-              And to create a string-only state, you can pass{' '}
-              <Code>number</Code> as <Code>S</Code> when you call{' '}
+              On the other hand, to create a string-only state, you can pass{' '}
+              <Code>string</Code> as <Code>S</Code> when you call{' '}
               <Code>makeState()</Code>:
             </P>
             <CodeBlock
@@ -302,10 +299,10 @@ const Page = () => (
               }
             />
             <P>
-              That’s it! And we call <Code>makeState&lt;S&gt;()</Code> a
-              “generic function” because it’s flexible—you have a choice to make
-              it number-only or string-only. You know it’s a generic function if
-              it takes a type parameter when you call it.
+              <strong>Note:</strong> We call <Code>makeState&lt;S&gt;()</Code> a{' '}
+              <strong>“generic function”</strong> because it’s literally
+              generic—you have a choice to make it number-only or string-only.
+              And you know it’s a generic function if it takes a type parameter.
             </P>
             <CodeBlock
               snippet={snippets.brze}
