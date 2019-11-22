@@ -5,5 +5,6 @@ export const githubRepo =
 
 export const siteTitle = 'TypeScript for Beginner Programmers'
 
-export const siteDescription = ''
+export const siteDescription =
+  'Not for experienced programmers learning TypeScript'
 export const siteOgImage = `${baseUrl}/images/og-index.png`
