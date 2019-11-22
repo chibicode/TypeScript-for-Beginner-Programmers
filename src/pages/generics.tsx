@@ -18,7 +18,7 @@ const Page = () => (
         title: <>TypeScript Generics Too Hard?</>,
         content: (
           <>
-            <CodeBlock snippet={snippets.kiyi} />
+            <CodeBlock snippet={snippets.bwyu} />
             <P>
               If you’re (1) new to TypeScript, (2) new to{' '}
               <strong>generics</strong>, and (3) <em>struggling</em> to
@@ -614,8 +614,19 @@ const Page = () => (
               default types like before:
             </P>
             <CodeBlock snippet={snippets.nbvo} />
+            <P>
+              You can even make the second type (<Code>S</Code>) to be related
+              to the first type (<Code>F</Code>). In the following (slightly
+              complicated) case, whatever type you specify for <Code>F</Code>{' '}
+              determines the possible types of <Code>S</Code>.
+            </P>
+            <CodeBlock snippet={snippets.xekh} />
           </>
         )
+      },
+      {
+        title: <>Generic interfaces</>,
+        content: <></>
       },
       underConstructionCard
     ]}

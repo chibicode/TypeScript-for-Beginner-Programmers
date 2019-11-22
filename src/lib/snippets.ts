@@ -33,6 +33,12 @@ export const brze = `function makeState<S>() {
   return { getState, setState }
 }`
 
+export const bwyu = `// Confused by generics code like this?
+function makePair<
+  F extends number | string,
+  S extends { foo: F }
+>()`
+
 export const cbeq = `const { getState, setState } = makeState()
 
 setState(1)
@@ -159,12 +165,6 @@ function genericFunc<T extends number>()
 genericFunc<number>()
 // Error
 genericFunc<string>()`
-
-export const kiyi = `// Confused by generics code like this?
-function getProperty<T, K extends keyof T>(
-  obj: T,
-  key: K
-)`
 
 export const llvc = `// Creates a boolean-only state
 const boolState = makeState<boolean>()
@@ -361,6 +361,26 @@ export const xeax = `const { getState, setState } = makeState()
 
 setState('foo')
 console.log(getState())`
+
+export const xekh = `// You can make type S to be related to type F.
+// Whatever type you specify for F determines
+// the possible types of S.
+function makePair<
+  F extends number | string,
+  S extends { foo: F }
+>()
+
+// Example usage: We’ll pass in number for F, so
+// for S, we must pass in a type that extends
+// or is equal to { foo: number }.
+const { getPair, setPair } = makePair<
+  number,
+  { foo: number }
+>()
+
+// Now, setPair takes number and
+// an object containing { foo: number } pair
+setPair(1, { foo: 5 })`
 
 export const xfwf = `// Can we make it so that, <number> is the
 // default type paramter of makeState()?
