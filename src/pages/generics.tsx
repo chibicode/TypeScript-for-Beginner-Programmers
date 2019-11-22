@@ -790,7 +790,7 @@ const Page = () => (
                 engineer. The most recent TypeScript project I worked on is an{' '}
                 <em>interactive computer science course</em> called{' '}
                 <A href="https://ycombinator.chibicode.com/">
-                  <strong>“Y Combinator for Non-programmers.”</strong>
+                  <strong>“Y Combinator for Non-programmers”</strong>
                 </A>
                 .
               </P>
