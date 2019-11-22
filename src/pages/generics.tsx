@@ -6,6 +6,7 @@ import CodeBlock from 'src/components/CodeBlock'
 import * as snippets from 'src/lib/snippets'
 import RunButtonText from 'src/components/RunButtonText'
 import TwitterLink from 'src/components/TwitterLink'
+import TwitterEmbed from 'src/components/TwitterEmbed'
 import Emoji from 'src/components/Emoji'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
@@ -778,6 +779,7 @@ const Page = () => (
               </A>
               .
             </P>
+            <TwitterEmbed id="1197963887804436480" />
           </>
         ),
         footer: {
