@@ -1,8 +1,12 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import useTheme from 'src/hooks/useTheme'
+import { allColors } from 'src/lib/theme/colors'
 
-const Code = (props: JSX.IntrinsicElements['code']) => {
+const Code = ({
+  color,
+  ...props
+}: JSX.IntrinsicElements['code'] & { color?: keyof typeof allColors }) => {
   const { colors } = useTheme()
   return (
     <code
@@ -11,7 +15,7 @@ const Code = (props: JSX.IntrinsicElements['code']) => {
         css`
           font-size: 0.9em;
           word-break: break-word;
-          background: ${colors('lightPink2')};
+          background: ${color ? colors(color) : colors('lightPink2')};
         `
       ]}
     />

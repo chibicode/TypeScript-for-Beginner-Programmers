@@ -6,6 +6,8 @@ import Question from 'src/components/Emoji/Question'
 import Run from 'src/components/Emoji/Run'
 import ChickEgg from 'src/components/Emoji/ChickEgg'
 import Twitter from 'src/components/Emoji/Twitter'
+import Sparkles from 'src/components/Emoji/Sparkles'
+import SmilingCat from 'src/components/Emoji/SmilingCat'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -13,7 +15,9 @@ export const emojiToComponent = {
   question: Question,
   run: Run,
   chickEgg: ChickEgg,
-  twitter: Twitter
+  twitter: Twitter,
+  sparkles: Sparkles,
+  smilingCat: SmilingCat
 }
 
 const Emoji = ({

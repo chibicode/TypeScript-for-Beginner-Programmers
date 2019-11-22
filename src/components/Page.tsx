@@ -4,6 +4,7 @@ import GlobalStyles from 'src/components/GlobalStyles'
 import Head from 'next/head'
 import Container from 'src/components/Container'
 import Header from 'src/components/Header'
+import Footer from 'src/components/Footer'
 import useTheme from 'src/hooks/useTheme'
 
 const Page = ({
@@ -49,16 +50,18 @@ const Page = ({
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
+        <script async src="https://platform.twitter.com/widgets.js" />
       </Head>
       <GlobalStyles>
         <Header useH1={index} />
         <Container
           cssOverrides={css`
-            margin-bottom: ${spaces(12)};
+            margin-bottom: ${spaces(8)};
           `}
         >
           {children}
         </Container>
+        <Footer />
       </GlobalStyles>
     </>
   )
