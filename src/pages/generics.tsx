@@ -794,6 +794,10 @@ const Page = () => (
                 </A>
                 .
               </P>
+              <P>
+                You can email me at{' '}
+                <A href="mailto:shu@chibicode.com">shu@chibicode.com</A>.
+              </P>
             </>
           )
         }
