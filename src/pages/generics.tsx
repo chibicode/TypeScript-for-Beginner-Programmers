@@ -528,6 +528,95 @@ const Page = () => (
           </>
         )
       },
+      {
+        title: (
+          <>
+            Let’s talk about <Code>makePair</Code>
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              Let’s take a look at the new function called{' '}
+              <Code>makePair()</Code>. It’s similar to <Code>makeState()</Code>,
+              but instead of storing a single value, this one stores a pair of
+              values as <Code>{`{ first: ?, second: ? }`}</Code>. Right now, it
+              only supports numbers.
+            </P>
+            <CodeBlock snippet={snippets.ugeb} />
+            <P>
+              Let’s try it out!{' '}
+              <Highlight>
+                What gets printed out to the console when you run the following
+                code?
+              </Highlight>{' '}
+              Try to guess first, and then{' '}
+              <Highlight>
+                press the <RunButtonText /> button
+              </Highlight>
+              .
+            </P>
+            <CodeBlock
+              snippet={snippets.jejx}
+              result={
+                <>
+                  {`{ first: 1, second: 2 }`}
+                  <br />
+                  {`{ first: 3, second: 4 }`}
+                </>
+              }
+            />
+            <P>
+              Now, just like <Code>makeState()</Code>, let’s turn{' '}
+              <Code>makePair()</Code> into a generic function.
+            </P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            Generic <Code>makePair</Code>
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              Here’s a generic version of <Code>makePair</Code>.
+            </P>
+            <Ul>
+              <UlLi>
+                It takes <em>two</em> type parameters <Code>F</Code> and{' '}
+                <Code>S</Code> (for “F”irst and “S”econd).
+              </UlLi>
+              <UlLi>
+                The type of <Code>first</Code> will be <Code>F</Code>.
+              </UlLi>
+              <UlLi>
+                The type of <Code>second</Code> will be <Code>S</Code>.
+              </UlLi>
+            </Ul>
+            <CodeBlock snippet={snippets.rxdm} />
+            <P>
+              Here’s an example usage. By calling <Code>makePair</Code> with{' '}
+              <Code>&lt;number, string&gt;</Code>, it forces <Code>first</Code>{' '}
+              to be <Code>number</Code> and <Code>second</Code> to be{' '}
+              <Code>string</Code>.
+            </P>
+            <CodeBlock snippet={snippets.gozc} />
+            <P>
+              So, you can create a generic function that takes{' '}
+              <strong>multiple type parameters</strong>.
+            </P>
+            <CodeBlock snippet={snippets.qgxj} />
+            <P>
+              Of course, you can also use the <Code>extends</Code> keyword or
+              default types like before:
+            </P>
+            <CodeBlock snippet={snippets.nbvo} />
+          </>
+        )
+      },
       underConstructionCard
     ]}
   />
