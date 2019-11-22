@@ -352,7 +352,7 @@ const Page = () => (
         }
       },
       {
-        title: <>But you can create a boolean state!</>,
+        title: <>Problem: You can create a boolean state!</>,
         content: (
           <>
             <P>
@@ -365,7 +365,7 @@ const Page = () => (
               <strong>Maybe we might NOT want this to be allowed.</strong>{' '}
               Suppose that don’t want <Code>makeState()</Code> to be able to
               create non-number or non-string states (like <Code>boolean</Code>
-              ). How can we make sure that this is the case?
+              ). How can we ensure this?
             </P>
             <EmojiSeparator
               emojis={['question', 'chickEgg', 'question']}
@@ -396,11 +396,11 @@ const Page = () => (
               By doing this, when you call <Code>makeState()</Code>, you’d only
               be able to pass <Code>number</Code>, <Code>string</Code>, or any
               other type that extends either <Code>number</Code> or{' '}
-              <Code>string</Code> into <Code>S</Code>.
+              <Code>string</Code> as <Code>S</Code>.
             </P>
             <P>
               Let’s see what happens now when you try to pass{' '}
-              <Code>boolean</Code> into <Code>S</Code>.{' '}
+              <Code>boolean</Code> as <Code>S</Code>.{' '}
               <Highlight>
                 Press <RunButtonText compile /> below
               </Highlight>
@@ -411,7 +411,8 @@ const Page = () => (
               compile
               resultError
               shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 17 && tokenNumber > 5 && tokenNumber < 7
+                (lineNumber === 17 && tokenNumber > 5 && tokenNumber < 7) ||
+                (lineNumber === 1 && tokenNumber > 0)
               }
               shouldHighlightResult={(lineNumber, tokenNumber) =>
                 lineNumber === 17 && tokenNumber > 5 && tokenNumber < 7
@@ -423,7 +424,11 @@ const Page = () => (
                 </>
               }
             />
-            <P>It resulted in an error, which is what we want!</P>
+            <P>
+              It resulted in an error, which is what we want! We have
+              successfully prevented <Code>makeState()</Code> from creating
+              non-number or non-string states.
+            </P>
             <P>
               As you just saw, you can specify what’s allowed for the type
               parameter(s) of a generic function.
@@ -446,8 +451,8 @@ const Page = () => (
                 Can we make it so that <Code>&lt;number&gt;</Code> is the
                 default type parameter of <Code>makeState()</Code>?
               </Highlight>{' '}
-              We want to make it so that, if the type is missing, it’s set as{' '}
-              <Code>number</Code> by default.
+              We want to make it so that, if <Code>S</Code> is unspecified, it’s
+              set as <Code>number</Code> by default.
             </P>
             <CodeBlock snippet={snippets.xfwf} />
             <P>
@@ -487,7 +492,7 @@ const Page = () => (
               The difference is that{' '}
               <Highlight>
                 regular function parameters deal with values, but generics deal
-                with types.
+                with type parameters.
               </Highlight>
             </P>
             <Hr />
@@ -543,9 +548,12 @@ const Page = () => (
             <P>
               Let’s take a look at the new function called{' '}
               <Code>makePair()</Code>. It’s similar to <Code>makeState()</Code>,
-              but instead of storing a single value, this one stores a pair of
-              values as <Code>{`{ first: ?, second: ? }`}</Code>. Right now, it
-              only supports numbers.
+              but instead of storing a single value,{' '}
+              <Highlight>
+                this one stores a pair of values as{' '}
+                <Code>{`{ first: ?, second: ? }`}</Code>
+              </Highlight>
+              . Right now, it only supports numbers.
             </P>
             <CodeBlock snippet={snippets.ugeb} />
             <P>
@@ -571,7 +579,7 @@ const Page = () => (
               }
             />
             <P>
-              Now, just like <Code>makeState()</Code>, let’s turn{' '}
+              Now, just as we did for <Code>makeState()</Code>, let’s turn{' '}
               <Code>makePair()</Code> into a generic function.
             </P>
           </>
@@ -608,8 +616,9 @@ const Page = () => (
               <Code>string</Code>.
             </P>
             <CodeBlock snippet={snippets.gozc} />
+            <Hr />
             <P>
-              So, you can create a generic function that takes{' '}
+              To summarize, you can create a generic function that takes{' '}
               <strong>multiple type parameters</strong>.
             </P>
             <CodeBlock snippet={snippets.qgxj} />
@@ -651,12 +660,16 @@ const Page = () => (
             </P>
             <P>
               Let’s first extract the type of <Code>pair</Code> into a{' '}
-              <strong>generic interface</strong>. I used <Code>A</Code> and{' '}
+              <strong>generic interface</strong>. I’ll use <Code>A</Code> and{' '}
               <Code>B</Code> as type parameter names to distinguish them from
-              the type parameters of <Code>makePair()</Code>. We can then use
-              this interface to declare the type for <Code>pair</Code>.
+              the type parameters of <Code>makePair()</Code>.
             </P>
             <CodeBlock snippet={snippets.lldl} />
+            <P>
+              We can then use this interface to declare the type for{' '}
+              <Code>pair</Code>.
+            </P>
+            <CodeBlock snippet={snippets.cqrm} />
             <P>
               By extracting into a generic interface (an interface that takes
               type parameters), we can reuse it in other places if necessary.
@@ -670,9 +683,8 @@ const Page = () => (
             </P>
             <CodeBlock snippet={snippets.qgea} />
             <P>
-              So, you can create generic interfaces and type aliases, just as
-              you can create generic functions. You can also create generic
-              classes, but we won’t cover that here for brevity.
+              To summarize, you can create generic interfaces and type aliases,
+              just as you can create generic functions.
             </P>
           </>
         ),
@@ -702,7 +714,7 @@ const Page = () => (
             <EmojiSeparator emojis={['sparkles', 'smilingCat', 'sparkles']} />
             <P>
               Thanks for reading! Hope I made generics less scary. If you’d like
-              me to write about some other topic on TypeScript, or if you have
+              me to write about some other topics on TypeScript, or if you have
               feedback, please let me know on{' '}
               <A href="https://twitter.com/chibicode">
                 <Emoji type="twitter" /> Twitter at @chibicode

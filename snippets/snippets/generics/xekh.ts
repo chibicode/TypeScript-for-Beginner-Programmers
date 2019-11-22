@@ -12,5 +12,6 @@ makePair<string, boolean>()
 makePair<string, string>()
 
 // This will fail because the second
-// parameter must be boolean | boolean
+// parameter must extend boolean | number,
+// but instead it’s string
 makePair<number, string>()

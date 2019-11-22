@@ -47,6 +47,13 @@ console.log(getState())
 setState(2)
 console.log(getState())`
 
+export const cqrm = `function makePair<F, S>() {
+  // Usage: Pass F for A and S for B
+  let pair: Pair<F, S>
+
+  // ...
+}`
+
 export const cupt = `function makeState() {
   let state: number
 
@@ -171,13 +178,6 @@ export const lldl = `// Extract into a generic interface
 interface Pair<A, B> {
   first: A
   second: B
-}
-
-function makePair<F, S>() {
-  // Usage: Pass F for A and S for B
-  let pair: Pair<F, S>
-
-  // ...
 }`
 
 export const llvc = `// Creates a boolean-only state
@@ -261,7 +261,7 @@ const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
-export const pjcw = `// Set default value of x
+export const pjcw = `// Set the default value of x
 function regularFunc(x = 2)
 
 // x will be 2 inside the function
@@ -332,7 +332,7 @@ export const stkh = `const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
-export const thxf = `// Set default type of S as number
+export const thxf = `// Set the default type of S as number
 function makeState<
   S extends number | string = number
 >()`
@@ -360,12 +360,14 @@ setState(2)
 console.log(getState())`
 
 export const ugeb = `function makePair() {
+  // Stores a pair of values
   let pair: { first: number; second: number }
 
   function getPair() {
     return pair
   }
 
+  // Stores x as first and y as second
   function setPair(x: number, y: number) {
     pair = {
       first: x,
@@ -403,7 +405,8 @@ makePair<string, boolean>()
 makePair<string, string>()
 
 // This will fail because the second
-// parameter must be boolean | boolean
+// parameter must extend boolean | number,
+// but instead it’s string
 makePair<number, string>()`
 
 export const xfwf = `// Can we make it so that, <number> is the
