@@ -32,7 +32,7 @@ const CodeBlock = ({
   resultError?: boolean
 }) => {
   const [resultVisible, setResultVisible] = useState(defaultResultVisible)
-  const { radii, colors, ns, maxWidths, spaces, fontSizes } = useTheme()
+  const { radii, colors, ns, nt, maxWidths, spaces, fontSizes } = useTheme()
   const buttonOnClick = () => setResultVisible(true)
   return (
     <div
@@ -72,8 +72,11 @@ const CodeBlock = ({
                 margin-left: ${spaces('-0.5')};
                 margin-right: ${spaces('-0.5')};
 
-                ${ns} {
+                ${nt} {
                   font-size: ${fontSizes(0.85)};
+                }
+
+                ${ns} {
                   padding: ${spaces(1)} ${spaces(1)};
                   margin-left: 0;
                   margin-right: 0;
@@ -187,9 +190,12 @@ const CodeBlock = ({
                     padding: ${spaces(0.5)} ${spaces(0.5)};
                     font-size: ${fontSizes(0.8)};
 
+                    ${nt} {
+                      font-size: ${fontSizes(0.85)};
+                    }
+
                     ${ns} {
                       padding: ${spaces(0.75)} ${spaces(1)};
-                      font-size: ${fontSizes(0.85)};
                     }
                   `
                 ]}
