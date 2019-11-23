@@ -9,6 +9,7 @@ import BubbleQuotes from 'src/components/BubbleQuotes'
 import useTheme from 'src/hooks/useTheme'
 import { FirstParagraph } from 'src/pages/index'
 import Card, { CardProps } from 'src/components/Card'
+import ArticleList from 'src/components/ArticleList'
 
 export interface EpisodeCardType {
   title?: React.ReactNode
@@ -97,19 +98,26 @@ const PostPage = ({
           }
         ]}
       ></BubbleQuotes>
-      {cards.map(({ title, content, footer, color }, index) => (
-        <Card
-          color={color}
-          key={`${articleKey}-${index}`}
-          title={title}
-          slideCount={cards.length}
-          slideNumber={index + 1}
-          footer={footer}
-          isLast={index === cards.length - 1}
-        >
-          {content}
-        </Card>
-      ))}
+      <div
+        css={css`
+          margin-bottom: ${spaces(6)};
+        `}
+      >
+        {cards.map(({ title, content, footer, color }, index) => (
+          <Card
+            color={color}
+            key={`${articleKey}-${index}`}
+            title={title}
+            slideCount={cards.length}
+            slideNumber={index + 1}
+            footer={footer}
+            isLast={index === cards.length - 1}
+          >
+            {content}
+          </Card>
+        ))}
+      </div>
+      <ArticleList ignoreArticleKey={articleKey} />
     </Page>
   )
 }
