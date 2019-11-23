@@ -41,7 +41,7 @@ const ReadMore = ({
             </span>
           </>
         ) : (
-          <>{showReadMoreTextWhenVisible && readMoreText}</>
+          <>{showReadMoreTextWhenVisible && <> {readMoreText}</>}</>
         )
       )}
       {visible && rest}
