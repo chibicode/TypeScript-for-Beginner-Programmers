@@ -1,50 +1,19 @@
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import React from 'react'
 import BubbleQuotes from 'src/components/BubbleQuotes'
 import { P } from 'src/components/ContentTags'
-import useTheme from 'src/hooks/useTheme'
 import { siteTitle, baseUrl, siteDescription, siteOgImage } from 'src/lib/meta'
 import Head from 'next/head'
-import { useState } from 'react'
 import IndexPage from 'src/components/IndexPage'
+import ReadMore from 'src/components/ReadMore'
 
 export const FirstParagraph = ({
-  defaultVisible = true
+  defaultVisible
 }: {
   defaultVisible?: boolean
-}) => {
-  const [visible, setVisible] = useState(defaultVisible)
-  const { colors } = useTheme()
-  return (
-    <>
-      <P>
-        <strong>Hello!</strong> I write tutorials to help{' '}
-        <em>beginner programmers</em> learn TypeScript. My tutorials might NOT
-        be as useful for experienced programmers learning TypeScript.
-        {!visible && (
-          <>
-            {' '}
-            (
-            <span
-              css={css`
-                text-decoration: underline;
-                cursor: pointer;
-                &:hover {
-                  background: ${colors('white85')};
-                }
-              `}
-              tabIndex={0}
-              role="button"
-              aria-pressed="false"
-              onClick={() => setVisible(true)}
-            >
-              Read more…
-            </span>
-            )
-          </>
-        )}
-      </P>
-      {visible && (
+}) => (
+  <>
+    <ReadMore
+      rest={
         <P>
           <strong>Why target beginner programmers?</strong> As TypeScript is
           becoming popular, I believe that more beginner programmers (people
@@ -52,10 +21,20 @@ export const FirstParagraph = ({
           <em>possibly as one of their first languages</em>. So I wanted to
           create tutorials specifically targeting beginner programmers.
         </P>
+      }
+      readMoreText="Read more…"
+      preview={readMore => (
+        <P>
+          <strong>Hello!</strong> I write tutorials to help{' '}
+          <em>beginner programmers</em> learn TypeScript. My tutorials might NOT
+          be as useful for experienced programmers learning TypeScript.
+          {readMore}
+        </P>
       )}
-    </>
-  )
-}
+      defaultVisible={defaultVisible}
+    />
+  </>
+)
 
 const Index = () => {
   return (
@@ -78,7 +57,7 @@ const Index = () => {
             type: 'bird',
             children: (
               <>
-                <FirstParagraph />
+                <FirstParagraph defaultVisible />
               </>
             )
           }

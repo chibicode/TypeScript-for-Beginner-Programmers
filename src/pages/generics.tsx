@@ -10,6 +10,7 @@ import TwitterEmbed from 'src/components/TwitterEmbed'
 import Emoji from 'src/components/Emoji'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
+import ReadMore from 'src/components/ReadMore'
 
 const Page = () => (
   <PostPage
@@ -128,6 +129,60 @@ const Page = () => (
                 similar to the <Code color="lightYellow1">useState()</Code>{' '}
                 hook.
               </P>
+              <P></P>
+              <ReadMore
+                showReadMoreTextWhenVisible
+                readMoreText="If so, click here for more explanation."
+                preview={readMore => (
+                  <P>
+                    <strong>Confused?</strong> Some people might be wondering:
+                    “Why do we have functions inside another function?” or
+                    “What’s the{' '}
+                    <Code color="lightYellow1">{`{ getState, setState }`}</Code>{' '}
+                    syntax?”
+                    {readMore}
+                  </P>
+                )}
+                rest={
+                  <>
+                    <Ul>
+                      <UlLi>
+                        The above code has functions (
+                        <Code color="lightYellow1">getState()</Code>,{' '}
+                        <Code color="lightYellow1">setState()</Code>) inside
+                        another function (
+                        <Code color="lightYellow1">makeState()</Code>). This is
+                        because I’m using <strong>closure</strong>, which is one
+                        of the most important concepts in JavaScript. If you’ve
+                        never heard of closure, I highly recommend you to Google
+                        it. Here’s a{' '}
+                        <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">
+                          MDN article
+                        </A>
+                        .
+                      </UlLi>
+                      <UlLi>
+                        The{' '}
+                        <Code color="lightYellow1">{`{ getState, setState }`}</Code>{' '}
+                        syntax is the ES2015 feature of JavaScript (
+                        <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer">
+                          shorthand property names
+                        </A>{' '}
+                        and{' '}
+                        <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">
+                          object destructuring
+                        </A>
+                        ). If you’ve never seen it, I recommend learning the
+                        ES2015 syntax—
+                        <A href="https://github.com/DrkSephy/es6-cheatsheet">
+                          here’s a good cheat sheet
+                        </A>
+                        .
+                      </UlLi>
+                    </Ul>
+                  </>
+                }
+              />
             </>
           )
         }
