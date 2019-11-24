@@ -22,6 +22,30 @@ export const emojiToComponent = {
   check: Check
 }
 
+export const EmojiWrapper = ({
+  children,
+  noVerticalTransform
+}: {
+  children: React.ReactNode
+  noVerticalTransform?: boolean
+}) => (
+  <span
+    css={[
+      css`
+        display: inline-flex;
+        vertical-align: middle;
+        height: 1em;
+      `,
+      !noVerticalTransform &&
+        css`
+          transform: translateY(-0.1em);
+        `
+    ]}
+  >
+    {children}
+  </span>
+)
+
 const Emoji = ({
   type,
   noVerticalTransform
@@ -31,21 +55,9 @@ const Emoji = ({
 }) => {
   const Component = emojiToComponent[type]
   return (
-    <span
-      css={[
-        css`
-          display: inline-flex;
-          vertical-align: middle;
-          height: 1em;
-        `,
-        !noVerticalTransform &&
-          css`
-            transform: translateY(-0.125em);
-          `
-      ]}
-    >
+    <EmojiWrapper noVerticalTransform={noVerticalTransform}>
       <Component />
-    </span>
+    </EmojiWrapper>
   )
 }
 

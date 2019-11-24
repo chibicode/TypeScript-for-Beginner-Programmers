@@ -43,7 +43,7 @@ const ArticleLink = ({
             font-size: ${fontSizes(1.6)};
             letter-spacing: ${letterSpacings('title')};
             ${ns} {
-              line-height: ${lineHeights(2.5)};
+              line-height: ${lineHeights(2)};
               font-size: ${fontSizes(2)};
             }
 

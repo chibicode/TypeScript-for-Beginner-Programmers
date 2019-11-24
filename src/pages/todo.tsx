@@ -2,7 +2,7 @@ import React from 'react'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import { A, P, Image, Highlight, Ul, UlLi } from 'src/components/ContentTags'
-import InternalLink from 'src/components/InternalLink'
+import Todo from 'src/components/Todo'
 import underConstructionCard from 'src/lib/underConstructionCard'
 
 const Page = () => (
@@ -49,8 +49,8 @@ const Page = () => (
             <P>
               <strong>But what about TypeScript tutorials?</strong>{' '}
               <Highlight>
-                When it comes to TypeScript tutorials, there aren’t many
-                tutorials that involve building a todo app.
+                When it comes to TypeScript, there aren’t many tutorials that
+                involve building a todo app.
               </Highlight>{' '}
               I think there are missed opportunities here. Building a todo app
               is a great way to learn something in frontend engineering, and
@@ -98,16 +98,24 @@ const Page = () => (
                 <Highlight>
                   It helps if you have basic TypeScript knowledge
                 </Highlight>
-                , but you should be able to understand at least half of the
-                tutorial even if you only know JS. If you know some TypeScript,
-                I recommend you to read{' '}
-                <InternalLink href="/generics">
-                  my generics tutorial
-                </InternalLink>{' '}
-                first.
+                , but you should be able to understand most of the tutorial even
+                if you only know JS.
               </UlLi>
             </Ul>
-            <P>Let’s get started!</P>
+            <P>
+              My goal is to cover some of the cool features of TypeScript and
+              make you want to learn more. Let’s get started!
+            </P>
+          </>
+        )
+      },
+      {
+        title: <>Example todo list</>,
+        content: (
+          <>
+            <P>
+              <Todo text="Text" />
+            </P>
           </>
         )
       },
