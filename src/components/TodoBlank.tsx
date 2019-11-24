@@ -17,12 +17,12 @@ const TodoBlank = ({
         <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
           <rect
             stroke={on ? '#77B255' : colors('brown')}
-            strokeWidth={5}
+            strokeWidth={4}
             fill="#FFFFFF"
-            x={2.5}
-            y={2.5}
-            width={31}
-            height={31}
+            x={2}
+            y={2}
+            width={32}
+            height={32}
             rx={4}
           />
         </g>

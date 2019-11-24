@@ -7,6 +7,7 @@ import ButtonWithTouchActiveStates from 'src/components/ButtonWithTouchActiveSta
 import RunButtonText from 'src/components/RunButtonText'
 import PrismHighlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'src/lib/prismTheme'
+import CodeResult from 'src/components/CodeResult'
 
 const CodeBlock = ({
   snippet,
@@ -163,7 +164,6 @@ const CodeBlock = ({
         <>
           <div
             css={css`
-              max-width: ${maxWidths('sm')};
               margin-bottom: ${spaces(1.75)};
               margin-left: ${spaces('-0.5')};
               margin-right: ${spaces('-0.5')};
@@ -175,42 +175,7 @@ const CodeBlock = ({
             `}
           >
             {resultVisible ? (
-              <div
-                css={[
-                  css`
-                    line-height: 1.45;
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
-                    border-bottom-left-radius: ${radii(0.5)};
-                    border-bottom-right-radius: ${radii(0.5)};
-                    background: #fff;
-                    border-left: 2px solid ${colors('lightBrown')};
-                    border-bottom: 2px solid ${colors('lightBrown')};
-                    border-right: 2px solid ${colors('lightBrown')};
-                    padding: ${spaces(0.5)} ${spaces(0.5)};
-                    font-size: ${fontSizes(0.8)};
-
-                    ${nt} {
-                      font-size: ${fontSizes(0.85)};
-                    }
-
-                    ${ns} {
-                      padding: ${spaces(0.75)} ${spaces(1)};
-                    }
-                  `
-                ]}
-              >
-                <code
-                  css={
-                    resultError &&
-                    css`
-                      color: ${colors('red')};
-                    `
-                  }
-                >
-                  {result}
-                </code>
-              </div>
+              <CodeResult resultText={result} resultError={resultError} />
             ) : (
               <div
                 css={css`

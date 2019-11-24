@@ -2,7 +2,8 @@ import React from 'react'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import { A, P, Image, Highlight, Ul, UlLi } from 'src/components/ContentTags'
-import Todo from 'src/components/Todo'
+import Todo from 'src/components/TodoItem'
+import CodeResult from 'src/components/CodeResult'
 import underConstructionCard from 'src/lib/underConstructionCard'
 
 const Page = () => (
@@ -20,14 +21,14 @@ const Page = () => (
               </A>{' '}
               was one of the most popular JavaScript frameworks (React came out
               in 2013; Vue in 2014). When people were learning Backbone.js, many
-              (including myself) learned it by <em>building a todo app</em>. The
-              official documentation included an{' '}
+              (including myself) learned it by building a{' '}
+              <strong>todo app</strong>. The official documentation included an{' '}
               <A href="https://backbonejs.org/examples/todos/index.html">
                 example todo app
               </A>{' '}
-              and{' '}
+              built in Backbone.js, and many learned by reading{' '}
               <A href="https://backbonejs.org/docs/todos.html">
-                its annotated source code
+                its beautifully annotated source code
               </A>
               .
             </P>
@@ -38,9 +39,10 @@ const Page = () => (
             <P>
               As far as I know, learning a JavaScript framework by building a
               todo list was a new idea at the time and was popularized by
-              Backbone.js. It inspired <A href="http://todomvc.com/">TodoMVC</A>
-              , which showcases todo apps built in many JS frameworks. Today,
-              many tutorials, such as{' '}
+              Backbone.js (and other frameworks that followed). It inspired{' '}
+              <A href="http://todomvc.com/">TodoMVC</A>, which showcases todo
+              apps built using different JS frameworks. Today, many tutorials,
+              such as{' '}
               <A href="https://redux.js.org/basics/basic-tutorial">
                 Redux’s official tutorial
               </A>
@@ -62,8 +64,7 @@ const Page = () => (
               emojis={['check', 'smilingCat', 'check']}
               description={
                 <>
-                  There should be more TypeScript tutorials featuring a todo
-                  app.
+                  There should be more TypeScript tutorials featuring a todo app
                 </>
               }
             />
@@ -113,9 +114,10 @@ const Page = () => (
         title: <>Example todo list</>,
         content: (
           <>
-            <P>
-              <Todo text="Text" />
-            </P>
+            <CodeResult
+              resultOnly
+              resultComponent={<Todo text="First todo item" />}
+            />
           </>
         )
       },
