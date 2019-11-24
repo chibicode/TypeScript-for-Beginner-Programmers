@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { A } from 'src/components/ContentTags'
 
 const InternalLink = ({
   href,
@@ -8,7 +9,7 @@ const InternalLink = ({
   href: string
 }) => (
   <Link href={href} passHref>
-    <a {...props} />
+    <A {...props} />
   </Link>
 )
 

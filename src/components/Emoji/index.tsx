@@ -8,6 +8,7 @@ import ChickEgg from 'src/components/Emoji/ChickEgg'
 import Twitter from 'src/components/Emoji/Twitter'
 import Sparkles from 'src/components/Emoji/Sparkles'
 import SmilingCat from 'src/components/Emoji/SmilingCat'
+import Check from 'src/components/Emoji/Check'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -17,7 +18,8 @@ export const emojiToComponent = {
   chickEgg: ChickEgg,
   twitter: Twitter,
   sparkles: Sparkles,
-  smilingCat: SmilingCat
+  smilingCat: SmilingCat,
+  check: Check
 }
 
 const Emoji = ({
