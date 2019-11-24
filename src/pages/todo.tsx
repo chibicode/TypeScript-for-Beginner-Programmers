@@ -38,22 +38,22 @@ const Page = () => (
             <P>
               As far as I know, learning a JavaScript framework by building a
               todo list was a new idea at the time and was popularized by
-              Backbone.js. It inspired <A href="http://todomvc.com/">TodoMVC</A>{' '}
-              (came out in late 2011), which showcases todo apps built in many
-              JS frameworks. Today, many tutorials, such as{' '}
+              Backbone.js. It inspired <A href="http://todomvc.com/">TodoMVC</A>
+              , which showcases todo apps built in many JS frameworks. Today,
+              many tutorials, such as{' '}
               <A href="https://redux.js.org/basics/basic-tutorial">
                 Redux’s official tutorial
               </A>
-              , teach by building a todo app.
+              , involve building a todo app.
             </P>
             <P>
               <strong>But what about TypeScript tutorials?</strong>{' '}
               <Highlight>
                 When it comes to TypeScript tutorials, there aren’t many
-                tutorials that are based on building a todo app.
+                tutorials that involve building a todo app.
               </Highlight>{' '}
               I think there are missed opportunities here. Building a todo app
-              is a great way to learn something new in frontend engineering, and
+              is a great way to learn something in frontend engineering, and
               many JS programmers already know how to build a todo app in their
               framework of choice. There should be more TypeScript tutorials
               featuring a todo app.
@@ -99,7 +99,7 @@ const Page = () => (
                   It helps if you have basic TypeScript knowledge
                 </Highlight>
                 , but you should be able to understand at least half of the
-                materials even if you only know JS. If you know some TypeScript,
+                tutorial even if you only know JS. If you know some TypeScript,
                 I recommend you to read{' '}
                 <InternalLink href="/generics">
                   my generics tutorial
