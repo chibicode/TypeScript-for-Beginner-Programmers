@@ -3,11 +3,11 @@ import useTheme from 'src/hooks/useTheme'
 import { EmojiWrapper } from 'src/components/Emoji'
 
 const TodoBlank = ({
-  on,
+  hovered,
   noVerticalTransform,
   ...props
 }: React.SVGProps<SVGSVGElement> & {
-  on?: boolean
+  hovered?: boolean
   noVerticalTransform?: boolean
 }) => {
   const { colors } = useTheme()
@@ -16,7 +16,7 @@ const TodoBlank = ({
       <svg viewBox="0 0 36 36" {...props}>
         <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
           <rect
-            stroke={on ? '#77B255' : colors('brown')}
+            stroke={hovered ? '#77B255' : colors('brown')}
             strokeWidth={4}
             fill="#FFFFFF"
             x={2}

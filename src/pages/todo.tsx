@@ -2,7 +2,8 @@ import React from 'react'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import { A, P, Image, Highlight, Ul, UlLi } from 'src/components/ContentTags'
-import Todo from 'src/components/TodoItem'
+import TodoList from 'src/components/TodoList'
+import PromptArrowText from 'src/components/PromptArrowText'
 import CodeResult from 'src/components/CodeResult'
 import underConstructionCard from 'src/lib/underConstructionCard'
 
@@ -38,7 +39,7 @@ const Page = () => (
             />
             <P>
               As far as I know, learning a JavaScript framework by building a
-              todo list was a new idea at the time and was popularized by
+              todo app was a new idea at the time and was popularized by
               Backbone.js (and other frameworks that followed). It inspired{' '}
               <A href="http://todomvc.com/">TodoMVC</A>, which showcases todo
               apps built using different JS frameworks. Today, many tutorials,
@@ -111,13 +112,31 @@ const Page = () => (
         )
       },
       {
-        title: <>Example todo list</>,
+        title: <>Example todo app</>,
         content: (
           <>
+            <P>
+              Here’s the simple todo app we’ll be using.{' '}
+              <Highlight>Try checking and unchecking the checkboxes.</Highlight>
+            </P>
             <CodeResult
               resultOnly
-              resultComponent={<Todo text="First todo item" />}
+              caption={<>Simple todo app</>}
+              belowResult={
+                <PromptArrowText>
+                  ↑ Check and uncheck the checkboxes!
+                </PromptArrowText>
+              }
+              resultComponent={
+                <TodoList
+                  todos={[
+                    { id: 1, done: false, text: 'First todo' },
+                    { id: 2, done: false, text: 'Second todo' }
+                  ]}
+                />
+              }
             />
+            <P>?</P>
           </>
         )
       },

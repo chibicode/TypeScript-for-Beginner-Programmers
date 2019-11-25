@@ -1,17 +1,22 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import useTheme from 'src/hooks/useTheme'
+import Caption from 'src/components/Caption'
 
 const CodeResult = ({
   resultText,
   resultComponent,
   resultError,
-  resultOnly
+  resultOnly,
+  caption,
+  belowResult
 }: {
   resultText?: React.ReactNode
   resultError?: boolean
   resultComponent?: React.ReactNode
   resultOnly?: boolean
+  caption?: React.ReactNode
+  belowResult?: React.ReactNode
 }) => {
   const { colors, radii, spaces, fontSizes, nt, ns, maxWidths } = useTheme()
   return (
@@ -37,6 +42,7 @@ const CodeResult = ({
           `
         }
       >
+        <Caption>{caption}</Caption>
         <div
           css={[
             css`
@@ -83,6 +89,7 @@ const CodeResult = ({
           )}
         </div>
       </div>
+      {belowResult}
     </div>
   )
 }

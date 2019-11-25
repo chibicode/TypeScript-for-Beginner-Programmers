@@ -8,6 +8,7 @@ import RunButtonText from 'src/components/RunButtonText'
 import PrismHighlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'src/lib/prismTheme'
 import CodeResult from 'src/components/CodeResult'
+import PromptArrowText from 'src/components/PromptArrowText'
 
 const CodeBlock = ({
   snippet,
@@ -222,31 +223,7 @@ const CodeBlock = ({
                 {pointToRunButton && (
                   <>
                     <br />
-                    <span
-                      css={[
-                        css`
-                          display: inline-block;
-                          font-size: ${fontSizes(0.85)};
-                          animation: pointToCodeRunButton 1s infinite;
-                          color: ${colors('brown')};
-                          margin-top: ${spaces(1)};
-
-                          @keyframes pointToCodeRunButton {
-                            0% {
-                              transform: translateY(0);
-                            }
-                            50% {
-                              transform: translateY(-5px);
-                            }
-                            100% {
-                              transform: translateY(0px);
-                            }
-                          }
-                        `
-                      ]}
-                    >
-                      ↑ Press this button!
-                    </span>
+                    <PromptArrowText>↑ Press this button!</PromptArrowText>
                   </>
                 )}
               </div>
