@@ -1,7 +1,15 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
-import { A, P, Image, Highlight, Ul, UlLi } from 'src/components/ContentTags'
+import {
+  Code,
+  A,
+  P,
+  Image,
+  Highlight,
+  Ul,
+  UlLi
+} from 'src/components/ContentTags'
 import TodoList from 'src/components/TodoList'
 import PromptArrowText from 'src/components/PromptArrowText'
 import CodeResult from 'src/components/CodeResult'
@@ -130,13 +138,26 @@ const Page = () => (
               resultComponent={
                 <TodoList
                   todos={[
-                    { id: 1, done: false, text: 'First todo' },
-                    { id: 2, done: false, text: 'Second todo' }
+                    { id: 1, text: 'First todo', done: false },
+                    { id: 2, text: 'Second todo', done: false }
                   ]}
                 />
               }
             />
-            <P>?</P>
+            <P>
+              Now, let’s talk about <strong>data</strong>. What UI libraries
+              like React or Vue do is to <em>transform data into UI</em>. For
+              example, in React, you specify data as <Code>props</Code> or{' '}
+              <Code>state</Code>, and it renders UI based on this data. As you
+              build a larger app, many UI components will have associated data.
+            </P>
+            <P>
+              This todo app also has associated data.{' '}
+              <Highlight>
+                The data is an array of objects, each having <Code>id</Code>,{' '}
+                <Code>text</Code>, and <Code>done</Code>.
+              </Highlight>
+            </P>
           </>
         )
       },
