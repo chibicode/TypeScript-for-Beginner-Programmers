@@ -10,10 +10,8 @@ import {
   Ul,
   UlLi
 } from 'src/components/ContentTags'
-import TodoList from 'src/components/TodoList'
-import PromptArrowText from 'src/components/PromptArrowText'
-import CodeResult from 'src/components/CodeResult'
 import underConstructionCard from 'src/lib/underConstructionCard'
+import TodoWithData from 'src/components/TodoWithData'
 
 const Page = () => (
   <PostPage
@@ -127,22 +125,13 @@ const Page = () => (
               Here’s the simple todo app we’ll be using.{' '}
               <Highlight>Try checking and unchecking the checkboxes.</Highlight>
             </P>
-            <CodeResult
-              resultOnly
+            <TodoWithData
               caption={<>Simple todo app</>}
-              belowResult={
-                <PromptArrowText>
-                  ↑ Check and uncheck the checkboxes!
-                </PromptArrowText>
-              }
-              resultComponent={
-                <TodoList
-                  todos={[
-                    { id: 1, text: 'First todo', done: false },
-                    { id: 2, text: 'Second todo', done: false }
-                  ]}
-                />
-              }
+              promptArrowText={<>↑ Check and uncheck the checkboxes!</>}
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false }
+              ]}
             />
             <P>
               Now, let’s talk about <strong>data</strong>. What UI libraries

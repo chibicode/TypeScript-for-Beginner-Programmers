@@ -2,14 +2,9 @@
 import { css, jsx } from '@emotion/core'
 import useTheme from 'src/hooks/useTheme'
 import TodoItem from 'src/components/TodoItem'
+import { TodoType } from 'src/components/TodoWithData'
 
-type Todo = {
-  id: number
-  text: string
-  done: boolean
-}
-
-const TodoList = ({ todos }: { todos: Todo[] }) => {
+const TodoList = ({ todos }: { todos: TodoType[] }) => {
   const { spaces } = useTheme()
   return (
     <>

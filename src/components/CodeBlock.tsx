@@ -36,6 +36,7 @@ const CodeBlock = ({
   const [resultVisible, setResultVisible] = useState(defaultResultVisible)
   const { radii, colors, ns, nt, maxWidths, spaces, fontSizes } = useTheme()
   const buttonOnClick = () => setResultVisible(true)
+
   return (
     <div
       css={css`
@@ -176,7 +177,11 @@ const CodeBlock = ({
             `}
           >
             {resultVisible ? (
-              <CodeResult resultText={result} resultError={resultError} />
+              <CodeResult
+                resultText={result}
+                resultError={resultError}
+                resultType="bottom"
+              />
             ) : (
               <div
                 css={css`
