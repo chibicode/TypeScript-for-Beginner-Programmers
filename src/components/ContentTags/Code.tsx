@@ -13,7 +13,7 @@ const Code = ({
       {...props}
       css={[
         css`
-          font-size: 0.9em;
+          font-size: 0.95em;
           word-break: break-word;
           background: ${color ? colors(color) : colors('lightPink2')};
         `

@@ -109,6 +109,13 @@ export const dngl = `function makeState<
 // What happens if we now pass boolean to S?
 const boolState = makeState<boolean>()`
 
+export const dxfc = `// Underlying data. If we're using React, this
+// would be the todo component’s props or state
+[
+  { id: 1, text: 'First todo', done: false },
+  { id: 2, text: 'Second todo', done: false }
+]`
+
 export const gjgg = `// Creates a number-only state
 const numState = makeState<number>()
 numState.setState(1)

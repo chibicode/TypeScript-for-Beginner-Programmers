@@ -9,6 +9,9 @@ import Twitter from 'src/components/Emoji/Twitter'
 import Sparkles from 'src/components/Emoji/Sparkles'
 import SmilingCat from 'src/components/Emoji/SmilingCat'
 import Check from 'src/components/Emoji/Check'
+import SingleArrow from 'src/components/Emoji/SingleArrow'
+import Data from 'src/components/Emoji/Data'
+import UI from 'src/components/Emoji/UI'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -19,7 +22,10 @@ export const emojiToComponent = {
   twitter: Twitter,
   sparkles: Sparkles,
   smilingCat: SmilingCat,
-  check: Check
+  check: Check,
+  data: Data,
+  singleArrow: SingleArrow,
+  ui: UI
 }
 
 export const EmojiWrapper = ({

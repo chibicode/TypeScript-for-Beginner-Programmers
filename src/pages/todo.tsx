@@ -10,8 +10,10 @@ import {
   Ul,
   UlLi
 } from 'src/components/ContentTags'
+import * as snippets from 'src/lib/snippets'
 import underConstructionCard from 'src/lib/underConstructionCard'
 import TodoWithData from 'src/components/TodoWithData'
+import CodeBlock from 'src/components/CodeBlock'
 
 const Page = () => (
   <PostPage
@@ -135,11 +137,15 @@ const Page = () => (
             />
             <P>
               Now, let’s talk about <strong>data</strong>. What UI libraries
-              like React or Vue do is to <em>transform data into UI</em>. For
-              example, in React, you specify data as <Code>props</Code> or{' '}
-              <Code>state</Code>, and it renders UI based on this data. As you
-              build a larger app, many UI components will have associated data.
+              like React or Vue essentially do is to{' '}
+              <em>transform data into UI</em>. For example, in React, you
+              specify data as <Code>props</Code> or <Code>state</Code>, and it
+              renders UI based on this data.
             </P>
+            <EmojiSeparator
+              emojis={['data', 'singleArrow', 'ui']}
+              description={<>UI libraries transform data into UI</>}
+            />
             <P>
               This todo app also has associated data.{' '}
               <Highlight>
@@ -147,12 +153,40 @@ const Page = () => (
                 <Code>text</Code>, and <Code>done</Code>.
               </Highlight>
             </P>
+            <CodeBlock snippet={snippets.dxfc} />
+            <Ul>
+              <UlLi>
+                <Code>id</Code> is the ID of each todo item.
+              </UlLi>
+              <UlLi>
+                <Code>text</Code> contains the text of each todo item.
+              </UlLi>
+              <UlLi>
+                And most importantly, <Code>done</Code> is <Code>true</Code> for
+                completed items and is <Code>false</Code> otherwise.
+              </UlLi>
+            </Ul>
+            <P>
+              Let’s display the app together with its underlying data.{' '}
+              <Highlight>
+                Try checking and unchecking the checkboxes, and take a look at
+                how <Code>done</Code> changes.
+              </Highlight>
+            </P>
             <TodoWithData
               showData
+              caption={
+                <>
+                  ↓ Check and uncheck the checkboxes,
+                  <br />
+                  and take a look at how <Code>done</Code> changes
+                </>
+              }
               defaultData={[
                 { id: 1, text: 'First todo', done: false },
                 { id: 2, text: 'Second todo', done: false }
               ]}
+              comment={`// "done" changes when you check/uncheck`}
             />
           </>
         )

@@ -8,6 +8,18 @@ import TodoList from 'src/components/TodoList'
 import PromptArrowText from 'src/components/PromptArrowText'
 import TodoWithDataContext from 'src/components/TodoWithDataContext'
 import CodeBlockHighlight from 'src/components/CodeBlockHighlight'
+import { format } from 'prettier/standalone'
+import parser from 'prettier/parser-babylon'
+
+const prettierFormat = (state: TodoType[]) =>
+  format(JSON.stringify(state), {
+    semi: false,
+    singleQuote: true,
+    printWidth: 48,
+    plugins: [parser]
+  })
+    .trim()
+    .substring(1)
 
 export type TodoType = {
   id: number
@@ -37,12 +49,14 @@ const TodoWithData = ({
   defaultData,
   caption,
   promptArrowText,
-  showData
+  showData,
+  comment
 }: {
   defaultData: TodoType[]
   caption?: React.ReactNode
   promptArrowText?: React.ReactNode
   showData?: boolean
+  comment?: string
 }) => {
   const { spaces, ns, maxWidths, radii } = useTheme()
   const [state, dispatch] = useReducer<typeof reducer>(reducer, defaultData)
@@ -71,7 +85,9 @@ const TodoWithData = ({
           />
           {showData && (
             <CodeBlockHighlight
-              snippet={JSON.stringify(state)}
+              snippet={`${comment || ''}${comment ? '\n' : ''}${prettierFormat(
+                state
+              )}`}
               language="javascript"
               cssOverrides={css`
                 margin-top: ${0};
