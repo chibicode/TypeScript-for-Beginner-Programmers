@@ -59,6 +59,8 @@ const CodeBlock = ({
           css`
             margin-top: ${caption ? 0 : spaces(1.75)};
             margin-bottom: ${result ? 0 : spaces(1.75)};
+            margin-left: ${spaces('-0.5')};
+            margin-right: ${spaces('-0.5')};
           `,
           result
             ? css`

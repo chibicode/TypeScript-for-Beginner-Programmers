@@ -191,6 +191,34 @@ const Page = () => (
           </>
         )
       },
+      {
+        title: (
+          <>
+            <Code>toggleTodo()</Code> in TypeScript
+          </>
+        ),
+        content: <></>
+      },
+      {
+        title: <>Mark all as completed</>,
+        content: (
+          <>
+            <TodoWithData
+              showData
+              caption={
+                <>
+                  ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
+                </>
+              }
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false }
+              ]}
+              showMarkAllAsCompleted
+            />
+          </>
+        )
+      },
       underConstructionCard
     ]}
   />

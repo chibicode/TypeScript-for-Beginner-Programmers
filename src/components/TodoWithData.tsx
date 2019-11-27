@@ -16,7 +16,8 @@ const prettierFormat = (state: TodoType[]) =>
     semi: false,
     singleQuote: true,
     printWidth: 48,
-    plugins: [parser]
+    plugins: [parser],
+    parser: 'babel'
   })
     .trim()
     .substring(1)
@@ -27,10 +28,14 @@ export type TodoType = {
   done: boolean
 }
 
-export type TodoAction = {
-  type: 'toggle'
-  index: number
-}
+export type TodoAction =
+  | {
+      type: 'toggle'
+      index: number
+    }
+  | {
+      type: 'markAllAsCompleted'
+    }
 
 const reducer = (state: TodoType[], action: TodoAction) => {
   switch (action.type) {
@@ -40,6 +45,8 @@ const reducer = (state: TodoType[], action: TodoAction) => {
         { ...state[action.index], done: !state[action.index].done },
         ...state.slice(action.index + 1)
       ]
+    case 'markAllAsCompleted':
+      return state.map(item => ({ ...item, done: true }))
     default:
       throw new Error()
   }
@@ -50,13 +57,15 @@ const TodoWithData = ({
   caption,
   promptArrowText,
   showData,
-  comment
+  comment,
+  showMarkAllAsCompleted
 }: {
   defaultData: TodoType[]
   caption?: React.ReactNode
   promptArrowText?: React.ReactNode
   showData?: boolean
   comment?: string
+  showMarkAllAsCompleted?: boolean
 }) => {
   const { spaces, ns, maxWidths, radii } = useTheme()
   const [state, dispatch] = useReducer<typeof reducer>(reducer, defaultData)
@@ -81,7 +90,12 @@ const TodoWithData = ({
           <Caption>{caption}</Caption>
           <CodeResult
             resultType={showData ? 'top' : 'default'}
-            resultComponent={<TodoList todos={state} />}
+            resultComponent={
+              <TodoList
+                showMarkAllAsCompleted={showMarkAllAsCompleted}
+                todos={state}
+              />
+            }
           />
           {showData && (
             <CodeBlockHighlight

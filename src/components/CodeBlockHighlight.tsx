@@ -33,8 +33,6 @@ const CodeBlockHighlight = ({
               border: 2px solid ${colors('lightBrown')};
               background-color: ${colors('lightPink1')};
               font-size: ${fontSizes(0.8)};
-              margin-left: ${spaces('-0.5')};
-              margin-right: ${spaces('-0.5')};
 
               ${nt} {
                 font-size: ${fontSizes(0.85)};
