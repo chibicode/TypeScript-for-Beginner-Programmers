@@ -7,6 +7,7 @@ import Caption from 'src/components/Caption'
 import TodoList from 'src/components/TodoList'
 import PromptArrowText from 'src/components/PromptArrowText'
 import TodoWithDataContext from 'src/components/TodoWithDataContext'
+import CodeBlockHighlight from 'src/components/CodeBlockHighlight'
 
 export type TodoType = {
   id: number
@@ -35,13 +36,15 @@ const reducer = (state: TodoType[], action: TodoAction) => {
 const TodoWithData = ({
   defaultData,
   caption,
-  promptArrowText
+  promptArrowText,
+  showData
 }: {
   defaultData: TodoType[]
   caption?: React.ReactNode
   promptArrowText?: React.ReactNode
+  showData?: boolean
 }) => {
-  const { spaces, ns, maxWidths } = useTheme()
+  const { spaces, ns, maxWidths, radii } = useTheme()
   const [state, dispatch] = useReducer<typeof reducer>(reducer, defaultData)
   return (
     <TodoWithDataContext.Provider value={{ dispatch }}>
@@ -63,9 +66,21 @@ const TodoWithData = ({
         >
           <Caption>{caption}</Caption>
           <CodeResult
-            resultType="default"
+            resultType={showData ? 'top' : 'default'}
             resultComponent={<TodoList todos={state} />}
           />
+          {showData && (
+            <CodeBlockHighlight
+              snippet={JSON.stringify(state)}
+              language="javascript"
+              cssOverrides={css`
+                margin-top: ${0};
+                margin-bottom: ${spaces(1.75)};
+                border-bottom-left-radius: ${radii(0.5)};
+                border-bottom-right-radius: ${radii(0.5)};
+              `}
+            ></CodeBlockHighlight>
+          )}
           {promptArrowText && (
             <PromptArrowText>{promptArrowText}</PromptArrowText>
           )}

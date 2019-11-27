@@ -147,6 +147,13 @@ const Page = () => (
                 <Code>text</Code>, and <Code>done</Code>.
               </Highlight>
             </P>
+            <TodoWithData
+              showData
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false }
+              ]}
+            />
           </>
         )
       },
