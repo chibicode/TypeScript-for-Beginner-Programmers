@@ -18,7 +18,7 @@ const TodoList = ({ todos }: { todos: TodoType[] }) => {
             `
           }
         >
-          <TodoItem done={todo.done} text={todo.text} />
+          <TodoItem index={index} done={todo.done} text={todo.text} />
         </div>
       ))}
     </>

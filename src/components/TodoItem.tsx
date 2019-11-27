@@ -3,11 +3,20 @@ import { css, jsx } from '@emotion/core'
 import TodoBlank from 'src/components/TodoBlank'
 import Emoji from 'src/components/Emoji'
 import useTheme from 'src/hooks/useTheme'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import TodoWithDataContext from 'src/components/TodoWithDataContext'
 
-const Todo = ({ done, text }: { text: string; done: boolean }) => {
+const Todo = ({
+  index,
+  done,
+  text
+}: {
+  index: number
+  text: string
+  done: boolean
+}) => {
   const { spaces, colors } = useTheme()
-  const [todoDone, setTodoDone] = useState(done)
+  const { dispatch } = useContext(TodoWithDataContext)
   const [todoHovered, setTodoHovered] = useState(false)
   return (
     <div
@@ -27,7 +36,7 @@ const Todo = ({ done, text }: { text: string; done: boolean }) => {
         `}
         role="button"
         tabIndex={0}
-        onClick={() => setTodoDone(!todoDone)}
+        onClick={() => dispatch({ type: 'toggle', index })}
         onMouseOver={() => setTodoHovered(true)}
         onMouseOut={() => setTodoHovered(false)}
         onTouchStart={() => setTodoHovered(true)}
@@ -36,15 +45,11 @@ const Todo = ({ done, text }: { text: string; done: boolean }) => {
         onFocus={() => setTodoHovered(true)}
         onBlur={() => setTodoHovered(false)}
       >
-        {todoDone ? (
-          <Emoji type="check" />
-        ) : (
-          <TodoBlank hovered={todoHovered} />
-        )}
+        {done ? <Emoji type="check" /> : <TodoBlank hovered={todoHovered} />}
       </span>
       <span
         css={
-          todoDone &&
+          done &&
           css`
             color: ${colors('gray')};
           `
