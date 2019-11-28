@@ -12,6 +12,8 @@ import Check from 'src/components/Emoji/Check'
 import SingleArrow from 'src/components/Emoji/SingleArrow'
 import Data from 'src/components/Emoji/Data'
 import UI from 'src/components/Emoji/Ui'
+import UpdatedData from 'src/components/Emoji/UpdatedData'
+import UpdatedUI from 'src/components/Emoji/UpdatedUi'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -25,7 +27,9 @@ export const emojiToComponent = {
   check: Check,
   data: Data,
   singleArrow: SingleArrow,
-  ui: UI
+  ui: UI,
+  updatedUi: UpdatedUI,
+  updatedData: UpdatedData
 }
 
 export const EmojiWrapper = ({

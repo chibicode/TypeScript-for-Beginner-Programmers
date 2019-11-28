@@ -206,10 +206,22 @@ const Page = () => (
               underlying data (the <Code>done</Code> property), and in turn the
               UI gets updated. This is how UI libraries like React and Vue work.
             </P>
-            <P>
-              We’ll now take a look at how this check/uncheck functionality is
-              implemented.
-            </P>
+            <EmojiSeparator
+              emojis={[
+                'ui',
+                'singleArrow',
+                'updatedData',
+                'singleArrow',
+                'updatedUi'
+              ]}
+              description={
+                <>
+                  When the user interacts with the UI, the data gets updated,
+                  and in turn the UI gets updated
+                </>
+              }
+            />
+            <P>Next, let’s take a look at how the data gets updated.</P>
           </>
         )
       },
