@@ -18,5 +18,5 @@ jobs:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./out
-      - run: git checkout en
+      - run: git checkout gh-pages
       - run: ./node_modules/now/dist/index.js --prod --name typescript-for-beginner-programmers --token=${{ secrets.ZEIT_TOKEN }}
