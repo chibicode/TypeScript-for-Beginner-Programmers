@@ -247,6 +247,10 @@ const Page = () => (
             <P>
               Let’s implement <Code>toggleTodo()</Code>.
             </P>
+            <EmojiSeparator
+              emojis={['question', 'chickEgg', 'question']}
+              description={<>Junior developer</>}
+            />
           </>
         )
       },
