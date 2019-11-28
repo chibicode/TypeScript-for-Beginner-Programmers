@@ -188,6 +188,10 @@ const Page = () => (
               ]}
               comment={`// "done" changes when you check/uncheck`}
             />
+            <P>
+              We’ll now take a look at how this check/uncheck functionality is
+              implemented.
+            </P>
           </>
         )
       },
@@ -195,6 +199,23 @@ const Page = () => (
         title: (
           <>
             <Code>toggleTodo()</Code> in TypeScript
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              To implement the above functionality, we need to write code that
+              toggles the <Code>done</Code> property of a todo item. Let’s name
+              this function <Code>toggleTodo</Code>.
+            </P>
+            <CodeBlock snippet={snippets.vpco} />
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            <Code>readonly</Code>
           </>
         ),
         content: <></>
