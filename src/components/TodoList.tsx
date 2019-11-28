@@ -14,7 +14,7 @@ const TodoList = ({
   showMarkAllAsCompleted?: boolean
 }) => {
   const { fontSizes, spaces, colors } = useTheme()
-  const { dispatch } = useContext(TodoWithDataContext)
+  const { dispatch, disabled } = useContext(TodoWithDataContext)
   return (
     <>
       {todos.map((todo, index) => (
@@ -30,7 +30,7 @@ const TodoList = ({
           <TodoItem index={index} done={todo.done} text={todo.text} />
         </div>
       ))}
-      {showMarkAllAsCompleted && (
+      {showMarkAllAsCompleted && !disabled && (
         <div
           css={css`
             font-size: ${fontSizes(0.85)};

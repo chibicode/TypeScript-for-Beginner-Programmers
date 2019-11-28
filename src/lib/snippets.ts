@@ -109,7 +109,7 @@ export const dngl = `function makeState<
 // What happens if we now pass boolean to S?
 const boolState = makeState<boolean>()`
 
-export const dxfc = `// Underlying data. If we're using React, this
+export const dxfc = `// Associated data. If we're using React, this
 // would be the todo component’s props or state
 [
   { id: 1, text: 'First todo', done: false },
@@ -400,12 +400,12 @@ export const ugeb = `function makePair() {
 export const vpco = `// Returns a new todo object with the opposite
 // boolean value for the "done" proprty.
 function toggleTodo(todo) {
-  // Case 1:
-  // { id: …, text: '…', done: true } becomes
+  // Case 1: If todo is
+  // { id: …, text: '…', done: true }, return
   // { id: …, text: '…', done: false }
   //
-  // Case 2:
-  // { id: …, text: '…', done: false } becomes
+  // Case 2: If todo is
+  // { id: …, text: '…', done: false }, return
   // { id: …, text: '…', done: true }
 }`
 

@@ -58,7 +58,8 @@ const TodoWithData = ({
   promptArrowText,
   showData,
   comment,
-  showMarkAllAsCompleted
+  showMarkAllAsCompleted,
+  disabled
 }: {
   defaultData: TodoType[]
   caption?: React.ReactNode
@@ -66,11 +67,12 @@ const TodoWithData = ({
   showData?: boolean
   comment?: string
   showMarkAllAsCompleted?: boolean
+  disabled?: boolean
 }) => {
   const { spaces, ns, maxWidths, radii } = useTheme()
   const [state, dispatch] = useReducer<typeof reducer>(reducer, defaultData)
   return (
-    <TodoWithDataContext.Provider value={{ dispatch }}>
+    <TodoWithDataContext.Provider value={{ dispatch, disabled }}>
       <div
         css={css`
           margin: ${spaces(2)} auto;

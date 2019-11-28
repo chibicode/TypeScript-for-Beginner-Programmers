@@ -16,8 +16,10 @@ const Todo = ({
   done: boolean
 }) => {
   const { spaces, colors } = useTheme()
-  const { dispatch } = useContext(TodoWithDataContext)
+  const { dispatch, disabled } = useContext(TodoWithDataContext)
   const [todoHovered, setTodoHovered] = useState(false)
+  const hoverOn = () => (disabled ? undefined : setTodoHovered(true))
+  const hoverOff = () => (disabled ? undefined : setTodoHovered(false))
   return (
     <div
       css={css`
@@ -26,24 +28,32 @@ const Todo = ({
       `}
     >
       <span
-        css={css`
-          margin: ${spaces('-0.25')} ${spaces(0.25)} ${spaces('-0.25')}
-            ${spaces('-0.25')};
-          padding: ${spaces(0.25)};
-          cursor: pointer;
-          display: inline-block;
-          outline: none;
-        `}
+        css={[
+          css`
+            margin: ${spaces('-0.25')} ${spaces(0.25)} ${spaces('-0.25')}
+              ${spaces('-0.25')};
+            padding: ${spaces(0.25)};
+
+            display: inline-block;
+            outline: none;
+          `,
+          !disabled &&
+            css`
+              cursor: pointer;
+            `
+        ]}
         role="button"
         tabIndex={0}
-        onClick={() => dispatch({ type: 'toggle', index })}
-        onMouseOver={() => setTodoHovered(true)}
-        onMouseOut={() => setTodoHovered(false)}
-        onTouchStart={() => setTodoHovered(true)}
-        onTouchEnd={() => setTodoHovered(false)}
-        onTouchCancel={() => setTodoHovered(false)}
-        onFocus={() => setTodoHovered(true)}
-        onBlur={() => setTodoHovered(false)}
+        onClick={() =>
+          disabled ? undefined : dispatch({ type: 'toggle', index })
+        }
+        onMouseOver={hoverOn}
+        onMouseOut={hoverOff}
+        onTouchStart={hoverOn}
+        onTouchEnd={hoverOff}
+        onTouchCancel={hoverOff}
+        onFocus={hoverOn}
+        onBlur={hoverOff}
       >
         {done ? <Emoji type="check" /> : <TodoBlank hovered={todoHovered} />}
       </span>
