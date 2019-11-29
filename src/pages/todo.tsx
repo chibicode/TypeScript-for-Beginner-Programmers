@@ -17,6 +17,7 @@ import TodoWithData from 'src/components/TodoWithData'
 import RunButtonText from 'src/components/RunButtonText'
 import CodeBlock from 'src/components/CodeBlock'
 import BubbleQuotes from 'src/components/BubbleQuotes'
+import ResultHighlight from 'src/components/ResultHighlight'
 
 const Page = () => (
   <PostPage
@@ -306,11 +307,10 @@ const Page = () => (
                 <>
                   Expected:
                   <br />
-                  {`{ id: 1, text: '…', done: false }`}
-                  <br />
+                  <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
                   Actual:
                   <br />
-                  {`{ text: '…', done: false }`}
+                  <ResultHighlight>{`{ text: '…', done: false }`}</ResultHighlight>
                 </>
               }
               pointToRunButton
