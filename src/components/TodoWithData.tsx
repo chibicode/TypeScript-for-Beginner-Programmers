@@ -132,7 +132,7 @@ const TodoWithData = ({
                 border-bottom-left-radius: ${radii(0.5)};
                 border-bottom-right-radius: ${radii(0.5)};
               `}
-              lineCssOverrides={(lineIndex, tokenIndex) =>
+              lineCssOverridesAnimation={(lineIndex, tokenIndex) =>
                 shouldHighlight &&
                 state.lastChangedIndices
                   .map(
@@ -140,11 +140,20 @@ const TodoWithData = ({
                       lastChangedIndex + (highlightLineIndexOffset || 0)
                   )
                   .includes(lineIndex) &&
-                shouldHighlight(tokenIndex) &&
-                css`
-                  background: ${colors('yellowHighlight')};
-                  border-bottom: 3px solid ${colors('darkOrange')};
-                `
+                shouldHighlight(tokenIndex)
+                  ? {
+                      background: `${colors('yellowHighlight')}`,
+                      borderBottom: `3px solid ${colors('darkOrange')}`,
+                      reset: true,
+                      fontWeight: 'bold',
+                      from: {
+                        background: `${colors('yellowHighlightTransparent')}`,
+                        borderBottom: `1px solid ${colors(
+                          'darkOrangeTransparent'
+                        )}`
+                      }
+                    }
+                  : undefined
               }
             ></CodeBlockHighlight>
           )}

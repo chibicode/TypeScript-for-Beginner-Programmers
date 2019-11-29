@@ -84,6 +84,7 @@ const CodeBlock = ({
               resultVisible &&
               shouldHighlightResult(lineIndex, tokenIndex))) &&
           css`
+            font-weight: bold;
             background: ${shouldHighlightResult && resultVisible && resultError
               ? colors('white')
               : colors('yellowHighlight')};

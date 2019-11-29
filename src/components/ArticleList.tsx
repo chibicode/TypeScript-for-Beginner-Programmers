@@ -36,7 +36,7 @@ const ArticleLink = ({
       >
         <InternalLink
           href={href}
-          css={css`
+          cssOverrides={css`
             font-weight: bold;
             text-decoration: none;
             line-height: ${lineHeights(1.6)};

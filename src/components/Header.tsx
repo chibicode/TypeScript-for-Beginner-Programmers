@@ -10,7 +10,7 @@ const LogoLink = ({ children, ...props }: JSX.IntrinsicElements['h2']) => {
   return (
     <h2 {...props}>
       <InternalLink
-        css={css`
+        cssOverrides={css`
           text-decoration: none;
           display: inline-block;
           padding: ${spaces(0.25)};

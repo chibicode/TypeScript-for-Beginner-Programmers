@@ -162,7 +162,7 @@ const Page = () => (
               ]}
             />
             <P>
-              <strong>Here’s the associated data:</strong>{' '}
+              <strong>Answer:</strong> Here’s the associated data.{' '}
               <Highlight>
                 It’s an array of objects, each having <Code>id</Code>,{' '}
                 <Code>text</Code>, and <Code>done</Code>.

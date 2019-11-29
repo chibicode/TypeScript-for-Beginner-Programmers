@@ -12,7 +12,8 @@
     "prettier": "^1.19.1",
     "prism-react-renderer": "^1.0.2",
     "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react-dom": "^16.11.0",
+    "react-spring": "^8.0.27"
   },
   "scripts": {
     "dev": "next",

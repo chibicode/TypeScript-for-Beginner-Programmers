@@ -3,16 +3,23 @@ import { css, jsx, Interpolation } from '@emotion/core'
 import PrismHighlight, { defaultProps, Language } from 'prism-react-renderer'
 import theme from 'src/lib/prismTheme'
 import useTheme from 'src/hooks/useTheme'
+import { useSpring } from 'react-spring'
+import AnimatedSpan from 'src/components/AnimatedSpan'
 
 const CodeBlockHighlight = ({
   snippet,
   cssOverrides,
   lineCssOverrides,
+  lineCssOverridesAnimation,
   language
 }: {
   snippet: string
   cssOverrides?: Interpolation
   lineCssOverrides?: (lineIndex: number, tokenIndex: number) => Interpolation
+  lineCssOverridesAnimation?: (
+    lineIndex: number,
+    tokenIndex: number
+  ) => ReturnType<Parameters<typeof useSpring>[0]> | undefined
   language: Language
 }) => {
   const { colors, ns, nt, spaces, fontSizes } = useTheme()
@@ -29,7 +36,6 @@ const CodeBlockHighlight = ({
             css`
               padding: ${spaces(0.75)} ${spaces(0.5)};
               line-height: 1.45;
-
               border: 2px solid ${colors('lightBrown')};
               background-color: ${colors('lightPink1')};
               font-size: ${fontSizes(0.8)};
@@ -89,6 +95,16 @@ const CodeBlockHighlight = ({
                           </span>
                         </>
                       )
+                    }
+                    if (!hasIndent && lineCssOverridesAnimation) {
+                      const springProps = lineCssOverridesAnimation(i, key)
+                      if (springProps !== undefined) {
+                        updatedChildren = (
+                          <AnimatedSpan springProps={springProps}>
+                            {updatedChildren}
+                          </AnimatedSpan>
+                        )
+                      }
                     }
                     return (
                       <span
