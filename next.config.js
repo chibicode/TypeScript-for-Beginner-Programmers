@@ -7,7 +7,8 @@ const config = {
     })
 
     return config
-  }
+  },
+  exportTrailingSlash: true
 }
 
 module.exports = config
