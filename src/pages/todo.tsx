@@ -156,6 +156,7 @@ const Page = () => (
               </Highlight>
             </P>
             <TodoWithData
+              caption={<>What data is associated with this UI?</>}
               disabled
               defaultData={[
                 { id: 1, text: 'First todo', done: false },
@@ -365,7 +366,8 @@ const Page = () => (
               }
             />
             <P>
-              This is where <strong>TypeScript</strong> comes in.
+              This is where <strong>TypeScript</strong> comes in. Let’s take a
+              look!
             </P>
           </>
         )
