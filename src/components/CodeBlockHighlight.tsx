@@ -61,10 +61,35 @@ const CodeBlockHighlight = ({
               return (
                 <div key={divKey} {...lineProps}>
                   {line.map((token, key) => {
-                    const { key: spanKey, ...tokenProps } = getTokenProps({
+                    const {
+                      key: spanKey,
+                      children,
+                      ...tokenProps
+                    } = getTokenProps({
                       token,
                       key
                     })
+                    let updatedChildren: React.ReactNode = children
+                    const hasIndent = key === 0 && /^\s+/.exec(children)
+                    if (hasIndent) {
+                      updatedChildren = (
+                        <>
+                          <span
+                            css={css`
+                              background: none;
+                              border: none;
+                            `}
+                          >
+                            {(/^\s+/.exec(children) || [])[0]}
+                          </span>
+                          <span
+                            css={lineCssOverrides && lineCssOverrides(i, key)}
+                          >
+                            {children.split(/^\s+/)[1]}
+                          </span>
+                        </>
+                      )
+                    }
                     return (
                       <span
                         key={spanKey}
@@ -73,9 +98,17 @@ const CodeBlockHighlight = ({
                           css`
                             font-style: normal !important;
                           `,
-                          lineCssOverrides && lineCssOverrides(i, key)
+                          !hasIndent &&
+                            lineCssOverrides &&
+                            lineCssOverrides(i, key),
+                          token.types[0] === 'comment' &&
+                            css`
+                              color: #8a8c93 !important;
+                            `
                         ]}
-                      />
+                      >
+                        {updatedChildren}
+                      </span>
                     )
                   })}
                 </div>

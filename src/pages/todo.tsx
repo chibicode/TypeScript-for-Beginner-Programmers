@@ -14,6 +14,7 @@ import {
 import * as snippets from 'src/lib/snippets'
 import underConstructionCard from 'src/lib/underConstructionCard'
 import TodoWithData from 'src/components/TodoWithData'
+import RunButtonText from 'src/components/RunButtonText'
 import CodeBlock from 'src/components/CodeBlock'
 import BubbleQuotes from 'src/components/BubbleQuotes'
 
@@ -249,7 +250,7 @@ const Page = () => (
             <P>
               Now, let me introduce our junior developer,{' '}
               <strong>Little Duckling</strong>. We’re going to use some
-              characters to make this article a bit more entertaining.
+              characters like him to make this article a bit more entertaining.
             </P>
             <EmojiSeparator
               emojis={['chickEgg']}
@@ -262,7 +263,7 @@ const Page = () => (
               }
             />
             <P>
-              <strong>Little Duckling</strong> has implemented{' '}
+              And it looks like <strong>Little Duckling</strong> has implemented{' '}
               <Code>toggleTodo</Code> for us:
             </P>
             <BubbleQuotes
@@ -272,8 +273,8 @@ const Page = () => (
                   children: (
                     <>
                       <P>
-                        Here’s my implementation of <Code>toggleTodo</Code>.
-                        Could you take a look?
+                        I’ve implemented <Code>toggleTodo</Code> for you. Could
+                        you take a look?
                       </P>
                     </>
                   )
@@ -289,6 +290,81 @@ const Page = () => (
                 </>
               }
             />
+            <P>
+              Let’s check if Little Duckling’s implementation is correct.{' '}
+              <Highlight>
+                Take a look at the following test case. What do you think the
+                output would be? Try to guess first and press Press{' '}
+                <RunButtonText /> below.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.lund}
+              result={
+                <>
+                  Expected:
+                  <br />
+                  {`{ id: 1, text: '…', done: false }`}
+                  <br />
+                  Actual:
+                  <br />
+                  {`{ text: '…', done: false }`}
+                </>
+              }
+              pointToRunButton
+            />
+            <P>
+              <Code>done</Code> correctly became <Code>false</Code>,{' '}
+              <Highlight>
+                but it’s missing the <Code>id</Code> property
+              </Highlight>
+              . So Little Duckling’s implementation was{' '}
+              <strong>incorrect</strong>.
+            </P>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        Oops! <Emoji type="sweat" /> I forgot about the{' '}
+                        <Code>id</Code> property!
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            ></BubbleQuotes>
+            <P>
+              Here’s the correct implementation. It preserves the{' '}
+              <Code>id</Code> property.
+            </P>
+            <CodeBlock
+              snippet={snippets.yxjg}
+              caption={<>The correct implementation</>}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 3 && tokenNumber >= 0 && tokenNumber <= 4
+              }
+            />
+            <P>
+              <strong>Now, here’s a question:</strong>{' '}
+              <Highlight>How can we prevent mistakes like this?</Highlight>{' '}
+              Little Duckling is a junior developer, but we want to make sure
+              that he succeeds at his job by helping him make less mistakes.
+            </P>
+            <EmojiSeparator
+              emojis={['sweat', 'chickEgg', 'sweat']}
+              description={
+                <>
+                  How can we prevent Little Duckling from making mistakes like
+                  this?
+                </>
+              }
+            />
+            <P>
+              This is where <strong>TypeScript</strong> comes in.
+            </P>
           </>
         )
       },

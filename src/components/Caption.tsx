@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { css, jsx, SerializedStyles } from '@emotion/core'
+import { css, jsx, Interpolation } from '@emotion/core'
 import useTheme from 'src/hooks/useTheme'
 
 const Caption = ({
@@ -11,7 +11,7 @@ const Caption = ({
   children: React.ReactNode
   skipPaddingBottom?: boolean
   Component?: React.ComponentType | string
-  cssOverrides?: SerializedStyles
+  cssOverrides?: Interpolation
 }) => {
   const { spaces, fontSizes, colors } = useTheme()
   return (

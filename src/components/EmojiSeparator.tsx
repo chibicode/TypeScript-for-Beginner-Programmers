@@ -76,7 +76,18 @@ const EmojiSeparator = ({
             </SideSpace>
           ))}
         </span>
-        {description && <Caption>{description}</Caption>}
+        {description && (
+          <Caption
+            cssOverrides={
+              size === 'lg' &&
+              css`
+                margin-top: ${spaces('-0.5')};
+              `
+            }
+          >
+            {description}
+          </Caption>
+        )}
       </>
     </div>
   )

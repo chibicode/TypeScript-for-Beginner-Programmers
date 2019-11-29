@@ -476,8 +476,22 @@ export const dxfc = `// Associated data. If we're using React, this
   { id: 2, text: 'Second todo', done: false }
 ]`
 
+export const lund = `const result = toggleTodo({
+  id: 1,
+  text: '…',
+  done: true
+})
+
+console.log('Expected:')
+console.log(\`{ id: 1, text: '…', done: false }\`)
+console.log('Actual:')
+console.log(result)`
+
 export const reel = `function toggleTodo(todo) {
-  return { text: todo.text, done: !todo.done }
+  return {
+    text: todo.text,
+    done: !todo.done
+  }
 }`
 
 export const vpco = `// Returns a new todo object with the opposite
@@ -490,4 +504,13 @@ function toggleTodo(todo) {
   // Case 2: If todo is
   // { id: …, text: '…', done: false }, return
   // { id: …, text: '…', done: true }
+}`
+
+export const yxjg = `function toggleTodo(todo) {
+  return {
+    // This line was missing
+    id: todo.id,
+    text: todo.text,
+    done: !todo.done
+  }
 }`

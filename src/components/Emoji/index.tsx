@@ -14,6 +14,7 @@ import Data from 'src/components/Emoji/Data'
 import UI from 'src/components/Emoji/Ui'
 import UpdatedData from 'src/components/Emoji/UpdatedData'
 import UpdatedUI from 'src/components/Emoji/UpdatedUi'
+import Sweat from 'src/components/Emoji/Sweat'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -29,7 +30,8 @@ export const emojiToComponent = {
   singleArrow: SingleArrow,
   ui: UI,
   updatedUi: UpdatedUI,
-  updatedData: UpdatedData
+  updatedData: UpdatedData,
+  sweat: Sweat
 }
 
 export const EmojiWrapper = ({
