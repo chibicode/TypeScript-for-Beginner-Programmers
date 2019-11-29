@@ -13,11 +13,4 @@ jobs:
           node-version: '13.x'
       - run: yarn install
       - run: yarn build
-      - uses: peaceiris/actions-gh-pages@v2.5.0
-        env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./out
-      - run: git clean -f
-      - run: git checkout gh-pages
-      - run: ./node_modules/now/dist/index.js --prod --name typescript-for-beginner-programmers --token=${{ secrets.ZEIT_TOKEN }}
+      - run: ./node_modules/now/dist/index.js out --prod --name typescript-for-beginner-programmers --token=${{ secrets.ZEIT_TOKEN }}
