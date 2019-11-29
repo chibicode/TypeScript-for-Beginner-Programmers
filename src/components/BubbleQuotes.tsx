@@ -31,46 +31,44 @@ const BubbleQuotes = ({
         }
       `}
     >
-      {quotes.map(
-        ({ type, children, backgroundColor = 'lightYellow1' }, index) => (
+      {quotes.map(({ type, children, backgroundColor = 'white' }, index) => (
+        <div
+          key={`${type}${index}`}
+          css={css`
+            margin: 0 0 ${spaces(1, true)};
+            display: flex;
+          `}
+        >
           <div
-            key={`${type}${index}`}
             css={css`
-              margin: 0 0 ${spaces(1, true)};
-              display: flex;
+              font-size: ${size === 'lg' ? fontSizes(2) : fontSizes(1.6)};
+              margin-right: ${size === 'lg' ? spaces(0.5) : spaces(0.25)};
+              padding-top: ${spaces(0.5)};
+
+              ${ns} {
+                padding-top: ${size === 'lg' ? spaces(0) : spaces(0.25)};
+                margin-right: ${size === 'lg' ? spaces(1) : spaces(0.75)};
+                font-size: ${size === 'lg' ? fontSizes(4) : fontSizes(2)};
+              }
             `}
           >
-            <div
-              css={css`
-                font-size: ${size === 'lg' ? fontSizes(2) : fontSizes(1.6)};
-                margin-right: ${size === 'lg' ? spaces(0.5) : spaces(0.25)};
-                padding-top: ${spaces(0.5)};
-
-                ${ns} {
-                  padding-top: ${size === 'lg' ? spaces(0) : spaces(0.25)};
-                  margin-right: ${size === 'lg' ? spaces(1) : spaces(0.75)};
-                  font-size: ${size === 'lg' ? fontSizes(4) : fontSizes(2)};
-                }
-              `}
-            >
-              <Emoji type={type} />
-            </div>
-            <div
-              css={css`
-                background: ${colors(backgroundColor)};
-                padding: ${spaces(1, true)} ${spaces(1, true)} 0;
-                border-radius: ${radii(0.5)};
-
-                ${ns} {
-                  padding: ${spaces(1, true)} ${spaces(1, true)} 0;
-                }
-              `}
-            >
-              {children}
-            </div>
+            <Emoji type={type} />
           </div>
-        )
-      )}
+          <div
+            css={css`
+              background: ${colors(backgroundColor)};
+              padding: ${spaces(1, true)} ${spaces(1, true)} 0;
+              border-radius: ${radii(0.5)};
+
+              ${ns} {
+                padding: ${spaces(1, true)} ${spaces(1, true)} 0;
+              }
+            `}
+          >
+            {children}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

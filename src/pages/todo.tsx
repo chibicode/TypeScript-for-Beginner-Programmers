@@ -1,6 +1,7 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
+import Emoji from 'src/components/Emoji'
 import {
   Code,
   A,
@@ -14,6 +15,7 @@ import * as snippets from 'src/lib/snippets'
 import underConstructionCard from 'src/lib/underConstructionCard'
 import TodoWithData from 'src/components/TodoWithData'
 import CodeBlock from 'src/components/CodeBlock'
+import BubbleQuotes from 'src/components/BubbleQuotes'
 
 const Page = () => (
   <PostPage
@@ -245,11 +247,47 @@ const Page = () => (
             </P>
             <CodeBlock snippet={snippets.vpco} />
             <P>
-              Let’s implement <Code>toggleTodo()</Code>.
+              Now, let me introduce our junior developer,{' '}
+              <strong>Little Duckling</strong>. We’re going to use some
+              characters to make this article a bit more entertaining.
             </P>
             <EmojiSeparator
-              emojis={['question', 'chickEgg', 'question']}
-              description={<>Junior developer</>}
+              emojis={['chickEgg']}
+              size="lg"
+              description={
+                <>
+                  I’m <strong>Little Duckling,</strong> and I’m a junior
+                  developer!
+                </>
+              }
+            />
+            <P>
+              <strong>Little Duckling</strong> has implemented{' '}
+              <Code>toggleTodo</Code> for us:
+            </P>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        Here’s my implementation of <Code>toggleTodo</Code>.
+                        Could you take a look?
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            ></BubbleQuotes>
+            <CodeBlock
+              snippet={snippets.reel}
+              caption={
+                <>
+                  <Emoji type="chickEgg" /> Little Duckling’s{' '}
+                  <Code>toggleTodo</Code> implementation
+                </>
+              }
             />
           </>
         )

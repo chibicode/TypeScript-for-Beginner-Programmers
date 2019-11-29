@@ -109,13 +109,6 @@ export const dngl = `function makeState<
 // What happens if we now pass boolean to S?
 const boolState = makeState<boolean>()`
 
-export const dxfc = `// Associated data. If we're using React, this
-// would be the todo component’s props or state
-[
-  { id: 1, text: 'First todo', done: false },
-  { id: 2, text: 'Second todo', done: false }
-]`
-
 export const gjgg = `// Creates a number-only state
 const numState = makeState<number>()
 numState.setState(1)
@@ -397,18 +390,6 @@ export const ugeb = `function makePair() {
   return { getPair, setPair }
 }`
 
-export const vpco = `// Returns a new todo object with the opposite
-// boolean value for the "done" proprty.
-function toggleTodo(todo) {
-  // Case 1: If todo is
-  // { id: …, text: '…', done: true }, return
-  // { id: …, text: '…', done: false }
-  //
-  // Case 2: If todo is
-  // { id: …, text: '…', done: false }, return
-  // { id: …, text: '…', done: true }
-}`
-
 export const wpru = `// Declare a regular function
 function regularFunc(x: any) {
   // You can use x here
@@ -487,3 +468,26 @@ const { getState, setState } = makeState()
 
 setState('foo')
 console.log(getState())`
+
+export const dxfc = `// Associated data. If we're using React, this
+// would be the todo component’s props or state
+[
+  { id: 1, text: 'First todo', done: false },
+  { id: 2, text: 'Second todo', done: false }
+]`
+
+export const reel = `function toggleTodo(todo) {
+  return { text: todo.text, done: !todo.done }
+}`
+
+export const vpco = `// Returns a new todo object with the opposite
+// boolean value for the "done" proprty.
+function toggleTodo(todo) {
+  // Case 1: If todo is
+  // { id: …, text: '…', done: true }, return
+  // { id: …, text: '…', done: false }
+  //
+  // Case 2: If todo is
+  // { id: …, text: '…', done: false }, return
+  // { id: …, text: '…', done: true }
+}`

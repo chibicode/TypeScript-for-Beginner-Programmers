@@ -56,6 +56,7 @@ const Index = () => {
         quotes={[
           {
             type: 'bird',
+            backgroundColor: 'lightYellow1',
             children: (
               <>
                 <FirstParagraph defaultVisible />
