@@ -37,16 +37,30 @@ export type TodoAction =
       type: 'markAllAsCompleted'
     }
 
-const reducer = (state: TodoType[], action: TodoAction) => {
+export type TodoState = {
+  todos: TodoType[]
+  lastChangedIndices: number[]
+}
+
+const reducer = (state: TodoState, action: TodoAction) => {
   switch (action.type) {
     case 'toggle':
-      return [
-        ...state.slice(0, action.index),
-        { ...state[action.index], done: !state[action.index].done },
-        ...state.slice(action.index + 1)
-      ]
+      return {
+        todos: [
+          ...state.todos.slice(0, action.index),
+          {
+            ...state.todos[action.index],
+            done: !state.todos[action.index].done
+          },
+          ...state.todos.slice(action.index + 1)
+        ],
+        lastChangedIndices: [action.index]
+      }
     case 'markAllAsCompleted':
-      return state.map(item => ({ ...item, done: true }))
+      return {
+        todos: state.todos.map(item => ({ ...item, done: true })),
+        lastChangedIndices: state.todos.map((_, index) => index)
+      }
     default:
       throw new Error()
   }
@@ -59,7 +73,9 @@ const TodoWithData = ({
   showData,
   comment,
   showMarkAllAsCompleted,
-  disabled
+  disabled,
+  highlightLineIndexOffset,
+  shouldHighlight
 }: {
   defaultData: TodoType[]
   caption?: React.ReactNode
@@ -68,9 +84,14 @@ const TodoWithData = ({
   comment?: string
   showMarkAllAsCompleted?: boolean
   disabled?: boolean
+  highlightLineIndexOffset?: number
+  shouldHighlight?: (tokenIndex: number) => boolean
 }) => {
-  const { spaces, ns, maxWidths, radii } = useTheme()
-  const [state, dispatch] = useReducer<typeof reducer>(reducer, defaultData)
+  const { spaces, ns, maxWidths, radii, colors } = useTheme()
+  const [state, dispatch] = useReducer<typeof reducer>(reducer, {
+    todos: defaultData,
+    lastChangedIndices: []
+  })
   return (
     <TodoWithDataContext.Provider value={{ dispatch, disabled }}>
       <div
@@ -95,14 +116,14 @@ const TodoWithData = ({
             resultComponent={
               <TodoList
                 showMarkAllAsCompleted={showMarkAllAsCompleted}
-                todos={state}
+                todos={state.todos}
               />
             }
           />
           {showData && (
             <CodeBlockHighlight
               snippet={`${comment || ''}${comment ? '\n' : ''}${prettierFormat(
-                state
+                state.todos
               )}`}
               language="javascript"
               cssOverrides={css`
@@ -111,6 +132,20 @@ const TodoWithData = ({
                 border-bottom-left-radius: ${radii(0.5)};
                 border-bottom-right-radius: ${radii(0.5)};
               `}
+              lineCssOverrides={(lineIndex, tokenIndex) =>
+                shouldHighlight &&
+                state.lastChangedIndices
+                  .map(
+                    lastChangedIndex =>
+                      lastChangedIndex + (highlightLineIndexOffset || 0)
+                  )
+                  .includes(lineIndex) &&
+                shouldHighlight(tokenIndex) &&
+                css`
+                  background: ${colors('yellowHighlight')};
+                  border-bottom: 3px solid ${colors('darkOrange')};
+                `
+              }
             ></CodeBlockHighlight>
           )}
           {promptArrowText && (

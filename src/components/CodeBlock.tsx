@@ -22,14 +22,14 @@ const CodeBlock = ({
   resultError
 }: {
   snippet: string
-  shouldHighlight?: (lineNumber: number, tokenNumber: number) => boolean
+  shouldHighlight?: (lineIndex: number, tokenIndex: number) => boolean
   result?: React.ReactNode
   pointToRunButton?: boolean
   defaultResultVisible?: boolean
   caption?: React.ReactNode
   noHighlight?: boolean
   compile?: boolean
-  shouldHighlightResult?: (lineNumber: number, tokenNumber: number) => boolean
+  shouldHighlightResult?: (lineIndex: number, tokenIndex: number) => boolean
   resultError?: boolean
 }) => {
   const [resultVisible, setResultVisible] = useState(defaultResultVisible)
@@ -76,34 +76,31 @@ const CodeBlock = ({
               border-bottom-left-radius: ${radii(0.5)};
             `
         ]}
-        lineCssOverrides={(i, key) => [
-          css`
-            font-style: normal !important;
-          `,
-          ((!!shouldHighlight && !resultVisible && shouldHighlight(i, key)) ||
+        lineCssOverrides={(lineIndex, tokenIndex) =>
+          ((!!shouldHighlight &&
+            !resultVisible &&
+            shouldHighlight(lineIndex, tokenIndex)) ||
             (!!shouldHighlightResult &&
               resultVisible &&
-              shouldHighlightResult(i, key))) &&
-            css`
-              background: ${shouldHighlightResult &&
-              resultVisible &&
-              resultError
-                ? colors('white')
-                : colors('yellowHighlight')};
-              border-bottom: ${shouldHighlightResult &&
-              resultVisible &&
-              resultError
-                ? 'none'
-                : `3px solid ${colors('darkOrange')}`};
-              text-decoration: ${shouldHighlightResult &&
-              resultVisible &&
-              resultError
-                ? 'underline'
-                : 'none'};
-              text-decoration-style: wavy;
-              text-decoration-color: ${colors('red')};
-            `
-        ]}
+              shouldHighlightResult(lineIndex, tokenIndex))) &&
+          css`
+            background: ${shouldHighlightResult && resultVisible && resultError
+              ? colors('white')
+              : colors('yellowHighlight')};
+            border-bottom: ${shouldHighlightResult &&
+            resultVisible &&
+            resultError
+              ? 'none'
+              : `3px solid ${colors('darkOrange')}`};
+            text-decoration: ${shouldHighlightResult &&
+            resultVisible &&
+            resultError
+              ? 'underline'
+              : 'none'};
+            text-decoration-style: wavy;
+            text-decoration-color: ${colors('red')};
+          `
+        }
         language={noHighlight ? 'diff' : 'typescript'}
       />
       {result && (

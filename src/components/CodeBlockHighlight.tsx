@@ -12,7 +12,7 @@ const CodeBlockHighlight = ({
 }: {
   snippet: string
   cssOverrides?: Interpolation
-  lineCssOverrides?: (i: number, key: number) => Interpolation
+  lineCssOverrides?: (lineIndex: number, tokenIndex: number) => Interpolation
   language: Language
 }) => {
   const { colors, ns, nt, spaces, fontSizes } = useTheme()

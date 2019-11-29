@@ -203,6 +203,8 @@ const Page = () => (
                 { id: 2, text: 'Second todo', done: false }
               ]}
               comment={`// "done" changes when you check/uncheck`}
+              highlightLineIndexOffset={2}
+              shouldHighlight={tokenIndex => tokenIndex === 15}
             />
             <P>
               As you can see, when you check/uncheck a checkbox, it updates the
@@ -343,8 +345,8 @@ const Page = () => (
             <CodeBlock
               snippet={snippets.yxjg}
               caption={<>The correct implementation</>}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 3 && tokenNumber >= 0 && tokenNumber <= 4
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 3 && tokenIndex >= 0 && tokenIndex <= 4
               }
             />
             <P>
