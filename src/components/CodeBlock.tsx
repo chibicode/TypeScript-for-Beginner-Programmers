@@ -19,7 +19,8 @@ const CodeBlock = ({
   noHighlight,
   compile,
   shouldHighlightResult,
-  resultError
+  resultError,
+  tokenIndexIndentWorkaround
 }: {
   snippet: string
   shouldHighlight?: (lineIndex: number, tokenIndex: number) => boolean
@@ -31,6 +32,7 @@ const CodeBlock = ({
   compile?: boolean
   shouldHighlightResult?: (lineIndex: number, tokenIndex: number) => boolean
   resultError?: boolean
+  tokenIndexIndentWorkaround?: number
 }) => {
   const [resultVisible, setResultVisible] = useState(defaultResultVisible)
   const { radii, colors, ns, maxWidths, spaces, fontSizes } = useTheme()
@@ -55,6 +57,7 @@ const CodeBlock = ({
       )}
       <CodeBlockHighlight
         snippet={snippet}
+        tokenIndexIndentWorkaround={tokenIndexIndentWorkaround}
         cssOverrides={[
           css`
             margin-top: ${caption ? 0 : spaces(1.75)};

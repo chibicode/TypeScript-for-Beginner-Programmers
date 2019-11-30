@@ -373,6 +373,86 @@ const Page = () => (
         )
       },
       {
+        title: <>Using TypeScript</>,
+        content: (
+          <>
+            <P>
+              By using <strong>TypeScript</strong>, we can prevent the mistake
+              Little Duckling made.
+            </P>
+            <P>
+              First, <Highlight>we create a type</Highlight> for the data we
+              use. In this case, we need to create a type for a todo item. We’ll
+              call it <Code>Todo</Code> and define it as follows:
+            </P>
+            <CodeBlock snippet={snippets.lieq} />
+            <P>
+              We can then use this type to check if an object is indeed a todo
+              item. The TypeScript syntax for that is:{' '}
+              <Code>variableName: TypeName</Code> (highlighted below). Let’s try
+              it—
+              <Highlight>
+                press <RunButtonText compile />.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.bnli}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 0 && tokenIndex >= 1 && tokenIndex <= 4
+              }
+              compile
+              result={<>Compiled successfully!</>}
+              tokenIndexIndentWorkaround={1}
+            />
+            <P>
+              It successfully compiled because the type of <Code>foo</Code>{' '}
+              matches the <Code>Todo</Code> type.
+            </P>
+            <P>
+              Now, how about this one?{' '}
+              <Highlight>
+                Try pressing <RunButtonText compile />.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.tgvw}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 0 && tokenIndex >= 1 && tokenIndex <= 4
+              }
+              tokenIndexIndentWorkaround={1}
+              compile
+              resultError
+              result={
+                <>{`Property 'id' is missing in type '{ text: string; done: true; }' but required in type 'Todo'.`}</>
+              }
+            />
+            <P>
+              This one failed to compile because the <Code>id</Code> property
+              was missing.{' '}
+              <Highlight>
+                TypeScript can catch these small mistakes quickly—without having
+                to write unit tests.
+              </Highlight>
+            </P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            Using TypeScript for <Code>toggleTodo()</Code>
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              Now, let’s use TypeScript to prevent the mistake Little Duckling
+              made earlier.
+            </P>
+          </>
+        )
+      },
+      {
         title: (
           <>
             <Code>readonly</Code>

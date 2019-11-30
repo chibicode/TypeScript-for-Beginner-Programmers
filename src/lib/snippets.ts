@@ -469,12 +469,24 @@ const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
+export const bnli = `const foo: Todo = {
+  id: 1,
+  text: '…',
+  done: true
+}`
+
 export const dxfc = `// Associated data. If we're using React, this
 // would be the todo component’s props or state
 [
   { id: 1, text: 'First todo', done: false },
   { id: 2, text: 'Second todo', done: false }
 ]`
+
+export const lieq = `type Todo = {
+  id: number
+  text: string
+  done: boolean
+}`
 
 export const lund = `const result = toggleTodo({
   id: 1,
@@ -492,6 +504,11 @@ export const reel = `function toggleTodo(todo) {
     text: todo.text,
     done: !todo.done
   }
+}`
+
+export const tgvw = `const bar: Todo = {
+  text: '…',
+  done: true
 }`
 
 export const vpco = `// Returns a new todo object with the opposite

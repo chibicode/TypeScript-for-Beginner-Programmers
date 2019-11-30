@@ -11,7 +11,8 @@ const CodeBlockHighlight = ({
   cssOverrides,
   lineCssOverrides,
   lineCssOverridesAnimation,
-  language
+  language,
+  tokenIndexIndentWorkaround = 0
 }: {
   snippet: string
   cssOverrides?: Interpolation
@@ -21,6 +22,7 @@ const CodeBlockHighlight = ({
     tokenIndex: number
   ) => ReturnType<Parameters<typeof useSpring>[0]> | undefined
   language: Language
+  tokenIndexIndentWorkaround?: number
 }) => {
   const { colors, ns, nt, spaces, fontSizes } = useTheme()
   return (
@@ -76,7 +78,9 @@ const CodeBlockHighlight = ({
                       key
                     })
                     let updatedChildren: React.ReactNode = children
-                    const hasIndent = key === 0 && /^\s+/.exec(children)
+                    const hasIndent =
+                      key === tokenIndexIndentWorkaround &&
+                      /^\s+/.exec(children)
                     if (hasIndent) {
                       updatedChildren = (
                         <>
