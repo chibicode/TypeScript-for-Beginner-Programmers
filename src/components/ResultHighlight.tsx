@@ -2,10 +2,8 @@
 import { css, jsx } from '@emotion/core'
 import PrismHighlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'src/lib/prismTheme'
-import useTheme from 'src/hooks/useTheme'
 
 const ResultHighlight = ({ children }: { children: string }) => {
-  const { colors } = useTheme()
   return (
     <PrismHighlight
       {...defaultProps}
@@ -37,7 +35,6 @@ const ResultHighlight = ({ children }: { children: string }) => {
                       {...tokenProps}
                       css={css`
                         font-style: normal !important;
-                        background-color: ${colors('lightPink1')};
                       `}
                     >
                       {children}
