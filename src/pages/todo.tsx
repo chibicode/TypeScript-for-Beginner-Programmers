@@ -373,7 +373,7 @@ const Page = () => (
         )
       },
       {
-        title: <>Using TypeScript</>,
+        title: <>Using TypeScript to catch the mistake early</>,
         content: (
           <>
             <P>
@@ -430,8 +430,8 @@ const Page = () => (
               This one failed to compile because the <Code>id</Code> property
               was missing.{' '}
               <Highlight>
-                TypeScript can catch these small mistakes quickly—without having
-                to write unit tests.
+                TypeScript can catch these small mistakes quickly, well before
+                running the code—without having to write unit tests.
               </Highlight>
             </P>
           </>
