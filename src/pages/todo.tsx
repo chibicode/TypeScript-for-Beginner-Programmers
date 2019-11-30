@@ -19,6 +19,8 @@ import CodeBlock from 'src/components/CodeBlock'
 import BubbleQuotes from 'src/components/BubbleQuotes'
 import ResultHighlight from 'src/components/ResultHighlight'
 
+const compileSuccess = 'Compiled successfully!'
+
 const Page = () => (
   <PostPage
     articleKey="todo"
@@ -383,7 +385,8 @@ const Page = () => (
             <P>
               First, <Highlight>we create a type</Highlight> for the data we
               use. In this case, we need to create a type for a todo item. We’ll
-              call it <Code>Todo</Code> and define it as follows:
+              call it <Code>Todo</Code> and define using the following
+              TypeScript syntax:
             </P>
             <CodeBlock snippet={snippets.lieq} />
             <P>
@@ -401,7 +404,7 @@ const Page = () => (
                 lineIndex === 0 && tokenIndex >= 1 && tokenIndex <= 4
               }
               compile
-              result={<>Compiled successfully!</>}
+              result={compileSuccess}
               tokenIndexIndentWorkaround={1}
             />
             <P>
@@ -447,7 +450,86 @@ const Page = () => (
           <>
             <P>
               Now, let’s use TypeScript to prevent the mistake Little Duckling
-              made earlier.
+              made earlier. To recap, here’s the <Code>Todo</Code> type we
+              created earlier:
+            </P>
+            <CodeBlock snippet={snippets.lieq} />
+            <P>
+              First,{' '}
+              <Highlight>
+                we specify that the input to <Code>toggleTodo</Code> must be{' '}
+                <Code>Todo</Code>
+              </Highlight>
+              . We do this by adding <Code>: Todo</Code> next to the parameter{' '}
+              <Code>todo</Code>.
+            </P>
+            <CodeBlock
+              snippet={snippets.csum}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 1 && tokenIndex >= 5 && tokenIndex <= 7
+              }
+            />
+            <P>
+              Next,{' '}
+              <Highlight>
+                we specify that the return type of <Code>toggleTodo</Code> must
+                also be <Code>Todo</Code>
+              </Highlight>
+              . We do this by adding <Code>: Todo</Code> after the parameter
+              list.
+            </P>
+            <CodeBlock
+              snippet={snippets.ywiv}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 1 && tokenIndex >= 9 && tokenIndex <= 11
+              }
+            />
+            <P>
+              Now, let’s copy and paste the code Little Duckling wrote—the one
+              without the <Code>id</Code> property and see what happens.{' '}
+              <Highlight>
+                Press <RunButtonText compile /> below.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.ntau}
+              compile
+              resultError
+              result={`Property 'id' is missing in type '{ text: string; done: boolean; }' but required in type 'Todo'.`}
+            />
+            <P>
+              It fails with an error because the returned object is missing the{' '}
+              <Code>id</Code> property and therefore does not match the{' '}
+              <Code>Todo</Code> type. So{' '}
+              <Highlight>
+                TypeScript can prevent the mistake Little Duckling made!
+              </Highlight>
+            </P>
+            <EmojiSeparator
+              emojis={['sparkles', 'chickEgg', 'sparkles']}
+              description={
+                <>TypeScript can prevent the mistake Little Duckling made!</>
+              }
+            />
+            <P>
+              Just to make sure, let’s try again with the correct code. I’ve
+              added the <Code>id</Code> property to the returned object.{' '}
+              <Highlight>
+                Press <RunButtonText compile /> below.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.ampt}
+              compile
+              result={compileSuccess}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 3 && tokenIndex >= 0 && tokenIndex <= 4
+              }
+            />
+            <P>
+              It compiled! As you can see, TypeScript is great at preventing
+              mistakes AND letting you know when everything is implemented
+              correctly.
             </P>
           </>
         )
@@ -456,6 +538,20 @@ const Page = () => (
         title: (
           <>
             <Code>readonly</Code>
+          </>
+        ),
+        content: (
+          <>
+            <P>Little Duckling tried to refactor the code…</P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            kind of like unit tests; especially useful for data → data
+            validation, also useful for passing data from a component to another
+            component.
           </>
         ),
         content: <></>

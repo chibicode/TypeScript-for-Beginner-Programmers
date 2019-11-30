@@ -469,10 +469,24 @@ const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
+export const ampt = `function toggleTodo(todo: Todo): Todo {
+  return {
+    // This line was missing
+    id: todo.id,
+    text: todo.text,
+    done: !todo.done
+  }
+}`
+
 export const bnli = `const foo: Todo = {
   id: 1,
   text: '…',
   done: true
+}`
+
+export const csum = `// todo must match the Todo type
+function toggleTodo(todo: Todo) {
+  // ...
 }`
 
 export const dxfc = `// Associated data. If we're using React, this
@@ -499,6 +513,15 @@ console.log(\`{ id: 1, text: '…', done: false }\`)
 console.log('Actual:')
 console.log(result)`
 
+export const ntau = `function toggleTodo(todo: Todo): Todo {
+  // Little Duckling’s code from earlier:
+  // Missing the "id" property
+  return {
+    text: todo.text,
+    done: !todo.done
+  }
+}`
+
 export const reel = `function toggleTodo(todo) {
   return {
     text: todo.text,
@@ -521,6 +544,11 @@ function toggleTodo(todo) {
   // Case 2: If todo is
   // { id: …, text: '…', done: false }, return
   // { id: …, text: '…', done: true }
+}`
+
+export const ywiv = `// The return value must match the Todo type
+function toggleTodo(todo: Todo): Todo {
+  // ...
 }`
 
 export const yxjg = `function toggleTodo(todo) {
