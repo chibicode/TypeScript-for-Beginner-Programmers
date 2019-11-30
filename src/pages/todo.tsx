@@ -373,7 +373,7 @@ const Page = () => (
         )
       },
       {
-        title: <>Using TypeScript to catch the mistake early</>,
+        title: <>Using TypeScript to catch mistakes early</>,
         content: (
           <>
             <P>
