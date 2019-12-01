@@ -534,6 +534,11 @@ export const tgvw = `const bar: Todo = {
   done: true
 }`
 
+export const uxlb = `function toggleTodo(todo: Todo): Todo {
+  // Little Duckling’s refactoring
+  todo.done = !todo.done
+}`
+
 export const vpco = `// Returns a new todo object with the opposite
 // boolean value for the "done" proprty.
 function toggleTodo(todo) {

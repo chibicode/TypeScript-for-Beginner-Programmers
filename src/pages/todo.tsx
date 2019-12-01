@@ -534,6 +534,43 @@ const Page = () => (
           </>
         )
       },
+      {
+        title: <>Bad refactor</>,
+        content: (
+          <>
+            <P>
+              Now that the code is working, Little Duckling decided to{' '}
+              <strong>refactor</strong> <Code>toggleTodo()</Code>.
+            </P>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        I think I can refactor <Code>toggleTodo</Code> as
+                        follows. Could you take a look?
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            ></BubbleQuotes>
+            <P>
+              <Highlight>
+                Try pressing <RunButtonText /> to see if it compiles!
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.uxlb}
+              compile
+              result={compileSuccess}
+              shouldHighlight={lineIndex => lineIndex === 2}
+            />
+          </>
+        )
+      },
       // {
       //   title: (
       //     <>
