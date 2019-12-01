@@ -534,48 +534,48 @@ const Page = () => (
           </>
         )
       },
-      {
-        title: (
-          <>
-            <Code>readonly</Code>
-          </>
-        ),
-        content: (
-          <>
-            <P>Little Duckling tried to refactor the code…</P>
-          </>
-        )
-      },
-      {
-        title: (
-          <>
-            kind of like unit tests; especially useful for data → data
-            validation, also useful for passing data from a component to another
-            component.
-          </>
-        ),
-        content: <></>
-      },
-      {
-        title: <>Mark all as completed</>,
-        content: (
-          <>
-            <TodoWithData
-              showData
-              caption={
-                <>
-                  ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
-                </>
-              }
-              defaultData={[
-                { id: 1, text: 'First todo', done: false },
-                { id: 2, text: 'Second todo', done: false }
-              ]}
-              showMarkAllAsCompleted
-            />
-          </>
-        )
-      },
+      // {
+      //   title: (
+      //     <>
+      //       <Code>readonly</Code>
+      //     </>
+      //   ),
+      //   content: (
+      //     <>
+      //       <P>Little Duckling tried to refactor the code…</P>
+      //     </>
+      //   )
+      // },
+      // {
+      //   title: (
+      //     <>
+      //       kind of like unit tests; especially useful for data → data
+      //       validation, also useful for passing data from a component to another
+      //       component.
+      //     </>
+      //   ),
+      //   content: <></>
+      // },
+      // {
+      //   title: <>Mark all as completed</>,
+      //   content: (
+      //     <>
+      //       <TodoWithData
+      //         showData
+      //         caption={
+      //           <>
+      //             ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
+      //           </>
+      //         }
+      //         defaultData={[
+      //           { id: 1, text: 'First todo', done: false },
+      //           { id: 2, text: 'Second todo', done: false }
+      //         ]}
+      //         showMarkAllAsCompleted
+      //       />
+      //     </>
+      //   )
+      // },
       underConstructionCard
     ]}
   />
