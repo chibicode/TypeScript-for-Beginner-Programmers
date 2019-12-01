@@ -5,8 +5,9 @@ import useTheme from 'src/hooks/useTheme'
 import Caption from 'src/components/Caption'
 import ButtonWithTouchActiveStates from 'src/components/ButtonWithTouchActiveStates'
 import RunButtonText from 'src/components/RunButtonText'
-import PrismHighlight, { defaultProps } from 'prism-react-renderer'
-import theme from 'src/lib/prismTheme'
+import CodeResult from 'src/components/CodeResult'
+import PromptArrowText from 'src/components/PromptArrowText'
+import CodeBlockHighlight from 'src/components/CodeBlockHighlight'
 
 const CodeBlock = ({
   snippet,
@@ -18,22 +19,25 @@ const CodeBlock = ({
   noHighlight,
   compile,
   shouldHighlightResult,
-  resultError
+  resultError,
+  tokenIndexIndentWorkaround
 }: {
   snippet: string
-  shouldHighlight?: (lineNumber: number, tokenNumber: number) => boolean
+  shouldHighlight?: (lineIndex: number, tokenIndex: number) => boolean
   result?: React.ReactNode
   pointToRunButton?: boolean
   defaultResultVisible?: boolean
   caption?: React.ReactNode
   noHighlight?: boolean
   compile?: boolean
-  shouldHighlightResult?: (lineNumber: number, tokenNumber: number) => boolean
+  shouldHighlightResult?: (lineIndex: number, tokenIndex: number) => boolean
   resultError?: boolean
+  tokenIndexIndentWorkaround?: number
 }) => {
   const [resultVisible, setResultVisible] = useState(defaultResultVisible)
-  const { radii, colors, ns, nt, maxWidths, spaces, fontSizes } = useTheme()
+  const { radii, colors, ns, maxWidths, spaces, fontSizes } = useTheme()
   const buttonOnClick = () => setResultVisible(true)
+
   return (
     <div
       css={css`
@@ -51,119 +55,62 @@ const CodeBlock = ({
           <Caption>{caption}</Caption>
         </div>
       )}
-      <PrismHighlight
-        {...defaultProps}
-        code={snippet}
-        theme={theme}
-        language={noHighlight ? 'diff' : 'typescript'}
-      >
-        {({ tokens, getLineProps, getTokenProps }) => (
-          <pre
-            css={[
-              css`
-                padding: ${spaces(0.75)} ${spaces(0.5)};
-                line-height: 1.45;
-
-                border: 2px solid ${colors('lightBrown')};
-                background-color: ${colors('lightPink1')};
-                margin-top: ${caption ? 0 : spaces(1.75)};
-                margin-bottom: ${result ? 0 : spaces(1.75)};
-                font-size: ${fontSizes(0.8)};
-                margin-left: ${spaces('-0.5')};
-                margin-right: ${spaces('-0.5')};
-
-                ${nt} {
-                  font-size: ${fontSizes(0.85)};
-                }
-
-                ${ns} {
-                  padding: ${spaces(1)} ${spaces(1)};
-                  margin-left: 0;
-                  margin-right: 0;
-                }
+      <CodeBlockHighlight
+        snippet={snippet}
+        tokenIndexIndentWorkaround={tokenIndexIndentWorkaround}
+        cssOverrides={[
+          css`
+            margin-top: ${caption ? 0 : spaces(1.75)};
+            margin-bottom: ${result ? 0 : spaces(1.75)};
+            margin-left: ${spaces('-0.5')};
+            margin-right: ${spaces('-0.5')};
+          `,
+          result
+            ? css`
+                border-top-left-radius: ${radii(0.5)};
+                border-top-right-radius: ${radii(0.5)};
+              `
+            : css`
+                border-radius: ${radii(0.5)};
               `,
-              result
-                ? css`
-                    border-top-left-radius: ${radii(0.5)};
-                    border-top-right-radius: ${radii(0.5)};
-                  `
-                : css`
-                    border-radius: ${radii(0.5)};
-                  `,
-              (!(result && resultVisible) || !result) &&
-                css`
-                  border-bottom-right-radius: ${radii(0.5)};
-                  border-bottom-left-radius: ${radii(0.5)};
-                `
-            ]}
-          >
-            <div
-              css={css`
-                overflow-x: auto;
-                overflow-y: hidden;
-              `}
-            >
-              {tokens.map((line, i) => {
-                const { key: divKey, ...lineProps } = getLineProps({
-                  line,
-                  key: i
-                })
-                return (
-                  <div key={divKey} {...lineProps}>
-                    {line.map((token, key) => {
-                      const { key: spanKey, ...tokenProps } = getTokenProps({
-                        token,
-                        key
-                      })
-                      return (
-                        <span
-                          key={spanKey}
-                          {...tokenProps}
-                          css={[
-                            css`
-                              font-style: normal !important;
-                            `,
-                            ((!!shouldHighlight &&
-                              !resultVisible &&
-                              shouldHighlight(i, key)) ||
-                              (!!shouldHighlightResult &&
-                                resultVisible &&
-                                shouldHighlightResult(i, key))) &&
-                              css`
-                                background: ${shouldHighlightResult &&
-                                resultVisible &&
-                                resultError
-                                  ? colors('white')
-                                  : colors('yellowHighlight')};
-                                border-bottom: ${shouldHighlightResult &&
-                                resultVisible &&
-                                resultError
-                                  ? 'none'
-                                  : `3px solid ${colors('darkOrange')}`};
-                                text-decoration: ${shouldHighlightResult &&
-                                resultVisible &&
-                                resultError
-                                  ? 'underline'
-                                  : 'none'};
-                                text-decoration-style: wavy;
-                                text-decoration-color: ${colors('red')};
-                              `
-                          ]}
-                        />
-                      )
-                    })}
-                  </div>
-                )
-              })}
-            </div>
-          </pre>
-        )}
-      </PrismHighlight>
+          (!(result && resultVisible) || !result) &&
+            css`
+              border-bottom-right-radius: ${radii(0.5)};
+              border-bottom-left-radius: ${radii(0.5)};
+            `
+        ]}
+        lineCssOverrides={(lineIndex, tokenIndex) =>
+          ((!!shouldHighlight &&
+            !resultVisible &&
+            shouldHighlight(lineIndex, tokenIndex)) ||
+            (!!shouldHighlightResult &&
+              resultVisible &&
+              shouldHighlightResult(lineIndex, tokenIndex))) &&
+          css`
+            font-weight: bold;
+            background: ${shouldHighlightResult && resultVisible && resultError
+              ? colors('white')
+              : colors('yellowHighlight')};
+            border-bottom: ${shouldHighlightResult &&
+            resultVisible &&
+            resultError
+              ? 'none'
+              : `3px solid ${colors('darkOrange')}`};
+            text-decoration: ${shouldHighlightResult &&
+            resultVisible &&
+            resultError
+              ? 'underline'
+              : 'none'};
+            text-decoration-style: wavy;
+            text-decoration-color: ${colors('red')};
+          `
+        }
+        language={noHighlight ? 'diff' : 'typescript'}
+      />
       {result && (
         <>
           <div
             css={css`
-              max-width: ${maxWidths('sm')};
               margin-bottom: ${spaces(1.75)};
               margin-left: ${spaces('-0.5')};
               margin-right: ${spaces('-0.5')};
@@ -175,42 +122,11 @@ const CodeBlock = ({
             `}
           >
             {resultVisible ? (
-              <div
-                css={[
-                  css`
-                    line-height: 1.45;
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
-                    border-bottom-left-radius: ${radii(0.5)};
-                    border-bottom-right-radius: ${radii(0.5)};
-                    background: #fff;
-                    border-left: 2px solid ${colors('lightBrown')};
-                    border-bottom: 2px solid ${colors('lightBrown')};
-                    border-right: 2px solid ${colors('lightBrown')};
-                    padding: ${spaces(0.5)} ${spaces(0.5)};
-                    font-size: ${fontSizes(0.8)};
-
-                    ${nt} {
-                      font-size: ${fontSizes(0.85)};
-                    }
-
-                    ${ns} {
-                      padding: ${spaces(0.75)} ${spaces(1)};
-                    }
-                  `
-                ]}
-              >
-                <code
-                  css={
-                    resultError &&
-                    css`
-                      color: ${colors('red')};
-                    `
-                  }
-                >
-                  {result}
-                </code>
-              </div>
+              <CodeResult
+                resultText={result}
+                resultError={resultError}
+                resultType="bottom"
+              />
             ) : (
               <div
                 css={css`
@@ -257,31 +173,7 @@ const CodeBlock = ({
                 {pointToRunButton && (
                   <>
                     <br />
-                    <span
-                      css={[
-                        css`
-                          display: inline-block;
-                          font-size: ${fontSizes(0.85)};
-                          animation: pointToCodeRunButton 1s infinite;
-                          color: ${colors('brown')};
-                          margin-top: ${spaces(1)};
-
-                          @keyframes pointToCodeRunButton {
-                            0% {
-                              transform: translateY(0);
-                            }
-                            50% {
-                              transform: translateY(-5px);
-                            }
-                            100% {
-                              transform: translateY(0px);
-                            }
-                          }
-                        `
-                      ]}
-                    >
-                      ↑ Press this button!
-                    </span>
+                    <PromptArrowText>↑ Press this button!</PromptArrowText>
                   </>
                 )}
               </div>

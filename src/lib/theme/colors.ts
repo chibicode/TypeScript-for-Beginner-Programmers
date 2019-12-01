@@ -1,5 +1,6 @@
 export const allColors = {
   black: '#260808',
+  gray: '#A39797',
   lightYellow1: '#FEF5DD',
   lightYellow2: '#FFE8BF',
   lightPink1: '#FFF2E4',
@@ -8,12 +9,14 @@ export const allColors = {
   brown: '#806538',
   lightBrown: '#E9D1AC',
   darkOrange: '#EC9602',
+  darkOrangeTransparent: 'rgba(236, 150, 2, 0)',
   pink: '#FFD9CC',
   white: '#FFFFFF',
   white85: 'rgba(255, 255, 255, 0.85)',
   paleGreen: '#C8DCC7',
   red: '#DB4003',
-  yellowHighlight: '#FFFF00'
+  yellowHighlight: '#FFFF00',
+  yellowHighlightTransparent: 'rgba(255, 255, 0, 0)'
 }
 
 const colors = (x: keyof typeof allColors) => allColors[x]

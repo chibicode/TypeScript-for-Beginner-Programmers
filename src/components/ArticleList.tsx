@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import Page from 'src/components/Page'
-import InternalLink from 'src/components/InternalLink'
-import useTheme from 'src/hooks/useTheme'
-import { articlesList, articlesData } from 'src/lib/articles'
+import { articleKeys, articlesData } from 'src/lib/articles'
 import { dateString } from 'src/lib/date'
+import useTheme from 'src/hooks/useTheme'
+import InternalLink from 'src/components/InternalLink'
 
 const ArticleLink = ({
   title,
@@ -37,15 +36,15 @@ const ArticleLink = ({
       >
         <InternalLink
           href={href}
-          css={css`
+          cssOverrides={css`
             font-weight: bold;
             text-decoration: none;
             line-height: ${lineHeights(1.6)};
             font-size: ${fontSizes(1.6)};
             letter-spacing: ${letterSpacings('title')};
             ${ns} {
-              line-height: ${lineHeights(2.5)};
-              font-size: ${fontSizes(2.5)};
+              line-height: ${lineHeights(2)};
+              font-size: ${fontSizes(2)};
             }
 
             &:hover {
@@ -69,11 +68,17 @@ const ArticleLink = ({
   )
 }
 
-const IndexPage = ({ children }: { children: React.ReactNode }) => {
+const ArticleList = ({
+  ignoreArticleKey
+}: {
+  ignoreArticleKey?: keyof typeof articlesData
+}) => {
   const { ns, spaces, fontSizes, letterSpacings, colors } = useTheme()
+  const filteredArticleKeys = articleKeys.filter(
+    articleKey => articleKey !== ignoreArticleKey
+  )
   return (
-    <Page index>
-      {children}
+    <>
       <h4
         css={css`
           font-size: ${fontSizes(0.85)};
@@ -88,7 +93,8 @@ const IndexPage = ({ children }: { children: React.ReactNode }) => {
           }
         `}
       >
-        Articles
+        {ignoreArticleKey ? 'More ' : ''}Article
+        {filteredArticleKeys.length > 1 ? 's' : ''}
       </h4>
       <ul
         css={css`
@@ -97,7 +103,7 @@ const IndexPage = ({ children }: { children: React.ReactNode }) => {
           padding: 0;
         `}
       >
-        {articlesList.map(articleKey => (
+        {filteredArticleKeys.map(articleKey => (
           <ArticleLink
             key={articleKey}
             title={articlesData[articleKey]['title']}
@@ -106,8 +112,8 @@ const IndexPage = ({ children }: { children: React.ReactNode }) => {
           />
         ))}
       </ul>
-    </Page>
+    </>
   )
 }
 
-export default IndexPage
+export default ArticleList

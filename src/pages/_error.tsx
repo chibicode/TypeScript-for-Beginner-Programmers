@@ -3,11 +3,11 @@ import BubbleQuotes from 'src/components/BubbleQuotes'
 import { P } from 'src/components/ContentTags'
 import { siteTitle, siteOgImage } from 'src/lib/meta'
 import Head from 'next/head'
-import IndexPage from 'src/components/IndexPage'
+import Page from 'src/components/Page'
 
 const PageNotFound = () => {
   return (
-    <IndexPage>
+    <Page index>
       <Head>
         <title key="title">Page Not Found</title>
         <meta property="og:title" content="Page Not Found" />
@@ -33,7 +33,7 @@ const PageNotFound = () => {
           }
         ]}
       />
-    </IndexPage>
+    </Page>
   )
 }
 

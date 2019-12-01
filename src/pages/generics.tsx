@@ -203,11 +203,11 @@ const Page = () => (
             <CodeBlock
               compile
               resultError
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 3 && tokenNumber > 2 && tokenNumber < 4
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 3 && tokenIndex > 2 && tokenIndex < 4
               }
-              shouldHighlightResult={(lineNumber, tokenNumber) =>
-                lineNumber === 3 && tokenNumber > 2 && tokenNumber < 4
+              shouldHighlightResult={(lineIndex, tokenIndex) =>
+                lineIndex === 3 && tokenIndex > 2 && tokenIndex < 4
               }
               snippet={snippets.stkh}
               result={
@@ -223,8 +223,8 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.nnyl}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 8 && tokenNumber > 4 && tokenNumber < 8
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 8 && tokenIndex > 4 && tokenIndex < 8
               }
             />
             <P>
@@ -233,9 +233,9 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.gkgi}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                (lineNumber === 9 && tokenNumber > 4 && tokenNumber < 8) ||
-                (lineNumber === 2 && tokenNumber > 4 && tokenNumber < 6)
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 9 && tokenIndex > 4 && tokenIndex < 8) ||
+                (lineIndex === 2 && tokenIndex > 4 && tokenIndex < 6)
               }
             />
             <P>
@@ -283,9 +283,9 @@ const Page = () => (
             <P>Here’s the first attempt. Does this work?</P>
             <CodeBlock
               snippet={snippets.ystu}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                (lineNumber === 7 && tokenNumber > 4 && tokenNumber < 10) ||
-                (lineNumber === 1 && tokenNumber > 4 && tokenNumber < 10)
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 7 && tokenIndex > 4 && tokenIndex < 10) ||
+                (lineIndex === 1 && tokenIndex > 4 && tokenIndex < 10)
               }
             />
             <P>
@@ -309,10 +309,10 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.brze}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                (lineNumber === 7 && tokenNumber > 4 && tokenNumber < 8) ||
-                (lineNumber === 1 && tokenNumber > 4 && tokenNumber < 6) ||
-                (lineNumber === 0 && tokenNumber > 1 && tokenNumber < 5)
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 7 && tokenIndex > 4 && tokenIndex < 8) ||
+                (lineIndex === 1 && tokenIndex > 4 && tokenIndex < 6) ||
+                (lineIndex === 0 && tokenIndex > 1 && tokenIndex < 5)
               }
             />
             <P>
@@ -339,8 +339,8 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.gjgg}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 1 && tokenNumber > 5 && tokenNumber < 7
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 1 && tokenIndex > 5 && tokenIndex < 7
               }
             />
             <P>
@@ -350,8 +350,8 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.hkgv}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 1 && tokenNumber > 5 && tokenNumber < 7
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 1 && tokenIndex > 5 && tokenIndex < 7
               }
             />
             <P>
@@ -444,8 +444,8 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.mngc}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 0 && tokenNumber > 2 && tokenNumber < 12
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 0 && tokenIndex > 2 && tokenIndex < 12
               }
             />
             <P>
@@ -466,12 +466,12 @@ const Page = () => (
               snippet={snippets.dngl}
               compile
               resultError
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                (lineNumber === 17 && tokenNumber > 5 && tokenNumber < 7) ||
-                (lineNumber === 1 && tokenNumber > 0)
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 17 && tokenIndex > 5 && tokenIndex < 7) ||
+                (lineIndex === 1 && tokenIndex > 0)
               }
-              shouldHighlightResult={(lineNumber, tokenNumber) =>
-                lineNumber === 17 && tokenNumber > 5 && tokenNumber < 7
+              shouldHighlightResult={(lineIndex, tokenIndex) =>
+                lineIndex === 17 && tokenIndex > 5 && tokenIndex < 7
               }
               result={
                 <>
@@ -519,8 +519,8 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.thxf}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 2 && tokenNumber > 10 && tokenNumber < 14
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 2 && tokenIndex > 10 && tokenIndex < 14
               }
             />
             <P>
@@ -702,8 +702,8 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.mrub}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 1 && tokenNumber > 4
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 1 && tokenIndex > 4
               }
             />
             <P>

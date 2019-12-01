@@ -3,8 +3,9 @@ import BubbleQuotes from 'src/components/BubbleQuotes'
 import { P } from 'src/components/ContentTags'
 import { siteTitle, baseUrl, siteDescription, siteOgImage } from 'src/lib/meta'
 import Head from 'next/head'
-import IndexPage from 'src/components/IndexPage'
+import Page from 'src/components/Page'
 import ReadMore from 'src/components/ReadMore'
+import ArticleList from 'src/components/ArticleList'
 
 export const FirstParagraph = ({
   defaultVisible
@@ -38,7 +39,7 @@ export const FirstParagraph = ({
 
 const Index = () => {
   return (
-    <IndexPage>
+    <Page index>
       <Head>
         <title key="title">{siteTitle}</title>
         <meta property="og:title" content={siteTitle} />
@@ -55,6 +56,7 @@ const Index = () => {
         quotes={[
           {
             type: 'bird',
+            backgroundColor: 'lightYellow1',
             children: (
               <>
                 <FirstParagraph defaultVisible />
@@ -63,7 +65,8 @@ const Index = () => {
           }
         ]}
       />
-    </IndexPage>
+      <ArticleList />
+    </Page>
   )
 }
 

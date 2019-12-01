@@ -9,7 +9,7 @@ import Caption from 'src/components/Caption'
 
 interface EmojiSeparatorProps {
   emojis: ReadonlyArray<keyof typeof emojiToComponent>
-  size?: 'md'
+  size?: 'md' | 'lg'
   cssOverrides?: SerializedStyles
   description?: React.ReactNode
 }
@@ -18,14 +18,16 @@ const fontSize = (
   size: NonNullable<EmojiSeparatorProps['size']>
 ): ReadonlyArray<keyof typeof allFontSizes> =>
   ({
-    md: [2, 2.5] as const
+    md: [2, 2.5] as const,
+    lg: [3, 4] as const
   }[size])
 
 const margins = (
   size: NonNullable<EmojiSeparatorProps['size']>
 ): ReadonlyArray<keyof typeof allSpaces> =>
   ({
-    md: [1.25, 1.5] as const
+    md: [1.25, 1.5] as const,
+    lg: [0, 2] as const
   }[size])
 
 const SideSpace = ({ children }: { children: React.ReactNode }) => (
@@ -74,7 +76,18 @@ const EmojiSeparator = ({
             </SideSpace>
           ))}
         </span>
-        {description && <Caption>{description}</Caption>}
+        {description && (
+          <Caption
+            cssOverrides={
+              size === 'lg' &&
+              css`
+                margin-top: ${spaces('-0.5')};
+              `
+            }
+          >
+            {description}
+          </Caption>
+        )}
       </>
     </div>
   )

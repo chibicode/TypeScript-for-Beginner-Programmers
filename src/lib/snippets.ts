@@ -468,3 +468,94 @@ const { getState, setState } = makeState()
 
 setState('foo')
 console.log(getState())`
+
+export const ampt = `function toggleTodo(todo: Todo): Todo {
+  return {
+    // This line was missing
+    id: todo.id,
+    text: todo.text,
+    done: !todo.done
+  }
+}`
+
+export const bnli = `const foo: Todo = {
+  id: 1,
+  text: '…',
+  done: true
+}`
+
+export const csum = `// todo must match the Todo type
+function toggleTodo(todo: Todo) {
+  // ...
+}`
+
+export const dxfc = `// Associated data. If we're using React, this
+// would be the todo component’s props or state
+[
+  { id: 1, text: 'First todo', done: false },
+  { id: 2, text: 'Second todo', done: false }
+]`
+
+export const lieq = `type Todo = {
+  id: number
+  text: string
+  done: boolean
+}`
+
+export const lund = `const result = toggleTodo({
+  id: 1,
+  text: '…',
+  done: true
+})
+
+console.log('Expected:')
+console.log(\`{ id: 1, text: '…', done: false }\`)
+console.log('Actual:')
+console.log(result)`
+
+export const ntau = `function toggleTodo(todo: Todo): Todo {
+  // Little Duckling’s code from earlier:
+  // Missing the "id" property
+  return {
+    text: todo.text,
+    done: !todo.done
+  }
+}`
+
+export const reel = `function toggleTodo(todo) {
+  return {
+    text: todo.text,
+    done: !todo.done
+  }
+}`
+
+export const tgvw = `const bar: Todo = {
+  text: '…',
+  done: true
+}`
+
+export const vpco = `// Returns a new todo object with the opposite
+// boolean value for the "done" proprty.
+function toggleTodo(todo) {
+  // Case 1: If todo is
+  // { id: …, text: '…', done: true }, return
+  // { id: …, text: '…', done: false }
+  //
+  // Case 2: If todo is
+  // { id: …, text: '…', done: false }, return
+  // { id: …, text: '…', done: true }
+}`
+
+export const ywiv = `// The return value must match the Todo type
+function toggleTodo(todo: Todo): Todo {
+  // ...
+}`
+
+export const yxjg = `function toggleTodo(todo) {
+  return {
+    // This line was missing
+    id: todo.id,
+    text: todo.text,
+    done: !todo.done
+  }
+}`
