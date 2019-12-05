@@ -1,5 +1,5 @@
 // This will continue to work because
-// original todo is not modified
+// the input todo is not modified
 function toggleTodo(todo: Todo): Todo {
   return {
     id: todo.id,

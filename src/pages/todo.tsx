@@ -710,8 +710,7 @@ const Page = () => (
             />
             <P>
               By the way, the previous implementation (before refactoring) will
-              continue to work because it does NOT modify the original todo
-              item.
+              continue to work because it does NOT modify the input todo item.
             </P>
             <CodeBlock
               snippet={snippets.vgnq}
