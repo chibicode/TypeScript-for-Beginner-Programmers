@@ -77,7 +77,7 @@ const ArticleList = ({
   const filteredArticleKeys = articleKeys.filter(
     articleKey => articleKey !== ignoreArticleKey
   )
-  return (
+  return filteredArticleKeys.length > 0 ? (
     <>
       <h4
         css={css`
@@ -113,6 +113,8 @@ const ArticleList = ({
         ))}
       </ul>
     </>
+  ) : (
+    <></>
   )
 }
 
