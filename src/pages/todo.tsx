@@ -566,15 +566,86 @@ const Page = () => (
               snippet={snippets.uxlb}
               compile
               result={compileSuccess}
-              shouldHighlight={lineIndex => lineIndex === 2}
             />
             <P>
-              It compiled successfully, but it’s actually a bad refactoring.{' '}
-              Why?{' '}
+              It compiled successfully, but it’s actually a{' '}
+              <strong>bad refactoring</strong>. Why?{' '}
               <em>
                 Because it changes the original <Code>todo</Code> object.
               </em>{' '}
               <Highlight>Try running the following code:</Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.wymp}
+              compile
+              result={
+                <>
+                  Before toggleTodo()…
+                  <br />
+                  <ResultHighlight>{`{ id: 1, text: '…', done: true }`}</ResultHighlight>
+                  After toggleTodo()…
+                  <br />
+                  Original Todo:
+                  <br />
+                  <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
+                  New Todo:
+                  <br />
+                  <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
+                </>
+              }
+            />
+            <P>Here’s what happened:</P>
+            <Ul>
+              <UlLi>
+                <Code>originalTodo</Code> originally had <Code>done: true</Code>
+                .
+              </UlLi>
+              <UlLi>
+                After <Code>toggleTodo(),</Code> both <Code>originalTodo</Code>{' '}
+                and <Code>newTodo</Code> have <Code>done: false</Code>.
+              </UlLi>
+              <UlLi>
+                So <Code>originalTodo</Code> was modified!
+              </UlLi>
+            </Ul>
+            <P>
+              However, we’ve said earlier on this page that{' '}
+              <Highlight>
+                <Code>toggleTodo()</Code> must return a new todo object. It
+                should NOT modify the original object.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.qbgu}
+              shouldHighlight={lineIndex => lineIndex === 0}
+            />
+            <P>
+              That’s why Little Duckling’s refactoring is a bad refactor—even
+              thought it compiles correctly.
+            </P>
+            <CodeBlock
+              snippet={snippets.njgr}
+              shouldHighlight={lineIndex => lineIndex === 2 || lineIndex === 3}
+            />
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        Oops, I did it again! <Emoji type="sweat" />
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            ></BubbleQuotes>
+            <P>
+              No worries! <strong>The question is</strong>,{' '}
+              <Highlight>
+                how can we use TypeScript to prevent this mistake?
+              </Highlight>
             </P>
           </>
         )

@@ -513,6 +513,14 @@ console.log(\`{ id: 1, text: '…', done: false }\`)
 console.log('Actual:')
 console.log(result)`
 
+export const njgr = `function toggleTodo(todo: Todo): Todo {
+  // Little Duckling’s refactoring is a
+  // bad refactoring because it modifies
+  // the original todo object
+  todo.done = !todo.done
+  return todo
+}`
+
 export const ntau = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s code from earlier:
   // Missing the "id" property
@@ -520,6 +528,13 @@ export const ntau = `function toggleTodo(todo: Todo): Todo {
     text: todo.text,
     done: !todo.done
   }
+}`
+
+export const qbgu = `// Returns a new todo object
+// with the opposite boolean value
+// for the "done" proprty.
+function toggleTodo(todo) {
+  // …
 }`
 
 export const reel = `function toggleTodo(todo) {
@@ -537,6 +552,7 @@ export const tgvw = `const bar: Todo = {
 export const uxlb = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring
   todo.done = !todo.done
+  return todo
 }`
 
 export const vpco = `// Returns a new todo object with the opposite
@@ -550,6 +566,23 @@ function toggleTodo(todo) {
   // { id: …, text: '…', done: false }, return
   // { id: …, text: '…', done: true }
 }`
+
+export const wymp = `const originalTodo = {
+  id: 1,
+  text: '…',
+  done: true
+}
+
+console.log('Before toggleTodo()…')
+console.log(originalTodo)
+
+const newTodo = toggleTodo(originalTodo)
+
+console.log('After toggleTodo()…')
+console.log('Original Todo:')
+console.log(originalTodo)
+console.log('New Todo:')
+console.log(newTodo)`
 
 export const ywiv = `// The return value must match the Todo type
 function toggleTodo(todo: Todo): Todo {
