@@ -644,7 +644,7 @@ const Page = () => (
             <P>
               No worries! <strong>The question is</strong>,{' '}
               <Highlight>
-                how can we use TypeScript to prevent this mistake?
+                how can we use TypeScript to prevent a mistake like this?
               </Highlight>
             </P>
           </>
