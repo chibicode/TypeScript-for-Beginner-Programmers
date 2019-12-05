@@ -568,6 +568,14 @@ const Page = () => (
               result={compileSuccess}
               shouldHighlight={lineIndex => lineIndex === 2}
             />
+            <P>
+              It compiled successfully, but it’s actually a bad refactoring.{' '}
+              Why?{' '}
+              <em>
+                Because it changes the original <Code>todo</Code> object.
+              </em>{' '}
+              <Highlight>Try running the following code:</Highlight>
+            </P>
           </>
         )
       },
