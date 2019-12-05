@@ -143,7 +143,7 @@ const TodoWithData = ({
                 shouldHighlight(tokenIndex)
                   ? {
                       background: `${colors('yellowHighlight')}`,
-                      borderBottom: `3px solid ${colors('darkOrange')}`,
+                      borderBottom: `2px solid ${colors('darkOrange')}`,
                       reset: true,
                       fontWeight: 'bold',
                       from: {
