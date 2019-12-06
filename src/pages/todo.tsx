@@ -634,7 +634,7 @@ const Page = () => (
                   children: (
                     <>
                       <P>
-                        Oops, I did it again! <Emoji type="sweat" />
+                        Oops, I messed up again! <Emoji type="sweat" />
                       </P>
                     </>
                   )
@@ -642,7 +642,7 @@ const Page = () => (
               ]}
             ></BubbleQuotes>
             <P>
-              No worries! <strong>The question is</strong>,{' '}
+              No worries, Little Duckling! <strong>The question is</strong>,{' '}
               <Highlight>
                 how can we use TypeScript to prevent a mistake like this?
               </Highlight>
