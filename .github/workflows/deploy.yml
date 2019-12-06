@@ -1,4 +1,4 @@
-name: Deploy to github pages branch
+name: Deploy to Zeit Now
 on:
   push:
     branches:

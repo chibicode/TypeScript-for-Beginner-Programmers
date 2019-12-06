@@ -534,18 +534,191 @@ const Page = () => (
           </>
         )
       },
-      // {
-      //   title: (
-      //     <>
-      //       <Code>readonly</Code>
-      //     </>
-      //   ),
-      //   content: (
-      //     <>
-      //       <P>Little Duckling tried to refactor the code…</P>
-      //     </>
-      //   )
-      // },
+      {
+        title: <>Bad refactor</>,
+        content: (
+          <>
+            <P>
+              Now that the code is working, Little Duckling decided to{' '}
+              <strong>refactor</strong> <Code>toggleTodo()</Code>.
+            </P>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        I think I can refactor <Code>toggleTodo</Code> as
+                        follows. Could you take a look?
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            ></BubbleQuotes>
+            <P>
+              <Highlight>
+                Try pressing <RunButtonText /> to see if it compiles!
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.uxlb}
+              compile
+              result={compileSuccess}
+            />
+            <P>
+              It compiled successfully, but it’s actually a{' '}
+              <strong>bad refactoring</strong>. Why?{' '}
+              <em>
+                Because it changes the original <Code>todo</Code> object.
+              </em>{' '}
+              <Highlight>Try running the following code:</Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.wymp}
+              compile
+              result={
+                <>
+                  Before toggleTodo()…
+                  <br />
+                  <ResultHighlight>{`{ id: 1, text: '…', done: true }`}</ResultHighlight>
+                  After toggleTodo()…
+                  <br />
+                  Original Todo:
+                  <br />
+                  <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
+                  New Todo:
+                  <br />
+                  <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
+                </>
+              }
+            />
+            <P>Here’s what happened:</P>
+            <Ul>
+              <UlLi>
+                <Code>originalTodo</Code> originally had <Code>done: true</Code>
+                .
+              </UlLi>
+              <UlLi>
+                After <Code>toggleTodo(),</Code> both <Code>originalTodo</Code>{' '}
+                and <Code>newTodo</Code> have <Code>done: false</Code>.
+              </UlLi>
+              <UlLi>
+                So <Code>originalTodo</Code> was modified!
+              </UlLi>
+            </Ul>
+            <P>
+              However, we’ve said earlier on this page that{' '}
+              <Highlight>
+                <Code>toggleTodo()</Code> must return a new todo object. It
+                should NOT modify the original object.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.qbgu}
+              shouldHighlight={lineIndex => lineIndex === 0}
+            />
+            <P>
+              That’s why Little Duckling’s refactoring is a bad refactor—even
+              thought it compiles correctly.
+            </P>
+            <CodeBlock
+              snippet={snippets.njgr}
+              shouldHighlight={lineIndex => lineIndex === 2 || lineIndex === 3}
+            />
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        Oops, I did it again! <Emoji type="sweat" />
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            ></BubbleQuotes>
+            <P>
+              No worries! <strong>The question is</strong>,{' '}
+              <Highlight>
+                how can we use TypeScript to prevent a mistake like this?
+              </Highlight>
+            </P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            <Code>readonly</Code> properties
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              To prevent a function from modifying its input,{' '}
+              <Highlight>
+                you can use the <Code>readonly</Code> keyword in TypeScript.
+              </Highlight>{' '}
+              In the following code, the <Code>readonly</Code> keyword is added
+              to all of the properties of <Code>Todo</Code>.
+            </P>
+            <CodeBlock
+              snippet={snippets.yhto}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex >= 1 && lineIndex <= 3 && tokenIndex === 1
+              }
+            />
+            <P>
+              Now, let’s try to compile Little Duckling’s code again using the
+              updated definition of <Code>Todo</Code>. What happens this time?
+            </P>
+            <CodeBlock
+              snippet={snippets.dqwb}
+              compile
+              resultError
+              result={
+                <>Cannot assign to 'done' because it is a read-only property</>
+              }
+              shouldHighlightResult={(lineIndex, tokenIndex) =>
+                lineIndex === 2 && tokenIndex === 2
+              }
+            />
+            <P>
+              <strong>It failed to compile!</strong> This is because{' '}
+              <Code>done</Code> was defined as a <Code>readonly</Code> property,
+              and TypeScript prevents you from updating <Code>readonly</Code>{' '}
+              properties.
+            </P>
+            <P>
+              Once again, we saw that{' '}
+              <Highlight>
+                TypeScript can prevent the mistake Little Duckling made!
+              </Highlight>
+            </P>
+            <EmojiSeparator
+              emojis={['sparkles', 'chickEgg', 'sparkles']}
+              description={
+                <>
+                  TypeScript’s <Code>readonly</Code> keyword can prevent the
+                  mistake Little Duckling made!
+                </>
+              }
+            />
+            <P>
+              By the way, the previous implementation (before refactoring) will
+              continue to work because it does NOT modify the input todo item.
+            </P>
+            <CodeBlock
+              snippet={snippets.vgnq}
+              shouldHighlight={lineNumber => lineNumber <= 1}
+            />
+          </>
+        )
+      },
       // {
       //   title: (
       //     <>

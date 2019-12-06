@@ -95,7 +95,7 @@ const CodeBlock = ({
             resultVisible &&
             resultError
               ? 'none'
-              : `3px solid ${colors('darkOrange')}`};
+              : `2px solid ${colors('darkOrange')}`};
             text-decoration: ${shouldHighlightResult &&
             resultVisible &&
             resultError

@@ -30,9 +30,9 @@ const Todo = ({
       <span
         css={[
           css`
-            margin: ${spaces('-0.25')} ${spaces(0.25)} ${spaces('-0.25')}
-              ${spaces('-0.25')};
-            padding: ${spaces(0.25)};
+            margin: ${spaces('-0.25')} 0 ${spaces('-0.25')} ${spaces('-0.25')};
+            padding: ${spaces(0.25)} ${spaces(0.5)} ${spaces(0.25)}
+              ${spaces(0.25)};
 
             display: inline-block;
             outline: none;
@@ -58,12 +58,26 @@ const Todo = ({
         {done ? <Emoji type="check" /> : <TodoBlank hovered={todoHovered} />}
       </span>
       <span
-        css={
+        css={[
           done &&
-          css`
-            color: ${colors('gray')};
-          `
+            css`
+              color: ${colors('gray')};
+            `,
+          !disabled &&
+            css`
+              cursor: pointer;
+            `
+        ]}
+        onClick={() =>
+          disabled ? undefined : dispatch({ type: 'toggle', index })
         }
+        onMouseOver={hoverOn}
+        onMouseOut={hoverOff}
+        onTouchStart={hoverOn}
+        onTouchEnd={hoverOff}
+        onTouchCancel={hoverOff}
+        onFocus={hoverOn}
+        onBlur={hoverOff}
       >
         {text}
       </span>

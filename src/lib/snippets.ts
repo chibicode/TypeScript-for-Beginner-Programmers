@@ -489,6 +489,12 @@ function toggleTodo(todo: Todo) {
   // ...
 }`
 
+export const dqwb = `function toggleTodo(todo: Todo): Todo {
+  // Little Duckling’s refactoring
+  todo.done = !todo.done
+  return todo
+}`
+
 export const dxfc = `// Associated data. If we're using React, this
 // would be the todo component’s props or state
 [
@@ -513,6 +519,14 @@ console.log(\`{ id: 1, text: '…', done: false }\`)
 console.log('Actual:')
 console.log(result)`
 
+export const njgr = `function toggleTodo(todo: Todo): Todo {
+  // Little Duckling’s refactoring is a
+  // bad refactoring because it modifies
+  // the original todo object
+  todo.done = !todo.done
+  return todo
+}`
+
 export const ntau = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s code from earlier:
   // Missing the "id" property
@@ -520,6 +534,13 @@ export const ntau = `function toggleTodo(todo: Todo): Todo {
     text: todo.text,
     done: !todo.done
   }
+}`
+
+export const qbgu = `// Returns a new todo object
+// with the opposite boolean value
+// for the "done" proprty.
+function toggleTodo(todo) {
+  // ...
 }`
 
 export const reel = `function toggleTodo(todo) {
@@ -534,6 +555,22 @@ export const tgvw = `const bar: Todo = {
   done: true
 }`
 
+export const uxlb = `function toggleTodo(todo: Todo): Todo {
+  // Little Duckling’s refactoring
+  todo.done = !todo.done
+  return todo
+}`
+
+export const vgnq = `// This will continue to work because
+// the input todo is not modified
+function toggleTodo(todo: Todo): Todo {
+  return {
+    id: todo.id,
+    text: todo.text,
+    done: !todo.done
+  }
+}`
+
 export const vpco = `// Returns a new todo object with the opposite
 // boolean value for the "done" proprty.
 function toggleTodo(todo) {
@@ -544,6 +581,29 @@ function toggleTodo(todo) {
   // Case 2: If todo is
   // { id: …, text: '…', done: false }, return
   // { id: …, text: '…', done: true }
+}`
+
+export const wymp = `const originalTodo = {
+  id: 1,
+  text: '…',
+  done: true
+}
+
+console.log('Before toggleTodo()…')
+console.log(originalTodo)
+
+const newTodo = toggleTodo(originalTodo)
+
+console.log('After toggleTodo()…')
+console.log('Original Todo:')
+console.log(originalTodo)
+console.log('New Todo:')
+console.log(newTodo)`
+
+export const yhto = `type Todo = {
+  readonly id: number
+  readonly text: string
+  readonly done: boolean
 }`
 
 export const ywiv = `// The return value must match the Todo type
