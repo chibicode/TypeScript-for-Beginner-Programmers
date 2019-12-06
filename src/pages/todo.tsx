@@ -761,20 +761,24 @@ const Page = () => (
               </Highlight>{' '}
               It helps you write less buggy code with very little overhead.
             </P>
+            <P>
+              This especially useful{' '}
+              <Highlight>
+                when you’re using a UI library and need to transform data
+              </Highlight>
+              . For example, if you’re using React, you’ll need to transform
+              data in state updates. You might also need to transform data when
+              passing data from a parent component to its child component.
+              TypeScript reduces bugs arising from these situations.
+            </P>
+            <EmojiSeparator
+              emojis={['data', 'transformTypechecked', 'updatedData']}
+              description={<>TypeScript reduces bugs when transforming data</>}
+            />
             <P>Next, let’s take a look at more non-trivial examples!</P>
           </>
         )
       },
-      // {
-      //   title: (
-      //     <>
-      //       kind of like unit tests; especially useful for data → data
-      //       validation, also useful for passing data from a component to another
-      //       component.
-      //     </>
-      //   ),
-      //   content: <></>
-      // },
       // {
       //   title: <>Mark all as completed</>,
       //   content: (
