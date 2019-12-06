@@ -719,6 +719,52 @@ const Page = () => (
           </>
         )
       },
+      {
+        color: 'green',
+        title: <>Types are like lightweight, automatic unit tests</>,
+        content: (
+          <>
+            <P>So far, we’ve learned the following:</P>
+            <P>
+              <strong>
+                1. We can define a <Code>type</Code> to make sure that the input
+                and the output of a function is of the correct type.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.frtm}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                (lineNumber === 0 && tokenNumber <= 2) ||
+                (lineNumber === 8 &&
+                  ((tokenNumber >= 5 && tokenNumber <= 7) ||
+                    tokenNumber === 11))
+              }
+            />
+            <P>
+              <strong>
+                2. We can use the <Code>readonly</Code> keyword to make sure
+                that an object property is not modified.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.npah}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex >= 1 && lineIndex <= 3 && tokenIndex === 1
+              }
+            />
+            <P>
+              Before TypeScript, you needed to write unit tests to verify these
+              things. So in a sense,{' '}
+              <Highlight>
+                TypeScript’s types act as lightweight unit tests that run
+                automatically every time you save (compile) the code.
+              </Highlight>{' '}
+              It helps you write less buggy code with very little overhead.
+            </P>
+            <P>Next, let’s take a look at more non-trivial examples!</P>
+          </>
+        )
+      },
       // {
       //   title: (
       //     <>

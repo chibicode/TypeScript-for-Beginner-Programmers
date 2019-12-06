@@ -502,6 +502,18 @@ export const dxfc = `// Associated data. If we're using React, this
   { id: 2, text: 'Second todo', done: false }
 ]`
 
+export const frtm = `type Todo = {
+  id: number
+  text: string
+  done: boolean
+}
+
+// Make sure that the input and the output
+// is of the correct type
+function toggleTodo(todo: Todo): Todo {
+  // ...
+}`
+
 export const lieq = `type Todo = {
   id: number
   text: string
@@ -523,6 +535,18 @@ export const njgr = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring is a
   // bad refactoring because it modifies
   // the original todo object
+  todo.done = !todo.done
+  return todo
+}`
+
+export const npah = `type Todo = {
+  readonly id: number
+  readonly text: string
+  readonly done: boolean
+}
+
+function toggleTodo(todo: Todo): Todo {
+  // This won’t compile
   todo.done = !todo.done
   return todo
 }`
