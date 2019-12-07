@@ -530,6 +530,18 @@ function toggleTodo(
   // ...
 }`
 
+export const lgci = `// Same as before
+type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>
+
+// Input is an array of Todo items: Todo[]
+function completeAll(todos: Todo[]) {
+  // ...
+}`
+
 export const lieq = `type Todo = {
   id: number
   text: string
@@ -546,6 +558,20 @@ console.log('Expected:')
 console.log(\`{ id: 1, text: '…', done: false }\`)
 console.log('Actual:')
 console.log(result)`
+
+export const mnmy = `// Output is an array of Todo items: Todo[]
+function completeAll(todos: Todo[]): Todo[] {
+  // ...
+}`
+
+export const mwrj = `// After declaring todos as: readonly Todo[],
+// the following code WILL NOT compile:
+
+// Compile error - modifies the array
+todos[0] = { id: 1, text: '…', done: true }
+
+// Compile error - push() modifies the array
+todos.push({ id: 1, text: '…', done: true })`
 
 export const njgr = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring is a
@@ -603,6 +629,13 @@ export const reel = `function toggleTodo(todo) {
     text: todo.text,
     done: !todo.done
   }
+}`
+
+export const szan = `// Make input todos as readonly array
+function completeAll(
+  todos: readonly Todo[]
+): Todo[] {
+  // ...
 }`
 
 export const tdbp = `// Takes an array of todo items and returns
