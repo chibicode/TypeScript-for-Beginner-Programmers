@@ -286,7 +286,7 @@ const Page = () => (
                   )
                 }
               ]}
-            ></BubbleQuotes>
+            />
             <CodeBlock
               snippet={snippets.reel}
               caption={
@@ -340,7 +340,7 @@ const Page = () => (
                   )
                 }
               ]}
-            ></BubbleQuotes>
+            />
             <P>
               Here’s the correct implementation. It preserves the{' '}
               <Code>id</Code> property.
@@ -556,7 +556,7 @@ const Page = () => (
                   )
                 }
               ]}
-            ></BubbleQuotes>
+            />
             <P>
               <Highlight>
                 Try pressing <RunButtonText /> to see if it compiles!
@@ -640,7 +640,7 @@ const Page = () => (
                   )
                 }
               ]}
-            ></BubbleQuotes>
+            />
             <P>
               No worries, Little Duckling! <strong>The question is</strong>,{' '}
               <Highlight>
@@ -720,6 +720,105 @@ const Page = () => (
         )
       },
       {
+        title: (
+          <>
+            The <Code>ReadOnly&lt;...&gt;</Code> mapped type
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              In TypeScript,{' '}
+              <Highlight>
+                there’s another way to make all properties of an object type
+                read-only.
+              </Highlight>{' '}
+              First, here’s our read-only version of <Code>Todo</Code>:
+            </P>
+            <CodeBlock snippet={snippets.yhto} />
+            <P>The above code is equivalent to the following version:</P>
+            <CodeBlock
+              snippet={snippets.nxyl}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                (lineNumber === 1 && tokenNumber >= 7 && tokenNumber <= 8) ||
+                (lineNumber === 5 && tokenNumber >= 1)
+              }
+            />
+            <P>
+              <Highlight>
+                If you use <Code>Readonly&lt;...&gt;</Code> on an object type,
+                it makes all of its properties <Code>readonly</Code>
+              </Highlight>
+              . Here’s another example:
+            </P>
+            <CodeBlock snippet={snippets.qaqa} />
+            <P>
+              This can be useful for <Code>toggleTodo()</Code>. For example, we
+              might want to:
+            </P>
+            <Ul>
+              <UlLi>
+                <Highlight>
+                  Make the properties of <Code>Todo</Code> to be NOT{' '}
+                  <Code>readonly</Code> by default, and…
+                </Highlight>
+              </UlLi>
+              <UlLi>
+                <Highlight>
+                  Make them <Code>readonly</Code> ONLY within{' '}
+                  <Code>toggleTodo()</Code>.
+                </Highlight>
+              </UlLi>
+            </Ul>
+            <P>In that case, we can write the following code:</P>
+            <CodeBlock
+              snippet={snippets.jkjo}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 11 && tokenNumber >= 1
+              }
+            />
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        That’s so cool!{' '}
+                        <Highlight color="lightYellow1">
+                          So you can convert one type into another type in
+                          TypeScript?
+                        </Highlight>
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <P>
+              Yes! In TypeScript, you can use keywords like{' '}
+              <Code>Readonly&lt;...&gt;</Code> to conovert one type into another
+              type—in this case, it creates a new type with{' '}
+              <Code>readonly</Code> properties.
+            </P>
+            <EmojiSeparator
+              emojis={['readonly']}
+              description={
+                <>TypeScript lets you convert one type into another type</>
+              }
+            />
+            <P>
+              And the keywords like <Code>Readonly&lt;...&gt;</Code> are called{' '}
+              <strong>Mapped Types</strong>. There are many built-in mapped
+              types (like <Code>Required&lt;...&gt;</Code>,{' '}
+              <Code>Partial&lt;...&gt;</Code>, etc). You can also create your
+              own mapped types. I won’t cover these topics here—you can google
+              them.
+            </P>
+          </>
+        )
+      },
+      {
         color: 'green',
         title: <>Types are like lightweight, automatic unit tests</>,
         content: (
@@ -774,6 +873,21 @@ const Page = () => (
             <EmojiSeparator
               emojis={['data', 'transformTypechecked', 'updatedData']}
               description={<>TypeScript reduces bugs when transforming data</>}
+            />
+
+            <P>
+              Finally, we learned that{' '}
+              <strong>
+                we can use mapped types like <Code>Readonly</Code> to convert
+                one type to another type.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.nxyl}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                (lineNumber === 1 && tokenNumber >= 7 && tokenNumber <= 8) ||
+                (lineNumber === 5 && tokenNumber >= 1)
+              }
             />
             <P>Next, let’s take a look at more non-trivial examples!</P>
           </>
