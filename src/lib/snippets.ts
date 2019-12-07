@@ -514,6 +514,22 @@ function toggleTodo(todo: Todo): Todo {
   // ...
 }`
 
+export const jkjo = `// By default, the properties of Todo are
+// NOT read-only
+type Todo = {
+  id: number
+  text: string
+  done: boolean
+}
+
+// By using Readonly<> here, it makes the
+// properties readonly only within toggleTodo()
+function toggleTodo(
+  todo: Readonly<Todo>
+): Todo {
+  // ...
+}`
+
 export const lieq = `type Todo = {
   id: number
   text: string
@@ -559,6 +575,21 @@ export const ntau = `function toggleTodo(todo: Todo): Todo {
     done: !todo.done
   }
 }`
+
+export const nxyl = `// Readonly<...> makes each property readonly
+type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>`
+
+export const qaqa = `type Foo = {
+  bar: number
+}
+
+type ReadonlyFoo = Readonly<Foo>
+
+// ReadonlyFoo is { readonly bar: number }`
 
 export const qbgu = `// Returns a new todo object
 // with the opposite boolean value
