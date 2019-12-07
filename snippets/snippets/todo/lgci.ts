@@ -1,4 +1,4 @@
-// Same as before
+// Same as before: Each property is readonly
 type Todo = Readonly<{
   id: number
   text: string

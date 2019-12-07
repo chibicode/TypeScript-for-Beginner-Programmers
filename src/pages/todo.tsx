@@ -212,7 +212,7 @@ const Page = () => (
             />
             <P>
               As you can see, when you check/uncheck a checkbox, it updates the
-              underlying data (the <Code>done</Code> property), and in turn the
+              underlying data (the <Code>done</Code> property), and in turn, the
               UI gets updated. This is how UI libraries like React and Vue work.
             </P>
             <EmojiSeparator
@@ -226,7 +226,7 @@ const Page = () => (
               description={
                 <>
                   When the user interacts with the UI, the data gets updated,
-                  and in turn the UI gets updated
+                  and in turn, the UI gets updated
                 </>
               }
             />
@@ -356,7 +356,7 @@ const Page = () => (
               <strong>Now, here’s a question:</strong>{' '}
               <Highlight>How can we prevent mistakes like this?</Highlight>{' '}
               Little Duckling is a junior developer, but we want to make sure
-              that he succeeds at his job by helping him make less mistakes.
+              that he succeeds at his job by helping him make fewer mistakes.
             </P>
             <EmojiSeparator
               emojis={['sweat', 'chickEgg', 'sweat']}
@@ -797,7 +797,7 @@ const Page = () => (
             />
             <P>
               Yes! In TypeScript, you can use keywords like{' '}
-              <Code>Readonly&lt;...&gt;</Code> to conovert one type into another
+              <Code>Readonly&lt;...&gt;</Code> to convert one type into another
               type—in this case, it creates a new type with{' '}
               <Code>readonly</Code> properties.
             </P>
@@ -827,7 +827,7 @@ const Page = () => (
             <P>
               <strong>
                 1. We can define a <Code>type</Code> to make sure that the input
-                and the output of a function is of the correct type.
+                and the output of a function are of the correct type.
               </strong>
             </P>
             <CodeBlock
@@ -841,7 +841,7 @@ const Page = () => (
             <P>
               <strong>
                 2. We can use the <Code>readonly</Code> keyword to make sure
-                that an object property is not modified.
+                that an object’s properties are not modified.
               </strong>
             </P>
             <CodeBlock
@@ -979,13 +979,25 @@ const Page = () => (
             />
             <P>
               <strong>Third,</strong> we want to make sure that{' '}
-              <Code>completeAll()</Code> returns a new array and does NOT modify
-              the original array. Each item in the array is already{' '}
-              <Code>readonly</Code>, but <em>the array itself</em> is NOT{' '}
-              <Code>readonly</Code> yet.
+              <Highlight>
+                <Code>completeAll()</Code> returns a new array and does NOT
+                modify the original array.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.kuzw}
+              shouldHighlight={lineIndex => lineIndex === 1}
+            />
+            <P>
+              Because we defined <Code>Todo</Code> earlier using{' '}
+              <Code>Readonly&lt;...&gt;</Code>, each todo item in the array is
+              already <Code>readonly</Code>. However, <em>the array itself</em>{' '}
+              is NOT <Code>readonly</Code> yet.
             </P>
             <P>
-              To make the array itself <Code>readonly</Code>,{' '}
+              <strong>
+                To make the array itself <Code>readonly</Code>,
+              </strong>{' '}
               <Highlight>
                 we’ll add the <Code>readonly</Code> keyword to{' '}
                 <Code>Todo[]</Code> like so:
@@ -1017,7 +1029,8 @@ const Page = () => (
               Yes, Little Duckling! We use the <Code>readonly</Code> keyword for
               arrays. And by doing so,{' '}
               <Highlight>
-                TypeScript will prevent you from accidently modifying the array.
+                TypeScript will prevent you from accidentally modifying the
+                array.
               </Highlight>
             </P>
             <CodeBlock

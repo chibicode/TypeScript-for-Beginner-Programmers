@@ -530,7 +530,12 @@ function toggleTodo(
   // ...
 }`
 
-export const lgci = `// Same as before
+export const kuzw = `function completeAll(todos: Todo[]): Todo[] {
+  // We want it to return a new array
+  // instead of modifying the original array
+}`
+
+export const lgci = `// Same as before: Each property is readonly
 type Todo = Readonly<{
   id: number
   text: string
