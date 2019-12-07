@@ -20,7 +20,8 @@ const CodeBlock = ({
   compile,
   shouldHighlightResult,
   resultError,
-  tokenIndexIndentWorkaround
+  tokenIndexIndentWorkaround,
+  defaultErrorHighlight
 }: {
   snippet: string
   shouldHighlight?: (lineIndex: number, tokenIndex: number) => boolean
@@ -33,6 +34,7 @@ const CodeBlock = ({
   shouldHighlightResult?: (lineIndex: number, tokenIndex: number) => boolean
   resultError?: boolean
   tokenIndexIndentWorkaround?: number
+  defaultErrorHighlight?: boolean
 }) => {
   const [resultVisible, setResultVisible] = useState(defaultResultVisible)
   const { radii, colors, ns, maxWidths, spaces, fontSizes } = useTheme()
@@ -88,21 +90,16 @@ const CodeBlock = ({
               shouldHighlightResult(lineIndex, tokenIndex))) &&
           css`
             font-weight: bold;
-            background: ${shouldHighlightResult && resultVisible && resultError
+            background: ${((shouldHighlightResult && resultVisible) ||
+              defaultErrorHighlight) &&
+            resultError
               ? colors('white')
               : colors('yellowHighlight')};
-            border-bottom: ${shouldHighlightResult &&
-            resultVisible &&
+            border-bottom: ${((shouldHighlightResult && resultVisible) ||
+              defaultErrorHighlight) &&
             resultError
-              ? 'none'
+              ? `3px solid ${colors('red')}`
               : `2px solid ${colors('darkOrange')}`};
-            text-decoration: ${shouldHighlightResult &&
-            resultVisible &&
-            resultError
-              ? 'underline'
-              : 'none'};
-            text-decoration-style: wavy;
-            text-decoration-color: ${colors('red')};
           `
         }
         language={noHighlight ? 'diff' : 'typescript'}

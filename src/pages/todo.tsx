@@ -714,7 +714,7 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.vgnq}
-              shouldHighlight={lineNumber => lineNumber <= 1}
+              shouldHighlight={lineIndex => lineIndex <= 1}
             />
           </>
         )
@@ -739,9 +739,9 @@ const Page = () => (
             <P>The above code is equivalent to the following version:</P>
             <CodeBlock
               snippet={snippets.nxyl}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                (lineNumber === 1 && tokenNumber >= 7 && tokenNumber <= 8) ||
-                (lineNumber === 5 && tokenNumber >= 1)
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 1 && tokenIndex >= 7 && tokenIndex <= 8) ||
+                (lineIndex === 5 && tokenIndex >= 1)
               }
             />
             <P>
@@ -773,8 +773,8 @@ const Page = () => (
             <P>In that case, we can write the following code:</P>
             <CodeBlock
               snippet={snippets.jkjo}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 11 && tokenNumber >= 1
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 11 && tokenIndex >= 1
               }
             />
             <BubbleQuotes
@@ -832,11 +832,10 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.frtm}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                (lineNumber === 0 && tokenNumber <= 2) ||
-                (lineNumber === 8 &&
-                  ((tokenNumber >= 5 && tokenNumber <= 7) ||
-                    tokenNumber === 11))
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 0 && tokenIndex <= 2) ||
+                (lineIndex === 8 &&
+                  ((tokenIndex >= 5 && tokenIndex <= 7) || tokenIndex === 11))
               }
             />
             <P>
@@ -858,7 +857,9 @@ const Page = () => (
                 TypeScript’s types act as lightweight unit tests that run
                 automatically every time you save (compile) the code.
               </Highlight>{' '}
-              It helps you write less buggy code with very little overhead.
+              It helps you write less buggy code with very little overhead. (Of
+              course, this analogy is a simplification. You should still write
+              tests in TypeScript!)
             </P>
             <P>
               This especially useful{' '}
@@ -872,7 +873,9 @@ const Page = () => (
             </P>
             <EmojiSeparator
               emojis={['data', 'transformTypechecked', 'updatedData']}
-              description={<>TypeScript reduces bugs when transforming data</>}
+              description={
+                <>TypeScript reduces bugs when transforming/passing data</>
+              }
             />
 
             <P>
@@ -884,35 +887,174 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.nxyl}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                (lineNumber === 1 && tokenNumber >= 7 && tokenNumber <= 8) ||
-                (lineNumber === 5 && tokenNumber >= 1)
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 1 && tokenIndex >= 7 && tokenIndex <= 8) ||
+                (lineIndex === 5 && tokenIndex >= 1)
               }
             />
             <P>Next, let’s take a look at more non-trivial examples!</P>
           </>
         )
       },
-      // {
-      //   title: <>Mark all as completed</>,
-      //   content: (
-      //     <>
-      //       <TodoWithData
-      //         showData
-      //         caption={
-      //           <>
-      //             ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
-      //           </>
-      //         }
-      //         defaultData={[
-      //           { id: 1, text: 'First todo', done: false },
-      //           { id: 2, text: 'Second todo', done: false }
-      //         ]}
-      //         showMarkAllAsCompleted
-      //       />
-      //     </>
-      //   )
-      // },
+      {
+        title: <>Mark all as completed</>,
+        content: (
+          <>
+            <P>
+              Some todo apps allow you to{' '}
+              <Highlight>mark all items as completed.</Highlight> On the
+              following todo app,{' '}
+              <Highlight>try pressing “Mark all as completed”:</Highlight>
+            </P>
+            <TodoWithData
+              showData
+              caption={
+                <>
+                  ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
+                </>
+              }
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false }
+              ]}
+              showMarkAllAsCompleted
+              highlightLineIndexOffset={1}
+              shouldHighlight={tokenIndex => tokenIndex === 15}
+            />
+            <P>
+              After pressing “Mark all as completed”, all items will have{' '}
+              <Code>done: true</Code>.
+            </P>
+            <P>
+              Let’s implement this functionality using TypeScript. We’ll write a
+              function called <Code>completeAll()</Code> which takes an array of
+              todo items and returns a new array where <Code>done</Code> is all{' '}
+              <Code>true</Code>.
+            </P>
+            <CodeBlock snippet={snippets.tdbp} />
+            <P>
+              Before implementing it,{' '}
+              <Highlight>
+                let’s add some types for the input and output of this function
+              </Highlight>{' '}
+              to prevent mistakes!
+            </P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            Adding types for <Code>completeAll()</Code>
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              <strong>First,</strong> we’ll specify the type for the input
+              parameter of <Code>completeAll()</Code>. It’s an array of{' '}
+              <Code>Todo</Code> items.{' '}
+              <Highlight>
+                To specify an array type, we add <Code>[]</Code> next to the
+                type
+              </Highlight>{' '}
+              as follows:
+            </P>
+            <CodeBlock
+              snippet={snippets.lgci}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 8 && tokenIndex >= 5 && tokenIndex <= 9
+              }
+            />
+            <P>
+              <strong>Second,</strong> let’s specify the return type. It’ll also
+              be an array of <Code>Todo</Code> items, so we’ll use the same
+              syntax as above:
+            </P>
+            <CodeBlock
+              snippet={snippets.mnmy}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 1 && tokenIndex >= 11 && tokenIndex <= 15
+              }
+            />
+            <P>
+              <strong>Third,</strong> we want to make sure that{' '}
+              <Code>completeAll()</Code> returns a new array and does NOT modify
+              the original array. Each item in the array is already{' '}
+              <Code>readonly</Code>, but <em>the array itself</em> is NOT{' '}
+              <Code>readonly</Code> yet.
+            </P>
+            <P>
+              To make the array itself <Code>readonly</Code>,{' '}
+              <Highlight>
+                we’ll add the <Code>readonly</Code> keyword to{' '}
+                <Code>Todo[]</Code> like so:
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.szan}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 2 && tokenIndex >= 1
+              }
+            />
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        So for arrays, we use the <Code>readonly</Code> keyword
+                        instead of the <Code>Readonly&lt;...&gt;</Code> mapped
+                        type?
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <P>
+              Yes, Little Duckling! We use the <Code>readonly</Code> keyword for
+              arrays. And by doing so,{' '}
+              <Highlight>
+                TypeScript will prevent you from accidently modifying the array.
+              </Highlight>
+            </P>
+            <CodeBlock
+              resultError
+              defaultErrorHighlight
+              snippet={snippets.mwrj}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 4 && tokenIndex <= 3) ||
+                (lineIndex === 7 && tokenIndex <= 2)
+              }
+            />
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        Awesome! So, can we start implementing{' '}
+                        <Code>completeAll()</Code> now?
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <P>
+              <strong>Actually:</strong>{' '}
+              <Highlight>
+                There’s one more thing we’d like to do before we implement{' '}
+                <Code>completeAll()</Code>
+              </Highlight>
+              . Let’s take a look at what that is!
+            </P>
+          </>
+        )
+      },
       underConstructionCard
     ]}
   />
