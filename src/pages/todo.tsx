@@ -979,13 +979,21 @@ const Page = () => (
             />
             <P>
               <strong>Third,</strong> we want to make sure that{' '}
-              <Code>completeAll()</Code> returns a new array and does NOT modify
-              the original array. Each item in the array is already{' '}
-              <Code>readonly</Code>, but <em>the array itself</em> is NOT{' '}
-              <Code>readonly</Code> yet.
+              <Highlight>
+                <Code>completeAll()</Code> returns a new array and does NOT
+                modify the original array.
+              </Highlight>
             </P>
             <P>
-              To make the array itself <Code>readonly</Code>,{' '}
+              Because we defined <Code>Todo</Code> earlier using{' '}
+              <Code>Readonly&lt;...&gt;</Code>, each todo item in the array is
+              already <Code>readonly</Code>. However, <em>the array itself</em>{' '}
+              is NOT <Code>readonly</Code> yet.
+            </P>
+            <P>
+              <strong>
+                To make the array itself <Code>readonly</Code>,
+              </strong>{' '}
               <Highlight>
                 we’ll add the <Code>readonly</Code> keyword to{' '}
                 <Code>Todo[]</Code> like so:
