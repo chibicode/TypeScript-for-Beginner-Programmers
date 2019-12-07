@@ -858,7 +858,9 @@ const Page = () => (
                 TypeScript’s types act as lightweight unit tests that run
                 automatically every time you save (compile) the code.
               </Highlight>{' '}
-              It helps you write less buggy code with very little overhead.
+              It helps you write less buggy code with very little overhead. (Of
+              course, this analogy is a simplification and you should still
+              write tests in TypeScript!)
             </P>
             <P>
               This especially useful{' '}
@@ -872,7 +874,9 @@ const Page = () => (
             </P>
             <EmojiSeparator
               emojis={['data', 'transformTypechecked', 'updatedData']}
-              description={<>TypeScript reduces bugs when transforming data</>}
+              description={
+                <>TypeScript reduces bugs when transforming/passing data</>
+              }
             />
 
             <P>
