@@ -984,6 +984,10 @@ const Page = () => (
                 modify the original array.
               </Highlight>
             </P>
+            <CodeBlock
+              snippet={snippets.kuzw}
+              shouldHighlight={lineIndex => lineIndex === 1}
+            />
             <P>
               Because we defined <Code>Todo</Code> earlier using{' '}
               <Code>Readonly&lt;...&gt;</Code>, each todo item in the array is
