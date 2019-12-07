@@ -1029,7 +1029,8 @@ const Page = () => (
               Yes, Little Duckling! We use the <Code>readonly</Code> keyword for
               arrays. And by doing so,{' '}
               <Highlight>
-                TypeScript will prevent you from accidently modifying the array.
+                TypeScript will prevent you from accidentally modifying the
+                array.
               </Highlight>
             </P>
             <CodeBlock
