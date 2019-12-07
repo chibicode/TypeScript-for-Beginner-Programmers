@@ -859,8 +859,8 @@ const Page = () => (
                 automatically every time you save (compile) the code.
               </Highlight>{' '}
               It helps you write less buggy code with very little overhead. (Of
-              course, this analogy is a simplification and you should still
-              write tests in TypeScript!)
+              course, this analogy is a simplification. You should still write
+              tests in TypeScript!)
             </P>
             <P>
               This especially useful{' '}
@@ -897,26 +897,45 @@ const Page = () => (
           </>
         )
       },
-      // {
-      //   title: <>Mark all as completed</>,
-      //   content: (
-      //     <>
-      //       <TodoWithData
-      //         showData
-      //         caption={
-      //           <>
-      //             ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
-      //           </>
-      //         }
-      //         defaultData={[
-      //           { id: 1, text: 'First todo', done: false },
-      //           { id: 2, text: 'Second todo', done: false }
-      //         ]}
-      //         showMarkAllAsCompleted
-      //       />
-      //     </>
-      //   )
-      // },
+      {
+        title: <>Mark all as completed</>,
+        content: (
+          <>
+            <P>
+              Some todo apps allow you to{' '}
+              <Highlight>mark all items as completed.</Highlight> On the
+              following todo app,{' '}
+              <Highlight>try pressing “Mark all as completed”:</Highlight>
+            </P>
+            <TodoWithData
+              showData
+              caption={
+                <>
+                  ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
+                </>
+              }
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false }
+              ]}
+              showMarkAllAsCompleted
+              highlightLineIndexOffset={1}
+              shouldHighlight={tokenIndex => tokenIndex === 15}
+            />
+            <P>
+              After pressing “Mark all as completed”, all items will have{' '}
+              <Code>done: true</Code>.
+            </P>
+            <P>
+              Let’s implement this functionality using TypeScript. We’ll write a
+              function called <Code>completeAll()</Code> which takes an array of
+              todo items and returns a new array where <Code>done</Code> is all{' '}
+              <Code>true</Code>.
+            </P>
+            <CodeBlock snippet={snippets.tdbp} />
+          </>
+        )
+      },
       underConstructionCard
     ]}
   />

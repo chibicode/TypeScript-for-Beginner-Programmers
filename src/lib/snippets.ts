@@ -605,6 +605,12 @@ export const reel = `function toggleTodo(todo) {
   }
 }`
 
+export const tdbp = `// Takes an array of todo items and returns
+// a new array where "done" is all true
+function completeAll(todos) {
+  // ...
+}`
+
 export const tgvw = `const bar: Todo = {
   text: '…',
   done: true
