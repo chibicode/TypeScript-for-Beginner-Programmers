@@ -1068,6 +1068,72 @@ const Page = () => (
           </>
         )
       },
+      {
+        title: (
+          <>
+            The <Code>CompletedTodo</Code> type
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              Take a look at the following code. In addition to the{' '}
+              <Code>Todo</Code> type, we’ve defined a new type called{' '}
+              <Code>CompletedTodo</Code>.
+            </P>
+            <CodeBlock
+              snippet={snippets.rlya}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 9 && tokenIndex >= 0 && tokenIndex <= 4) ||
+                (lineIndex === 6 && tokenIndex >= 0 && tokenIndex <= 3)
+              }
+            />
+            <P>
+              The new <Code>CompletedTodo</Code> is almost identical to{' '}
+              <Code>Todo</Code>, except it has <Code>done: true</Code> instead
+              of <Code>done: boolean</Code>.{' '}
+              <Highlight>
+                In TypeScript, you can use <strong>exact values</strong> (like{' '}
+                <Code>true</Code> or <Code>false</Code>) when specifying a type.
+              </Highlight>
+            </P>
+            <P>
+              We can now specify the return type of <Code>completeAll()</Code>{' '}
+              to be an array of <Code>CompletedTodo</Code>’s:
+            </P>
+            <CodeBlock
+              snippet={snippets.oone}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 3 && tokenIndex >= 2 && tokenIndex <= 6
+              }
+            />
+            <P>
+              By doing this, TypeScript will force you to return an array of
+              todo items where <Code>done</Code> is <Code>true</Code>—if not, it
+              will result in a compile error.
+            </P>
+          </>
+        )
+      },
+      {
+        title: <>Intersection types</>,
+        content: (
+          <>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>Question - there seems to be some duplicate code</P>
+                    </>
+                  )
+                }
+              ]}
+            />
+          </>
+        )
+      },
       underConstructionCard
     ]}
   />

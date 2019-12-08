@@ -614,6 +614,13 @@ type Todo = Readonly<{
   done: boolean
 }>`
 
+export const oone = `// Returns an array where "done" is all true
+function completeAll(
+  todos: readonly Todo[]
+): CompletedTodo[] {
+  // ...
+}`
+
 export const qaqa = `type Foo = {
   bar: number
 }
@@ -635,6 +642,18 @@ export const reel = `function toggleTodo(todo) {
     done: !todo.done
   }
 }`
+
+export const rlya = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>
+
+type CompletedTodo = Readonly<{
+  id: number
+  text: string
+  done: true
+}>`
 
 export const szan = `// Make input todos as readonly array
 function completeAll(
