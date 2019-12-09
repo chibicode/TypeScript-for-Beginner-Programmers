@@ -636,6 +636,18 @@ function toggleTodo(todo) {
   // ...
 }`
 
+export const qnwc = `// They booth have property x,
+// but B’s x (true) is
+// more specific than A’s x (boolean)
+type A = { x: boolean }
+type B = { x: true }
+
+// This intersection type…
+type AandB = A & B
+
+// …is equivalent to:
+type AandB = { x: true }`
+
 export const reel = `function toggleTodo(todo) {
   return {
     text: todo.text,
@@ -654,6 +666,17 @@ type CompletedTodo = Readonly<{
   text: string
   done: true
 }>`
+
+export const rmuo = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>
+
+// Override the done property of Todo
+type CompletedTodo = Todo & {
+  readonly done: true
+}`
 
 export const szan = `// Make input todos as readonly array
 function completeAll(
@@ -701,6 +724,18 @@ function toggleTodo(todo) {
   // { id: …, text: '…', done: true }
 }`
 
+export const wdjp = `type A = { a: number }
+type B = { b: string }
+
+// This intersection type…
+type AandB = A & B
+
+// …is equivalent to:
+type AandB = {
+  a: number
+  b: string
+}`
+
 export const wymp = `const originalTodo = {
   id: 1,
   text: '…',
@@ -717,6 +752,20 @@ console.log('Original Todo:')
 console.log(originalTodo)
 console.log('New Todo:')
 console.log(newTodo)`
+
+export const xrwn = `type Todo = Readonly<{
+  // id and text are the same as CompletedTodo
+  id: number
+  text: string
+  done: boolean
+}>
+
+type CompletedTodo = Readonly<{
+  // id and text are the same as Todo
+  id: number
+  text: string
+  done: true
+}>`
 
 export const yhto = `type Todo = {
   readonly id: number

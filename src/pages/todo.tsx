@@ -1108,9 +1108,12 @@ const Page = () => (
               }
             />
             <P>
-              By doing this, TypeScript will force you to return an array of
-              todo items where <Code>done</Code> is <Code>true</Code>—if not, it
-              will result in a compile error.
+              By doing this,{' '}
+              <Highlight>
+                TypeScript will force you to return an array of todo items where{' '}
+                <Code>done</Code> is <Code>true</Code>
+              </Highlight>
+              —if not, it will result in a compile error.
             </P>
           </>
         )
@@ -1125,12 +1128,102 @@ const Page = () => (
                   type: 'chickEgg',
                   children: (
                     <>
-                      <P>Question - there seems to be some duplicate code</P>
+                      <P>
+                        <strong>Question:</strong> There seems to be some
+                        duplicate code between <Code>Todo</Code> and{' '}
+                        <Code>CompletedTodo</Code>. Can we refactor this?
+                      </P>
                     </>
                   )
                 }
               ]}
             />
+            <P>
+              Good question, Little Duckling! If you look closely,{' '}
+              <Code>Todo</Code> and <Code>CompletedTodo</Code> have identical{' '}
+              <Code>id</Code> and <Code>text</Code> types.
+            </P>
+            <CodeBlock
+              snippet={snippets.xrwn}
+              shouldHighlight={lineIndex =>
+                lineIndex === 2 ||
+                lineIndex === 3 ||
+                lineIndex === 9 ||
+                lineIndex === 10
+              }
+            />
+            <P>
+              We can de-duplicate the code by using a TypeScript feature called{' '}
+              <strong>intersection types</strong>.
+            </P>
+            <P>
+              In TypeScript, you can use the <Code>&amp;</Code> sign to create
+              an <strong>intersection type</strong> of two types.
+            </P>
+            <EmojiSeparator
+              emojis={['a', 'ampersand', 'b']}
+              description={
+                <>
+                  <Code>&amp;</Code> creates an{' '}
+                  <strong>intersection type</strong> of two types.
+                </>
+              }
+            />
+            <P>
+              <Highlight>
+                The intersection type <Code>A &amp; B</Code> is a type that has{' '}
+                <strong>all</strong> of the properties of <Code>A</Code> and{' '}
+                <Code>B</Code>.
+              </Highlight>{' '}
+              Here’s an example:
+            </P>
+            <CodeBlock
+              snippet={snippets.wdjp}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 4 && tokenIndex >= 7
+              }
+            />
+            <P>
+              Furthermore,{' '}
+              <Highlight>
+                if the second type is more specific than the first type, the
+                second type overrides the first.
+              </Highlight>{' '}
+              Here’s an example:
+            </P>
+            <CodeBlock
+              snippet={snippets.qnwc}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 10 && tokenIndex >= 7 && tokenIndex <= 13
+              }
+            />
+            <P>
+              We can apply this idea to update the definition of{' '}
+              <Code>CompletedTodo</Code>. We’ll define{' '}
+              <Code>CompletedTodo</Code> using <Code>Todo</Code> like this:
+            </P>
+            <CodeBlock
+              snippet={snippets.rmuo}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 7 && tokenIndex >= 7) ||
+                lineIndex === 8 ||
+                lineIndex === 9
+              }
+            />
+            <P>
+              By doing the above, you can define <Code>CompleteTodo</Code> to
+              have the same properties as <Code>Todo</Code> except for{' '}
+              <Code>done</Code>—without duplicating code.
+            </P>
+            <P>
+              <strong>Summary:</strong>{' '}
+              <Highlight>
+                Just like JavaScript has boolean operators like{' '}
+                <Code>&amp;&amp;</Code>, TypeScript has{' '}
+                <strong>type operators</strong> like <Code>&amp;</Code> which
+                lets you combine two types.
+              </Highlight>
+            </P>
           </>
         )
       },
