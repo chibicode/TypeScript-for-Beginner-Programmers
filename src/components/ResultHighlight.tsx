@@ -35,6 +35,7 @@ const ResultHighlight = ({ children }: { children: string }) => {
                       {...tokenProps}
                       css={css`
                         font-style: normal !important;
+                        white-space: pre-wrap;
                       `}
                     >
                       {children}

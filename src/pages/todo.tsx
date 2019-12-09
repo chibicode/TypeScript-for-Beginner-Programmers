@@ -559,7 +559,7 @@ const Page = () => (
             />
             <P>
               <Highlight>
-                Try pressing <RunButtonText /> to see if it compiles!
+                Try pressing <RunButtonText compile /> to see if it compiles!
               </Highlight>
             </P>
             <CodeBlock
@@ -577,7 +577,6 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.wymp}
-              compile
               result={
                 <>
                   Before toggleTodo()…
@@ -1223,6 +1222,74 @@ const Page = () => (
                 <strong>type operators</strong> like <Code>&amp;</Code> which
                 lets you combine two types.
               </Highlight>
+            </P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            Finally implementing <Code>completeAll()</Code>
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              We’re finally ready to implement <Code>completeAll()</Code>.
+              Here’s the code—
+              <Highlight>
+                try pressing <RunButtonText compile />
+              </Highlight>
+              !
+            </P>
+            <CodeBlock
+              snippet={snippets.hszk}
+              compile
+              result={compileSuccess}
+              shouldHighlight={lineNumber => lineNumber >= 3 && lineNumber <= 6}
+            />
+            <P>
+              It compiled! Let’s run this function on an example todo list.{' '}
+              <Highlight>
+                Press <RunButtonText />:
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.okva}
+              result={
+                <ResultHighlight>
+                  {`[
+  { id: 1, text: '…', done: true },
+  { id: 2, text: '…', done: true }
+]`}
+                </ResultHighlight>
+              }
+            />
+            <P>
+              <Code>done</Code> all became <Code>true</Code>, as expected!
+            </P>
+            <P>
+              Now, let’s see what happens if we make a mistake and set{' '}
+              <Code>done</Code> to <Code>false</Code>:
+            </P>
+            <CodeBlock
+              snippet={snippets.whae}
+              compile
+              result={
+                <>
+                  Types of property 'done' are incompatible.
+                  <br />
+                  Type 'false' is not assignable to type 'true'.
+                </>
+              }
+              resultError
+              shouldHighlight={lineNumber => lineNumber === 6}
+              shouldHighlightResult={lineNumber => lineNumber === 6}
+            />
+            <P>
+              It failed because <Code>CompletedTodo</Code> must have{' '}
+              <Code>done: true</Code>. Once again, TypeScript caught an error
+              early.
             </P>
           </>
         )

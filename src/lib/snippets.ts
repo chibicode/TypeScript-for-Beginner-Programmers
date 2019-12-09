@@ -514,6 +514,15 @@ function toggleTodo(todo: Todo): Todo {
   // ...
 }`
 
+export const hszk = `function completeAll(
+  todos: readonly Todo[]
+): CompletedTodo[] {
+  return todos.map(todo => ({
+    ...todo,
+    done: true
+  }))
+}`
+
 export const jkjo = `// By default, the properties of Todo are
 // NOT read-only
 type Todo = {
@@ -613,6 +622,13 @@ type Todo = Readonly<{
   text: string
   done: boolean
 }>`
+
+export const okva = `console.log(
+  completeAll([
+    { id: 1, text: '…', done: false },
+    { id: 2, text: '…', done: true }
+  ])
+)`
 
 export const oone = `// Returns an array where "done" is all true
 function completeAll(
@@ -734,6 +750,16 @@ type AandB = A & B
 type AandB = {
   a: number
   b: string
+}`
+
+export const whae = `function completeAll(
+  todos: readonly Todo[]
+): CompletedTodo[] {
+  return todos.map(todo => ({
+    ...todo,
+    // What if we set done to false?
+    done: false
+  }))
 }`
 
 export const wymp = `const originalTodo = {
