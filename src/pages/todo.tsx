@@ -132,9 +132,32 @@ const Page = () => (
                 goal is to make you want to learn more.
               </UlLi>
             </Ul>
+            <P>
+              There are <strong>4 sections</strong> total in this article. Here
+              are the topics covered in each section:
+            </P>
+            <Ul>
+              <UlLi>
+                <strong>Section 1:</strong> Types, Read-only Properties, and
+                Mapped Types
+              </UlLi>
+              <UlLi>
+                <strong>Section 2:</strong> Array Types, Literal Types, and
+                Intersection Types
+              </UlLi>
+            </Ul>
             <P>Let’s get started!</P>
           </>
         )
+      },
+      {
+        title: (
+          <>
+            <strong>Section 1</strong> of 4
+          </>
+        ),
+        heading: <>Types, Read-only Properties, and Mapped Types</>,
+        color: 'darkGreen'
       },
       {
         title: <>Transform data into UI</>,
@@ -819,6 +842,7 @@ const Page = () => (
       },
       {
         color: 'green',
+        subtitle: <>Section 1 Summary:</>,
         title: <>Types are like lightweight, automatic unit tests</>,
         content: (
           <>
@@ -894,6 +918,15 @@ const Page = () => (
             <P>Next, let’s take a look at more non-trivial examples!</P>
           </>
         )
+      },
+      {
+        title: (
+          <>
+            <strong>Section 2</strong> of 4
+          </>
+        ),
+        heading: <>Array Types, Literal Types, and Intersection Types</>,
+        color: 'darkGreen'
       },
       {
         title: <>Mark all as completed</>,
@@ -1092,10 +1125,20 @@ const Page = () => (
               <Code>Todo</Code>, except it has <Code>done: true</Code> instead
               of <Code>done: boolean</Code>.{' '}
               <Highlight>
-                In TypeScript, you can use <strong>exact values</strong> (like{' '}
+                In TypeScript, you can use <em>exact values</em> (like{' '}
                 <Code>true</Code> or <Code>false</Code>) when specifying a type.
-              </Highlight>
+              </Highlight>{' '}
+              This is called <strong>literal types</strong>.
             </P>
+            <EmojiSeparator
+              emojis={['doneTrue']}
+              description={
+                <>
+                  You can use exact values when specifying a type. This is
+                  called <strong>literal types</strong>.
+                </>
+              }
+            />
             <P>
               We can now specify the return type of <Code>completeAll()</Code>{' '}
               to be an array of <Code>CompletedTodo</Code>’s:

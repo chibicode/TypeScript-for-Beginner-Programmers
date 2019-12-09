@@ -14,6 +14,7 @@ export const allColors = {
   white: '#FFFFFF',
   white85: 'rgba(255, 255, 255, 0.85)',
   paleGreen: '#C8DCC7',
+  darkGreen: '#009795',
   red: '#DB4003',
   yellowHighlight: '#FFFF00',
   yellowHighlightTransparent: 'rgba(255, 255, 0, 0)'

@@ -20,6 +20,7 @@ import Readonly from 'src/components/Emoji/Readonly'
 import A from 'src/components/Emoji/A'
 import B from 'src/components/Emoji/B'
 import Ampersand from 'src/components/Emoji/Ampersand'
+import DoneTrue from 'src/components/Emoji/DoneTrue'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -41,7 +42,8 @@ export const emojiToComponent = {
   readonly: Readonly,
   a: A,
   b: B,
-  ampersand: Ampersand
+  ampersand: Ampersand,
+  doneTrue: DoneTrue
 }
 
 export const EmojiWrapper = ({
