@@ -45,31 +45,33 @@ const TodoList = ({
           </div>
         )
       )}
-      {showMarkAllAsCompleted && !disabled && (
-        <div
-          css={css`
-            font-size: ${fontSizes(0.85)};
-            margin: ${spaces(0.75)} ${spaces(0.5)} ${spaces(0.25)};
-            color: ${colors('brown')};
-          `}
-        >
-          <span
+      {showMarkAllAsCompleted &&
+        !disabled &&
+        items.filter(item => item.kind === 'todo' && !item.done).length > 0 && (
+          <div
             css={css`
-              text-decoration: underline;
-              cursor: pointer;
-              &:hover {
-                background: ${colors('lightGreen')};
-              }
+              font-size: ${fontSizes(0.85)};
+              margin: ${spaces(0.75)} ${spaces(0.5)} ${spaces(0.25)};
+              color: ${colors('brown')};
             `}
-            tabIndex={0}
-            role="button"
-            aria-pressed="false"
-            onClick={() => dispatch({ type: 'markAllAsCompleted' })}
           >
-            Mark all as completed
-          </span>
-        </div>
-      )}
+            <span
+              css={css`
+                text-decoration: underline;
+                cursor: pointer;
+                &:hover {
+                  background: ${colors('lightGreen')};
+                }
+              `}
+              tabIndex={0}
+              role="button"
+              aria-pressed="false"
+              onClick={() => dispatch({ type: 'markAllAsCompleted' })}
+            >
+              Mark all as completed
+            </span>
+          </div>
+        )}
     </>
   )
 }
