@@ -1293,7 +1293,7 @@ const Page = () => (
               }
             />
             <P>
-              By doing the above, you can define <Code>CompleteTodo</Code> to
+              By doing the above, you can define <Code>CompletedTodo</Code> to
               have the same properties as <Code>Todo</Code> except for{' '}
               <Code>done</Code>—without duplicating code.
             </P>
@@ -1579,6 +1579,45 @@ const Page = () => (
               highlightLineIndexOffset={1}
               shouldHighlight={tokenIndex => tokenIndex === 20}
             />
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            How does <Code>completeAll()</Code> change?
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              Now, let’s revisit the <strong>mark all as completed</strong>{' '}
+              feature again. If you{' '}
+              <Highlight>press “Mark all as completed”</Highlight> below, it
+              ignores the separators and only toggles the todo items.
+            </P>
+            <TodoWithData
+              showData
+              caption={
+                <>
+                  ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
+                </>
+              }
+              showMarkAllAsCompleted
+              smallText
+              defaultData={[
+                { id: 1, kind: 'todo', text: 'A', done: false },
+                { id: 1, kind: 'separator' },
+                { id: 2, kind: 'todo', text: 'B', done: false }
+              ]}
+              highlightLineIndexOffset={1}
+              shouldHighlight={tokenIndex => tokenIndex === 20}
+            />
+            <P>
+              To get this to work, we need to modify our{' '}
+              <Code>completeAll()</Code> function to support the{' '}
+              <Code>Separator</Code> type.
+            </P>
           </>
         )
       },
