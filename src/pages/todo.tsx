@@ -1548,11 +1548,36 @@ const Page = () => (
               <Highlight>
                 let’s add a <Code>kind</Code> property to BOTH <Code>Todo</Code>{' '}
                 and <Code>Separator</Code> to differentiate them.
-              </Highlight>
+              </Highlight>{' '}
+            </P>
+            <P>
+              For each type, we’ll specify exactly what value is allowed for the{' '}
+              <Code>kind</Code> property (reminder—this is called{' '}
+              <strong>literal types</strong>). The <Code>Todo</Code> item must
+              have <Code>kind: 'todo'</Code>, and the <Code>Separator</Code>{' '}
+              item must have <Code>kind: 'separator'</Code>.
             </P>
             <CodeBlock
               snippet={snippets.jnuw}
-              shouldHighlight={lineIndex => lineIndex === 4 || lineIndex === 9}
+              shouldHighlight={lineIndex => lineIndex === 2 || lineIndex === 9}
+            />
+            <P>
+              That’s it! Let’s now take a look at an example. Here’s a todo list
+              containing some separators, displayed with its associated data:
+            </P>
+            <TodoWithData
+              showData
+              smallText
+              defaultData={[
+                { id: 1, kind: 'todo', text: 'A', done: false },
+                { id: 2, kind: 'todo', text: 'B', done: false },
+                { id: 1, kind: 'separator' },
+                { id: 3, kind: 'todo', text: 'C', done: false },
+                { id: 2, kind: 'separator' },
+                { id: 4, kind: 'todo', text: 'D', done: false }
+              ]}
+              highlightLineIndexOffset={1}
+              shouldHighlight={tokenIndex => tokenIndex === 20}
             />
           </>
         )

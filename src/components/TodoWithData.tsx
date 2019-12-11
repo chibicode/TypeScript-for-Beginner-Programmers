@@ -11,11 +11,11 @@ import CodeBlockHighlight from 'src/components/CodeBlockHighlight'
 import { format } from 'prettier/standalone'
 import parser from 'prettier/parser-babylon'
 
-const prettierFormat = (state: ItemType[]) =>
+const prettierFormat = (state: ItemType[], smallText = false) =>
   format(JSON.stringify(state), {
     semi: false,
     singleQuote: true,
-    printWidth: 48,
+    printWidth: smallText ? 54 : 48,
     plugins: [parser],
     parser: 'babel'
   })
@@ -90,7 +90,8 @@ const TodoWithData = ({
   showMarkAllAsCompleted,
   disabled,
   highlightLineIndexOffset,
-  shouldHighlight
+  shouldHighlight,
+  smallText
 }: {
   defaultData: ItemType[]
   caption?: React.ReactNode
@@ -101,8 +102,9 @@ const TodoWithData = ({
   disabled?: boolean
   highlightLineIndexOffset?: number
   shouldHighlight?: (tokenIndex: number) => boolean
+  smallText?: boolean
 }) => {
-  const { spaces, ns, maxWidths, radii, colors } = useTheme()
+  const { spaces, ns, maxWidths, radii, colors, letterSpacings } = useTheme()
   const [state, dispatch] = useReducer<typeof reducer>(reducer, {
     todos: defaultData,
     lastChangedIndices: []
@@ -138,15 +140,22 @@ const TodoWithData = ({
           {showData && (
             <CodeBlockHighlight
               snippet={`${comment || ''}${comment ? '\n' : ''}${prettierFormat(
-                state.todos
+                state.todos,
+                smallText
               )}`}
               language="javascript"
-              cssOverrides={css`
-                margin-top: ${0};
-                margin-bottom: ${spaces(1.75)};
-                border-bottom-left-radius: ${radii(0.5)};
-                border-bottom-right-radius: ${radii(0.5)};
-              `}
+              cssOverrides={[
+                css`
+                  margin-top: ${0};
+                  margin-bottom: ${spaces(1.75)};
+                  border-bottom-left-radius: ${radii(0.5)};
+                  border-bottom-right-radius: ${radii(0.5)};
+                `,
+                smallText &&
+                  css`
+                    letter-spacing: ${letterSpacings('smallCode')};
+                  `
+              ]}
               lineCssOverridesAnimation={(lineIndex, tokenIndex) =>
                 shouldHighlight &&
                 state.lastChangedIndices

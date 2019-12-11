@@ -1,8 +1,8 @@
 type Todo = Readonly<{
   id: number
+  kind: 'todo'
   text: string
   done: boolean
-  kind: 'todo'
 }>
 
 type Separator = Readonly<{
