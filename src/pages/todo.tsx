@@ -1182,7 +1182,7 @@ const Page = () => (
             <P>
               It failed to compile because <Code>done</Code> is not{' '}
               <Code>true</Code>. By using literal types like the above, you can
-              specify exactly what value is allowed for each property.
+              specify exactly what value is allowed for a property.
             </P>
             <P>
               Coming back to <Code>completeAll()</Code>, we can now specify the
@@ -1389,7 +1389,10 @@ const Page = () => (
         title: <>TypeScript can handle arrays and exact values</>,
         content: (
           <>
-            <P>In this section, we’ve learned the following:</P>
+            <P>
+              In this section, we’ve learned that TypeScript can handle arrays
+              and exact values:
+            </P>
             <P>
               <strong>
                 1. We can specify an array type by adding <Code>[]</Code>. We
@@ -1404,7 +1407,33 @@ const Page = () => (
               }
             />
             <P>
-              <strong>2. </strong>
+              <strong>
+                2. We can use literal types to specify exactly which value is
+                allowed for a property.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.bpmz}
+              shouldHighlight={lineNumber => lineNumber === 3}
+            />
+            <P>
+              Finally, we learned that{' '}
+              <strong>
+                we can use intersection types to override some properties and
+                remove code duplication.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.rmuo}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 7 && tokenIndex >= 7) ||
+                lineIndex === 8 ||
+                lineIndex === 9
+              }
+            />
+            <P>
+              In the next (and final) section, we’ll take a look at one of the
+              most powerful features of TypeScript: <strong>Unions</strong>.
             </P>
           </>
         )

@@ -484,6 +484,12 @@ export const bnli = `const foo: Todo = {
   done: true
 }`
 
+export const bpmz = `type CompletedTodo = Readonly<{
+  id: number
+  text: string
+  done: true
+}>`
+
 export const csum = `// todo must match the Todo type
 function toggleTodo(todo: Todo) {
   // ...
