@@ -11,7 +11,7 @@ import CodeBlockHighlight from 'src/components/CodeBlockHighlight'
 import { format } from 'prettier/standalone'
 import parser from 'prettier/parser-babylon'
 
-const prettierFormat = (state: TodoType[]) =>
+const prettierFormat = (state: ItemType[]) =>
   format(JSON.stringify(state), {
     semi: false,
     singleQuote: true,
@@ -22,11 +22,17 @@ const prettierFormat = (state: TodoType[]) =>
     .trim()
     .substring(1)
 
-export type TodoType = {
-  id: number
-  text: string
-  done: boolean
-}
+export type ItemType =
+  | {
+      id: number
+      text: string
+      done: boolean
+      type?: 'todo'
+    }
+  | {
+      type: 'separator'
+      text?: string
+    }
 
 export type TodoAction =
   | {
@@ -38,27 +44,35 @@ export type TodoAction =
     }
 
 export type TodoState = {
-  todos: TodoType[]
+  todos: ItemType[]
   lastChangedIndices: number[]
 }
 
 const reducer = (state: TodoState, action: TodoAction) => {
   switch (action.type) {
-    case 'toggle':
-      return {
-        todos: [
-          ...state.todos.slice(0, action.index),
-          {
-            ...state.todos[action.index],
-            done: !state.todos[action.index].done
-          },
-          ...state.todos.slice(action.index + 1)
-        ],
-        lastChangedIndices: [action.index]
+    case 'toggle': {
+      const item = state.todos[action.index]
+      if (item.type !== 'separator') {
+        return {
+          todos: [
+            ...state.todos.slice(0, action.index),
+            {
+              ...state.todos[action.index],
+              done: !item.done
+            },
+            ...state.todos.slice(action.index + 1)
+          ],
+          lastChangedIndices: [action.index]
+        }
+      } else {
+        return state
       }
+    }
     case 'markAllAsCompleted':
       return {
-        todos: state.todos.map(item => ({ ...item, done: true })),
+        todos: state.todos.map(item =>
+          item.type !== 'separator' ? { ...item, done: true } : item
+        ),
         lastChangedIndices: state.todos.map((_, index) => index)
       }
     default:
@@ -77,7 +91,7 @@ const TodoWithData = ({
   highlightLineIndexOffset,
   shouldHighlight
 }: {
-  defaultData: TodoType[]
+  defaultData: ItemType[]
   caption?: React.ReactNode
   promptArrowText?: React.ReactNode
   showData?: boolean

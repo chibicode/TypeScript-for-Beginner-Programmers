@@ -20,6 +20,9 @@ import BubbleQuotes from 'src/components/BubbleQuotes'
 import ResultHighlight from 'src/components/ResultHighlight'
 
 const compileSuccess = 'Compiled successfully!'
+const section1 = 'Types, Read-only Properties, and Mapped Types'
+const section2 = 'Array Types, Literal Types, and Intersection Types'
+const section3 = 'Union Types, Discriminated Unions, and Optional Properties'
 
 const Page = () => (
   <PostPage
@@ -148,22 +151,13 @@ const Page = () => (
             </P>
             <Ul>
               <UlLi>
-                <strong>Section 1:</strong>{' '}
-                <Highlight>
-                  Types, Read-only Properties, and Mapped Types
-                </Highlight>
+                <strong>Section 1:</strong> <Highlight>{section1}</Highlight>
               </UlLi>
               <UlLi>
-                <strong>Section 2:</strong>{' '}
-                <Highlight>
-                  Array Types, Literal Types, and Intersection Types
-                </Highlight>
+                <strong>Section 2:</strong> <Highlight>{section2}</Highlight>
               </UlLi>
               <UlLi>
-                <strong>Section 3:</strong>{' '}
-                <Highlight>
-                  Union Types, Discriminated Unions, and Optional Properties
-                </Highlight>
+                <strong>Section 3:</strong> <Highlight>{section3}</Highlight>
               </UlLi>
               <UlLi>
                 <strong>One more thing:</strong>{' '}
@@ -180,7 +174,7 @@ const Page = () => (
             <strong>Section 1</strong> of 3
           </>
         ),
-        heading: <>Types, Read-only Properties, and Mapped Types</>,
+        heading: section1,
         color: 'darkGreen'
       },
       {
@@ -949,7 +943,7 @@ const Page = () => (
             <strong>Section 2</strong> of 3
           </>
         ),
-        heading: <>Array Types, Literal Types, and Intersection Types</>,
+        heading: section2,
         color: 'darkGreen'
       },
       {
@@ -958,8 +952,8 @@ const Page = () => (
           <>
             <P>
               Some todo apps allow you to{' '}
-              <Highlight>mark all items as completed.</Highlight> On the
-              following todo app,{' '}
+              <strong>mark all items as completed.</strong> On the following
+              todo app,{' '}
               <Highlight>try pressing “Mark all as completed”:</Highlight>
             </P>
             <TodoWithData
@@ -1435,6 +1429,40 @@ const Page = () => (
               In the next (and final) section, we’ll take a look at one of the
               most powerful features of TypeScript: <strong>Unions</strong>.
             </P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            <strong>Section 3</strong> of 3
+          </>
+        ),
+        heading: section3,
+        color: 'darkGreen'
+      },
+      {
+        title: <>Separators</>,
+        content: (
+          <>
+            <P>
+              <Highlight>
+                Sometimes, you might want to separate a group of todo items from
+                others.
+              </Highlight>{' '}
+              On the following todo app, the third item is a{' '}
+              <strong>separator</strong> which visually separates the first two
+              todo items from the last.
+            </P>
+            <TodoWithData
+              caption={<>There’s a separator after the second todo item</>}
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false },
+                { type: 'separator' },
+                { id: 3, text: 'Third todo', done: false }
+              ]}
+            />
           </>
         )
       },

@@ -6,7 +6,7 @@ import useTheme from 'src/hooks/useTheme'
 import { useState, useContext } from 'react'
 import TodoWithDataContext from 'src/components/TodoWithDataContext'
 
-const Todo = ({
+const TodoItem = ({
   index,
   done,
   text
@@ -85,4 +85,4 @@ const Todo = ({
   )
 }
 
-export default Todo
+export default TodoItem
