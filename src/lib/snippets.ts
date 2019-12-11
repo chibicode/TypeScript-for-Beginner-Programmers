@@ -545,6 +545,18 @@ function toggleTodo(
   // ...
 }`
 
+export const jnuw = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+  kind: 'todo'
+}>
+
+type Separator = Readonly<{
+  id: number
+  kind: 'separator'
+}>`
+
 export const kuzw = `function completeAll(todos: Todo[]): Todo[] {
   // We want it to return a new array
   // instead of modifying the original array
@@ -774,6 +786,16 @@ export const whae = `function completeAll(
   }))
 }`
 
+export const wmgl = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>
+
+type Separator = Readonly<{
+  id: number
+}>`
+
 export const wymp = `const originalTodo = {
   id: 1,
   text: '…',
@@ -810,6 +832,18 @@ export const yhto = `type Todo = {
   readonly text: string
   readonly done: boolean
 }`
+
+export const yvum = `// In addition to the Todo type…
+type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>
+
+// We need to create the new Separator type?
+type Separator = Readonly<{
+  // ???
+}>`
 
 export const ywiv = `// The return value must match the Todo type
 function toggleTodo(todo: Todo): Todo {

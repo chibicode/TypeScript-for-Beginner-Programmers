@@ -19,7 +19,7 @@ const TodoList = ({
   return (
     <>
       {items.map((item, index) =>
-        item.type !== 'separator' ? (
+        item.kind !== 'separator' ? (
           <div
             key={item.id}
             css={
@@ -33,7 +33,7 @@ const TodoList = ({
           </div>
         ) : (
           <div
-            key={`separator-${index}`}
+            key={item.id}
             css={
               index !== items.length - 1 &&
               css`

@@ -27,10 +27,11 @@ export type ItemType =
       id: number
       text: string
       done: boolean
-      type?: 'todo'
+      kind?: 'todo'
     }
   | {
-      type: 'separator'
+      id: number
+      kind: 'separator'
       text?: string
     }
 
@@ -52,7 +53,7 @@ const reducer = (state: TodoState, action: TodoAction) => {
   switch (action.type) {
     case 'toggle': {
       const item = state.todos[action.index]
-      if (item.type !== 'separator') {
+      if (item.kind !== 'separator') {
         return {
           todos: [
             ...state.todos.slice(0, action.index),
@@ -71,7 +72,7 @@ const reducer = (state: TodoState, action: TodoAction) => {
     case 'markAllAsCompleted':
       return {
         todos: state.todos.map(item =>
-          item.type !== 'separator' ? { ...item, done: true } : item
+          item.kind !== 'separator' ? { ...item, done: true } : item
         ),
         lastChangedIndices: state.todos.map((_, index) => index)
       }

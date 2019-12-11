@@ -1446,22 +1446,113 @@ const Page = () => (
         content: (
           <>
             <P>
+              Let me introduce the new feature of our todo app called{' '}
+              <strong>separators</strong>.{' '}
+            </P>
+            <P>
               <Highlight>
                 Sometimes, you might want to separate a group of todo items from
                 others.
               </Highlight>{' '}
-              On the following todo app, the third item is a{' '}
-              <strong>separator</strong> which visually separates the first two
-              todo items from the last.
+              On the following todo app, the third item is a separator which
+              visually separates the first two todo items from the last.
             </P>
             <TodoWithData
               caption={<>There’s a separator after the second todo item</>}
               defaultData={[
                 { id: 1, text: 'First todo', done: false },
                 { id: 2, text: 'Second todo', done: false },
-                { type: 'separator' },
+                { id: 1, kind: 'separator' },
                 { id: 3, text: 'Third todo', done: false }
               ]}
+            />
+            <P>This one has two separators:</P>
+            <TodoWithData
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false },
+                { id: 1, kind: 'separator' },
+                { id: 3, text: 'Third todo', done: false },
+                { id: 2, kind: 'separator' },
+                { id: 4, text: 'Fourth todo', done: false }
+              ]}
+            />
+            <P>
+              <strong>Now, here’s a question:</strong>{' '}
+              <Highlight>
+                What <Code>type</Code> should we create to support these
+                separator items?
+              </Highlight>
+            </P>
+            <EmojiSeparator
+              emojis={['question', 'type', 'question']}
+              description={
+                <>
+                  What <Code>type</Code> should we create to support separator
+                  items?
+                </>
+              }
+            />
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            The <Code>Separator</Code> type
+          </>
+        ),
+        content: (
+          <>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        <strong>Let me guess:</strong> In addition to the
+                        existing <Code>Todo</Code> type, we need to create the
+                        new <Code>Separator</Code> type to describe a separator
+                        item, right? Something like this?
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <CodeBlock
+              snippet={snippets.yvum}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 8 && tokenIndex <= 3
+              }
+            />
+            <P>
+              <strong>Exactly, Little Duckling!</strong> Now, let’s think about
+              what needs to go into the <Code>Separator</Code> type.{' '}
+            </P>
+            <P>
+              <strong>First,</strong>{' '}
+              <Highlight>
+                we’ll add <Code>id</Code> just like todos
+              </Highlight>{' '}
+              because we’ll probably need to store the separator data into a
+              backend database using this <Code>id</Code>.
+            </P>
+            <CodeBlock
+              snippet={snippets.wmgl}
+              shouldHighlight={lineIndex => lineIndex === 7}
+            />
+            <P>
+              <strong>Second,</strong>{' '}
+              <Highlight>
+                let’s add a <Code>kind</Code> property to BOTH <Code>Todo</Code>{' '}
+                and <Code>Separator</Code> to differentiate them.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.jnuw}
+              shouldHighlight={lineIndex => lineIndex === 4 || lineIndex === 9}
             />
           </>
         )
