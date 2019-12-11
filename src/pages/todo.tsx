@@ -107,9 +107,9 @@ const Page = () => (
                   This tutorial doesn’t rely on any specific frontend library
                 </Highlight>
                 , so it doesn’t matter whether you know React, Vue, or some
-                other libraries. As long as you know how to build a todo list
-                using a JS library, you should be able to understand this
-                tutorial. No prior TypeScript knowledge is necessary.
+                other libraries. As long as you have basic JS knowledge, you
+                should be able to understand this tutorial. No prior TypeScript
+                knowledge is necessary.
               </UlLi>
               <UlLi>
                 To save time,{' '}
@@ -127,23 +127,47 @@ const Page = () => (
                 <Highlight>
                   I’m not going to cover everything about TypeScript.
                 </Highlight>{' '}
-                I’m only going to cover some of the cool concepts in
-                TypeScript—mostly basic, some intermediate-level concepts. My
-                goal is to make you want to learn more.
+                I’m only going to cover some of the coolest concepts in
+                TypeScript—mostly basic. My goal is to make you want to learn
+                more.
               </UlLi>
             </Ul>
+            <EmojiSeparator
+              emojis={['sparkles', 'bird', 'sparkles']}
+              description={
+                <>
+                  I’m only going to cover TypeScript basics. My goal is to make
+                  you want to learn more.
+                </>
+              }
+            />
             <P>
-              There are <strong>4 sections</strong> total in this article. Here
-              are the topics covered in each section:
+              There are <strong>3 sections</strong> total in this article, plus
+              “one more thing” at the end. Here are the topics covered in each
+              section—there are a total of <strong>10 topics</strong> covered:
             </P>
             <Ul>
               <UlLi>
-                <strong>Section 1:</strong> Types, Read-only Properties, and
-                Mapped Types
+                <strong>Section 1:</strong>{' '}
+                <Highlight>
+                  Types, Read-only Properties, and Mapped Types
+                </Highlight>
               </UlLi>
               <UlLi>
-                <strong>Section 2:</strong> Array Types, Literal Types, and
-                Intersection Types
+                <strong>Section 2:</strong>{' '}
+                <Highlight>
+                  Array Types, Literal Types, and Intersection Types
+                </Highlight>
+              </UlLi>
+              <UlLi>
+                <strong>Section 3:</strong>{' '}
+                <Highlight>
+                  Union Types, Discriminated Unions, and Optional Properties
+                </Highlight>
+              </UlLi>
+              <UlLi>
+                <strong>One more thing:</strong>{' '}
+                <Highlight>Indexed Access Operator</Highlight>
               </UlLi>
             </Ul>
             <P>Let’s get started!</P>
@@ -153,7 +177,7 @@ const Page = () => (
       {
         title: (
           <>
-            <strong>Section 1</strong> of 4
+            <strong>Section 1</strong> of 3
           </>
         ),
         heading: <>Types, Read-only Properties, and Mapped Types</>,
@@ -922,7 +946,7 @@ const Page = () => (
       {
         title: (
           <>
-            <strong>Section 2</strong> of 4
+            <strong>Section 2</strong> of 3
           </>
         ),
         heading: <>Array Types, Literal Types, and Intersection Types</>,
@@ -1140,8 +1164,30 @@ const Page = () => (
               }
             />
             <P>
-              We can now specify the return type of <Code>completeAll()</Code>{' '}
-              to be an array of <Code>CompletedTodo</Code>’s:
+              Let’s take a look at an example. In the following code, we added a{' '}
+              <Code>CompletedTodo</Code> to a todo item that has{' '}
+              <Code>done: false</Code>. Let’s see what happens{' '}
+              <Highlight>
+                when you <RunButtonText compile /> it
+              </Highlight>
+              :
+            </P>
+            <CodeBlock
+              snippet={snippets.zswn}
+              compile
+              resultError
+              result={<>Type 'false' is not assignable to type 'true'.</>}
+              shouldHighlightResult={lineNumber => lineNumber === 4}
+            />
+            <P>
+              It failed to compile because <Code>done</Code> is not{' '}
+              <Code>true</Code>. By using literal types like the above, you can
+              specify exactly what value is allowed for each property.
+            </P>
+            <P>
+              Coming back to <Code>completeAll()</Code>, we can now specify the
+              return type of <Code>completeAll()</Code> to be an array of{' '}
+              <Code>CompletedTodo</Code>’s:
             </P>
             <CodeBlock
               snippet={snippets.oone}
@@ -1333,6 +1379,32 @@ const Page = () => (
               It failed because <Code>CompletedTodo</Code> must have{' '}
               <Code>done: true</Code>. Once again, TypeScript caught an error
               early.
+            </P>
+          </>
+        )
+      },
+      {
+        color: 'green',
+        subtitle: <>Section 2 Summary:</>,
+        title: <>TypeScript can handle arrays and exact values</>,
+        content: (
+          <>
+            <P>In this section, we’ve learned the following:</P>
+            <P>
+              <strong>
+                1. We can specify an array type by adding <Code>[]</Code>. We
+                can also set an array as <Code>readonly</Code>.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.ruga}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                (lineNumber === 2 && tokenNumber >= 2 && tokenNumber <= 6) ||
+                (lineNumber === 1 && tokenNumber >= 2)
+              }
+            />
+            <P>
+              <strong>2. </strong>
             </P>
           </>
         )

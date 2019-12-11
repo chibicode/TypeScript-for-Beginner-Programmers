@@ -694,6 +694,12 @@ type CompletedTodo = Todo & {
   readonly done: true
 }`
 
+export const ruga = `function completeAll(
+  todos: readonly Todo[]
+): Todo[] {
+  // ...
+}`
+
 export const szan = `// Make input todos as readonly array
 function completeAll(
   todos: readonly Todo[]
@@ -811,4 +817,11 @@ export const yxjg = `function toggleTodo(todo) {
     text: todo.text,
     done: !todo.done
   }
+}`
+
+export const zswn = `// Will this compile?
+const testTodo: CompletedTodo = {
+  id: 1,
+  text: '…',
+  done: false
 }`
