@@ -736,6 +736,12 @@ export const ruga = `function completeAll(
   // ...
 }`
 
+export const rymr = `function completeAll(
+  items: readonly (Todo | Separator)[]
+): (CompletedTodo | Separator)[] {
+  return items.map(item => /* ? */)
+}`
+
 export const sgdc = `// Previous version of completeAll()
 function completeAll(
   todos: readonly Todo[]
@@ -829,6 +835,34 @@ type Separator = Readonly<{
   id: number
 }>`
 
+export const wptf = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+  kind: 'todo'
+}>
+
+type Separator = Readonly<{
+  id: number
+  kind: 'separator'
+}>
+
+type CompletedTodo = Todo & {
+  readonly done: true
+}
+
+function completeAll(
+  items: readonly (Todo | Separator)[]
+): (CompletedTodo | Separator)[] {
+  return items.map(item => {
+    if (item.kind === 'todo') {
+      return { ...item, done: true }
+    } else {
+      return item
+    }
+  })
+}`
+
 export const wrcf = `// TODO: Need to update to support separators
 function completeAll(
   todos: readonly Todo[]
@@ -887,6 +921,12 @@ export const yhto = `type Todo = {
   readonly id: number
   readonly text: string
   readonly done: boolean
+}`
+
+export const ykpe = `function completeAll(
+  items: readonly (Todo | Separator)[]
+): (CompletedTodo | Separator)[] {
+  return items.map(item => /* ? */)
 }`
 
 export const yvum = `// In addition to the Todo type…

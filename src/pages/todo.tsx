@@ -24,6 +24,26 @@ const section1 = 'Types, Read-only Properties, and Mapped Types'
 const section2 = 'Array Types, Literal Types, and Intersection Types'
 const section3 = 'Union Types, Discriminated Unions, and Optional Properties'
 
+const TodoWithSeparatorAndMarkAllAsCompleted = () => (
+  <TodoWithData
+    showData
+    caption={
+      <>
+        ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
+      </>
+    }
+    showMarkAllAsCompleted
+    narrowText
+    defaultData={[
+      { id: 1, kind: 'todo', text: 'A', done: false },
+      { id: 1, kind: 'separator' },
+      { id: 2, kind: 'todo', text: 'B', done: false }
+    ]}
+    highlightLineIndexOffset={1}
+    shouldHighlight={tokenIndex => tokenIndex === 20}
+  />
+)
+
 const Page = () => (
   <PostPage
     articleKey="todo"
@@ -1592,23 +1612,7 @@ const Page = () => (
               <Highlight>press “Mark all as completed”</Highlight> below, it
               ignores the separators and only toggles the todo items.
             </P>
-            <TodoWithData
-              showData
-              caption={
-                <>
-                  ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
-                </>
-              }
-              showMarkAllAsCompleted
-              narrowText
-              defaultData={[
-                { id: 1, kind: 'todo', text: 'A', done: false },
-                { id: 1, kind: 'separator' },
-                { id: 2, kind: 'todo', text: 'B', done: false }
-              ]}
-              highlightLineIndexOffset={1}
-              shouldHighlight={tokenIndex => tokenIndex === 20}
-            />
+            <TodoWithSeparatorAndMarkAllAsCompleted />
             <P>
               To get this to work, we need to modify our{' '}
               <Code>completeAll()</Code> function to support the{' '}
@@ -1709,7 +1713,11 @@ const Page = () => (
         )
       },
       {
-        title: <>Discriminated unions</>,
+        title: (
+          <>
+            Implementing <Code>completeAll()</Code>
+          </>
+        ),
         content: (
           <>
             <P>
@@ -1723,7 +1731,48 @@ const Page = () => (
               Let’s now think about what the updated version (with updated
               types) would look like:
             </P>
-            <CodeBlock snippet={snippets.zbii} />
+            <CodeBlock
+              snippet={snippets.zbii}
+              shouldHighlight={lineNumber => lineNumber === 3}
+            />
+            <P>
+              First, the <Code>.map()</Code> part would be the same as before—we
+              just need to change what goes inside <Code>.map()</Code>.
+            </P>
+            <CodeBlock
+              snippet={snippets.ykpe}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 3 && tokenNumber === 10
+              }
+            />
+            <P>
+              Now, let’s take a look at the todo app again. If you press{' '}
+              <Highlight>“Mark all as completed”</Highlight>, here’s what
+              happens to each item:
+            </P>
+            <Ul>
+              <UlLi>
+                If it’s{' '}
+                <Highlight>
+                  a <Code>Todo</Code>, change <Code>done</Code> to{' '}
+                  <Code>true</Code>.
+                </Highlight>
+              </UlLi>
+              <UlLi>
+                If it’s{' '}
+                <Highlight>
+                  a <Code>Separator</Code>, do nothing.
+                </Highlight>
+              </UlLi>
+            </Ul>
+            <TodoWithSeparatorAndMarkAllAsCompleted />
+            <P>
+              <Highlight>
+                We can check the <Code>kind</Code> property to differentiate
+                between a <Code>Todo</Code> and a <Code>Separator</Code>
+              </Highlight>
+              . So let’s do that inside <Code>.map()</Code>:
+            </P>
           </>
         )
       },
