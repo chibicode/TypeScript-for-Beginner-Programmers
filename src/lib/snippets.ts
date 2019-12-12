@@ -736,6 +736,16 @@ export const ruga = `function completeAll(
   // ...
 }`
 
+export const sgdc = `// Previous version of completeAll()
+function completeAll(
+  todos: readonly Todo[]
+): CompletedTodo[] {
+  return todos.map(todo => ({
+    ...todo,
+    done: true
+  }))
+}`
+
 export const szan = `// Make input todos as readonly array
 function completeAll(
   todos: readonly Todo[]
@@ -903,6 +913,12 @@ export const yxjg = `function toggleTodo(todo) {
     text: todo.text,
     done: !todo.done
   }
+}`
+
+export const zbii = `function completeAll(
+  items: readonly (Todo | Separator)[]
+): (CompletedTodo | Separator)[] {
+  // What would the updated version look like?
 }`
 
 export const zswn = `// Will this compile?

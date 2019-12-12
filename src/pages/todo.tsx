@@ -1708,6 +1708,25 @@ const Page = () => (
           </>
         )
       },
+      {
+        title: <>Discriminated unions</>,
+        content: (
+          <>
+            <P>
+              Again, here’s the previous version of <Code>completeAll()</Code>:
+            </P>
+            <CodeBlock
+              snippet={snippets.sgdc}
+              shouldHighlight={lineNumber => lineNumber === 0}
+            />
+            <P>
+              Let’s now think about what the updated version (with updated
+              types) would look like:
+            </P>
+            <CodeBlock snippet={snippets.zbii} />
+          </>
+        )
+      },
       underConstructionCard
     ]}
   />
