@@ -7,6 +7,12 @@
       "options": {
         "printWidth": 48
       }
+    },
+    {
+      "files": "snippets/snippets/**/ybsb.ts",
+      "options": {
+        "printWidth": 54
+      }
     }
   ]
 }

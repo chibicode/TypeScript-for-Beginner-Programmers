@@ -11,11 +11,11 @@ import CodeBlockHighlight from 'src/components/CodeBlockHighlight'
 import { format } from 'prettier/standalone'
 import parser from 'prettier/parser-babylon'
 
-const prettierFormat = (state: ItemType[], smallText = false) =>
+const prettierFormat = (state: ItemType[], narrowText = false) =>
   format(JSON.stringify(state), {
     semi: false,
     singleQuote: true,
-    printWidth: smallText ? 54 : 48,
+    printWidth: narrowText ? 54 : 48,
     plugins: [parser],
     parser: 'babel'
   })
@@ -91,7 +91,7 @@ const TodoWithData = ({
   disabled,
   highlightLineIndexOffset,
   shouldHighlight,
-  smallText
+  narrowText
 }: {
   defaultData: ItemType[]
   caption?: React.ReactNode
@@ -102,7 +102,7 @@ const TodoWithData = ({
   disabled?: boolean
   highlightLineIndexOffset?: number
   shouldHighlight?: (tokenIndex: number) => boolean
-  smallText?: boolean
+  narrowText?: boolean
 }) => {
   const { spaces, ns, maxWidths, radii, colors, letterSpacings } = useTheme()
   const [state, dispatch] = useReducer<typeof reducer>(reducer, {
@@ -141,7 +141,7 @@ const TodoWithData = ({
             <CodeBlockHighlight
               snippet={`${comment || ''}${comment ? '\n' : ''}${prettierFormat(
                 state.todos,
-                smallText
+                narrowText
               )}`}
               language="javascript"
               cssOverrides={[
@@ -151,7 +151,7 @@ const TodoWithData = ({
                   border-bottom-left-radius: ${radii(0.5)};
                   border-bottom-right-radius: ${radii(0.5)};
                 `,
-                smallText &&
+                narrowText &&
                   css`
                     letter-spacing: ${letterSpacings('smallCode')};
                   `

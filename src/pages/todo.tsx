@@ -1567,7 +1567,7 @@ const Page = () => (
             </P>
             <TodoWithData
               showData
-              smallText
+              narrowText
               defaultData={[
                 { id: 1, kind: 'todo', text: 'A', done: false },
                 { id: 2, kind: 'todo', text: 'B', done: false },
@@ -1583,11 +1583,7 @@ const Page = () => (
         )
       },
       {
-        title: (
-          <>
-            How does <Code>completeAll()</Code> change?
-          </>
-        ),
+        title: <>Union types</>,
         content: (
           <>
             <P>
@@ -1604,7 +1600,7 @@ const Page = () => (
                 </>
               }
               showMarkAllAsCompleted
-              smallText
+              narrowText
               defaultData={[
                 { id: 1, kind: 'todo', text: 'A', done: false },
                 { id: 1, kind: 'separator' },
@@ -1617,6 +1613,97 @@ const Page = () => (
               To get this to work, we need to modify our{' '}
               <Code>completeAll()</Code> function to support the{' '}
               <Code>Separator</Code> type.
+            </P>
+            <CodeBlock
+              snippet={snippets.wrcf}
+              shouldHighlight={lineNumber => lineNumber === 0}
+            />
+            <P>
+              <strong>
+                First, we need to change the input (parameter) type.
+              </strong>{' '}
+              Previously, the input was just an array of <Code>Todo</Code>s.
+            </P>
+            <CodeBlock
+              snippet={snippets.vgnb}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 2 && tokenNumber >= 3
+              }
+            />
+            <P>
+              However, now the array can contain <strong>both</strong>{' '}
+              <Code>Todo</Code>s and <Code>Separator</Code>s.
+            </P>
+            <CodeBlock narrowText snippet={snippets.ybsb} />
+            <P>
+              To represent this, we need to use a TypeScript feature called{' '}
+              <strong>union types</strong>. In TypeScript, you can use the
+              syntax <Code>A | B</Code> to create a union type, which represents
+              a type that’s{' '}
+              <Highlight>
+                either <Code>A</Code> or <Code>B</Code>
+              </Highlight>
+              .
+            </P>
+            <EmojiSeparator
+              emojis={['a', 'verticalBar', 'b']}
+              description={
+                <>
+                  <Code>A | B</Code> is an <strong>union type</strong>, which
+                  means{' '}
+                  <Highlight>
+                    either <Code>A</Code> or <Code>B</Code>.
+                  </Highlight>
+                </>
+              }
+            />
+            <CodeBlock snippet={snippets.xtkd} />
+            <P>
+              In this case, we need to create a union of <Code>Todo</Code> and{' '}
+              <Code>Separator</Code> like this:
+            </P>
+            <P>
+              <Highlight>
+                Because the input to <Code>completeAll()</Code> is an array of{' '}
+                <Code>Todo | Separator</Code>’s, we can update the parameter
+                type like below.
+              </Highlight>{' '}
+              (Also: I’ve updated the parameter name from <Code>todos</Code> to{' '}
+              <Code>items</Code>.)
+            </P>
+            <CodeBlock
+              snippet={snippets.bepv}
+              shouldHighlight={lineNumber => lineNumber === 3}
+            />
+            <P>
+              <strong>How about the ouptut (return) type?</strong> Before, we
+              set it as an array of <Code>CompletedTodo</Code>’s:
+            </P>
+            <CodeBlock
+              snippet={snippets.afeb}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 6 && tokenNumber >= 4 && tokenNumber <= 6
+              }
+            />
+            <P>
+              We can use the union type here again.{' '}
+              <Highlight>
+                <Code>completeAll()</Code> should return an array where each
+                item is either <Code>CompletedTodo</Code> or{' '}
+                <Code>Separator</Code>
+              </Highlight>
+              , so we’ll specify the output type like this:
+            </P>
+            <CodeBlock
+              snippet={snippets.czgn}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 2 && tokenNumber >= 4 && tokenNumber <= 12
+              }
+            />
+            <P>
+              That’s it for the input and output types of{' '}
+              <Code>completeAll()</Code>. Next, we’ll update its{' '}
+              <strong>implementation</strong>.
             </P>
           </>
         )

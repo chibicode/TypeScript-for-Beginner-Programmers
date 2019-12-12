@@ -469,6 +469,14 @@ const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
+export const afeb = `type CompletedTodo = Todo & {
+  readonly done: true
+}
+
+function completeAll(
+  items: readonly (Todo | Separator)[]
+): CompletedTodo[] // <- Before`
+
 export const ampt = `function toggleTodo(todo: Todo): Todo {
   return {
     // This line was missing
@@ -477,6 +485,12 @@ export const ampt = `function toggleTodo(todo: Todo): Todo {
     done: !todo.done
   }
 }`
+
+export const bepv = `function completeAll(
+  // After: An array of items, each of which
+  // can be either Todo or Separator
+  items: readonly (Todo | Separator)[]
+)`
 
 export const bnli = `const foo: Todo = {
   id: 1,
@@ -494,6 +508,10 @@ export const csum = `// todo must match the Todo type
 function toggleTodo(todo: Todo) {
   // ...
 }`
+
+export const czgn = `function completeAll(
+  items: readonly (Todo | Separator)[]
+): (CompletedTodo | Separator)[] // <- After`
 
 export const dqwb = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring
@@ -742,6 +760,11 @@ export const uxlb = `function toggleTodo(todo: Todo): Todo {
   return todo
 }`
 
+export const vgnb = `function completeAll(
+  // Before: An array of Todo’s
+  todos: readonly Todo[]
+)`
+
 export const vgnq = `// This will continue to work because
 // the input todo is not modified
 function toggleTodo(todo: Todo): Todo {
@@ -796,6 +819,16 @@ type Separator = Readonly<{
   id: number
 }>`
 
+export const wrcf = `// TODO: Need to update to support separators
+function completeAll(
+  todos: readonly Todo[]
+): CompletedTodo[] {
+  return todos.map(todo => ({
+    ...todo,
+    done: true
+  }))
+}`
+
 export const wymp = `const originalTodo = {
   id: 1,
   text: '…',
@@ -826,6 +859,19 @@ type CompletedTodo = Readonly<{
   text: string
   done: true
 }>`
+
+export const xtkd = `// A union type of Todo and Separator.
+// This means: "either Todo OR Separator"
+Todo | Separator`
+
+export const ybsb = `[
+  // Todo
+  { id: 1, kind: 'todo', text: 'A', done: false },
+  // Separator
+  { id: 1, kind: 'separator' },
+  // Todo
+  { id: 2, kind: 'todo', text: 'B', done: false }
+]`
 
 export const yhto = `type Todo = {
   readonly id: number

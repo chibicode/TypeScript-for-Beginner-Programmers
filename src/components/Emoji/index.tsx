@@ -22,6 +22,7 @@ import B from 'src/components/Emoji/B'
 import Ampersand from 'src/components/Emoji/Ampersand'
 import DoneTrue from 'src/components/Emoji/DoneTrue'
 import Type from 'src/components/Emoji/Type'
+import VerticalBar from 'src/components/Emoji/VerticalBar'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -45,7 +46,8 @@ export const emojiToComponent = {
   b: B,
   ampersand: Ampersand,
   doneTrue: DoneTrue,
-  type: Type
+  type: Type,
+  verticalBar: VerticalBar
 }
 
 export const EmojiWrapper = ({
