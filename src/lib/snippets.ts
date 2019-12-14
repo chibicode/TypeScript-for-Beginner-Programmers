@@ -545,18 +545,6 @@ function toggleTodo(
   // ...
 }`
 
-export const jnuw = `type Todo = Readonly<{
-  id: number
-  kind: 'todo'
-  text: string
-  done: boolean
-}>
-
-type Separator = Readonly<{
-  id: number
-  kind: 'separator'
-}>`
-
 export const kuzw = `function completeAll(todos: Todo[]): Todo[] {
   // We want it to return a new array
   // instead of modifying the original array
@@ -718,12 +706,6 @@ export const ruga = `function completeAll(
   // ...
 }`
 
-export const rymr = `function completeAll(
-  items: readonly (Todo | Separator)[]
-): (CompletedTodo | Separator)[] {
-  return items.map(item => /* ? */)
-}`
-
 export const szan = `// Make input todos as readonly array
 function completeAll(
   todos: readonly Todo[]
@@ -792,44 +774,6 @@ export const whae = `function completeAll(
   }))
 }`
 
-export const wmgl = `type Todo = Readonly<{
-  id: number
-  text: string
-  done: boolean
-}>
-
-type Separator = Readonly<{
-  id: number
-}>`
-
-export const wptf = `type Todo = Readonly<{
-  id: number
-  text: string
-  done: boolean
-  kind: 'todo'
-}>
-
-type Separator = Readonly<{
-  id: number
-  kind: 'separator'
-}>
-
-type CompletedTodo = Todo & {
-  readonly done: true
-}
-
-function completeAll(
-  items: readonly (Todo | Separator)[]
-): (CompletedTodo | Separator)[] {
-  return items.map(item => {
-    if (item.kind === 'todo') {
-      return { ...item, done: true }
-    } else {
-      return item
-    }
-  })
-}`
-
 export const wymp = `const originalTodo = {
   id: 1,
   text: '…',
@@ -861,27 +805,11 @@ type CompletedTodo = Readonly<{
   done: true
 }>`
 
-export const xtkd = `// A union type of Todo and Separator.
-// This means: "either Todo OR Separator"
-Todo | Separator`
-
 export const yhto = `type Todo = {
   readonly id: number
   readonly text: string
   readonly done: boolean
 }`
-
-export const yvum = `// In addition to the Todo type…
-type Todo = Readonly<{
-  id: number
-  text: string
-  done: boolean
-}>
-
-// We need to create the new Separator type?
-type Separator = Readonly<{
-  // ???
-}>`
 
 export const ywiv = `// The return value must match the Todo type
 function toggleTodo(todo: Todo): Todo {
