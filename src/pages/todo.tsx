@@ -25,26 +25,6 @@ const section1 =
 const section2 = 'Array Types, Literal Types, and Intersection Types'
 const section3 = 'Union Types and Discriminated Unions'
 
-const TodoWithSeparatorAndMarkAllAsCompleted = () => (
-  <TodoWithData
-    showData
-    caption={
-      <>
-        ↓ Try pressing <Highlight>“Mark all as completed”</Highlight>
-      </>
-    }
-    showMarkAllAsCompleted
-    narrowText
-    defaultData={[
-      { id: 1, kind: 'todo', text: 'A', done: false },
-      { id: 1, kind: 'separator' },
-      { id: 2, kind: 'todo', text: 'B', done: false }
-    ]}
-    highlightLineIndexOffset={1}
-    shouldHighlight={tokenIndex => tokenIndex === 20}
-  />
-)
-
 const Page = () => (
   <PostPage
     articleKey="todo"
@@ -1522,7 +1502,7 @@ const Page = () => (
         color: 'darkGreen'
       },
       {
-        title: <>Separators</>,
+        title: <>Nea Feature: Separators</>,
         content: (
           <>
             <P>
@@ -1633,8 +1613,8 @@ const Page = () => (
             <P>
               For each type, we’ll specify exactly what value is allowed for the{' '}
               <Code>kind</Code> property (reminder—this is called{' '}
-              <strong>literal types</strong>). The <Code>Todo</Code> item must
-              have <Code>kind: 'todo'</Code>, and the <Code>Separator</Code>{' '}
+              <strong>literal types</strong>). Each <Code>Todo</Code> item must
+              have <Code>kind: 'todo'</Code>, and each <Code>Separator</Code>{' '}
               item must have <Code>kind: 'separator'</Code>.
             </P>
             <CodeBlock
@@ -1663,42 +1643,9 @@ const Page = () => (
         )
       },
       {
-        title: <>Union types</>,
+        title: <></>,
         content: (
           <>
-            <P>
-              Now, let’s revisit the <strong>mark all as completed</strong>{' '}
-              feature again. If you{' '}
-              <Highlight>press “Mark all as completed”</Highlight> below, it
-              ignores the separators and only toggles the todo items.
-            </P>
-            <TodoWithSeparatorAndMarkAllAsCompleted />
-            <P>
-              To get this to work, we need to modify our{' '}
-              <Code>completeAll()</Code> function to support the{' '}
-              <Code>Separator</Code> type.
-            </P>
-            <CodeBlock
-              snippet={snippets.wrcf}
-              shouldHighlight={lineNumber => lineNumber === 0}
-            />
-            <P>
-              <strong>
-                First, we need to change the input (parameter) type.
-              </strong>{' '}
-              Previously, the input was just an array of <Code>Todo</Code>s.
-            </P>
-            <CodeBlock
-              snippet={snippets.vgnb}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 2 && tokenNumber >= 3
-              }
-            />
-            <P>
-              However, now the array can contain <strong>both</strong>{' '}
-              <Code>Todo</Code>s and <Code>Separator</Code>s.
-            </P>
-            <CodeBlock narrowText snippet={snippets.ybsb} />
             <P>
               To represent this, we need to use a TypeScript feature called{' '}
               <strong>union types</strong>. In TypeScript, you can use the
@@ -1721,118 +1668,11 @@ const Page = () => (
                 </>
               }
             />
-            <CodeBlock snippet={snippets.xtkd} />
             <P>
               In this case, we need to create a union of <Code>Todo</Code> and{' '}
               <Code>Separator</Code> like this:
             </P>
-            <P>
-              <Highlight>
-                Because the input to <Code>completeAll()</Code> is an array of{' '}
-                <Code>Todo | Separator</Code>’s, we can update the parameter
-                type like below.
-              </Highlight>{' '}
-              (Also: I’ve updated the parameter name from <Code>todos</Code> to{' '}
-              <Code>items</Code>.)
-            </P>
-            <CodeBlock
-              snippet={snippets.bepv}
-              shouldHighlight={lineNumber => lineNumber === 3}
-            />
-            <P>
-              <strong>How about the ouptut (return) type?</strong> Before, we
-              set it as an array of <Code>CompletedTodo</Code>’s:
-            </P>
-            <CodeBlock
-              snippet={snippets.afeb}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 6 && tokenNumber >= 4 && tokenNumber <= 6
-              }
-            />
-            <P>
-              We can use the union type here again.{' '}
-              <Highlight>
-                <Code>completeAll()</Code> should return an array where each
-                item is either <Code>CompletedTodo</Code> or{' '}
-                <Code>Separator</Code>
-              </Highlight>
-              , so we’ll specify the output type like this:
-            </P>
-            <CodeBlock
-              snippet={snippets.czgn}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 2 && tokenNumber >= 4 && tokenNumber <= 12
-              }
-            />
-            <P>
-              That’s it for the input and output types of{' '}
-              <Code>completeAll()</Code>. Next, we’ll update its{' '}
-              <strong>implementation</strong>.
-            </P>
-          </>
-        )
-      },
-      {
-        title: (
-          <>
-            Implementing <Code>completeAll()</Code>
-          </>
-        ),
-        content: (
-          <>
-            <P>
-              Again, here’s the previous version of <Code>completeAll()</Code>:
-            </P>
-            <CodeBlock
-              snippet={snippets.sgdc}
-              shouldHighlight={lineNumber => lineNumber === 0}
-            />
-            <P>
-              Let’s now think about what the updated version (with updated
-              types) would look like:
-            </P>
-            <CodeBlock
-              snippet={snippets.zbii}
-              shouldHighlight={lineNumber => lineNumber === 3}
-            />
-            <P>
-              First, the <Code>.map()</Code> part would be the same as before—we
-              just need to change what goes inside <Code>.map()</Code>.
-            </P>
-            <CodeBlock
-              snippet={snippets.ykpe}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                lineNumber === 3 && tokenNumber === 10
-              }
-            />
-            <P>
-              Now, let’s take a look at the todo app again. If you press{' '}
-              <Highlight>“Mark all as completed”</Highlight>, here’s what
-              happens to each item:
-            </P>
-            <Ul>
-              <UlLi>
-                If it’s{' '}
-                <Highlight>
-                  a <Code>Todo</Code>, change <Code>done</Code> to{' '}
-                  <Code>true</Code>.
-                </Highlight>
-              </UlLi>
-              <UlLi>
-                If it’s{' '}
-                <Highlight>
-                  a <Code>Separator</Code>, do nothing.
-                </Highlight>
-              </UlLi>
-            </Ul>
-            <TodoWithSeparatorAndMarkAllAsCompleted />
-            <P>
-              <Highlight>
-                We can check the <Code>kind</Code> property to differentiate
-                between a <Code>Todo</Code> and a <Code>Separator</Code>
-              </Highlight>
-              . So let’s do that inside <Code>.map()</Code>:
-            </P>
+            <CodeBlock snippet={snippets.xtkd} />
           </>
         )
       },
