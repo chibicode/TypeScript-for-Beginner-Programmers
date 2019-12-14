@@ -23,7 +23,7 @@ const compileSuccess = 'Compiled successfully!'
 const section1 =
   'Types, Optional Properties, Read-only Properties, and Mapped Types'
 const section2 = 'Array Types, Literal Types, and Intersection Types'
-const section3 = 'Union Types and Discriminated Unions'
+const section3 = 'Union Types'
 
 const Page = () => (
   <PostPage
@@ -146,9 +146,8 @@ const Page = () => (
               }
             />
             <P>
-              There are <strong>3 sections</strong> total in this article, plus
-              “one more thing” at the end. Here are the topics covered in each
-              section—there are a total of <strong>9 topics</strong> covered:
+              There are <strong>3 sections</strong> total in this article. Here
+              are the topics covered in each section.
             </P>
             <Ul>
               <UlLi>
@@ -159,10 +158,6 @@ const Page = () => (
               </UlLi>
               <UlLi>
                 <strong>Section 3:</strong> <Highlight>{section3}</Highlight>
-              </UlLi>
-              <UlLi>
-                <strong>One more thing:</strong>{' '}
-                <Highlight>Indexed Access Operator</Highlight>
               </UlLi>
             </Ul>
             <P>Let’s get started!</P>
@@ -1502,7 +1497,7 @@ const Page = () => (
         color: 'darkGreen'
       },
       {
-        title: <>Nea Feature: Separators</>,
+        title: <>New feature: Separators</>,
         content: (
           <>
             <P>
