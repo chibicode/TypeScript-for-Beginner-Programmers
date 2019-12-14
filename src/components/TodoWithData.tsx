@@ -22,18 +22,12 @@ const prettierFormat = (state: ItemType[], narrowText = false) =>
     .trim()
     .substring(1)
 
-export type ItemType =
-  | {
-      id: number
-      text: string
-      done: boolean
-      kind?: 'todo'
-    }
-  | {
-      id: number
-      kind: 'separator'
-      text?: string
-    }
+export type ItemType = {
+  id: number
+  text: string
+  done: boolean
+  kind?: 'todo'
+}
 
 export type TodoAction =
   | {
@@ -53,27 +47,21 @@ const reducer = (state: TodoState, action: TodoAction) => {
   switch (action.type) {
     case 'toggle': {
       const item = state.todos[action.index]
-      if (item.kind !== 'separator') {
-        return {
-          todos: [
-            ...state.todos.slice(0, action.index),
-            {
-              ...state.todos[action.index],
-              done: !item.done
-            },
-            ...state.todos.slice(action.index + 1)
-          ],
-          lastChangedIndices: [action.index]
-        }
-      } else {
-        return state
+      return {
+        todos: [
+          ...state.todos.slice(0, action.index),
+          {
+            ...state.todos[action.index],
+            done: !item.done
+          },
+          ...state.todos.slice(action.index + 1)
+        ],
+        lastChangedIndices: [action.index]
       }
     }
     case 'markAllAsCompleted':
       return {
-        todos: state.todos.map(item =>
-          item.kind !== 'separator' ? { ...item, done: true } : item
-        ),
+        todos: state.todos.map(item => ({ ...item, done: true })),
         lastChangedIndices: state.todos.map((_, index) => index)
       }
     default:

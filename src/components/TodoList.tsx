@@ -5,7 +5,6 @@ import TodoItem from 'src/components/TodoItem'
 import { ItemType } from 'src/components/TodoWithData'
 import { useContext } from 'react'
 import TodoWithDataContext from 'src/components/TodoWithDataContext'
-import SeparatorItem from 'src/components/SeparatorItem'
 
 const TodoList = ({
   todos: items,
@@ -18,33 +17,19 @@ const TodoList = ({
   const { dispatch, disabled } = useContext(TodoWithDataContext)
   return (
     <>
-      {items.map((item, index) =>
-        item.kind !== 'separator' ? (
-          <div
-            key={`separator-${item.id}`}
-            css={
-              index !== items.length - 1 &&
-              css`
-                margin-bottom: ${spaces(0.125)};
-              `
-            }
-          >
-            <TodoItem index={index} done={item.done} text={item.text} />
-          </div>
-        ) : (
-          <div
-            key={`todo-${item.id}`}
-            css={
-              index !== items.length - 1 &&
-              css`
-                margin-bottom: ${spaces(0.125)};
-              `
-            }
-          >
-            <SeparatorItem text={item.text} />
-          </div>
-        )
-      )}
+      {items.map((item, index) => (
+        <div
+          key={item.id}
+          css={
+            index !== items.length - 1 &&
+            css`
+              margin-bottom: ${spaces(0.125)};
+            `
+          }
+        >
+          <TodoItem index={index} done={item.done} text={item.text} />
+        </div>
+      ))}
       {showMarkAllAsCompleted &&
         !disabled &&
         items.filter(item => item.kind === 'todo' && !item.done).length > 0 && (
