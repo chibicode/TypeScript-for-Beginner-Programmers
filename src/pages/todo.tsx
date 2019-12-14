@@ -20,9 +20,10 @@ import BubbleQuotes from 'src/components/BubbleQuotes'
 import ResultHighlight from 'src/components/ResultHighlight'
 
 const compileSuccess = 'Compiled successfully!'
-const section1 = 'Types, Read-only Properties, and Mapped Types'
+const section1 =
+  'Types, Optional Properties, Read-only Properties, and Mapped Types'
 const section2 = 'Array Types, Literal Types, and Intersection Types'
-const section3 = 'Union Types, Discriminated Unions, and Optional Properties'
+const section3 = 'Union Types and Discriminated Unions'
 
 const TodoWithSeparatorAndMarkAllAsCompleted = () => (
   <TodoWithData
@@ -167,7 +168,7 @@ const Page = () => (
             <P>
               There are <strong>3 sections</strong> total in this article, plus
               “one more thing” at the end. Here are the topics covered in each
-              section—there are a total of <strong>10 topics</strong> covered:
+              section—there are a total of <strong>9 topics</strong> covered:
             </P>
             <Ul>
               <UlLi>
@@ -502,6 +503,49 @@ const Page = () => (
         )
       },
       {
+        color: 'pink',
+        subtitle: <>Side Note</>,
+        title: (
+          <>
+            Optional <Code color="lightYellow1">id</Code>?
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              <Highlight>
+                What if we <em>actually</em> want to make the{' '}
+                <Code color="lightYellow1">id</Code> property of a todo item
+                optional?
+              </Highlight>{' '}
+              For example, a new todo item that’s not yet saved in a database
+              may not have an <Code color="lightYellow1">id</Code> yet.
+            </P>
+            <P>
+              <strong>To make a property optional</strong> in TypeScript,{' '}
+              <Highlight>
+                you can add <strong>a question mark</strong> (
+                <Code color="lightYellow1">?</Code>)
+              </Highlight>{' '}
+              after the property name:
+            </P>
+            <CodeBlock
+              snippet={snippets.bxzu}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 2 && tokenIndex <= 1
+              }
+            />
+            <P>
+              But for the purposes of our discussion,{' '}
+              <Highlight>
+                we’ll keep <Code color="lightYellow1">id</Code> as required
+              </Highlight>{' '}
+              to make things simpler.
+            </P>
+          </>
+        )
+      },
+      {
         title: (
           <>
             Using TypeScript for <Code>toggleTodo()</Code>
@@ -512,7 +556,11 @@ const Page = () => (
             <P>
               Now, let’s use TypeScript to prevent the mistake Little Duckling
               made earlier. To recap, here’s the <Code>Todo</Code> type we
-              created earlier:
+              created earlier (
+              <Highlight>
+                <Code>id</Code> is required
+              </Highlight>
+              ):
             </P>
             <CodeBlock snippet={snippets.lieq} />
             <P>
@@ -901,7 +949,19 @@ const Page = () => (
             />
             <P>
               <strong>
-                2. We can use the <Code>readonly</Code> keyword to make sure
+                2. We can make some properties optional by adding <Code>?</Code>{' '}
+                after the property name.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.kquk}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 2 && tokenIndex <= 1
+              }
+            />
+            <P>
+              <strong>
+                3. We can use the <Code>readonly</Code> keyword to make sure
                 that an object’s properties are not modified.
               </strong>
             </P>

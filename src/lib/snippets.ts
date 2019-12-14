@@ -504,6 +504,19 @@ export const bpmz = `type CompletedTodo = Readonly<{
   done: true
 }>`
 
+export const bxzu = `type Todo = {
+  // Make id optional
+  id?: number
+  text: string
+  done: boolean
+}
+
+// This will now compile!
+const bar: Todo = {
+  text: '…',
+  done: true
+}`
+
 export const csum = `// todo must match the Todo type
 function toggleTodo(todo: Todo) {
   // ...
@@ -574,6 +587,13 @@ type Separator = Readonly<{
   id: number
   kind: 'separator'
 }>`
+
+export const kquk = `type Todo = {
+  // Make id optional
+  id?: number
+  text: string
+  done: boolean
+}`
 
 export const kuzw = `function completeAll(todos: Todo[]): Todo[] {
   // We want it to return a new array
