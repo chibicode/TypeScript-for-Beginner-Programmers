@@ -11,7 +11,7 @@ import CodeBlockHighlight from 'src/components/CodeBlockHighlight'
 import { format } from 'prettier/standalone'
 import parser from 'prettier/parser-babylon'
 
-const prettierFormat = (state: ItemType[], narrowText = false) =>
+const prettierFormat = (state: Todo[], narrowText = false) =>
   format(JSON.stringify(state), {
     semi: false,
     singleQuote: true,
@@ -22,11 +22,11 @@ const prettierFormat = (state: ItemType[], narrowText = false) =>
     .trim()
     .substring(1)
 
-export type ItemType = {
+export type Todo = {
   id: number
   text: string
   done: boolean
-  kind?: 'todo'
+  location?: 'home' | 'work'
 }
 
 export type TodoAction =
@@ -39,7 +39,7 @@ export type TodoAction =
     }
 
 export type TodoState = {
-  todos: ItemType[]
+  todos: Todo[]
   lastChangedIndices: number[]
 }
 
@@ -81,7 +81,7 @@ const TodoWithData = ({
   shouldHighlight,
   narrowText
 }: {
-  defaultData: ItemType[]
+  defaultData: Todo[]
   caption?: React.ReactNode
   promptArrowText?: React.ReactNode
   showData?: boolean

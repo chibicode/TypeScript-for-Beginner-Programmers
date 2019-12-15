@@ -18,7 +18,7 @@ import RunButtonText from 'src/components/RunButtonText'
 import CodeBlock from 'src/components/CodeBlock'
 import BubbleQuotes from 'src/components/BubbleQuotes'
 import ResultHighlight from 'src/components/ResultHighlight'
-import PlaceLabel from 'src/components/PlaceLabel'
+import LocationLabel from 'src/components/LocationLabel'
 
 const compileSuccess = 'Compiled successfully!'
 const section1 = 'Types, Read-only Properties, and Mapped Types'
@@ -1451,9 +1451,23 @@ const Page = () => (
             </P>
             <P>
               Each todo item can now optionally be labeled as{' '}
-              <PlaceLabel place="home" /> or <PlaceLabel place="work" />, like
-              this:
+              <LocationLabel location="home" /> or{' '}
+              <LocationLabel location="work" />, like this:
             </P>
+            <TodoWithData
+              caption={
+                <>
+                  Each todo item can now optionally be labeled as{' '}
+                  <LocationLabel location="home" /> or{' '}
+                  <LocationLabel location="work" />
+                </>
+              }
+              defaultData={[
+                { id: 1, text: 'Do laundry', done: false, location: 'home' },
+                { id: 2, text: 'Email boss', done: false, location: 'work' },
+                { id: 3, text: 'Go to gym', done: false }
+              ]}
+            />
           </>
         )
       },

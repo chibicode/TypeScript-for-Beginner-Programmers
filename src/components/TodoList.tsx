@@ -2,7 +2,7 @@
 import { css, jsx } from '@emotion/core'
 import useTheme from 'src/hooks/useTheme'
 import TodoItem from 'src/components/TodoItem'
-import { ItemType } from 'src/components/TodoWithData'
+import { Todo } from 'src/components/TodoWithData'
 import { useContext } from 'react'
 import TodoWithDataContext from 'src/components/TodoWithDataContext'
 
@@ -10,7 +10,7 @@ const TodoList = ({
   todos: items,
   showMarkAllAsCompleted
 }: {
-  todos: ItemType[]
+  todos: Todo[]
   showMarkAllAsCompleted?: boolean
 }) => {
   const { fontSizes, spaces, colors } = useTheme()
@@ -27,12 +27,17 @@ const TodoList = ({
             `
           }
         >
-          <TodoItem index={index} done={item.done} text={item.text} />
+          <TodoItem
+            index={index}
+            done={item.done}
+            text={item.text}
+            location={item.location}
+          />
         </div>
       ))}
       {showMarkAllAsCompleted &&
         !disabled &&
-        items.filter(item => item.kind === 'todo' && !item.done).length > 0 && (
+        items.filter(item => !item.done).length > 0 && (
           <div
             css={css`
               font-size: ${fontSizes(0.85)};
