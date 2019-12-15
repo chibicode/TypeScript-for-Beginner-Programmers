@@ -478,15 +478,6 @@ export const ampt = `function toggleTodo(todo: Todo): Todo {
   }
 }`
 
-export const awzp = `// A React component to render a place label UI
-function PlaceLabel({ place }: { place: Place }) {
-  return (
-    <span className="...">
-      {placeToString(place)}
-    </span>
-  )
-}`
-
 export const bnli = `const foo: Todo = {
   id: 1,
   text: '…',

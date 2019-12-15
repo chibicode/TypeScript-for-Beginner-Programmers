@@ -9,11 +9,7 @@
       }
     },
     {
-      "files": [
-        "snippets/snippets/**/umjt.ts",
-        "snippets/snippets/**/rvyq.ts",
-        "snippets/snippets/**/awzp.ts"
-      ],
+      "files": ["snippets/snippets/**/umjt.ts", "snippets/snippets/**/rvyq.ts"],
       "options": {
         "printWidth": 54
       }

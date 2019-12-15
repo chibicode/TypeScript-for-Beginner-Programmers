@@ -1691,7 +1691,7 @@ const Page = () => (
       {
         title: (
           <>
-            Introducing <Code>placeToString()</Code>
+            Implementing <Code>placeToString()</Code>
           </>
         ),
         content: (
@@ -1703,7 +1703,7 @@ const Page = () => (
             </P>
             <Ul>
               <UlLi>
-                <strong>Parameter</strong> should be a <Code>Place</Code>.{' '}
+                <strong>Input</strong> should be a <Code>Place</Code>.{' '}
                 <Highlight>
                   Example: <Code>'work'</Code>.
                 </Highlight>
@@ -1720,40 +1720,15 @@ const Page = () => (
                 </Highlight>
               </UlLi>
             </Ul>
-            <P>Here are more examples:</P>
+            <P>Here are the examples:</P>
             <CodeBlock snippet={snippets.qnrh} />
             <P>
               We can then use the return value of <Code>placeToString()</Code>{' '}
               to render place label UIs: <PlaceLabel place="home" />,{' '}
               <PlaceLabel place="work" />,{' '}
-              <PlaceLabel place={{ custom: 'Gym' }} />, etc. For example, if we
-              were to use React, we’d write a component like this:
+              <PlaceLabel place={{ custom: 'Gym' }} />, etc in any UI library
+              (e.g. React).
             </P>
-            <CodeBlock
-              narrowText
-              snippet={snippets.awzp}
-              shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 4 && tokenIndex >= 2 && tokenIndex <= 5
-              }
-            />
-            <P>
-              If we were to use the above React component,{' '}
-              <Code>{`<PlaceLabel place="home" />`}</Code> will render{' '}
-              <PlaceLabel place="home" />. (Don’t worry if you don’t know
-              React—the bottom line is that <Code>placeToString()</Code> is
-              useful for rendering the UI.)
-            </P>
-          </>
-        )
-      },
-      {
-        title: (
-          <>
-            Let’s implement <Code>placeToString()</Code>
-          </>
-        ),
-        content: (
-          <>
             <P>
               Let’s now implement <Code>placeToString()</Code>. Here’s the
               starter code—can you figure out what goes inside?
