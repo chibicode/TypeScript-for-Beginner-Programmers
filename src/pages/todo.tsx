@@ -13,7 +13,7 @@ import {
 } from 'src/components/ContentTags'
 import * as snippets from 'src/lib/snippets'
 import underConstructionCard from 'src/lib/underConstructionCard'
-import TodoWithData from 'src/components/TodoWithData'
+import TodoWithData, { Todo } from 'src/components/TodoWithData'
 import RunButtonText from 'src/components/RunButtonText'
 import CodeBlock from 'src/components/CodeBlock'
 import BubbleQuotes from 'src/components/BubbleQuotes'
@@ -24,6 +24,27 @@ const compileSuccess = 'Compiled successfully!'
 const section1 = 'Types, Read-only Properties, and Mapped Types'
 const section2 = 'Array Types, Literal Types, and Intersection Types'
 const section3 = 'Union Types and Optional Properties'
+const placesExample: Todo[] = [
+  { id: 1, text: 'Do laundry', done: false, place: 'home' as const },
+  { id: 2, text: 'Email boss', done: false, place: 'work' as const },
+  {
+    id: 3,
+    text: 'Go to gym',
+    done: false,
+    place: { custom: 'Gym' }
+  },
+  {
+    id: 4,
+    text: 'Buy milk',
+    done: false,
+    place: { custom: 'Supermarket' }
+  },
+  {
+    id: 5,
+    text: 'Read a book',
+    done: false
+  }
+]
 
 const Page = () => (
   <PostPage
@@ -1171,7 +1192,7 @@ const Page = () => (
               compile
               resultError
               result={<>Type 'false' is not assignable to type 'true'.</>}
-              shouldHighlightResult={lineNumber => lineNumber === 4}
+              shouldHighlightResult={lineIndex => lineIndex === 4}
             />
             <P>
               It failed to compile because <Code>done</Code> is not{' '}
@@ -1329,7 +1350,7 @@ const Page = () => (
               snippet={snippets.hszk}
               compile
               result={compileSuccess}
-              shouldHighlight={lineNumber => lineNumber >= 3 && lineNumber <= 6}
+              shouldHighlight={lineIndex => lineIndex >= 3 && lineIndex <= 6}
             />
             <P>
               It compiled! Let’s run this function on an example todo list.{' '}
@@ -1366,8 +1387,8 @@ const Page = () => (
                 </>
               }
               resultError
-              shouldHighlight={lineNumber => lineNumber === 6}
-              shouldHighlightResult={lineNumber => lineNumber === 6}
+              shouldHighlight={lineIndex => lineIndex === 6}
+              shouldHighlightResult={lineIndex => lineIndex === 6}
             />
             <P>
               It failed because <Code>CompletedTodo</Code> must have{' '}
@@ -1395,9 +1416,9 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.ruga}
-              shouldHighlight={(lineNumber, tokenNumber) =>
-                (lineNumber === 2 && tokenNumber >= 2 && tokenNumber <= 6) ||
-                (lineNumber === 1 && tokenNumber >= 2)
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 2 && tokenIndex >= 2 && tokenIndex <= 6) ||
+                (lineIndex === 1 && tokenIndex >= 2)
               }
             />
             <P>
@@ -1408,7 +1429,7 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.bpmz}
-              shouldHighlight={lineNumber => lineNumber === 3}
+              shouldHighlight={lineIndex => lineIndex === 3}
             />
             <P>
               Finally, we learned that{' '}
@@ -1442,56 +1463,89 @@ const Page = () => (
         color: 'darkGreen'
       },
       {
-        title: <>New Feature: Place labels</>,
+        title: <>New Feature: Place tags</>,
         content: (
           <>
             <P>
               Let’s add a new feature to our todo app:{' '}
-              <strong>Place labels</strong>.
-            </P>
-            <P>
+              <strong>Place tags</strong>.{' '}
               <Highlight>
-                Each todo item can now optionally be labeled as{' '}
-                <PlaceLabel place="home" /> or <PlaceLabel place="work" />
-              </Highlight>{' '}
-              as shown below. People can use this feature to identify which
-              tasks need to be done at home, at work, or elsewhere.
+                Each todo item can now optionally be tagged with one of the
+                following tags:
+              </Highlight>
             </P>
+            <Ul>
+              <UlLi>
+                <strong>Home:</strong> <PlaceLabel place="home" />
+              </UlLi>
+              <UlLi>
+                <strong>Work:</strong> <PlaceLabel place="work" />
+              </UlLi>
+              <UlLi>
+                <strong>Custom place:</strong>{' '}
+                <PlaceLabel place={{ custom: 'Gym' }} />,{' '}
+                <PlaceLabel place={{ custom: 'Supermarket' }} />, etc—the user
+                can create any custom place they want.
+              </UlLi>
+            </Ul>
+            <P>
+              People can use this feature to identify which tasks need to be
+              done at home, at work, or elsewhere.{' '}
+              <Highlight>
+                It’s <strong>optional</strong>, so there can be a todo item
+                without a place tag.
+              </Highlight>
+            </P>
+            <P>Here’s an example:</P>
             <TodoWithData
               caption={
                 <>
-                  Each todo item can now optionally be labeled as{' '}
-                  <PlaceLabel place="home" /> or <PlaceLabel place="work" />
+                  Each todo item can now optionally be tagged with a{' '}
+                  <strong>place tag</strong>
                 </>
               }
-              defaultData={[
-                { id: 1, text: 'Do laundry', done: false, place: 'home' },
-                { id: 2, text: 'Email boss', done: false, place: 'work' },
-                { id: 3, text: 'Buy milk', done: false }
-              ]}
+              defaultData={placesExample}
             />
             <P>
               Let’s take a look at the associated data.{' '}
               <Highlight>
                 Each todo now can have an optional <Code>place</Code> property,
-                which can be either <Code>'home'</Code> or <Code>'work'</Code>.
+                which can have the following value:
               </Highlight>
             </P>
+            <Ul>
+              <UlLi>
+                <PlaceLabel place="home" /> → <Code>'home'</Code>
+              </UlLi>
+              <UlLi>
+                <PlaceLabel place="work" /> → <Code>'work'</Code>
+              </UlLi>
+              <UlLi>
+                <PlaceLabel place={{ custom: 'Custom name' }} /> →{' '}
+                <Code>{`{ custom: 'Custom name' }`}</Code>
+              </UlLi>
+            </Ul>
+            <P>
+              So <Code>place</Code> can be <Code>'home'</Code>,{' '}
+              <Code>'work'</Code>, or an object containing a string{' '}
+              <Code>custom</Code> property. It can also be missing if there’s no
+              place tag.
+            </P>
+            <P>Here’s the associated data for our previous example:</P>
             <TodoWithData
               showData
-              defaultData={[
-                { id: 1, text: 'Do laundry', done: false, place: 'home' },
-                { id: 2, text: 'Email boss', done: false, place: 'work' },
-                { id: 3, text: 'Buy milk', done: false }
-              ]}
+              defaultData={placesExample}
               shouldAlwaysHighlight={lineIndex =>
-                lineIndex === 5 || lineIndex === 11
+                lineIndex === 5 ||
+                lineIndex === 11 ||
+                lineIndex === 17 ||
+                lineIndex === 23
               }
             />
             <P>
               To implement this in TypeScript, we first need to update our
-              definition of the <Code>Todo</Code> type. Let’s take a look at how
-              we can do this.
+              definition of the <Code>Todo</Code> type. Let’s take a look at
+              this next!
             </P>
             <CodeBlock
               snippet={snippets.yztr}
@@ -1505,11 +1559,11 @@ const Page = () => (
         content: (
           <>
             <P>
-              To represent place labels, we can use a TypeScript feature called{' '}
-              <strong>union types</strong>. In TypeScript, you can use the
-              syntax <Code>A | B</Code> to create a <strong>union type</strong>,
-              which represents a type that’s{' '}
+              To represent place tags, we can use a TypeScript feature called{' '}
+              <strong>union types</strong>. In TypeScript,{' '}
               <Highlight>
+                you can use the syntax <Code>A | B</Code> to create a{' '}
+                <strong>union type</strong>, which represents a type that’s{' '}
                 either <Code>A</Code> or <Code>B</Code>
               </Highlight>
               .
@@ -1527,14 +1581,51 @@ const Page = () => (
               }
             />
             <P>
-              In this case, because the <Code>place</Code> property can be
-              either <Code>'home'</Code> or <Code>'work'</Code>, we can create a
-              union <Code>'home' | 'work'</Code>:
+              For example, if you create a type that’s equal to{' '}
+              <Code>number | string</Code>, it can be either <Code>number</Code>{' '}
+              OR <Code>string</Code>:
             </P>
             <CodeBlock
+              snippet={snippets.mzyn}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 1 && tokenIndex >= 7
+              }
+            />
+            <P>
+              In our todo app,{' '}
+              <Highlight>
+                we’ll first create a new <Code>Place</Code> type as a union type
+              </Highlight>{' '}
+              as follows:
+            </P>
+            <CodeBlock
+              narrowText
+              caption={
+                <>
+                  <Code>Place</Code> can be either <Code>'home'</Code>,{' '}
+                  <Code>'work'</Code>, or an object containing a string{' '}
+                  <Code>custom</Code> property
+                </>
+              }
               snippet={snippets.umjt}
               shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 5 && tokenIndex >= 3
+                lineIndex === 0 && tokenIndex >= 6
+              }
+            />
+            <P>
+              Then we can assign the <Code>Place</Code> type to the{' '}
+              <Code>place</Code> property of <Code>Todo</Code>:
+            </P>
+            <CodeBlock
+              caption={
+                <>
+                  Assign <Code>Place</Code> to <Code>Todo</Code>’s{' '}
+                  <Code>place</Code> property
+                </>
+              }
+              snippet={snippets.npgx}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 4 && tokenIndex >= 3
               }
             />
           </>
@@ -1545,112 +1636,58 @@ const Page = () => (
         content: (
           <>
             <P>
-              We briefly mentioned that place labels like{' '}
+              We briefly mentioned that place tags like{' '}
               <PlaceLabel place="home" /> or <PlaceLabel place="work" /> are{' '}
               <strong>optional</strong>—we can have todo items without a place
-              label. In our previous example, <Highlight>“Buy milk”</Highlight>{' '}
-              didn’t have any place label:
+              tag. In our previous example, <Highlight>“Read a book”</Highlight>{' '}
+              didn’t have any place tag, so it didn’t have the{' '}
+              <Code>place</Code> property:
             </P>
             <TodoWithData
               showData
+              customSnippet={snippets.hquv}
               caption={
                 <>
-                  Place labels are optional: <Highlight>“Buy milk”</Highlight>{' '}
-                  didn’t have any place label.
+                  Place tags are optional: <Highlight>“Read a book”</Highlight>{' '}
+                  didn’t have any place tag, so NO <Code>place</Code> property
                 </>
               }
-              defaultData={[
-                { id: 1, text: 'Do laundry', done: false, place: 'home' },
-                { id: 2, text: 'Email boss', done: false, place: 'work' },
-                { id: 3, text: 'Buy milk', done: false }
-              ]}
-              shouldAlwaysHighlight={lineIndex => lineIndex === 13}
+              defaultData={placesExample}
+              shouldAlwaysHighlight={lineIndex => lineIndex === 6}
             />
             <P>
-              In TypeScript,{' '}
+              Can TypeScript describe these <em>optional properties</em>? Of
+              course it can. In TypeScript,{' '}
               <Highlight>
-                you can add a question mark (<Code>?</Code>) after a property
-                name to make the property optional:
+                you can add a <strong>question mark</strong> (<Code>?</Code>)
+                after a property name to make the property optional:
               </Highlight>
             </P>
             <CodeBlock
+              narrowText
+              snippet={snippets.yvpp}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 2 && tokenIndex <= 1
+              }
+            />
+            <P>
+              In our example, instead of <Code>place: Place</Code>, we can use{' '}
+              <Code>
+                <strong>place?</strong>: Place
+              </Code>{' '}
+              to make it optional:
+            </P>
+            <CodeBlock
+              narrowText
               snippet={snippets.rvyq}
               shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 5 && tokenIndex <= 1
+                lineIndex === 7 && tokenIndex <= 1
               }
             />
             <P>
-              That’s it! The above <Code>Todo</Code> type will allow the{' '}
-              <Code>place</Code> property to be <Code>'home'</Code>,{' '}
-              <Code>'work'</Code>, or missing from the object.
+              That’s it! We’re now ready to use this new <Code>Todo</Code> type
+              in a function.
             </P>
-          </>
-        )
-      },
-      {
-        title: <>Custom places</>,
-        content: (
-          <>
-            <P>
-              Now, let’s improve the place labels feature by allowing users to
-              assign a <strong>custom place label</strong> for places other than{' '}
-              <PlaceLabel place="home" /> or <PlaceLabel place="work" />.
-            </P>
-            <P>
-              In the following example, we’ve created new{' '}
-              <strong>custom place labels</strong> called{' '}
-              <PlaceLabel place={{ custom: 'Gym' }} /> and{' '}
-              <PlaceLabel place={{ custom: 'Cafe' }} />:
-            </P>
-            <TodoWithData
-              caption={
-                <>
-                  Added custom places <PlaceLabel place={{ custom: 'Gym' }} />{' '}
-                  and <PlaceLabel place={{ custom: 'Cafe' }} />
-                </>
-              }
-              defaultData={[
-                {
-                  id: 3,
-                  text: 'Go to gym',
-                  done: false,
-                  place: { custom: 'Gym' }
-                },
-                {
-                  id: 4,
-                  text: 'Read a book',
-                  done: false,
-                  place: { custom: 'Cafe' }
-                }
-              ]}
-            />
-            <P>
-              Here’s what the data looks like.{' '}
-              <Highlight>
-                For custom places, we’ll set the <Code>place</Code> property as
-                an object like this: <Code>{`{ custom: 'Gym' }`}</Code>.
-              </Highlight>
-            </P>
-            <TodoWithData
-              showData
-              defaultData={[
-                {
-                  id: 3,
-                  text: 'Go to gym',
-                  done: false,
-                  place: { custom: 'Gym' }
-                },
-                {
-                  id: 4,
-                  text: 'Read a book',
-                  done: false,
-                  place: { custom: 'Cafe' }
-                }
-              ]}
-              shouldAlwaysHighlight={(lineIndex, tokenIndex) =>
-                (lineIndex === 5 || lineIndex === 11) && tokenIndex >= 3
-              }
-            />
           </>
         )
       },

@@ -43,7 +43,7 @@ const CodeResult = ({
           css`
             font-size: ${fontSizes(0.8)};
             word-break: break-all;
-            line-height: 1.45;
+            line-height: 1.4;
             ${nt} {
               font-size: ${fontSizes(0.85)};
             }

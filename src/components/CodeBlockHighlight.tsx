@@ -37,7 +37,7 @@ const CodeBlockHighlight = ({
           css={[
             css`
               padding: ${spaces(0.75)} ${spaces(0.5)};
-              line-height: 1.45;
+              line-height: 1.4;
               border: 2px solid ${colors('lightBrown')};
               background-color: ${colors('lightPink1')};
               font-size: ${fontSizes(0.8)};

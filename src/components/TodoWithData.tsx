@@ -80,7 +80,8 @@ const TodoWithData = ({
   highlightLineIndexOffset,
   shouldHighlight,
   shouldAlwaysHighlight,
-  narrowText
+  narrowText,
+  customSnippet
 }: {
   defaultData: Todo[]
   caption?: React.ReactNode
@@ -93,6 +94,7 @@ const TodoWithData = ({
   shouldHighlight?: (tokenIndex: number) => boolean
   shouldAlwaysHighlight?: (lineIndex: number, tokenIndex: number) => boolean
   narrowText?: boolean
+  customSnippet?: string
 }) => {
   const { spaces, ns, maxWidths, radii, colors, letterSpacings } = useTheme()
   const [state, dispatch] = useReducer<typeof reducer>(reducer, {
@@ -129,10 +131,13 @@ const TodoWithData = ({
           />
           {showData && (
             <CodeBlockHighlight
-              snippet={`${comment || ''}${comment ? '\n' : ''}${prettierFormat(
-                state.todos,
-                narrowText
-              )}`}
+              snippet={
+                customSnippet ||
+                `${comment || ''}${comment ? '\n' : ''}${prettierFormat(
+                  state.todos,
+                  narrowText
+                )}`
+              }
               language="javascript"
               cssOverrides={[
                 css`

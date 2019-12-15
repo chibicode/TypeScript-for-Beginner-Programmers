@@ -12,7 +12,8 @@ const PlaceLabel = ({ place }: { place: NonNullable<Todo['place']> }) => {
         font-weight: bold;
         display: inline-block;
         background: ${colors('white')};
-        padding: ${spaces(0.125)} ${spaces(0.5)};
+        padding: ${spaces(0.125)} ${spaces(0.375)} ${spaces(0.125)}
+          ${spaces(place === 'home' || place === 'work' ? 0.375 : 0.25)};
         font-size: ${fontSizes(0.8, true)};
         border: 2px solid ${colors('paleGreen')};
         border-radius: ${radii(0.25)};
@@ -21,7 +22,9 @@ const PlaceLabel = ({ place }: { place: NonNullable<Todo['place']> }) => {
     >
       <span
         css={css`
-          margin-right: ${spaces(0.125)};
+          margin-right: ${spaces(
+            place === 'home' || place === 'work' ? 0.125 : 0
+          )};
         `}
       >
         <Emoji type={place === 'home' || place === 'work' ? place : 'pin'} />

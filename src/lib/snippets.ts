@@ -520,6 +520,15 @@ function toggleTodo(todo: Todo): Todo {
   // ...
 }`
 
+export const hquv = `[
+  // ...
+  // ...
+  // ...
+  // ...
+  // No place property
+  { id: 5, text: 'Read a book', done: false }
+]`
+
 export const hszk = `function completeAll(
   todos: readonly Todo[]
 ): CompletedTodo[] {
@@ -593,6 +602,14 @@ todos[0] = { id: 1, text: '…', done: true }
 // Compile error - push() modifies the array
 todos.push({ id: 1, text: '…', done: true })`
 
+export const mzyn = `// Creates a union type of number and string
+type Foo = number | string
+
+// You can assign either a number or a string
+// variable to Foo. So these will both compile:
+const a: Foo = 1
+const b: Foo = 'hello'`
+
 export const njgr = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring is a
   // bad refactoring because it modifies
@@ -612,6 +629,13 @@ function toggleTodo(todo: Todo): Todo {
   todo.done = !todo.done
   return todo
 }`
+
+export const npgx = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+  place: Place
+}>`
 
 export const ntau = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s code from earlier:
@@ -706,12 +730,14 @@ export const ruga = `function completeAll(
   // ...
 }`
 
-export const rvyq = `type Todo = Readonly<{
+export const rvyq = `type Place = 'home' | 'work' | { custom: string }
+
+type Todo = Readonly<{
   id: number
   text: string
   done: boolean
   // place is optional
-  place?: 'home' | 'work'
+  place?: Place
 }>`
 
 export const szan = `// Make input todos as readonly array
@@ -732,13 +758,7 @@ export const tgvw = `const bar: Todo = {
   done: true
 }`
 
-export const umjt = `type Todo = Readonly<{
-  id: number
-  text: string
-  done: boolean
-  // Union Type: Can be either 'home' or 'work'
-  place: 'home' | 'work'
-}>`
+export const umjt = `type Place = 'home' | 'work' | { custom: string }`
 
 export const uxlb = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring
@@ -826,6 +846,16 @@ export const yhto = `type Todo = {
   readonly text: string
   readonly done: boolean
 }`
+
+export const yvpp = `type Foo = {
+  // bar is an optional property because of "?"
+  bar?: number
+}
+
+// These will both compile:
+// bar can be present or missing
+const a: Foo = {}
+const b: Foo = { bar: 1 }`
 
 export const ywiv = `// The return value must match the Todo type
 function toggleTodo(todo: Todo): Todo {
