@@ -853,7 +853,8 @@ type CompletedTodo = Readonly<{
   done: true
 }>`
 
-export const ybhj = `function placeToString(place: Place): string {
+export const ybhj = `// Takes a Place and returns a string
+function placeToString(place: Place): string {
   // Figure out what code goes here!
 }`
 
