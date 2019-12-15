@@ -18,7 +18,7 @@ import RunButtonText from 'src/components/RunButtonText'
 import CodeBlock from 'src/components/CodeBlock'
 import BubbleQuotes from 'src/components/BubbleQuotes'
 import ResultHighlight from 'src/components/ResultHighlight'
-import LocationLabel from 'src/components/LocationLabel'
+import PlaceLabel from 'src/components/PlaceLabel'
 
 const compileSuccess = 'Compiled successfully!'
 const section1 = 'Types, Read-only Properties, and Mapped Types'
@@ -1442,45 +1442,73 @@ const Page = () => (
         color: 'darkGreen'
       },
       {
-        title: <>New Feature: Location labels</>,
+        title: <>New Feature: Place labels</>,
         content: (
           <>
             <P>
               Let’s add a new feature to our todo app:{' '}
-              <strong>Location labels</strong>.
+              <strong>Place labels</strong>.
             </P>
             <P>
-              Each todo item can now optionally be labeled as{' '}
-              <LocationLabel location="home" /> or{' '}
-              <LocationLabel location="work" />, like this:
+              <Highlight>
+                Each todo item can now optionally be labeled as{' '}
+                <PlaceLabel place="home" /> or <PlaceLabel place="work" />
+              </Highlight>{' '}
+              as shown below. People can use this feature to identify which
+              tasks need to be done at home, at work, or elsewhere.
             </P>
             <TodoWithData
               caption={
                 <>
                   Each todo item can now optionally be labeled as{' '}
-                  <LocationLabel location="home" /> or{' '}
-                  <LocationLabel location="work" />
+                  <PlaceLabel place="home" /> or <PlaceLabel place="work" />
                 </>
               }
               defaultData={[
-                { id: 1, text: 'Do laundry', done: false, location: 'home' },
-                { id: 2, text: 'Email boss', done: false, location: 'work' },
+                { id: 1, text: 'Do laundry', done: false, place: 'home' },
+                { id: 2, text: 'Email boss', done: false, place: 'work' },
                 { id: 3, text: 'Go to gym', done: false }
               ]}
+            />
+            <P>
+              Let’s take a look at the associated data.{' '}
+              <Highlight>
+                Each todo now can have an optional <Code>place</Code> property,
+                which can be either <Code>'home'</Code> or <Code>'work'</Code>.
+              </Highlight>
+            </P>
+            <TodoWithData
+              showData
+              defaultData={[
+                { id: 1, text: 'Do laundry', done: false, place: 'home' },
+                { id: 2, text: 'Email boss', done: false, place: 'work' },
+                { id: 3, text: 'Go to gym', done: false }
+              ]}
+              shouldAlwaysHighlight={lineIndex =>
+                lineIndex === 5 || lineIndex === 11
+              }
+            />
+            <P>
+              To implement this in TypeScript, we first need to update our
+              definition of the <Code>Todo</Code> type. Let’s take a look at how
+              we can do this.
+            </P>
+            <CodeBlock
+              snippet={snippets.yztr}
+              shouldHighlight={lineIndex => lineIndex === 0}
             />
           </>
         )
       },
       {
-        title: <></>,
+        title: <>Union types</>,
         content: (
           <>
-            <EmojiSeparator emojis={['question', 'type', 'question']} />
             <P>
-              To represent this, we need to use a TypeScript feature called{' '}
+              To represent place labels, we can use a TypeScript feature called{' '}
               <strong>union types</strong>. In TypeScript, you can use the
-              syntax <Code>A | B</Code> to create a union type, which represents
-              a type that’s{' '}
+              syntax <Code>A | B</Code> to create a <strong>union type</strong>,
+              which represents a type that’s{' '}
               <Highlight>
                 either <Code>A</Code> or <Code>B</Code>
               </Highlight>
@@ -1499,8 +1527,62 @@ const Page = () => (
               }
             />
             <P>
-              In this case, we need to create a union of <Code>Todo</Code> and{' '}
-              <Code>Separator</Code> like this:
+              In this case, because the <Code>place</Code> property can be
+              either <Code>'home'</Code> or <Code>'work'</Code>, we can create a
+              union <Code>'home' | 'work'</Code>:
+            </P>
+            <CodeBlock
+              snippet={snippets.umjt}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 5 && tokenIndex >= 3
+              }
+            />
+          </>
+        )
+      },
+      {
+        title: <>Optional properties</>,
+        content: (
+          <>
+            <P>
+              We briefly mentioned that place labels like{' '}
+              <PlaceLabel place="home" /> or <PlaceLabel place="work" /> are{' '}
+              <strong>optional</strong>—we can have todo items without a place
+              label. In our previous example, <Highlight>“Go to Gym”</Highlight>{' '}
+              didn’t have any place label:
+            </P>
+            <TodoWithData
+              showData
+              caption={
+                <>
+                  Place labels are optional: <Highlight>“Go to Gym”</Highlight>{' '}
+                  didn’t have any place label.
+                </>
+              }
+              defaultData={[
+                { id: 1, text: 'Do laundry', done: false, place: 'home' },
+                { id: 2, text: 'Email boss', done: false, place: 'work' },
+                { id: 3, text: 'Go to gym', done: false }
+              ]}
+              shouldAlwaysHighlight={lineIndex => lineIndex === 13}
+            />
+            <P>
+              In TypeScript,{' '}
+              <Highlight>
+                you can add a question mark (<Code>?</Code>) after a property
+                name to make the property optional:
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.rvyq}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 5 && tokenIndex <= 1
+              }
+            />
+            <P>
+              That’s it! The above <Code>Todo</Code> type will allow the{' '}
+              <Code>place</Code> property to be <Code>'home'</Code>,{' '}
+              <Code>'work'</Code>, or missing from the object.
             </P>
           </>
         )

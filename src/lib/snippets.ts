@@ -706,6 +706,14 @@ export const ruga = `function completeAll(
   // ...
 }`
 
+export const rvyq = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+  // place is optional
+  place?: 'home' | 'work'
+}>`
+
 export const szan = `// Make input todos as readonly array
 function completeAll(
   todos: readonly Todo[]
@@ -723,6 +731,14 @@ export const tgvw = `const bar: Todo = {
   text: '…',
   done: true
 }`
+
+export const umjt = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+  // Union Type: Can be either 'home' or 'work'
+  place: 'home' | 'work'
+}>`
 
 export const uxlb = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring
@@ -824,6 +840,13 @@ export const yxjg = `function toggleTodo(todo) {
     done: !todo.done
   }
 }`
+
+export const yztr = `// How to update this to support place labels?
+type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>`
 
 export const zswn = `// Will this compile?
 const testTodo: CompletedTodo = {

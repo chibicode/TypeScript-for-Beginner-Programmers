@@ -3,7 +3,7 @@ import { css, jsx } from '@emotion/core'
 import Emoji from 'src/components/Emoji'
 import useTheme from 'src/hooks/useTheme'
 
-const LocationLabel = ({ location }: { location: 'home' | 'work' }) => {
+const PlaceLabel = ({ place }: { place: 'home' | 'work' }) => {
   const { colors, spaces, fontSizes, radii } = useTheme()
   return (
     <span
@@ -23,11 +23,11 @@ const LocationLabel = ({ location }: { location: 'home' | 'work' }) => {
           margin-right: ${spaces(0.125)};
         `}
       >
-        <Emoji type={location} />
+        <Emoji type={place} />
       </span>{' '}
-      {location === 'home' ? 'Home' : 'Work'}
+      {place === 'home' ? 'Home' : 'Work'}
     </span>
   )
 }
 
-export default LocationLabel
+export default PlaceLabel

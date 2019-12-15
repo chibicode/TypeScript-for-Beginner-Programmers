@@ -31,7 +31,7 @@ const TodoList = ({
             index={index}
             done={item.done}
             text={item.text}
-            location={item.location}
+            place={item.place}
           />
         </div>
       ))}

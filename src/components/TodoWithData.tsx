@@ -26,7 +26,7 @@ export type Todo = {
   id: number
   text: string
   done: boolean
-  location?: 'home' | 'work'
+  place?: 'home' | 'work'
 }
 
 export type TodoAction =
@@ -79,6 +79,7 @@ const TodoWithData = ({
   disabled,
   highlightLineIndexOffset,
   shouldHighlight,
+  shouldAlwaysHighlight,
   narrowText
 }: {
   defaultData: Todo[]
@@ -90,6 +91,7 @@ const TodoWithData = ({
   disabled?: boolean
   highlightLineIndexOffset?: number
   shouldHighlight?: (tokenIndex: number) => boolean
+  shouldAlwaysHighlight?: (lineIndex: number, tokenIndex: number) => boolean
   narrowText?: boolean
 }) => {
   const { spaces, ns, maxWidths, radii, colors, letterSpacings } = useTheme()
@@ -144,6 +146,15 @@ const TodoWithData = ({
                     letter-spacing: ${letterSpacings('smallCode')};
                   `
               ]}
+              lineCssOverrides={(lineIndex, tokenIndex) =>
+                shouldAlwaysHighlight &&
+                shouldAlwaysHighlight(lineIndex, tokenIndex) &&
+                css`
+                  background: ${colors('yellowHighlight')};
+                  border-bottom: 2px solid ${colors('darkOrange')};
+                  font-weight: bold;
+                `
+              }
               lineCssOverridesAnimation={(lineIndex, tokenIndex) =>
                 shouldHighlight &&
                 state.lastChangedIndices

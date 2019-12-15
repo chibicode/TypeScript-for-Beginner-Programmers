@@ -6,18 +6,18 @@ import useTheme from 'src/hooks/useTheme'
 import { useState, useContext } from 'react'
 import TodoWithDataContext from 'src/components/TodoWithDataContext'
 import { Todo } from 'src/components/TodoWithData'
-import LocationLabel from 'src/components/LocationLabel'
+import PlaceLabel from 'src/components/PlaceLabel'
 
 const TodoItem = ({
   index,
   done,
   text,
-  location
+  place
 }: {
   index: number
   text: Todo['text']
   done: Todo['done']
-  location: Todo['location']
+  place: Todo['place']
 }) => {
   const { spaces, colors } = useTheme()
   const { dispatch, disabled } = useContext(TodoWithDataContext)
@@ -92,7 +92,7 @@ const TodoItem = ({
           {text}
         </span>
       </span>
-      {location && <LocationLabel location={location} />}
+      {place && <PlaceLabel place={place} />}
     </div>
   )
 }
