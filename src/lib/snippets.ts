@@ -478,6 +478,15 @@ export const ampt = `function toggleTodo(todo: Todo): Todo {
   }
 }`
 
+export const awzp = `// A React component to render a place label UI
+function PlaceLabel({ place }: { place: Place }) {
+  return (
+    <span className="...">
+      {placeToString(place)}
+    </span>
+  )
+}`
+
 export const bnli = `const foo: Todo = {
   id: 1,
   text: '…',
@@ -682,6 +691,18 @@ function toggleTodo(todo) {
   // ...
 }`
 
+export const qnrh = `placeToString('home')
+// __home__
+
+placeToString('work')
+// __work__
+
+placeToString({ custom: 'Gym' })
+// __gym__
+
+placeToString({ custom: 'Supermarket' })
+// __supermarket__`
+
 export const qnwc = `// They booth have property x,
 // but B’s x (true) is
 // more specific than A’s x (boolean)
@@ -840,6 +861,10 @@ type CompletedTodo = Readonly<{
   text: string
   done: true
 }>`
+
+export const ybhj = `function placeToString(place: Place): string {
+  // Figure out what code goes here!
+}`
 
 export const yhto = `type Todo = {
   readonly id: number
