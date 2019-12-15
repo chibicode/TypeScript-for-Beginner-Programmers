@@ -1,4 +1,5 @@
-import React from 'react'
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import Emoji from 'src/components/Emoji'
@@ -45,6 +46,19 @@ const placesExample: Todo[] = [
     done: false
   }
 ]
+
+const ArrowWrapper = ({ children }: { children: React.ReactNode }) => (
+  <span
+    css={css`
+      margin-left: 0.25em;
+      margin-right: 0.25em;
+      font-size: 1.2em;
+      transform: translateY(-0.1em);
+    `}
+  >
+    {children}
+  </span>
+)
 
 const Page = () => (
   <PostPage
@@ -1697,9 +1711,74 @@ const Page = () => (
         content: (
           <>
             <P>
-              We’d like to implement a function called{' '}
-              <Code>placeToString()</Code>, which has the following input and
-              output:
+              As mentioned before, UI libraries like React or Vue{' '}
+              <em>transform data into UI</em>.
+            </P>
+            <EmojiSeparator
+              emojis={['data', 'singleArrow', 'ui']}
+              description={<>UI libraries transform data into UI</>}
+            />
+            <P>
+              For place labels, we need to transform each <Code>Place</Code>{' '}
+              data into a place label UI:
+            </P>
+            <EmojiSeparator
+              size="sm"
+              customChildren={
+                <>
+                  <Code>'home'</Code>{' '}
+                  <ArrowWrapper>
+                    <Emoji type="singleArrow" noVerticalTransform />
+                  </ArrowWrapper>{' '}
+                  <PlaceLabel place="home" />
+                </>
+              }
+            />
+            <EmojiSeparator
+              size="sm"
+              customChildren={
+                <>
+                  <Code>'work'</Code>{' '}
+                  <ArrowWrapper>
+                    <Emoji type="singleArrow" noVerticalTransform />
+                  </ArrowWrapper>{' '}
+                  <PlaceLabel place="work" />
+                </>
+              }
+            />
+            <EmojiSeparator
+              size="sm"
+              customChildren={
+                <>
+                  <Code
+                    css={css`
+                      font-size: 0.8em;
+                    `}
+                  >{`{ custom: 'Gym' }`}</Code>{' '}
+                  <ArrowWrapper>
+                    <Emoji type="singleArrow" noVerticalTransform />
+                  </ArrowWrapper>{' '}
+                  <PlaceLabel place={{ custom: 'Gym' }} />
+                </>
+              }
+              description={
+                <>
+                  <div
+                    css={css`
+                      margin-top: 0.5em;
+                    `}
+                  >
+                    Transform <Code>Place</Code> into a place label UI
+                  </div>
+                </>
+              }
+            />
+            <P>
+              To do this, we’d like to implement a function called{' '}
+              <Code>
+                <strong>placeToString()</strong>
+              </Code>
+              , which has the following input and output:
             </P>
             <Ul>
               <UlLi>
@@ -1709,8 +1788,9 @@ const Page = () => (
                 </Highlight>
               </UlLi>
               <UlLi>
-                <strong>Return value</strong> should be a string (with an emoji)
-                that will be used for the label UI.{' '}
+                <strong>Return value</strong> should be a{' '}
+                <strong>string</strong> (with an emoji) that will be used for
+                the label UI.{' '}
                 <Highlight>
                   Example:{' '}
                   <Code>
