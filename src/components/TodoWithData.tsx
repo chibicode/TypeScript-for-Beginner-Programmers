@@ -26,7 +26,7 @@ export type Todo = {
   id: number
   text: string
   done: boolean
-  place?: 'home' | 'work'
+  place?: 'home' | 'work' | { custom: string }
 }
 
 export type TodoAction =

@@ -1467,7 +1467,7 @@ const Page = () => (
               defaultData={[
                 { id: 1, text: 'Do laundry', done: false, place: 'home' },
                 { id: 2, text: 'Email boss', done: false, place: 'work' },
-                { id: 3, text: 'Go to gym', done: false }
+                { id: 3, text: 'Buy milk', done: false }
               ]}
             />
             <P>
@@ -1482,7 +1482,7 @@ const Page = () => (
               defaultData={[
                 { id: 1, text: 'Do laundry', done: false, place: 'home' },
                 { id: 2, text: 'Email boss', done: false, place: 'work' },
-                { id: 3, text: 'Go to gym', done: false }
+                { id: 3, text: 'Buy milk', done: false }
               ]}
               shouldAlwaysHighlight={lineIndex =>
                 lineIndex === 5 || lineIndex === 11
@@ -1548,21 +1548,21 @@ const Page = () => (
               We briefly mentioned that place labels like{' '}
               <PlaceLabel place="home" /> or <PlaceLabel place="work" /> are{' '}
               <strong>optional</strong>—we can have todo items without a place
-              label. In our previous example, <Highlight>“Go to Gym”</Highlight>{' '}
+              label. In our previous example, <Highlight>“Buy milk”</Highlight>{' '}
               didn’t have any place label:
             </P>
             <TodoWithData
               showData
               caption={
                 <>
-                  Place labels are optional: <Highlight>“Go to Gym”</Highlight>{' '}
+                  Place labels are optional: <Highlight>“Buy milk”</Highlight>{' '}
                   didn’t have any place label.
                 </>
               }
               defaultData={[
                 { id: 1, text: 'Do laundry', done: false, place: 'home' },
                 { id: 2, text: 'Email boss', done: false, place: 'work' },
-                { id: 3, text: 'Go to gym', done: false }
+                { id: 3, text: 'Buy milk', done: false }
               ]}
               shouldAlwaysHighlight={lineIndex => lineIndex === 13}
             />
@@ -1584,6 +1584,73 @@ const Page = () => (
               <Code>place</Code> property to be <Code>'home'</Code>,{' '}
               <Code>'work'</Code>, or missing from the object.
             </P>
+          </>
+        )
+      },
+      {
+        title: <>Custom places</>,
+        content: (
+          <>
+            <P>
+              Now, let’s improve the place labels feature by allowing users to
+              assign a <strong>custom place label</strong> for places other than{' '}
+              <PlaceLabel place="home" /> or <PlaceLabel place="work" />.
+            </P>
+            <P>
+              In the following example, we’ve created new{' '}
+              <strong>custom place labels</strong> called{' '}
+              <PlaceLabel place={{ custom: 'Gym' }} /> and{' '}
+              <PlaceLabel place={{ custom: 'Cafe' }} />:
+            </P>
+            <TodoWithData
+              caption={
+                <>
+                  Added custom places <PlaceLabel place={{ custom: 'Gym' }} />{' '}
+                  and <PlaceLabel place={{ custom: 'Cafe' }} />
+                </>
+              }
+              defaultData={[
+                {
+                  id: 3,
+                  text: 'Go to gym',
+                  done: false,
+                  place: { custom: 'Gym' }
+                },
+                {
+                  id: 4,
+                  text: 'Read a book',
+                  done: false,
+                  place: { custom: 'Cafe' }
+                }
+              ]}
+            />
+            <P>
+              Here’s what the data looks like.{' '}
+              <Highlight>
+                For custom places, we’ll set the <Code>place</Code> property as
+                an object like this: <Code>{`{ custom: 'Gym' }`}</Code>.
+              </Highlight>
+            </P>
+            <TodoWithData
+              showData
+              defaultData={[
+                {
+                  id: 3,
+                  text: 'Go to gym',
+                  done: false,
+                  place: { custom: 'Gym' }
+                },
+                {
+                  id: 4,
+                  text: 'Read a book',
+                  done: false,
+                  place: { custom: 'Cafe' }
+                }
+              ]}
+              shouldAlwaysHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 5 || lineIndex === 11) && tokenIndex >= 3
+              }
+            />
           </>
         )
       },

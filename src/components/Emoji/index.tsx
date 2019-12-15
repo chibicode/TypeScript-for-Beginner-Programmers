@@ -25,6 +25,7 @@ import Type from 'src/components/Emoji/Type'
 import VerticalBar from 'src/components/Emoji/VerticalBar'
 import Work from 'src/components/Emoji/Work'
 import Home from 'src/components/Emoji/Home'
+import Pin from 'src/components/Emoji/Pin'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -51,7 +52,8 @@ export const emojiToComponent = {
   type: Type,
   verticalBar: VerticalBar,
   work: Work,
-  home: Home
+  home: Home,
+  pin: Pin
 }
 
 export const EmojiWrapper = ({

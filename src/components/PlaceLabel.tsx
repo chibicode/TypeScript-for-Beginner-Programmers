@@ -2,8 +2,9 @@
 import { css, jsx } from '@emotion/core'
 import Emoji from 'src/components/Emoji'
 import useTheme from 'src/hooks/useTheme'
+import { Todo } from 'src/components/TodoWithData'
 
-const PlaceLabel = ({ place }: { place: 'home' | 'work' }) => {
+const PlaceLabel = ({ place }: { place: NonNullable<Todo['place']> }) => {
   const { colors, spaces, fontSizes, radii } = useTheme()
   return (
     <span
@@ -23,9 +24,9 @@ const PlaceLabel = ({ place }: { place: 'home' | 'work' }) => {
           margin-right: ${spaces(0.125)};
         `}
       >
-        <Emoji type={place} />
+        <Emoji type={place === 'home' || place === 'work' ? place : 'pin'} />
       </span>{' '}
-      {place === 'home' ? 'Home' : 'Work'}
+      {place === 'home' ? 'Home' : place === 'work' ? 'Work' : place.custom}
     </span>
   )
 }
