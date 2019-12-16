@@ -414,8 +414,8 @@ const Page = () => (
               ]}
             />
             <P>
-              Here’s the correct implementation. It preserves the{' '}
-              <Code>id</Code> property.
+              No worries, Little Duckling! Here’s the correct implementation. It
+              preserves the <Code>id</Code> property.
             </P>
             <CodeBlock
               snippet={snippets.yxjg}
@@ -1852,6 +1852,96 @@ const Page = () => (
                 lineIndex === 7 && tokenIndex >= 7
               }
             />
+            <P>
+              <strong>It failed!</strong> TypeScript noticed that there’s a
+              logic error here.{' '}
+              <Highlight>
+                Specifically, inside <Code>else</Code>, TypeScript knows that{' '}
+                <Code>place</Code> is either <Code>'work'</Code> or{' '}
+                <Code>{`{ custom: string }`}</Code>
+              </Highlight>
+              :
+            </P>
+            <CodeBlock
+              narrowText
+              snippet={snippets.dhor}
+              shouldHighlight={lineIndex =>
+                lineIndex === 5 || lineIndex === 8 || lineIndex === 12
+              }
+            />
+            <P>
+              Because <Code>place</Code> is either <Code>'work'</Code> or{' '}
+              <Code>{`{ custom: string }`}</Code> inside <Code>else</Code>, and{' '}
+              <Highlight>
+                you can’t do <Code>place.custom</Code> if <Code>place</Code> is{' '}
+                <Code>'work'</Code>, TypeScript gives you a compile error.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.eega}
+              shouldHighlight={lineIndex => lineIndex === 2}
+            />
+            <P>
+              Of course, the fix is to add{' '}
+              <Code>else if (place === 'work')</Code>.{' '}
+              <Highlight>
+                Press <RunButtonText compile />!
+              </Highlight>
+            </P>
+            <CodeBlock
+              narrowText
+              snippet={snippets.szco}
+              compile
+              result={compileSuccess}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 4 && tokenIndex >= 3) ||
+                lineIndex === 5 ||
+                (lineIndex === 6 && tokenIndex <= 1)
+              }
+            />
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        Oops! <Emoji type="sweat" /> I forgot to check for{' '}
+                        <Code>place === 'work'</Code>!
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <P>
+              No worries, Little Duckling! TypeScript was able to catch the
+              error early.
+            </P>
+            <P>
+              As we just saw,{' '}
+              <Highlight>
+                union types are powerful when combined with conditional
+                statements (e.g. <Code>if/else</Code>)
+              </Highlight>
+              :
+            </P>
+            <Ul>
+              <UlLi>
+                If we have a variable that’s a <strong>union type</strong> (e.g.{' '}
+                <Code>place</Code>)…
+              </UlLi>
+              <UlLi>
+                And check for its value in <Code>if/else</Code>…
+              </UlLi>
+              <UlLi>
+                Then TypeScript is smart about what the variable’s possible
+                values are for each branch of <Code>if/else</Code>.
+              </UlLi>
+            </Ul>
+            <P>
+              That’s everything! Let’s quickly summarize what we’ve learned.
+            </P>
           </>
         )
       },

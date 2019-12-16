@@ -12,10 +12,12 @@
       "files": [
         "snippets/snippets/**/umjt.ts",
         "snippets/snippets/**/rvyq.ts",
-        "snippets/snippets/**/vgja.ts"
+        "snippets/snippets/**/vgja.ts",
+        "snippets/snippets/**/dhor.ts",
+        "snippets/snippets/**/szco.ts"
       ],
       "options": {
-        "printWidth": 54
+        "printWidth": 53
       }
     }
   ]

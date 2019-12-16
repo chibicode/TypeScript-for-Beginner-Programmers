@@ -495,6 +495,24 @@ function toggleTodo(todo: Todo) {
   // ...
 }`
 
+export const dhor = `type Place = 'home' | 'work' | { custom: string }
+
+// TypeScript knows what the type of place would be
+// at each point inside the function
+function placeToString(place: Place): string {
+  // In here, place = 'home', 'work' or { custom:… }
+
+  if (place === 'home') {
+    // In here, place = 'home'
+
+    return 'homeEmoji Home'
+  } else {
+    // In here, place = 'work' or { custom: string }
+
+    return 'pinEmoji ' + place.custom
+  }
+}`
+
 export const dqwb = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring
   todo.done = !todo.done
@@ -507,6 +525,12 @@ export const dxfc = `// Associated data. If we're using React, this
   { id: 1, text: 'First todo', done: false },
   { id: 2, text: 'Second todo', done: false }
 ]`
+
+export const eega = `else {
+  // place = 'work' or { custom: string }, and
+  // place.custom is invalid if place = 'work'
+  return 'pinEmoji ' + place.custom
+}`
 
 export const frtm = `type Todo = {
   id: number
@@ -757,6 +781,18 @@ function completeAll(
   todos: readonly Todo[]
 ): Todo[] {
   // ...
+}`
+
+export const szco = `// Correct implementation
+function placeToString(place: Place): string {
+  if (place === 'home') {
+    return 'homeEmoji Home'
+  } else if (place === 'work') {
+    return 'workEmoji Work'
+  } else {
+    // place is guaranteed to be { custom: string }
+    return 'pinEmoji ' + place.custom
+  }
 }`
 
 export const tdbp = `// Takes an array of todo items and returns
