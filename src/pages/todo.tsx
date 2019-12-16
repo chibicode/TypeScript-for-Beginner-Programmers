@@ -317,11 +317,11 @@ const Page = () => (
             <P>
               To implement the above functionality, we need to write code that
               toggles the <Code>done</Code> property of a todo item. Let’s name
-              this function <Code>toggleTodo</Code>.{' '}
+              this function <Code>toggleTodo()</Code>.{' '}
               <Highlight>
-                When you call <Code>toggleTodo</Code> on a todo object, it needs
-                to return a new todo object with the opposite boolean value for
-                the <Code>done</Code> property.
+                When you call <Code>toggleTodo()</Code> on a todo object, it
+                needs to return a new todo object with the opposite boolean
+                value for the <Code>done</Code> property.
               </Highlight>
             </P>
             <CodeBlock snippet={snippets.vpco} />
@@ -342,7 +342,7 @@ const Page = () => (
             />
             <P>
               And it looks like <strong>Little Duckling</strong> has implemented{' '}
-              <Code>toggleTodo</Code> for us:
+              <Code>toggleTodo()</Code> for us:
             </P>
             <BubbleQuotes
               quotes={[
@@ -351,8 +351,8 @@ const Page = () => (
                   children: (
                     <>
                       <P>
-                        I’ve implemented <Code>toggleTodo</Code> for you. Could
-                        you take a look?
+                        I’ve implemented <Code>toggleTodo()</Code> for you.
+                        Could you take a look?
                       </P>
                     </>
                   )
@@ -364,7 +364,7 @@ const Page = () => (
               caption={
                 <>
                   <Emoji type="chickEgg" /> Little Duckling’s{' '}
-                  <Code>toggleTodo</Code> implementation
+                  <Code>toggleTodo()</Code> implementation
                 </>
               }
             />
@@ -533,7 +533,7 @@ const Page = () => (
             <P>
               First,{' '}
               <Highlight>
-                we specify that the input to <Code>toggleTodo</Code> must be{' '}
+                we specify that the input to <Code>toggleTodo()</Code> must be{' '}
                 <Code>Todo</Code>
               </Highlight>
               . We do this by adding <Code>: Todo</Code> next to the parameter{' '}
@@ -548,8 +548,8 @@ const Page = () => (
             <P>
               Next,{' '}
               <Highlight>
-                we specify that the return type of <Code>toggleTodo</Code> must
-                also be <Code>Todo</Code>
+                we specify that the return type of <Code>toggleTodo()</Code>{' '}
+                must also be <Code>Todo</Code>
               </Highlight>
               . We do this by adding <Code>: Todo</Code> after the parameter
               list.
@@ -625,7 +625,7 @@ const Page = () => (
                   children: (
                     <>
                       <P>
-                        I think I can refactor <Code>toggleTodo</Code> as
+                        I think I can refactor <Code>toggleTodo()</Code> as
                         follows. Could you take a look?
                       </P>
                     </>
@@ -1814,6 +1814,35 @@ const Page = () => (
               starter code—can you figure out what goes inside?
             </P>
             <CodeBlock snippet={snippets.ybhj} />
+          </>
+        )
+      },
+      {
+        title: <>Little Duckling’s implementation</>,
+        content: (
+          <>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        I tried to implement <Code>placeToString()</Code>. Could
+                        you take a look?
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <P>
+              Let’s see if Little Duckling’s implementation compiles.{' '}
+              <Highlight>
+                Press <RunButtonText compile />!
+              </Highlight>
+            </P>
+            <CodeBlock narrowText snippet={snippets.vgja} />
           </>
         )
       },

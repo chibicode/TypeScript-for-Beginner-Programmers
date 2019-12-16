@@ -136,6 +136,36 @@ const CodeBlockHighlight = ({
                       </>
                     )
                   }
+                  if (/homeEmoji/.exec(children)) {
+                    const splitChildren = children.split('homeEmoji')
+                    updatedChildren = (
+                      <>
+                        {splitChildren[0]}
+                        <Emoji type="home" />
+                        {splitChildren[1]}
+                      </>
+                    )
+                  }
+                  if (/workEmoji/.exec(children)) {
+                    const splitChildren = children.split('workEmoji')
+                    updatedChildren = (
+                      <>
+                        {splitChildren[0]}
+                        <Emoji type="work" />
+                        {splitChildren[1]}
+                      </>
+                    )
+                  }
+                  if (/pinEmoji/.exec(children)) {
+                    const splitChildren = children.split('pinEmoji')
+                    updatedChildren = (
+                      <>
+                        {splitChildren[0]}
+                        <Emoji type="pin" />
+                        {splitChildren[1]}
+                      </>
+                    )
+                  }
                   return (
                     <span
                       key={spanKey}

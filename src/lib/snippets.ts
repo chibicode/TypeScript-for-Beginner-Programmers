@@ -778,6 +778,17 @@ export const uxlb = `function toggleTodo(todo: Todo): Todo {
   return todo
 }`
 
+export const vgja = `type Place = 'home' | 'work' | { custom: string }
+
+// Little Duckling’s implementation
+function placeToString(place: Place): string {
+  if (place === 'home') {
+    return 'homeEmoji Home'
+  } else {
+    return 'pinEmoji ' + place.custom
+  }
+}`
+
 export const vgnq = `// This will continue to work because
 // the input todo is not modified
 function toggleTodo(todo: Todo): Todo {
@@ -853,9 +864,9 @@ type CompletedTodo = Readonly<{
   done: true
 }>`
 
-export const ybhj = `// Takes a Place and returns a string
-function placeToString(place: Place): string {
-  // Figure out what code goes here!
+export const ybhj = `function placeToString(place: Place): string {
+  // Takes a Place and returns a string
+  // that can be used for the place label UI
 }`
 
 export const yhto = `type Todo = {

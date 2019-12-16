@@ -1,4 +1,4 @@
-// Takes a Place and returns a string
 function placeToString(place: Place): string {
-  // Figure out what code goes here!
+  // Takes a Place and returns a string
+  // that can be used for the place label UI
 }
