@@ -1842,7 +1842,16 @@ const Page = () => (
                 Press <RunButtonText compile />!
               </Highlight>
             </P>
-            <CodeBlock narrowText snippet={snippets.vgja} />
+            <CodeBlock
+              narrowText
+              snippet={snippets.vgja}
+              compile
+              resultError
+              result={`Property 'custom' does not exist on type '{ custom: string; } | "work"'.`}
+              shouldHighlightResult={(lineIndex, tokenIndex) =>
+                lineIndex === 7 && tokenIndex >= 7
+              }
+            />
           </>
         )
       },
