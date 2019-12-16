@@ -47,6 +47,31 @@ const placesExample: Todo[] = [
   }
 ]
 
+const UnionTypesSummary = () => (
+  <>
+    <Ul>
+      <UlLi>
+        If we have a variable that’s a <strong>union type</strong> (e.g.{' '}
+        <Code>place</Code>)…
+      </UlLi>
+      <UlLi>
+        And check for its value in <Code>if/else</Code>…
+      </UlLi>
+      <UlLi>
+        Then TypeScript is smart about what the variable’s possible values are
+        for each branch of <Code>if/else</Code>.
+      </UlLi>
+    </Ul>
+    <CodeBlock
+      snippet={snippets.ntup}
+      narrowText
+      shouldHighlight={lineIndex =>
+        lineIndex === 8 || lineIndex === 11 || lineIndex === 14
+      }
+    />
+  </>
+)
+
 const ArrowWrapper = ({ children }: { children: React.ReactNode }) => (
   <span
     css={css`
@@ -1926,28 +1951,69 @@ const Page = () => (
               </Highlight>
               :
             </P>
-            <Ul>
-              <UlLi>
-                If we have a variable that’s a <strong>union type</strong> (e.g.{' '}
-                <Code>place</Code>)…
-              </UlLi>
-              <UlLi>
-                And check for its value in <Code>if/else</Code>…
-              </UlLi>
-              <UlLi>
-                Then TypeScript is smart about what the variable’s possible
-                values are for each branch of <Code>if/else</Code>.
-              </UlLi>
-            </Ul>
+            <UnionTypesSummary />
+            <P>
+              That’s everything! Let’s quickly summarize what we’ve learned.
+            </P>
+          </>
+        )
+      },
+      {
+        color: 'green',
+        subtitle: <>Section 3 Summary:</>,
+        title: <>Union types are powerful</>,
+        content: (
+          <>
+            <P>
+              In this section, we’ve learned about union types and optional
+              properties:
+            </P>
+            <P>
+              <strong>
+                1. We can use the syntax <Code>A | B</Code> to create a{' '}
+                <strong>union type</strong>, which represents a type that’s
+                either <Code>A</Code> or <Code>B</Code>.
+              </strong>
+            </P>
             <CodeBlock
-              snippet={snippets.ntup}
               narrowText
-              shouldHighlight={lineIndex =>
-                lineIndex === 8 || lineIndex === 11 || lineIndex === 14
+              caption={
+                <>
+                  <Code>Place</Code> can be either <Code>'home'</Code>,{' '}
+                  <Code>'work'</Code>, or an object containing a string{' '}
+                  <Code>custom</Code> property
+                </>
+              }
+              snippet={snippets.umjt}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 0 && tokenIndex >= 6
               }
             />
             <P>
-              That’s everything! Let’s quickly summarize what we’ve learned.
+              <strong>
+                2. We can add a question mark (<Code>?</Code>) after a property
+                name to make the property optional.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.npog}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 5 && tokenIndex <= 1
+              }
+            />
+            <P>
+              Finally,{' '}
+              <strong>
+                union types are powerful when combined with conditional
+                statements (e.g. <Code>if/else</Code>).
+              </strong>
+            </P>
+            <UnionTypesSummary />
+            <P>
+              Union types are one of the best ideas of TypeScript. You should
+              use them widely. There are other powerful features of union types
+              (discriminated unions, usage with mapped types, etc) which I won’t
+              cover here.
             </P>
           </>
         )

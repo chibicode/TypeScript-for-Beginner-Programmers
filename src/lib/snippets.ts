@@ -715,6 +715,14 @@ export const npgx = `type Todo = Readonly<{
   place: Place
 }>`
 
+export const npog = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+  // place is optional
+  place?: Place
+}>`
+
 export const ntau = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s code from earlier:
   // Missing the "id" property
