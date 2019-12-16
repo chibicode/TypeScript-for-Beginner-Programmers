@@ -495,24 +495,6 @@ function toggleTodo(todo: Todo) {
   // ...
 }`
 
-export const dhor = `type Place = 'home' | 'work' | { custom: string }
-
-// TypeScript knows what the type of place would be
-// at each point inside the function
-function placeToString(place: Place): string {
-  // In here, place = 'home', 'work' or { custom:… }
-
-  if (place === 'home') {
-    // In here, place = 'home'
-
-    return 'homeEmoji Home'
-  } else {
-    // In here, place = 'work' or { custom: string }
-
-    return 'pinEmoji ' + place.custom
-  }
-}`
-
 export const dqwb = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring
   todo.done = !todo.done
@@ -599,6 +581,78 @@ export const lieq = `type Todo = {
   id: number
   text: string
   done: boolean
+}`
+
+export const dhor = `type Place = 'home' | 'work' | { custom: string }
+
+// TypeScript knows what the type of "place"
+// would be at each point inside the function
+function placeToString(place: Place): string {
+  // In here, place = 'home', 'work' or { custom:… }
+
+  if (place === 'home') {
+    // In here, place = 'home'
+
+    return 'homeEmoji Home'
+  } else {
+    // In here, place = 'work' or { custom: string }
+
+    return 'pinEmoji ' + place.custom
+  }
+}`
+
+export const ntup = `// If we have a variable that’s a union type…
+type Place = 'home' | 'work' | { custom: string }
+
+function placeToString(place: Place): string {
+  // TypeScript is smart about what the variable’s
+  // possible values are for each branch of if/else
+
+  if (place === 'home') {
+    // TypeScript knows that place = 'home' here
+    // (So it won’t compile if you do place.custom)
+  } else if (place === 'work') {
+    // TypeScript knows that place = 'work' here
+    // (So it won’t compile if you do place.custom)
+  } else {
+    // TypeScript knows place = { custom: … } here
+    // (So you can do place.custom)
+  }
+}`
+
+export const rvyq = `type Place = 'home' | 'work' | { custom: string }
+
+type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+  // place is optional
+  place?: Place
+}>`
+
+export const szco = `// Correct implementation
+function placeToString(place: Place): string {
+  if (place === 'home') {
+    return 'homeEmoji Home'
+  } else if (place === 'work') {
+    return 'workEmoji Work'
+  } else {
+    // place is guaranteed to be { custom: string }
+    return 'pinEmoji ' + place.custom
+  }
+}`
+
+export const umjt = `type Place = 'home' | 'work' | { custom: string }`
+
+export const vgja = `type Place = 'home' | 'work' | { custom: string }
+
+// Little Duckling’s implementation
+function placeToString(place: Place): string {
+  if (place === 'home') {
+    return 'homeEmoji Home'
+  } else {
+    return 'pinEmoji ' + place.custom
+  }
 }`
 
 export const lund = `const result = toggleTodo({
@@ -766,33 +820,11 @@ export const ruga = `function completeAll(
   // ...
 }`
 
-export const rvyq = `type Place = 'home' | 'work' | { custom: string }
-
-type Todo = Readonly<{
-  id: number
-  text: string
-  done: boolean
-  // place is optional
-  place?: Place
-}>`
-
 export const szan = `// Make input todos as readonly array
 function completeAll(
   todos: readonly Todo[]
 ): Todo[] {
   // ...
-}`
-
-export const szco = `// Correct implementation
-function placeToString(place: Place): string {
-  if (place === 'home') {
-    return 'homeEmoji Home'
-  } else if (place === 'work') {
-    return 'workEmoji Work'
-  } else {
-    // place is guaranteed to be { custom: string }
-    return 'pinEmoji ' + place.custom
-  }
 }`
 
 export const tdbp = `// Takes an array of todo items and returns
@@ -806,23 +838,10 @@ export const tgvw = `const bar: Todo = {
   done: true
 }`
 
-export const umjt = `type Place = 'home' | 'work' | { custom: string }`
-
 export const uxlb = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring
   todo.done = !todo.done
   return todo
-}`
-
-export const vgja = `type Place = 'home' | 'work' | { custom: string }
-
-// Little Duckling’s implementation
-function placeToString(place: Place): string {
-  if (place === 'home') {
-    return 'homeEmoji Home'
-  } else {
-    return 'pinEmoji ' + place.custom
-  }
 }`
 
 export const vgnq = `// This will continue to work because

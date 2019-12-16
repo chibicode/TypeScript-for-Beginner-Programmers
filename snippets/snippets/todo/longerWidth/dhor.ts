@@ -1,7 +1,7 @@
 type Place = 'home' | 'work' | { custom: string }
 
-// TypeScript knows what the type of place would be
-// at each point inside the function
+// TypeScript knows what the type of "place"
+// would be at each point inside the function
 function placeToString(place: Place): string {
   // In here, place = 'home', 'work' or { custom:… }
 

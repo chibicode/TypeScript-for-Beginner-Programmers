@@ -1939,6 +1939,13 @@ const Page = () => (
                 values are for each branch of <Code>if/else</Code>.
               </UlLi>
             </Ul>
+            <CodeBlock
+              snippet={snippets.ntup}
+              narrowText
+              shouldHighlight={lineIndex =>
+                lineIndex === 8 || lineIndex === 11 || lineIndex === 14
+              }
+            />
             <P>
               That’s everything! Let’s quickly summarize what we’ve learned.
             </P>
