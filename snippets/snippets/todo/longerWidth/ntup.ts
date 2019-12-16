@@ -6,10 +6,10 @@ function placeToString(place: Place): string {
   // possible values are for each branch of if/else
 
   if (place === 'home') {
-    // TypeScript knows that place = 'home' here
+    // TypeScript knows place = 'home' here
     // (So it won’t compile if you do place.custom)
   } else if (place === 'work') {
-    // TypeScript knows that place = 'work' here
+    // TypeScript knows place = 'work' here
     // (So it won’t compile if you do place.custom)
   } else {
     // TypeScript knows place = { custom: … } here
