@@ -807,8 +807,8 @@ const Page = () => (
               <Highlight>
                 you can use the <Code>readonly</Code> keyword in TypeScript.
               </Highlight>{' '}
-              In the following code, the <Code>readonly</Code> keyword is added
-              to all of the properties of <Code>Todo</Code>.
+              Here, the <Code>readonly</Code> keyword is added to all of the
+              properties of <Code>Todo</Code>.
             </P>
             <CodeBlock
               snippet={snippets.yhto}
@@ -818,7 +818,7 @@ const Page = () => (
             />
             <P>
               Now, let’s try to compile Little Duckling’s code again using the
-              updated definition of <Code>Todo</Code>. What happens this time?
+              above definition of <Code>Todo</Code>. What happens this time?
             </P>
             <CodeBlock
               snippet={snippets.dqwb}
@@ -853,12 +853,12 @@ const Page = () => (
               }
             />
             <P>
-              By the way, the previous implementation (before refactoring) will
-              continue to work because it does NOT modify the input todo item.
+              By the way, the earlier implementation we used will continue to
+              work because it does NOT modify the input todo item.
             </P>
             <CodeBlock
               snippet={snippets.vgnq}
-              shouldHighlight={lineIndex => lineIndex <= 1}
+              shouldHighlight={lineIndex => lineIndex === 6 || lineIndex === 7}
             />
           </>
         )

@@ -865,8 +865,14 @@ export const uxlb = `function toggleTodo(todo: Todo): Todo {
   return todo
 }`
 
-export const vgnq = `// This will continue to work because
-// the input todo is not modified
+export const vgnq = `type Todo = {
+  readonly id: number
+  readonly text: string
+  readonly done: boolean
+}
+
+// Earlier implementation: it will continue to
+// work because the input todo is not modified
 function toggleTodo(todo: Todo): Todo {
   return {
     id: todo.id,
