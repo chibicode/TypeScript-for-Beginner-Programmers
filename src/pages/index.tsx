@@ -16,8 +16,8 @@ export const FirstParagraph = () => (
     <P>
       <strong>Why target beginner programmers?</strong> As TypeScript is
       becoming popular, more beginner programmers will be learning it. However,
-      I noticed that many existing TypeScript tutorials are too hard for
-      beginner programmers. I wanted to offer a friendlier alternative.
+      I noticed that many existing tutorials are not so friendly for beginner
+      programmers. This is my attempt to offer a friendlier alternative.
     </P>
   </>
 )
