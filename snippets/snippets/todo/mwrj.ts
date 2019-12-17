@@ -1,4 +1,4 @@
-// After declaring todos as: readonly Todo[],
+// After declaring todos as readonly Todo[],
 // the following code WILL NOT compile:
 
 // Compile error - modifies the array

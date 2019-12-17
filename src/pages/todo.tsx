@@ -1078,9 +1078,14 @@ const Page = () => (
         content: (
           <>
             <P>
-              <strong>First,</strong> we’ll specify the type for the input
-              parameter of <Code>completeAll()</Code>. It’s an array of{' '}
-              <Code>Todo</Code> items.{' '}
+              For <Code>completeAll()</Code>, we’ll use the{' '}
+              <Code>Readonly</Code> version of the <Code>Todo</Code> type:
+            </P>
+            <CodeBlock snippet={snippets.mxqy} />
+            <P>
+              <strong>First,</strong> we’ll specify the parameter type of{' '}
+              <Code>completeAll()</Code>, which is an array of <Code>Todo</Code>{' '}
+              items.{' '}
               <Highlight>
                 To specify an array type, we add <Code>[]</Code> next to the
                 type
@@ -1090,7 +1095,7 @@ const Page = () => (
             <CodeBlock
               snippet={snippets.lgci}
               shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 8 && tokenIndex >= 5 && tokenIndex <= 9
+                lineIndex === 1 && tokenIndex >= 5 && tokenIndex <= 9
               }
             />
             <P>
@@ -1126,14 +1131,14 @@ const Page = () => (
                 To make the array itself <Code>readonly</Code>,
               </strong>{' '}
               <Highlight>
-                we’ll add the <Code>readonly</Code> keyword to{' '}
+                we need to add the <Code>readonly</Code> keyword to{' '}
                 <Code>Todo[]</Code> like so:
               </Highlight>
             </P>
             <CodeBlock
               snippet={snippets.szan}
               shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 2 && tokenIndex >= 1
+                lineIndex === 2 && tokenIndex >= 2
               }
             />
             <BubbleQuotes

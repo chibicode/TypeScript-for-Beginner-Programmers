@@ -549,14 +549,7 @@ export const kuzw = `function completeAll(todos: Todo[]): Todo[] {
   // instead of modifying the original array
 }`
 
-export const lgci = `// Same as before: Each property is readonly
-type Todo = Readonly<{
-  id: number
-  text: string
-  done: boolean
-}>
-
-// Input is an array of Todo items: Todo[]
+export const lgci = `// Input is an array of Todo items: Todo[]
 function completeAll(todos: Todo[]) {
   // ...
 }`
@@ -669,7 +662,7 @@ function completeAll(todos: Todo[]): Todo[] {
   // ...
 }`
 
-export const mwrj = `// After declaring todos as: readonly Todo[],
+export const mwrj = `// After declaring todos as readonly Todo[],
 // the following code WILL NOT compile:
 
 // Compile error - modifies the array
@@ -677,6 +670,12 @@ todos[0] = { id: 1, text: '…', done: true }
 
 // Compile error - push() modifies the array
 todos.push({ id: 1, text: '…', done: true })`
+
+export const mxqy = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>`
 
 export const mzyn = `// Creates a union type of number and string
 type Foo = number | string
