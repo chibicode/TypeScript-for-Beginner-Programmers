@@ -1222,8 +1222,13 @@ const Page = () => (
             />
             <P>
               The new <Code>CompletedTodo</Code> is almost identical to{' '}
-              <Code>Todo</Code>, except it has <Code>done: true</Code> instead
-              of <Code>done: boolean</Code>.{' '}
+              <Code>Todo</Code>, except it has{' '}
+              <Code>
+                <strong>done: true</strong>
+              </Code>{' '}
+              instead of <Code>done: boolean</Code>.
+            </P>
+            <P>
               <Highlight>
                 In TypeScript, you can use <em>exact values</em> (like{' '}
                 <Code>true</Code> or <Code>false</Code>) when specifying a type.
@@ -1240,8 +1245,8 @@ const Page = () => (
               }
             />
             <P>
-              Let’s take a look at an example. In the following code, we added a{' '}
-              <Code>CompletedTodo</Code> to a todo item that has{' '}
+              Let’s take a look at an example. In the following code, we’ve
+              added <Code>CompletedTodo</Code> to a todo item that has{' '}
               <Code>done: false</Code>. Let’s see what happens{' '}
               <Highlight>
                 when you <RunButtonText compile /> it
@@ -1253,15 +1258,18 @@ const Page = () => (
               compile
               resultError
               result={<>Type 'false' is not assignable to type 'true'.</>}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 1 && tokenIndex >= 3 && tokenIndex <= 5
+              }
               shouldHighlightResult={lineIndex => lineIndex === 4}
             />
             <P>
               It failed to compile because <Code>done</Code> is not{' '}
-              <Code>true</Code>. By using literal types like the above, you can
-              specify exactly what value is allowed for a property.
+              <Code>true</Code>. By using literal types, you can specify exactly
+              what value is allowed for a property.
             </P>
             <P>
-              Coming back to <Code>completeAll()</Code>, we can now specify the
+              Coming back to <Code>completeAll()</Code>, we can specify the
               return type of <Code>completeAll()</Code> to be an array of{' '}
               <Code>CompletedTodo</Code>’s:
             </P>
@@ -1275,7 +1283,7 @@ const Page = () => (
               By doing this,{' '}
               <Highlight>
                 TypeScript will force you to return an array of todo items where{' '}
-                <Code>done</Code> is <Code>true</Code>
+                <Code>done</Code> is all <Code>true</Code>
               </Highlight>
               —if not, it will result in a compile error.
             </P>
