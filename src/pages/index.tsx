@@ -4,36 +4,22 @@ import { P } from 'src/components/ContentTags'
 import { siteTitle, baseUrl, siteDescription, siteOgImage } from 'src/lib/meta'
 import Head from 'next/head'
 import Page from 'src/components/Page'
-import ReadMore from 'src/components/ReadMore'
 import ArticleList from 'src/components/ArticleList'
 
-export const FirstParagraph = ({
-  defaultVisible
-}: {
-  defaultVisible?: boolean
-}) => (
+export const FirstParagraph = () => (
   <>
-    <ReadMore
-      rest={
-        <P>
-          <strong>Why target beginner programmers?</strong> As TypeScript is
-          becoming popular, I believe that more beginner programmers (people
-          with only a few months of coding experience) will be learning it,{' '}
-          <em>possibly as one of their first languages</em>. So I wanted to
-          create tutorials specifically targeting beginner programmers.
-        </P>
-      }
-      readMoreText="Read more…"
-      preview={readMore => (
-        <P>
-          <strong>Hello!</strong> I write tutorials to help{' '}
-          <em>beginner programmers</em> learn TypeScript. My tutorials might NOT
-          be as useful for experienced programmers learning TypeScript.
-          {readMore}
-        </P>
-      )}
-      defaultVisible={defaultVisible}
-    />
+    <P>
+      <strong>Hello!</strong> I write tutorials to help{' '}
+      <em>beginner programmers</em> learn TypeScript. My tutorials might NOT be
+      as useful for experienced programmers learning TypeScript.
+    </P>
+    <P>
+      <strong>Why target beginner programmers?</strong> As TypeScript is
+      becoming popular, I believe that more beginner programmers will be
+      learning it. However, I noticed that many existing TypeScript tutorials
+      are too challenging for beginner programmers. I wanted to offer a
+      beginner-friendly alternative here.
+    </P>
   </>
 )
 
@@ -59,7 +45,7 @@ const Index = () => {
             backgroundColor: 'lightYellow1',
             children: (
               <>
-                <FirstParagraph defaultVisible />
+                <FirstParagraph />
               </>
             )
           }

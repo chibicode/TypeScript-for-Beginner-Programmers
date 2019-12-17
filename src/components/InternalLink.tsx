@@ -10,7 +10,7 @@ const InternalLink = ({
   ...props
 }: JSX.IntrinsicElements['a'] & {
   href: string
-  cssOverrides: Interpolation
+  cssOverrides?: Interpolation
 }) => {
   const { colors } = useTheme()
   return (

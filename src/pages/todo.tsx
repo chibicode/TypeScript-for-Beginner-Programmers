@@ -13,13 +13,18 @@ import {
   UlLi
 } from 'src/components/ContentTags'
 import * as snippets from 'src/lib/snippets'
-import underConstructionCard from 'src/lib/underConstructionCard'
 import TodoWithData, { Todo } from 'src/components/TodoWithData'
 import RunButtonText from 'src/components/RunButtonText'
 import CodeBlock from 'src/components/CodeBlock'
 import BubbleQuotes from 'src/components/BubbleQuotes'
 import ResultHighlight from 'src/components/ResultHighlight'
 import PlaceLabel from 'src/components/PlaceLabel'
+import InternalLink from 'src/components/InternalLink'
+import AboutMe from 'src/components/AboutMe'
+import { SourceAvailableText } from 'src/components/GitHubButton'
+import TwitterLink from 'src/components/TwitterLink'
+import { articlesData } from 'src/lib/articles'
+import { baseUrl } from 'src/lib/meta'
 
 const compileSuccess = 'Compiled successfully!'
 const section1 = 'Types, Read-only Properties, and Mapped Types'
@@ -222,7 +227,32 @@ const Page = () => (
             </Ul>
             <P>Let’s get started!</P>
           </>
-        )
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>Note:</strong> If you already know TypeScript basics,
+                you won’t find anything new in this tutorial. However,{' '}
+                <Highlight color="white85">
+                  you might know someone (maybe one of your Twitter followers)
+                  who’re interested in learning TypeScript
+                </Highlight>
+                . I’d appreciate it if you could share this article with them.
+                You can{' '}
+                <TwitterLink
+                  title={articlesData['todo']['title']}
+                  url={`${baseUrl}/todo`}
+                >
+                  click here to tweet this article.
+                </TwitterLink>
+              </P>
+              <P>
+                <SourceAvailableText />
+              </P>
+            </>
+          )
+        }
       },
       {
         title: (
@@ -1947,7 +1977,7 @@ const Page = () => (
               As we just saw,{' '}
               <Highlight>
                 union types are powerful when combined with conditional
-                statements (e.g. <Code>if/else</Code>)
+                statements (e.g. <Code>if/else</Code> or <Code>switch</Code>)
               </Highlight>
               :
             </P>
@@ -2005,20 +2035,65 @@ const Page = () => (
               Finally,{' '}
               <strong>
                 union types are powerful when combined with conditional
-                statements (e.g. <Code>if/else</Code>).
+                statements (e.g. <Code>if/else</Code> or <Code>switch</Code>).
               </strong>
             </P>
             <UnionTypesSummary />
             <P>
               Union types are one of the best ideas of TypeScript. You should
               use them widely. There are other powerful features of union types
-              (discriminated unions, usage with mapped types, etc) which I won’t
-              cover here.
+              (discriminated unions, combining them with mapped types, etc)
+              which I won’t cover here.
             </P>
           </>
         )
       },
-      underConstructionCard
+      {
+        title: <>Conclusion and next steps</>,
+        content: (
+          <>
+            <EmojiSeparator emojis={['sparkles', 'chickEgg', 'sparkles']} />
+            <P>
+              Thanks for reading! You should now know enough TypeScript to get
+              started with a project.
+            </P>
+            <Ul>
+              <UlLi>
+                If you’re using React,{' '}
+                <A href="https://github.com/typescript-cheatsheets/react-typescript-cheatsheet">
+                  React+TypeScript Cheatsheets
+                </A>{' '}
+                is a good reference.
+              </UlLi>
+              <UlLi>
+                Once you become more familiar with TypeScript, you should learn{' '}
+                <strong>generics</strong> next. I’ve written an article on it
+                called “
+                <InternalLink href="/generics">
+                  TypeScript Generics for People Who Gave Up on Understanding
+                  Generics
+                </InternalLink>
+                ”.
+              </UlLi>
+              <UlLi>
+                <SourceAvailableText />
+              </UlLi>
+              <UlLi>
+                I plan to write more TypeScript articles by building on the todo
+                app example I used here. To get notified when I publish a new
+                article, follow me on{' '}
+                <A href="https://twitter.com/chibicode">
+                  <Emoji type="twitter" /> Twitter at @chibicode
+                </A>
+                .
+              </UlLi>
+            </Ul>
+          </>
+        ),
+        footer: {
+          content: <AboutMe />
+        }
+      }
     ]}
   />
 )

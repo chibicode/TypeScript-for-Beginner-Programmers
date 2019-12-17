@@ -94,7 +94,7 @@ const PostPage = ({
             backgroundColor: 'pink',
             children: (
               <>
-                <FirstParagraph defaultVisible={false} />
+                <FirstParagraph />
               </>
             )
           }

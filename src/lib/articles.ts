@@ -8,7 +8,7 @@ export const articlesData = {
   todo: {
     title:
       'TypeScript Tutorial for JS Programmers Who Know How to Build a Todo App',
-    date: DateTime.fromISO('2019-12-16T12:00:00Z'),
+    date: DateTime.fromISO('2019-12-17T12:00:00Z'),
     description: 'Learn TypeScript by Building a Todo App',
     ogImage: 'todo'
   },
