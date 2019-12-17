@@ -695,7 +695,7 @@ const Page = () => (
         )
       },
       {
-        title: <>Bad refactor</>,
+        title: <>Bad refactoring</>,
         content: (
           <>
             <P>
@@ -737,54 +737,39 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.wymp}
+              narrowText
               result={
                 <>
-                  Before toggleTodo()…
+                  Before toggleTodo(), argument is:
                   <br />
                   <ResultHighlight>{`{ id: 1, text: '…', done: true }`}</ResultHighlight>
-                  After toggleTodo()…
                   <br />
-                  Original Todo:
-                  <br />
-                  <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
-                  New Todo:
+                  After toggleTodo(), argument is:
                   <br />
                   <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
                 </>
               }
             />
-            <P>Here’s what happened:</P>
-            <Ul>
-              <UlLi>
-                <Code>originalTodo</Code> originally had <Code>done: true</Code>
-                .
-              </UlLi>
-              <UlLi>
-                After <Code>toggleTodo(),</Code> both <Code>originalTodo</Code>{' '}
-                and <Code>newTodo</Code> have <Code>done: false</Code>.
-              </UlLi>
-              <UlLi>
-                So <Code>originalTodo</Code> was modified!
-              </UlLi>
-            </Ul>
             <P>
-              However, we’ve said earlier on this page that{' '}
+              <Code>argument</Code> changed after running{' '}
+              <Code>toggleTodo()</Code> on it. This is NOT good because we’ve
+              said earlier that{' '}
               <Highlight>
-                <Code>toggleTodo()</Code> must return a new todo object. It
-                should NOT modify the original object.
-              </Highlight>
+                <Code>toggleTodo()</Code> must return a new todo object.
+              </Highlight>{' '}
+              It should NOT modify the argument (input) todo object.
             </P>
             <CodeBlock
               snippet={snippets.qbgu}
-              shouldHighlight={lineIndex => lineIndex === 0}
+              shouldHighlight={lineIndex => lineIndex === 1}
             />
             <P>
-              That’s why Little Duckling’s refactoring is a bad refactor—even
+              That’s why Little Duckling’s refactoring is a bad refactoring—even
               though it compiles correctly.
             </P>
             <CodeBlock
               snippet={snippets.njgr}
-              shouldHighlight={lineIndex => lineIndex === 2 || lineIndex === 3}
+              shouldHighlight={lineIndex => lineIndex === 4}
             />
             <BubbleQuotes
               quotes={[

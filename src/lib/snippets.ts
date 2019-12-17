@@ -655,6 +655,20 @@ function placeToString(place: Place): string {
   }
 }`
 
+export const wymp = `const argument = {
+  id: 1,
+  text: '…',
+  done: true
+}
+
+console.log('Before toggleTodo(), argument is:')
+console.log(argument)
+
+toggleTodo(argument)
+
+console.log('After toggleTodo(), argument is:')
+console.log(argument)`
+
 export const lund = `const result = toggleTodo({
   id: 1,
   text: '…',
@@ -691,7 +705,7 @@ const b: Foo = 'hello'`
 export const njgr = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring is a
   // bad refactoring because it modifies
-  // the original todo object
+  // the argument (input) todo object
   todo.done = !todo.done
   return todo
 }`
@@ -761,9 +775,8 @@ type ReadonlyFoo = Readonly<Foo>
 
 // ReadonlyFoo is { readonly bar: number }`
 
-export const qbgu = `// Returns a new todo object
-// with the opposite boolean value
-// for the "done" proprty.
+export const qbgu = `// We said earlier that
+// toggleTodo must return a new todo object.
 function toggleTodo(todo) {
   // ...
 }`
@@ -898,23 +911,6 @@ export const whae = `function completeAll(
     done: false
   }))
 }`
-
-export const wymp = `const originalTodo = {
-  id: 1,
-  text: '…',
-  done: true
-}
-
-console.log('Before toggleTodo()…')
-console.log(originalTodo)
-
-const newTodo = toggleTodo(originalTodo)
-
-console.log('After toggleTodo()…')
-console.log('Original Todo:')
-console.log(originalTodo)
-console.log('New Todo:')
-console.log(newTodo)`
 
 export const xrwn = `type Todo = Readonly<{
   // id and text are the same as CompletedTodo
