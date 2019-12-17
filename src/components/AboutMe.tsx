@@ -13,9 +13,10 @@ const AboutMe = () => (
       .
     </P>
     <P>
-      <strong>I’m currently looking for a full-time opportunity:</strong>{' '}
-      Looking for a remote (PST timezone) position in full-stack engineering,
-      product management, or DevRel. You can email me at{' '}
+      <strong>I’m currently looking for a full-time opportunity.</strong> I’m
+      specifically looking for a remote (US timezone) position in full-stack
+      engineering, product management, or DevRel. You can learn more about me on{' '}
+      <A href="https://chibicode.com/">my personal website</A>. My email is{' '}
       <A href="mailto:shu@chibicode.com">shu@chibicode.com</A>.
     </P>
   </>
