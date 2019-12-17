@@ -378,15 +378,29 @@ const Page = () => (
         content: (
           <>
             <P>
-              To implement the above functionality, we need to write code that
-              toggles the <Code>done</Code> property of a todo item. Let’s name
-              this function <Code>toggleTodo()</Code>.{' '}
-              <Highlight>
-                When you call <Code>toggleTodo()</Code> on a todo object, it
-                needs to return a new todo object with the opposite boolean
-                value for the <Code>done</Code> property.
-              </Highlight>
+              To implement the check/uncheck functionality, we need to write
+              code that toggles the <Code>done</Code> property of a todo item.
             </P>
+            <P>
+              Let’s name this function{' '}
+              <Code>
+                <strong>toggleTodo()</strong>
+              </Code>
+              . Here’s how it should work:
+            </P>
+            <Ul>
+              <UlLi>
+                <Highlight>
+                  When you call <Code>toggleTodo()</Code> on a todo object…
+                </Highlight>
+              </UlLi>
+              <UlLi>
+                <Highlight>
+                  …it needs to return a new todo object with the opposite
+                  boolean value for the <Code>done</Code> property.
+                </Highlight>
+              </UlLi>
+            </Ul>
             <CodeBlock snippet={snippets.vpco} />
             <P>
               Now, let me introduce our junior developer,{' '}
