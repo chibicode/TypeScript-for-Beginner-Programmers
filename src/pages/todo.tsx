@@ -1029,10 +1029,9 @@ const Page = () => (
         content: (
           <>
             <P>
-              Some todo apps allow you to{' '}
-              <strong>mark all items as completed.</strong> On the following
-              todo app,{' '}
-              <Highlight>try pressing “Mark all as completed”:</Highlight>
+              Let’s talk about a new feature of our todo app: “
+              <strong>Mark all as completed</strong>”.{' '}
+              <Highlight>Try pressing “Mark all as completed” below:</Highlight>
             </P>
             <TodoWithData
               showData
@@ -1050,20 +1049,20 @@ const Page = () => (
               shouldHighlight={tokenIndex => tokenIndex === 15}
             />
             <P>
-              After pressing “Mark all as completed”, all items will have{' '}
-              <Code>done: true</Code>.
+              After pressing <Highlight>“Mark all as completed”</Highlight>, all
+              items end up with <Code>done: true</Code>.
             </P>
             <P>
               Let’s implement this functionality using TypeScript. We’ll write a
               function called <Code>completeAll()</Code> which takes an array of
-              todo items and returns a new array where <Code>done</Code> is all{' '}
-              <Code>true</Code>.
+              todo items and returns a new array of todos where{' '}
+              <Code>done</Code> is all <Code>true</Code>.
             </P>
             <CodeBlock snippet={snippets.tdbp} />
             <P>
               Before implementing it,{' '}
               <Highlight>
-                let’s add some types for the input and output of this function
+                let’s specify the input/output types for this function
               </Highlight>{' '}
               to prevent mistakes!
             </P>
