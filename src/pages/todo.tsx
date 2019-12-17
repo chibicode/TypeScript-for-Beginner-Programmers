@@ -751,7 +751,7 @@ const Page = () => (
             />
             <P>
               That’s why Little Duckling’s refactoring is a bad refactor—even
-              thought it compiles correctly.
+              though it compiles correctly.
             </P>
             <CodeBlock
               snippet={snippets.njgr}
@@ -993,7 +993,7 @@ const Page = () => (
               tests in TypeScript!)
             </P>
             <P>
-              This especially useful{' '}
+              This is especially useful{' '}
               <Highlight>
                 when you’re using a UI library and need to transform data
               </Highlight>
@@ -1325,7 +1325,7 @@ const Page = () => (
               }
             />
             <P>
-              We can de-duplicate the code by using a TypeScript feature called{' '}
+              We can deduplicate the code by using a TypeScript feature called{' '}
               <strong>intersection types</strong>.
             </P>
             <P>
@@ -1579,19 +1579,19 @@ const Page = () => (
               Let’s take a look at the associated data.{' '}
               <Highlight>
                 Each todo now can have an optional <Code>place</Code> property,
-                which can have the following value:
+                which can have one of the following values:
               </Highlight>
             </P>
             <Ul>
               <UlLi>
-                <PlaceLabel place="home" /> → <Code>'home'</Code>
+                <PlaceLabel place="home" /> → <Code>place: 'home'</Code>
               </UlLi>
               <UlLi>
-                <PlaceLabel place="work" /> → <Code>'work'</Code>
+                <PlaceLabel place="work" /> → <Code>place: 'work'</Code>
               </UlLi>
               <UlLi>
-                <PlaceLabel place={{ custom: 'Custom name' }} /> →{' '}
-                <Code>{`{ custom: 'Custom name' }`}</Code>
+                <PlaceLabel place={{ custom: 'Foo' }} /> →{' '}
+                <Code>{`place: { custom: 'Foo' }`}</Code>
               </UlLi>
             </Ul>
             <P>
@@ -1641,7 +1641,7 @@ const Page = () => (
               emojis={['a', 'verticalBar', 'b']}
               description={
                 <>
-                  <Code>A | B</Code> is an <strong>union type</strong>, which
+                  <Code>A | B</Code> is a <strong>union type</strong>, which
                   means{' '}
                   <Highlight>
                     either <Code>A</Code> or <Code>B</Code>.
@@ -2041,7 +2041,7 @@ const Page = () => (
             <UnionTypesSummary />
             <P>
               Union types are one of the best ideas of TypeScript. You should
-              use them widely. There are other powerful features of union types
+              use them often. There are other powerful features of union types
               (discriminated unions, combining them with mapped types, etc)
               which I won’t cover here.
             </P>
