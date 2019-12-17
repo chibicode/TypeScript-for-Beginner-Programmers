@@ -523,27 +523,34 @@ const Page = () => (
         )
       },
       {
-        title: <>Using TypeScript to catch mistakes early</>,
+        title: <>Type checking</>,
         content: (
           <>
             <P>
-              By using <strong>TypeScript</strong>, we can prevent the mistake
-              Little Duckling made.
+              By using TypeScript, we can prevent the mistake Little Duckling
+              made by doing something called <strong>type checking</strong>.
             </P>
             <P>
-              First, <Highlight>we create a type</Highlight> for the data we
-              use. In this case, we need to create a type for a todo item. We’ll
-              call it <Code>Todo</Code> and define using the following
-              TypeScript syntax:
+              First,{' '}
+              <Highlight>
+                we create a <strong>type</strong>
+              </Highlight>{' '}
+              for the data we use. In our case, we need to create a type for a
+              todo item.{' '}
+              <Highlight>
+                We’ll call this type <Code>Todo</Code> and define it using the
+                following TypeScript syntax
+              </Highlight>
+              :
             </P>
             <CodeBlock snippet={snippets.lieq} />
             <P>
-              We can then use this type to check if an object is indeed a todo
-              item. The TypeScript syntax for that is:{' '}
-              <Code>variableName: TypeName</Code> (highlighted below). Let’s try
-              it—
+              We can then use this type to{' '}
+              <Highlight>check if a variable is indeed a todo item</Highlight>.
+              The TypeScript syntax to do this check is:{' '}
+              <Code>variableName: Todo</Code>. Here’s an example below—
               <Highlight>
-                press <RunButtonText compile />.
+                press <RunButtonText compile />
               </Highlight>
             </P>
             <CodeBlock
@@ -567,9 +574,6 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.tgvw}
-              shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 0 && tokenIndex >= 1 && tokenIndex <= 4
-              }
               tokenIndexIndentWorkaround={1}
               compile
               resultError
@@ -578,12 +582,42 @@ const Page = () => (
               }
             />
             <P>
-              This one failed to compile because the <Code>id</Code> property
-              was missing.{' '}
+              This one failed to compile{' '}
               <Highlight>
-                TypeScript can catch these small mistakes quickly, well before
-                running the code—without having to write unit tests.
+                because the <Code>id</Code> property was missing
               </Highlight>
+              .
+            </P>
+            <P>
+              Finally, how about this one?{' '}
+              <Highlight>
+                Try pressing <RunButtonText compile />.
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.irmt}
+              shouldHighlightResult={lineIndex => lineIndex === 1}
+              compile
+              resultError
+              result={
+                <>{`Type 'string' is not assignable to type 'number'.`}</>
+              }
+            />
+            <P>
+              This one also failed to compile{' '}
+              <Highlight>
+                because the <Code>id</Code> property was <Code>string</Code>{' '}
+                instead of <Code>number</Code>, as defined on the{' '}
+                <Code>Todo</Code> type:
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.lieq}
+              shouldHighlight={lineIndex => lineIndex === 1}
+            />
+            <P>
+              The bottom line is that TypeScript lets you type check a variable
+              against a specified type, which helps you catch mistakes early.
             </P>
           </>
         )

@@ -544,6 +544,12 @@ export const hszk = `function completeAll(
   }))
 }`
 
+export const irmt = `const baz: Todo = {
+  id: 'abc',
+  text: '…',
+  done: true
+}`
+
 export const jkjo = `// By default, the properties of Todo are
 // NOT read-only
 type Todo = {
