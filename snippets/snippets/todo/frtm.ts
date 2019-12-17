@@ -5,7 +5,7 @@ type Todo = {
 }
 
 // Make sure that the input and the output
-// is of the correct type
+// are of the correct type (both must be Todo)
 function toggleTodo(todo: Todo): Todo {
   // ...
 }

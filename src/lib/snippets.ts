@@ -521,7 +521,7 @@ export const frtm = `type Todo = {
 }
 
 // Make sure that the input and the output
-// is of the correct type
+// are of the correct type (both must be Todo)
 function toggleTodo(todo: Todo): Todo {
   // ...
 }`
@@ -542,22 +542,6 @@ export const hszk = `function completeAll(
     ...todo,
     done: true
   }))
-}`
-
-export const jkjo = `// By default, the properties of Todo are
-// NOT read-only
-type Todo = {
-  id: number
-  text: string
-  done: boolean
-}
-
-// By using Readonly<> here, it makes the
-// properties readonly only within toggleTodo()
-function toggleTodo(
-  todo: Readonly<Todo>
-): Todo {
-  // ...
 }`
 
 export const kuzw = `function completeAll(todos: Todo[]): Todo[] {

@@ -880,7 +880,10 @@ const Page = () => (
               First, here’s our read-only version of <Code>Todo</Code>:
             </P>
             <CodeBlock snippet={snippets.yhto} />
-            <P>The above code is equivalent to the following version:</P>
+            <P>
+              The above code is <strong>equivalent</strong> to the following
+              version:
+            </P>
             <CodeBlock
               snippet={snippets.nxyl}
               shouldHighlight={(lineIndex, tokenIndex) =>
@@ -889,60 +892,28 @@ const Page = () => (
               }
             />
             <P>
+              In TypeScript,{' '}
               <Highlight>
-                If you use <Code>Readonly&lt;...&gt;</Code> on an object type,
-                it makes all of its properties <Code>readonly</Code>
+                if you use the{' '}
+                <Code>
+                  <strong>Readonly&lt;...&gt;</strong>
+                </Code>{' '}
+                keyword on an object type, it makes all of its properties{' '}
+                <Code>readonly</Code>
               </Highlight>
-              . Here’s another example:
+              . This is often easier than manually adding <Code>readonly</Code>{' '}
+              to every property.
             </P>
+            <P>Here’s another example:</P>
             <CodeBlock snippet={snippets.qaqa} />
             <P>
-              This can be useful for <Code>toggleTodo()</Code>. For example, we
-              might want to:
-            </P>
-            <Ul>
-              <UlLi>
-                <Highlight>
-                  Make the properties of <Code>Todo</Code> to be NOT{' '}
-                  <Code>readonly</Code> by default, and…
-                </Highlight>
-              </UlLi>
-              <UlLi>
-                <Highlight>
-                  Make them <Code>readonly</Code> ONLY within{' '}
-                  <Code>toggleTodo()</Code>.
-                </Highlight>
-              </UlLi>
-            </Ul>
-            <P>In that case, we can write the following code:</P>
-            <CodeBlock
-              snippet={snippets.jkjo}
-              shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 11 && tokenIndex >= 1
-              }
-            />
-            <BubbleQuotes
-              quotes={[
-                {
-                  type: 'chickEgg',
-                  children: (
-                    <>
-                      <P>
-                        That’s so cool!{' '}
-                        <Highlight color="lightYellow1">
-                          So you can convert one type into another type in
-                          TypeScript?
-                        </Highlight>
-                      </P>
-                    </>
-                  )
-                }
-              ]}
-            />
-            <P>
-              Yes! In TypeScript, you can use keywords like{' '}
-              <Code>Readonly&lt;...&gt;</Code> to convert one type into another
-              type—in this case, it creates a new type with{' '}
+              <Highlight>
+                In TypeScript, you can use keywords like{' '}
+                <Code>Readonly&lt;...&gt;</Code> to convert one type into
+                another type.
+              </Highlight>{' '}
+              In this case, <Code>Readonly&lt;...&gt;</Code> takes an object
+              type (like <Code>Todo</Code>) and creates a new object type with{' '}
               <Code>readonly</Code> properties.
             </P>
             <EmojiSeparator
@@ -953,11 +924,14 @@ const Page = () => (
             />
             <P>
               And the keywords like <Code>Readonly&lt;...&gt;</Code> are called{' '}
-              <strong>Mapped Types</strong>. There are many built-in mapped
-              types (like <Code>Required&lt;...&gt;</Code>,{' '}
-              <Code>Partial&lt;...&gt;</Code>, etc). You can also create your
-              own mapped types. I won’t cover these topics here—you can google
-              them.
+              <strong>mapped types</strong>. Mapped types are kind of like
+              functions, except the input/output are TypeScript types.
+            </P>
+            <P>
+              There are many built-in mapped types (like{' '}
+              <Code>Required&lt;...&gt;</Code>, <Code>Partial&lt;...&gt;</Code>,
+              etc). You can also create your own mapped types. I won’t cover
+              these topics here—you can google them.
             </P>
           </>
         )
@@ -996,15 +970,15 @@ const Page = () => (
               }
             />
             <P>
-              Before TypeScript, you needed to write unit tests to verify these
-              things. So in a sense,{' '}
+              In JavaScript, you needed to write unit tests to test these
+              things. But TypeScript can check them automatically. So in a
+              sense,{' '}
               <Highlight>
-                TypeScript’s types act as lightweight unit tests that run
-                automatically every time you save (compile) the code.
+                TypeScript’s types act as lightweight unit tests that run every
+                time you save (compile) the code.
               </Highlight>{' '}
-              It helps you write less buggy code with very little overhead. (Of
-              course, this analogy is a simplification. You should still write
-              tests in TypeScript!)
+              (Of course, this analogy is a simplification. You should still
+              write tests in TypeScript!)
             </P>
             <P>
               This is especially useful{' '}
@@ -1013,13 +987,13 @@ const Page = () => (
               </Highlight>
               . For example, if you’re using React, you’ll need to transform
               data in state updates. You might also need to transform data when
-              passing data from a parent component to its child component.
-              TypeScript reduces bugs arising from these situations.
+              passing data from a parent component to its children. TypeScript
+              can reduce bugs arising from these situations.
             </P>
             <EmojiSeparator
               emojis={['data', 'transformTypechecked', 'updatedData']}
               description={
-                <>TypeScript reduces bugs when transforming/passing data</>
+                <>TypeScript can reduce bugs when transforming/passing data</>
               }
             />
 
