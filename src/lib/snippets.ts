@@ -862,11 +862,14 @@ function toggleTodo(todo: Todo): Todo {
   }
 }`
 
-export const vpco = `// Returns a new todo object with the opposite
+export const vpco = `// Takes a single todo object and returns
+// a new todo object containing the opposite
 // boolean value for the "done" proprty.
 function toggleTodo(todo) {
   // ...
 }
+
+// Example usage:
 
 toggleTodo({ id: …, text: '…', done: true })
 // -> returns { id: …, text: '…', done: false }

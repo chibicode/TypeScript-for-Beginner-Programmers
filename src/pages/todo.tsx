@@ -298,6 +298,7 @@ const Page = () => (
               </Highlight>
             </P>
             <CodeBlock snippet={snippets.dxfc} />
+            <P>Here’s what’s inside each todo object:</P>
             <Ul>
               <UlLi>
                 <Code>
@@ -379,7 +380,8 @@ const Page = () => (
           <>
             <P>
               To implement the check/uncheck functionality, we need to write
-              code that toggles the <Code>done</Code> property of a todo item.
+              code that toggles the <Code>done</Code> property of a single todo
+              item.
             </P>
             <P>
               Let’s name this function{' '}
@@ -391,7 +393,8 @@ const Page = () => (
             <Ul>
               <UlLi>
                 <Highlight>
-                  When you call <Code>toggleTodo()</Code> on a todo object…
+                  When you call <Code>toggleTodo()</Code> on a single todo
+                  object…
                 </Highlight>
               </UlLi>
               <UlLi>
@@ -404,8 +407,8 @@ const Page = () => (
             <CodeBlock snippet={snippets.vpco} />
             <P>
               Now, let me introduce our junior developer,{' '}
-              <strong>Little Duckling</strong>. We’re going to use some
-              characters like him to make this article a bit more entertaining.
+              <strong>Little Duckling</strong>. He’s going to implement{' '}
+              <Code>toggleTodo()</Code> for us.
             </P>
             <EmojiSeparator
               emojis={['chickEgg']}
@@ -417,10 +420,6 @@ const Page = () => (
                 </>
               }
             />
-            <P>
-              And it looks like <strong>Little Duckling</strong> has implemented{' '}
-              <Code>toggleTodo()</Code> for us:
-            </P>
             <BubbleQuotes
               quotes={[
                 {
@@ -449,8 +448,8 @@ const Page = () => (
               Let’s check if Little Duckling’s implementation is correct.{' '}
               <Highlight>
                 Take a look at the following test case. What do you think the
-                output would be? Try to guess first and press Press{' '}
-                <RunButtonText /> below.
+                output would be? Try to guess first and press <RunButtonText />{' '}
+                below.
               </Highlight>
             </P>
             <CodeBlock
@@ -491,8 +490,7 @@ const Page = () => (
               ]}
             />
             <P>
-              No worries, Little Duckling! Here’s the correct implementation. It
-              preserves the <Code>id</Code> property.
+              No worries, Little Duckling! Here’s the correct implementation:
             </P>
             <CodeBlock
               snippet={snippets.yxjg}
@@ -503,9 +501,11 @@ const Page = () => (
             />
             <P>
               <strong>Now, here’s a question:</strong>{' '}
-              <Highlight>How can we prevent mistakes like this?</Highlight>{' '}
-              Little Duckling is a junior developer, but we want to make sure
-              that he succeeds at his job by helping him make fewer mistakes.
+              <Highlight>
+                How can we prevent Little Duckling from making mistakes like
+                this?
+              </Highlight>{' '}
+              We want to help Little Duckling succeed at his job!
             </P>
             <EmojiSeparator
               emojis={['sweat', 'chickEgg', 'sweat']}
@@ -517,8 +517,7 @@ const Page = () => (
               }
             />
             <P>
-              This is where <strong>TypeScript</strong> comes in. Let’s take a
-              look!
+              This is where <strong>TypeScript</strong> comes in.
             </P>
           </>
         )
