@@ -502,7 +502,7 @@ export const dqwb = `function toggleTodo(todo: Todo): Todo {
 }`
 
 export const dxfc = `// Associated data. If we're using React, this
-// would be the todo component’s props or state
+// would be the component’s props or state
 [
   { id: 1, text: 'First todo', done: false },
   { id: 2, text: 'Second todo', done: false }
