@@ -140,9 +140,8 @@ const Page = () => (
               </Highlight>{' '}
               I think there are missed opportunities here. Building a todo app
               is a great way to learn something in frontend engineering, and
-              many JS programmers already know how to build a todo app in their
-              library of choice. There should be more TypeScript tutorials
-              featuring a todo app.
+              many JS programmers already know how to build one. There should be
+              more TypeScript tutorials featuring a todo app.
             </P>
             <EmojiSeparator
               emojis={['check', 'smilingCat', 'check']}
@@ -176,14 +175,13 @@ const Page = () => (
                   This tutorial doesn’t rely on any specific frontend library
                 </Highlight>
                 , so it doesn’t matter whether you know React, Vue, or some
-                other libraries. As long as you have basic JS knowledge, you
-                should be able to understand this tutorial. No prior TypeScript
-                knowledge is necessary.
+                other libraries. You’ll be able to follow as long as you have
+                basic JS knowledge. No prior TypeScript knowledge is necessary.
               </UlLi>
               <UlLi>
                 To save time,{' '}
                 <Highlight>
-                  I’m not going to talk about setting up a TypeScript project
+                  I’m not going to talk about how to set up a TypeScript project
                 </Highlight>
                 —you should read other tutorials for that. For React, check out{' '}
                 <A href="https://github.com/typescript-cheatsheets/react-typescript-cheatsheet">
@@ -194,10 +192,10 @@ const Page = () => (
               <UlLi>
                 Also to save time,{' '}
                 <Highlight>
-                  I’m not going to cover everything about TypeScript.
+                  I’m only going to cover the most essential concepts in
+                  TypeScript.
                 </Highlight>{' '}
-                I’m only going to cover some of the coolest concepts in
-                TypeScript—mostly basic. My goal is to make you want to learn
+                My goal is not to be exhaustive but to make you want to learn
                 more.
               </UlLi>
             </Ul>
@@ -205,14 +203,14 @@ const Page = () => (
               emojis={['sparkles', 'bird', 'sparkles']}
               description={
                 <>
-                  I’m only going to cover TypeScript basics. My goal is to make
-                  you want to learn more.
+                  I’m only going to cover essentials. My goal is to make you
+                  want to learn more.
                 </>
               }
             />
             <P>
               There are <strong>3 sections</strong> total in this article. Here
-              are the topics covered in each section.
+              are the topics covered in each section:
             </P>
             <Ul>
               <UlLi>
