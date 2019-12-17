@@ -490,7 +490,7 @@ export const bpmz = `type CompletedTodo = Readonly<{
   done: true
 }>`
 
-export const csum = `// todo must match the Todo type
+export const csum = `// Parameter "todo" must match the Todo type
 function toggleTodo(todo: Todo) {
   // ...
 }`
@@ -542,12 +542,6 @@ export const hszk = `function completeAll(
     ...todo,
     done: true
   }))
-}`
-
-export const irmt = `const baz: Todo = {
-  id: 'abc',
-  text: '…',
-  done: true
 }`
 
 export const jkjo = `// By default, the properties of Todo are

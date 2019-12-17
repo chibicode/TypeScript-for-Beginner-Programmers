@@ -1,4 +1,4 @@
-// todo must match the Todo type
+// Parameter "todo" must match the Todo type
 function toggleTodo(todo: Todo) {
   // ...
 }

@@ -589,35 +589,9 @@ const Page = () => (
               .
             </P>
             <P>
-              Finally, how about this one?{' '}
-              <Highlight>
-                Try pressing <RunButtonText compile />.
-              </Highlight>
-            </P>
-            <CodeBlock
-              snippet={snippets.irmt}
-              shouldHighlightResult={lineIndex => lineIndex === 1}
-              compile
-              resultError
-              result={
-                <>{`Type 'string' is not assignable to type 'number'.`}</>
-              }
-            />
-            <P>
-              This one also failed to compile{' '}
-              <Highlight>
-                because the <Code>id</Code> property was <Code>string</Code>{' '}
-                instead of <Code>number</Code>, as defined on the{' '}
-                <Code>Todo</Code> type:
-              </Highlight>
-            </P>
-            <CodeBlock
-              snippet={snippets.lieq}
-              shouldHighlight={lineIndex => lineIndex === 1}
-            />
-            <P>
-              The bottom line is that TypeScript lets you type check a variable
-              against a specified type, which helps you catch mistakes early.
+              <strong>The bottom line:</strong> TypeScript lets you type check a
+              variable against a specified type, which helps you catch mistakes
+              early.
             </P>
           </>
         )
@@ -632,8 +606,8 @@ const Page = () => (
           <>
             <P>
               Now, let’s use TypeScript to prevent the mistake Little Duckling
-              made earlier. To recap, here’s the <Code>Todo</Code> type we
-              created earlier (
+              made. To recap, here’s the <Code>Todo</Code> type we created
+              earlier (
               <Highlight>
                 <Code>id</Code> is required
               </Highlight>
@@ -672,7 +646,7 @@ const Page = () => (
             />
             <P>
               Now, let’s copy and paste the code Little Duckling wrote—the one
-              without the <Code>id</Code> property and see what happens.{' '}
+              without the <Code>id</Code> property—see what happens.{' '}
               <Highlight>
                 Press <RunButtonText compile /> below.
               </Highlight>
@@ -684,8 +658,8 @@ const Page = () => (
               result={`Property 'id' is missing in type '{ text: string; done: boolean; }' but required in type 'Todo'.`}
             />
             <P>
-              It fails with an error because the returned object is missing the{' '}
-              <Code>id</Code> property and therefore does not match the{' '}
+              <strong>It failed</strong> because the returned object is missing
+              the <Code>id</Code> property and therefore does not match the{' '}
               <Code>Todo</Code> type. So{' '}
               <Highlight>
                 TypeScript can prevent the mistake Little Duckling made!
@@ -714,8 +688,8 @@ const Page = () => (
             />
             <P>
               It compiled! As you can see, TypeScript is great at preventing
-              mistakes AND letting you know when everything is implemented
-              correctly.
+              mistakes AND letting you know when everything has the correct
+              type.
             </P>
           </>
         )
