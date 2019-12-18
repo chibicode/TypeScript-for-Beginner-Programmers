@@ -1676,8 +1676,11 @@ const Page = () => (
         content: (
           <>
             <P>
-              To represent place tags, we can use a TypeScript feature called{' '}
-              <strong>union types</strong>. In TypeScript,{' '}
+              To implement place tags, we can use a TypeScript feature called{' '}
+              <strong>union types</strong>.
+            </P>
+            <P>
+              In TypeScript,{' '}
               <Highlight>
                 you can use the syntax <Code>A | B</Code> to create a{' '}
                 <strong>union type</strong>, which represents a type that’s{' '}
@@ -1730,7 +1733,11 @@ const Page = () => (
               }
             />
             <P>
-              Then we can assign the <Code>Place</Code> type to the{' '}
+              Here’s an example usage of the <Code>Place</Code> type:
+            </P>
+            <CodeBlock narrowText snippet={snippets.fawy} />
+            <P>
+              We can now assign the <Code>Place</Code> type to the{' '}
               <Code>place</Code> property of <Code>Todo</Code>:
             </P>
             <CodeBlock
@@ -1745,6 +1752,10 @@ const Page = () => (
                 lineIndex === 4 && tokenIndex >= 3
               }
             />
+            <P>
+              That’s it! Next, we’ll take a look at{' '}
+              <strong>optional properties</strong>.
+            </P>
           </>
         )
       },
@@ -1756,8 +1767,11 @@ const Page = () => (
               We briefly mentioned that place tags like{' '}
               <PlaceLabel place="home" /> or <PlaceLabel place="work" /> are{' '}
               <strong>optional</strong>—we can have todo items without a place
-              tag. In our previous example, <Highlight>“Read a book”</Highlight>{' '}
-              didn’t have any place tag, so it didn’t have the{' '}
+              tag.
+            </P>
+            <P>
+              In our previous example, <Highlight>“Read a book”</Highlight>{' '}
+              didn’t have any place tag, so it didn’t have any{' '}
               <Code>place</Code> property:
             </P>
             <TodoWithData
@@ -1781,7 +1795,6 @@ const Page = () => (
               </Highlight>
             </P>
             <CodeBlock
-              narrowText
               snippet={snippets.yvpp}
               shouldHighlight={(lineIndex, tokenIndex) =>
                 lineIndex === 2 && tokenIndex <= 1
