@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import Head from 'next/head'
+import { A } from 'src/components/ContentTags'
 import Page from 'src/components/Page'
 import { siteTitle, baseUrl } from 'src/lib/meta'
 import { articlesData } from 'src/lib/articles'
@@ -60,17 +61,22 @@ const PostPage = ({
       <div
         css={css`
           font-size: ${fontSizes(0.85)};
-          font-weight: bold;
-          letter-spacing: ${letterSpacings('wide')};
-          text-transform: uppercase;
           color: ${colors('brown')};
-          font-size: ${fontSizes(0.85)};
           margin-bottom: ${spaces(0.25)};
         `}
       >
         <time dateTime={dateSchemaString(articlesData[articleKey]['date'])}>
           {dateString(articlesData[articleKey]['date'])}
-        </time>
+        </time>{' '}
+        &middot; By{' '}
+        <A href="https://chibicode.com/">
+          <strong>Shu Uesugi</strong>
+        </A>{' '}
+        (
+        <A href="https://twitter.com/chibicode">
+          <strong>@chibicode</strong>
+        </A>
+        )
       </div>
       <h1
         css={css`
