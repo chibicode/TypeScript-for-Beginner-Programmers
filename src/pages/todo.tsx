@@ -1555,29 +1555,38 @@ const Page = () => (
           <>
             <P>
               Let’s add a new feature to our todo app:{' '}
-              <strong>Place tags</strong>.{' '}
+              <strong>Place tags</strong>.
+            </P>
+            <P>
               <Highlight>
-                Each todo item can now optionally be tagged with one of the
-                following tags:
+                Each todo item can now <em>optionally</em> be tagged with one of
+                the following <em>pre-defined</em> tags:
               </Highlight>
             </P>
             <Ul>
               <UlLi>
-                <strong>Home:</strong> <PlaceLabel place="home" />
+                <PlaceLabel place="home" />
               </UlLi>
               <UlLi>
-                <strong>Work:</strong> <PlaceLabel place="work" />
+                <PlaceLabel place="work" />
               </UlLi>
+            </Ul>
+            <P>
+              <Highlight>
+                Each todo item can also be tagged with a custom,{' '}
+                <em>user-defined</em> tags:
+              </Highlight>
+            </P>
+            <Ul>
               <UlLi>
-                <strong>Custom place:</strong>{' '}
                 <PlaceLabel place={{ custom: 'Gym' }} />,{' '}
                 <PlaceLabel place={{ custom: 'Supermarket' }} />, etc—the user
                 can create any custom place they want.
               </UlLi>
             </Ul>
             <P>
-              People can use this feature to identify which tasks need to be
-              done at home, at work, or elsewhere.{' '}
+              Users can use this feature to identify which tasks need to be done
+              at home, at work, or elsewhere.{' '}
               <Highlight>
                 It’s <strong>optional</strong>, so there can be a todo item
                 without a place tag.
@@ -1596,26 +1605,47 @@ const Page = () => (
             <P>
               Let’s take a look at the associated data.{' '}
               <Highlight>
-                Each todo now can have an optional <Code>place</Code> property,
-                which can have one of the following values:
+                Each todo can now have an optional <Code>place</Code> property,
+                which determines the place tag:
               </Highlight>
             </P>
             <Ul>
               <UlLi>
-                <PlaceLabel place="home" /> → <Code>place: 'home'</Code>
+                <Code>
+                  place: <strong>'home'</strong>
+                </Code>{' '}
+                → <PlaceLabel place="home" />
               </UlLi>
               <UlLi>
-                <PlaceLabel place="work" /> → <Code>place: 'work'</Code>
-              </UlLi>
-              <UlLi>
-                <PlaceLabel place={{ custom: 'Foo' }} /> →{' '}
-                <Code>{`place: { custom: 'Foo' }`}</Code>
+                <Code>
+                  place: <strong>'work'</strong>
+                </Code>{' '}
+                → <PlaceLabel place="work" />
               </UlLi>
             </Ul>
             <P>
-              So <Code>place</Code> can be <Code>'home'</Code>,{' '}
-              <Code>'work'</Code>, or an object containing a string{' '}
-              <Code>custom</Code> property. It can also be missing if there’s no
+              For custom places,{' '}
+              <Highlight>
+                the <Code>place</Code> property will be an object containing a
+                string <Code>custom</Code> property:
+              </Highlight>
+            </P>
+            <Ul>
+              <UlLi>
+                <Code>
+                  place: <strong>{`{ custom: 'Gym' }`}</strong>
+                </Code>{' '}
+                → <PlaceLabel place={{ custom: 'Gym' }} />
+              </UlLi>
+              <UlLi>
+                <Code>
+                  place: <strong>{`{ custom: 'Supermarket' }`}</strong>
+                </Code>{' '}
+                → <PlaceLabel place={{ custom: 'Supermarket' }} />
+              </UlLi>
+            </Ul>
+            <P>
+              The <Code>place</Code> property can also be missing if there’s no
               place tag.
             </P>
             <P>Here’s the associated data for our previous example:</P>
