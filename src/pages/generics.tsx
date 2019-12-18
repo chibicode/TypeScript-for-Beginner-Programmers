@@ -11,6 +11,8 @@ import Emoji from 'src/components/Emoji'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 import ReadMore from 'src/components/ReadMore'
+import AboutMe from 'src/components/AboutMe'
+import { SourceAvailableText } from 'src/components/GitHubButton'
 
 const Page = () => (
   <PostPage
@@ -61,14 +63,17 @@ const Page = () => (
                   you might know someone (maybe one of your Twitter followers)
                   who’s struggling with generics
                 </Highlight>
-                . If you do, I’d appreciate it if you could share this article
-                with them. You can{' '}
+                . I’d appreciate it if you could share this article with them.
+                You can{' '}
                 <TwitterLink
                   title={articlesData['generics']['title']}
                   url={`${baseUrl}/generics`}
                 >
                   click here to tweet this article.
                 </TwitterLink>
+              </P>
+              <P>
+                <SourceAvailableText />
               </P>
             </>
           )
@@ -835,26 +840,13 @@ const Page = () => (
               .
             </P>
             <TwitterEmbed id="1197963887804436480" />
+            <P>
+              <SourceAvailableText />
+            </P>
           </>
         ),
         footer: {
-          content: (
-            <>
-              <P>
-                <strong>About the author:</strong> I’m Shu Uesugi, a software
-                engineer. The most recent TypeScript project I worked on is an{' '}
-                <em>interactive computer science course</em> called{' '}
-                <A href="https://ycombinator.chibicode.com/">
-                  <strong>“Y Combinator for Non-programmers”</strong>
-                </A>
-                .
-              </P>
-              <P>
-                You can email me at{' '}
-                <A href="mailto:shu@chibicode.com">shu@chibicode.com</A>.
-              </P>
-            </>
-          )
+          content: <AboutMe />
         }
       }
     ]}

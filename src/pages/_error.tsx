@@ -4,6 +4,7 @@ import { P } from 'src/components/ContentTags'
 import { siteTitle, siteOgImage } from 'src/lib/meta'
 import Head from 'next/head'
 import Page from 'src/components/Page'
+import ArticleList from 'src/components/ArticleList'
 
 const PageNotFound = () => {
   return (
@@ -22,6 +23,7 @@ const PageNotFound = () => {
         quotes={[
           {
             type: 'bird',
+            backgroundColor: 'lightYellow1',
             children: (
               <>
                 <P>
@@ -33,6 +35,7 @@ const PageNotFound = () => {
           }
         ]}
       />
+      <ArticleList />
     </Page>
   )
 }

@@ -8,16 +8,18 @@ import useTheme from 'src/hooks/useTheme'
 import Caption from 'src/components/Caption'
 
 interface EmojiSeparatorProps {
-  emojis: ReadonlyArray<keyof typeof emojiToComponent>
-  size?: 'md' | 'lg'
+  emojis?: ReadonlyArray<keyof typeof emojiToComponent>
+  size?: 'sm' | 'md' | 'lg'
   cssOverrides?: SerializedStyles
   description?: React.ReactNode
+  customChildren?: React.ReactNode
 }
 
 const fontSize = (
   size: NonNullable<EmojiSeparatorProps['size']>
 ): ReadonlyArray<keyof typeof allFontSizes> =>
   ({
+    sm: [1, 1.2] as const,
     md: [2, 2.5] as const,
     lg: [3, 4] as const
   }[size])
@@ -26,6 +28,7 @@ const margins = (
   size: NonNullable<EmojiSeparatorProps['size']>
 ): ReadonlyArray<keyof typeof allSpaces> =>
   ({
+    sm: [0.75, 1] as const,
     md: [1.25, 1.5] as const,
     lg: [0, 2] as const
   }[size])
@@ -45,7 +48,8 @@ const EmojiSeparator = ({
   emojis,
   size = 'md',
   cssOverrides,
-  description
+  description,
+  customChildren
 }: EmojiSeparatorProps) => {
   const { spaces, ns, fontSizes } = useTheme()
   return (
@@ -70,11 +74,12 @@ const EmojiSeparator = ({
             justify-content: center;
           `}
         >
-          {emojis.map((emoji, index) => (
-            <SideSpace key={`${emoji}${index}`}>
-              <Emoji type={emoji} />
-            </SideSpace>
-          ))}
+          {customChildren ||
+            (emojis || []).map((emoji, index) => (
+              <SideSpace key={`${emoji}${index}`}>
+                <Emoji type={emoji} />
+              </SideSpace>
+            ))}
         </span>
         {description && (
           <Caption

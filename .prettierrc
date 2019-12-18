@@ -7,6 +7,12 @@
       "options": {
         "printWidth": 48
       }
+    },
+    {
+      "files": ["snippets/snippets/**/longerWidth/*.ts"],
+      "options": {
+        "printWidth": 53
+      }
     }
   ]
 }

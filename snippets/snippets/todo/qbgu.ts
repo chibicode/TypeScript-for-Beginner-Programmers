@@ -1,6 +1,5 @@
-// Returns a new todo object
-// with the opposite boolean value
-// for the "done" proprty.
+// We said earlier that
+// toggleTodo must return a new todo object.
 function toggleTodo(todo) {
   // ...
 }

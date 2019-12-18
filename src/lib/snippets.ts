@@ -484,7 +484,13 @@ export const bnli = `const foo: Todo = {
   done: true
 }`
 
-export const csum = `// todo must match the Todo type
+export const bpmz = `type CompletedTodo = Readonly<{
+  id: number
+  text: string
+  done: true
+}>`
+
+export const csum = `// Parameter "todo" must match the Todo type
 function toggleTodo(todo: Todo) {
   // ...
 }`
@@ -496,11 +502,17 @@ export const dqwb = `function toggleTodo(todo: Todo): Todo {
 }`
 
 export const dxfc = `// Associated data. If we're using React, this
-// would be the todo component’s props or state
+// would be the component’s props or state
 [
   { id: 1, text: 'First todo', done: false },
   { id: 2, text: 'Second todo', done: false }
 ]`
+
+export const eega = `else {
+  // place = 'work' or { custom: string }, and
+  // place.custom is invalid if place = 'work'
+  return 'pinEmoji ' + place.custom
+}`
 
 export const frtm = `type Todo = {
   id: number
@@ -509,25 +521,27 @@ export const frtm = `type Todo = {
 }
 
 // Make sure that the input and the output
-// is of the correct type
+// are of the correct type (both must be Todo)
 function toggleTodo(todo: Todo): Todo {
   // ...
 }`
 
-export const jkjo = `// By default, the properties of Todo are
-// NOT read-only
-type Todo = {
-  id: number
-  text: string
-  done: boolean
-}
-
-// By using Readonly<> here, it makes the
-// properties readonly only within toggleTodo()
-function toggleTodo(
-  todo: Readonly<Todo>
-): Todo {
+export const hquv = `[
   // ...
+  // ...
+  // ...
+  // ...
+  // No place property
+  { id: 5, text: 'Read a book', done: false }
+]`
+
+export const hszk = `function completeAll(
+  todos: readonly Todo[]
+): CompletedTodo[] {
+  return todos.map(todo => ({
+    ...todo,
+    done: true
+  }))
 }`
 
 export const kuzw = `function completeAll(todos: Todo[]): Todo[] {
@@ -535,14 +549,7 @@ export const kuzw = `function completeAll(todos: Todo[]): Todo[] {
   // instead of modifying the original array
 }`
 
-export const lgci = `// Same as before: Each property is readonly
-type Todo = Readonly<{
-  id: number
-  text: string
-  done: boolean
-}>
-
-// Input is an array of Todo items: Todo[]
+export const lgci = `// Input is an array of Todo items: Todo[]
 function completeAll(todos: Todo[]) {
   // ...
 }`
@@ -552,6 +559,100 @@ export const lieq = `type Todo = {
   text: string
   done: boolean
 }`
+
+export const dhor = `type Place = 'home' | 'work' | { custom: string }
+
+// TypeScript knows what the type of "place"
+// would be at each point inside the function
+function placeToString(place: Place): string {
+  // In here, place = 'home', 'work' or { custom:… }
+
+  if (place === 'home') {
+    // In here, place = 'home'
+
+    return 'homeEmoji Home'
+  } else {
+    // In here, place = 'work' or { custom: string }
+
+    return 'pinEmoji ' + place.custom
+  }
+}`
+
+export const fawy = `type Place = 'home' | 'work' | { custom: string }
+
+// They all compile
+const place1: Place = 'home'
+const place2: Place = 'work'
+const place3: Place = { custom: 'Gym' }
+const place4: Place = { custom: 'Supermarket' }`
+
+export const ntup = `// If we have a variable that’s a union type…
+type Place = 'home' | 'work' | { custom: string }
+
+function placeToString(place: Place): string {
+  // TypeScript is smart about what the variable’s
+  // possible values are for each branch of if/else
+
+  if (place === 'home') {
+    // TypeScript knows place = 'home' here
+    // (So it won’t compile if you do place.custom)
+  } else if (place === 'work') {
+    // TypeScript knows place = 'work' here
+    // (So it won’t compile if you do place.custom)
+  } else {
+    // TypeScript knows place = { custom: … } here
+    // (So you can do place.custom)
+  }
+}`
+
+export const rvyq = `type Place = 'home' | 'work' | { custom: string }
+
+type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+  // place is optional
+  place?: Place
+}>`
+
+export const szco = `// Correct implementation
+function placeToString(place: Place): string {
+  if (place === 'home') {
+    return 'homeEmoji Home'
+  } else if (place === 'work') {
+    return 'workEmoji Work'
+  } else {
+    // place is guaranteed to be { custom: string }
+    return 'pinEmoji ' + place.custom
+  }
+}`
+
+export const umjt = `type Place = 'home' | 'work' | { custom: string }`
+
+export const vgja = `type Place = 'home' | 'work' | { custom: string }
+
+// Little Duckling’s implementation
+function placeToString(place: Place): string {
+  if (place === 'home') {
+    return 'homeEmoji Home'
+  } else {
+    return 'pinEmoji ' + place.custom
+  }
+}`
+
+export const wymp = `const argument = {
+  id: 1,
+  text: '…',
+  done: true
+}
+
+console.log('Before toggleTodo(), argument is:')
+console.log(argument)
+
+toggleTodo(argument)
+
+console.log('After toggleTodo(), argument is:')
+console.log(argument)`
 
 export const lund = `const result = toggleTodo({
   id: 1,
@@ -569,7 +670,7 @@ function completeAll(todos: Todo[]): Todo[] {
   // ...
 }`
 
-export const mwrj = `// After declaring todos as: readonly Todo[],
+export const mwrj = `// After declaring todos as readonly Todo[],
 // the following code WILL NOT compile:
 
 // Compile error - modifies the array
@@ -578,10 +679,24 @@ todos[0] = { id: 1, text: '…', done: true }
 // Compile error - push() modifies the array
 todos.push({ id: 1, text: '…', done: true })`
 
+export const mxqy = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>`
+
+export const mzyn = `// Creates a union type of number and string
+type Foo = number | string
+
+// You can assign either a number or a string
+// variable to Foo. So these will both compile:
+const a: Foo = 1
+const b: Foo = 'hello'`
+
 export const njgr = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s refactoring is a
   // bad refactoring because it modifies
-  // the original todo object
+  // the argument (input) todo object
   todo.done = !todo.done
   return todo
 }`
@@ -597,6 +712,21 @@ function toggleTodo(todo: Todo): Todo {
   todo.done = !todo.done
   return todo
 }`
+
+export const npgx = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+  place: Place
+}>`
+
+export const npog = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+  // place is optional
+  place?: Place
+}>`
 
 export const ntau = `function toggleTodo(todo: Todo): Todo {
   // Little Duckling’s code from earlier:
@@ -614,6 +744,20 @@ type Todo = Readonly<{
   done: boolean
 }>`
 
+export const okva = `console.log(
+  completeAll([
+    { id: 1, text: '…', done: false },
+    { id: 2, text: '…', done: true }
+  ])
+)`
+
+export const oone = `// Returns an array where "done" is all true
+function completeAll(
+  todos: readonly Todo[]
+): CompletedTodo[] {
+  // ...
+}`
+
 export const qaqa = `type Foo = {
   bar: number
 }
@@ -622,18 +766,70 @@ type ReadonlyFoo = Readonly<Foo>
 
 // ReadonlyFoo is { readonly bar: number }`
 
-export const qbgu = `// Returns a new todo object
-// with the opposite boolean value
-// for the "done" proprty.
+export const qbgu = `// We said earlier that
+// toggleTodo must return a new todo object.
 function toggleTodo(todo) {
   // ...
 }`
+
+export const qnrh = `placeToString('home')
+// __home__
+
+placeToString('work')
+// __work__
+
+placeToString({ custom: 'Gym' })
+// __gym__
+
+placeToString({ custom: 'Supermarket' })
+// __supermarket__`
+
+export const qnwc = `// They booth have a property foo,
+// but B’s foo (true) is
+// more specific than A’s foo (boolean)
+type A = { foo: boolean }
+type B = { foo: true }
+
+// This intersection type…
+type AandB = A & B
+
+// …is equivalent to:
+type AandB = { foo: true }`
 
 export const reel = `function toggleTodo(todo) {
   return {
     text: todo.text,
     done: !todo.done
   }
+}`
+
+export const rlya = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>
+
+type CompletedTodo = Readonly<{
+  id: number
+  text: string
+  done: true
+}>`
+
+export const rmuo = `type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>
+
+// Override the done property of Todo
+type CompletedTodo = Todo & {
+  readonly done: true
+}`
+
+export const ruga = `function completeAll(
+  todos: readonly Todo[]
+): CompletedTodo[] {
+  // ...
 }`
 
 export const szan = `// Make input todos as readonly array
@@ -660,8 +856,14 @@ export const uxlb = `function toggleTodo(todo: Todo): Todo {
   return todo
 }`
 
-export const vgnq = `// This will continue to work because
-// the input todo is not modified
+export const vgnq = `type Todo = {
+  readonly id: number
+  readonly text: string
+  readonly done: boolean
+}
+
+// Earlier implementation: it will continue to
+// work because the input todo is not modified
 function toggleTodo(todo: Todo): Todo {
   return {
     id: todo.id,
@@ -670,40 +872,77 @@ function toggleTodo(todo: Todo): Todo {
   }
 }`
 
-export const vpco = `// Returns a new todo object with the opposite
+export const vpco = `// Takes a single todo object and returns
+// a new todo object containing the opposite
 // boolean value for the "done" proprty.
 function toggleTodo(todo) {
-  // Case 1: If todo is
-  // { id: …, text: '…', done: true }, return
-  // { id: …, text: '…', done: false }
-  //
-  // Case 2: If todo is
-  // { id: …, text: '…', done: false }, return
-  // { id: …, text: '…', done: true }
-}`
-
-export const wymp = `const originalTodo = {
-  id: 1,
-  text: '…',
-  done: true
+  // ...
 }
 
-console.log('Before toggleTodo()…')
-console.log(originalTodo)
+// Example usage:
 
-const newTodo = toggleTodo(originalTodo)
+toggleTodo({ id: …, text: '…', done: true })
+// -> returns { id: …, text: '…', done: false }
 
-console.log('After toggleTodo()…')
-console.log('Original Todo:')
-console.log(originalTodo)
-console.log('New Todo:')
-console.log(newTodo)`
+toggleTodo({ id: …, text: '…', done: false })
+// -> returns { id: …, text: '…', done: true }`
+
+export const wdjp = `type A = { a: number }
+type B = { b: string }
+
+// This intersection type…
+type AandB = A & B
+
+// …is equivalent to:
+type AandB = {
+  a: number
+  b: string
+}`
+
+export const whae = `function completeAll(
+  todos: readonly Todo[]
+): CompletedTodo[] {
+  return todos.map(todo => ({
+    ...todo,
+    // What if we set done to false?
+    done: false
+  }))
+}`
+
+export const xrwn = `type Todo = Readonly<{
+  // id and text are the same as CompletedTodo
+  id: number
+  text: string
+  done: boolean
+}>
+
+type CompletedTodo = Readonly<{
+  // id and text are the same as Todo
+  id: number
+  text: string
+  done: true
+}>`
+
+export const ybhj = `function placeToString(place: Place): string {
+  // Takes a Place and returns a string
+  // that can be used for the place label UI
+}`
 
 export const yhto = `type Todo = {
   readonly id: number
   readonly text: string
   readonly done: boolean
 }`
+
+export const yvpp = `type Foo = {
+  // bar is an optional property because of "?"
+  bar?: number
+}
+
+// These will both compile:
+// bar can be present or missing
+const a: Foo = {}
+const b: Foo = { bar: 1 }`
 
 export const ywiv = `// The return value must match the Todo type
 function toggleTodo(todo: Todo): Todo {
@@ -717,4 +956,18 @@ export const yxjg = `function toggleTodo(todo) {
     text: todo.text,
     done: !todo.done
   }
+}`
+
+export const yztr = `// How to update this to support place labels?
+type Todo = Readonly<{
+  id: number
+  text: string
+  done: boolean
+}>`
+
+export const zswn = `// Will this compile?
+const testTodo: CompletedTodo = {
+  id: 1,
+  text: '…',
+  done: false
 }`

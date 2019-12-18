@@ -3,15 +3,19 @@ import { css, jsx } from '@emotion/core'
 import React from 'react'
 import { allColors } from 'src/lib/theme/colors'
 import useTheme from 'src/hooks/useTheme'
-import { H3 } from 'src/components/ContentTags'
+import CardTitleText from 'src/components/CardTitleText'
+import CardSubtitleText from 'src/components/CardSubtitleText'
+import CardHeadingText from 'src/components/CardHeadingText'
 
 export interface CardProps {
   children: React.ReactNode
-  color?: 'default' | 'pink' | 'green'
+  color?: 'default' | 'pink' | 'green' | 'darkGreen'
   slideNumber?: number
   slideCount?: number
   isLast?: boolean
   title?: React.ReactNode
+  heading?: React.ReactNode
+  subtitle?: React.ReactNode
   footer?: {
     content: React.ReactNode
     color?: CardProps['color']
@@ -28,7 +32,8 @@ export const backgroundColor = (
   ({
     default: 'lightYellow1' as const,
     pink: 'lightPink2' as const,
-    green: 'lightGreen' as const
+    green: 'lightGreen' as const,
+    darkGreen: 'darkGreen' as const
   }[color])
 
 const Card = ({
@@ -38,9 +43,11 @@ const Card = ({
   slideNumber,
   slideCount,
   isLast,
-  footer
+  footer,
+  heading,
+  subtitle
 }: CardProps) => {
-  const { ns, colors, fontSizes, spaces, radii } = useTheme()
+  const { ns, colors, fontSizes, spaces, radii, lineHeights } = useTheme()
   return (
     <>
       <div
@@ -117,18 +124,61 @@ const Card = ({
               background: ${colors(backgroundColor(color))};
             `}
           >
+            {subtitle && (
+              <CardSubtitleText
+                css={css`
+                  text-align: center;
+                  margin-left: ${spaces('-0.25')};
+                  margin-right: ${spaces('-0.25')};
+                `}
+              >
+                {subtitle}
+              </CardSubtitleText>
+            )}
             {title && (
-              <H3
+              <CardTitleText
                 css={[
                   css`
                     text-align: center;
                     margin-left: ${spaces('-0.25')};
                     margin-right: ${spaces('-0.25')};
-                  `
+                  `,
+                  color === 'darkGreen' &&
+                    css`
+                      color: ${colors('white')};
+                    `,
+                  heading &&
+                    css`
+                      font-weight: normal;
+                      font-size: ${fontSizes(1)};
+                      line-height: ${lineHeights(1)};
+                      margin: 0 0 ${spaces(0.5, true)};
+                      ${ns} {
+                        line-height: ${lineHeights(1.2)};
+                        font-size: ${fontSizes(1.2)};
+                      }
+                    `
                 ]}
               >
                 {title}
-              </H3>
+              </CardTitleText>
+            )}
+            {heading && (
+              <CardHeadingText
+                css={[
+                  css`
+                    text-align: center;
+                    margin-left: ${spaces('-0.25')};
+                    margin-right: ${spaces('-0.25')};
+                  `,
+                  color === 'darkGreen' &&
+                    css`
+                      color: ${colors('white')};
+                    `
+                ]}
+              >
+                {heading}
+              </CardHeadingText>
             )}
             {children}
           </div>

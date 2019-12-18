@@ -1,4 +1,5 @@
-import React from 'react'
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import Emoji from 'src/components/Emoji'
@@ -12,14 +13,82 @@ import {
   UlLi
 } from 'src/components/ContentTags'
 import * as snippets from 'src/lib/snippets'
-import underConstructionCard from 'src/lib/underConstructionCard'
-import TodoWithData from 'src/components/TodoWithData'
+import TodoWithData, { Todo } from 'src/components/TodoWithData'
 import RunButtonText from 'src/components/RunButtonText'
 import CodeBlock from 'src/components/CodeBlock'
 import BubbleQuotes from 'src/components/BubbleQuotes'
 import ResultHighlight from 'src/components/ResultHighlight'
+import PlaceLabel from 'src/components/PlaceLabel'
+import InternalLink from 'src/components/InternalLink'
+import AboutMe from 'src/components/AboutMe'
+import { SourceAvailableText } from 'src/components/GitHubButton'
+import TwitterLink from 'src/components/TwitterLink'
+import { articlesData } from 'src/lib/articles'
+import { baseUrl } from 'src/lib/meta'
 
 const compileSuccess = 'Compiled successfully!'
+const section1 = 'Types, Read-only Properties, and Mapped Types'
+const section2 = 'Array Types, Literal Types, and Intersection Types'
+const section3 = 'Union Types and Optional Properties'
+const placesExample: Todo[] = [
+  { id: 1, text: 'Do laundry', done: false, place: 'home' as const },
+  { id: 2, text: 'Email boss', done: false, place: 'work' as const },
+  {
+    id: 3,
+    text: 'Go to gym',
+    done: false,
+    place: { custom: 'Gym' }
+  },
+  {
+    id: 4,
+    text: 'Buy milk',
+    done: false,
+    place: { custom: 'Supermarket' }
+  },
+  {
+    id: 5,
+    text: 'Read a book',
+    done: false
+  }
+]
+
+const UnionTypesSummary = () => (
+  <>
+    <Ul>
+      <UlLi>
+        If we have a variable that’s a <strong>union type</strong> (e.g.{' '}
+        <Code>place</Code>)…
+      </UlLi>
+      <UlLi>
+        And check for its value in <Code>if/else</Code>…
+      </UlLi>
+      <UlLi>
+        Then TypeScript is smart about what the variable’s possible values are
+        for each branch of <Code>if/else</Code>.
+      </UlLi>
+    </Ul>
+    <CodeBlock
+      snippet={snippets.ntup}
+      narrowText
+      shouldHighlight={lineIndex =>
+        lineIndex === 8 || lineIndex === 11 || lineIndex === 14
+      }
+    />
+  </>
+)
+
+const ArrowWrapper = ({ children }: { children: React.ReactNode }) => (
+  <span
+    css={css`
+      margin-left: 0.25em;
+      margin-right: 0.25em;
+      font-size: 1.2em;
+      transform: translateY(-0.1em);
+    `}
+  >
+    {children}
+  </span>
+)
 
 const Page = () => (
   <PostPage
@@ -71,9 +140,8 @@ const Page = () => (
               </Highlight>{' '}
               I think there are missed opportunities here. Building a todo app
               is a great way to learn something in frontend engineering, and
-              many JS programmers already know how to build a todo app in their
-              library of choice. There should be more TypeScript tutorials
-              featuring a todo app.
+              many JS programmers already know how to build one. There should be
+              more TypeScript tutorials featuring a todo app.
             </P>
             <EmojiSeparator
               emojis={['check', 'smilingCat', 'check']}
@@ -107,14 +175,13 @@ const Page = () => (
                   This tutorial doesn’t rely on any specific frontend library
                 </Highlight>
                 , so it doesn’t matter whether you know React, Vue, or some
-                other libraries. As long as you know how to build a todo list
-                using a JS library, you should be able to understand this
-                tutorial. No prior TypeScript knowledge is necessary.
+                other libraries. You’ll be able to follow as long as you have
+                basic JS knowledge. No prior TypeScript knowledge is necessary.
               </UlLi>
               <UlLi>
                 To save time,{' '}
                 <Highlight>
-                  I’m not going to talk about setting up a TypeScript project
+                  I’m not going to talk about how to set up a TypeScript project
                 </Highlight>
                 —you should read other tutorials for that. For React, check out{' '}
                 <A href="https://github.com/typescript-cheatsheets/react-typescript-cheatsheet">
@@ -125,16 +192,74 @@ const Page = () => (
               <UlLi>
                 Also to save time,{' '}
                 <Highlight>
-                  I’m not going to cover everything about TypeScript.
+                  I’m only going to cover the most essential concepts in
+                  TypeScript.
                 </Highlight>{' '}
-                I’m only going to cover some of the cool concepts in
-                TypeScript—mostly basic, some intermediate-level concepts. My
-                goal is to make you want to learn more.
+                My goal is not to be exhaustive but to make you want to learn
+                more.
+              </UlLi>
+            </Ul>
+            <EmojiSeparator
+              emojis={['sparkles', 'bird', 'sparkles']}
+              description={
+                <>
+                  I’m only going to cover essentials. My goal is to make you
+                  want to learn more.
+                </>
+              }
+            />
+            <P>
+              There are <strong>3 sections</strong> total in this article. Here
+              are the topics covered in each section:
+            </P>
+            <Ul>
+              <UlLi>
+                <strong>Section 1:</strong> <Highlight>{section1}</Highlight>
+              </UlLi>
+              <UlLi>
+                <strong>Section 2:</strong> <Highlight>{section2}</Highlight>
+              </UlLi>
+              <UlLi>
+                <strong>Section 3:</strong> <Highlight>{section3}</Highlight>
               </UlLi>
             </Ul>
             <P>Let’s get started!</P>
           </>
-        )
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>Note:</strong> If you already know TypeScript basics,
+                you won’t find anything new in this tutorial. However,{' '}
+                <Highlight color="white85">
+                  you might know someone (maybe one of your Twitter followers)
+                  who’re interested in learning TypeScript
+                </Highlight>
+                . I’d appreciate it if you could share this article with them.
+                You can{' '}
+                <TwitterLink
+                  title={articlesData['todo']['title']}
+                  url={`${baseUrl}/todo`}
+                >
+                  click here to tweet this article.
+                </TwitterLink>
+              </P>
+              <P>
+                <SourceAvailableText />
+              </P>
+            </>
+          )
+        }
+      },
+      {
+        title: (
+          <>
+            <strong>Section 1</strong> of 3
+          </>
+        ),
+        heading: section1,
+        color: 'darkGreen'
       },
       {
         title: <>Transform data into UI</>,
@@ -152,7 +277,7 @@ const Page = () => (
               description={<>UI libraries transform data into UI</>}
             />
             <P>
-              Now, let’s take a look at our todo app again.{' '}
+              Now, let’s take a look at the following todo app.{' '}
               <Highlight>
                 Can you guess what data is associated with this UI?
               </Highlight>
@@ -173,23 +298,34 @@ const Page = () => (
               </Highlight>
             </P>
             <CodeBlock snippet={snippets.dxfc} />
+            <P>Here’s what’s inside each todo object:</P>
             <Ul>
               <UlLi>
-                <Code>id</Code> is the ID of each todo item. This is usually
-                generated by a backend database.
+                <Code>
+                  <strong>id</strong>
+                </Code>{' '}
+                is the ID of each todo item. This is usually generated by a
+                backend database.
               </UlLi>
               <UlLi>
-                <Code>text</Code> contains the text of each todo item.
+                <Code>
+                  <strong>text</strong>
+                </Code>{' '}
+                contains the text of each todo item.
               </UlLi>
               <UlLi>
-                And most importantly, <Code>done</Code> is <Code>true</Code> for
-                completed items and is <Code>false</Code> otherwise.
+                And most importantly,{' '}
+                <Code>
+                  <strong>done</strong>
+                </Code>{' '}
+                is <Code>true</Code> for completed items and is{' '}
+                <Code>false</Code> otherwise.
               </UlLi>
             </Ul>
             <P>
               Let’s display the app together with its associated data.{' '}
               <Highlight>
-                Try checking and unchecking the checkboxes, and take a look at
+                Try checking and unchecking each checkbox, and take a look at
                 how <Code>done</Code> changes.
               </Highlight>
             </P>
@@ -197,7 +333,7 @@ const Page = () => (
               showData
               caption={
                 <>
-                  ↓ Check and uncheck the checkboxes,
+                  <Highlight>↓ Check and uncheck the checkboxes,</Highlight>
                   <br />
                   and take a look at how <Code>done</Code> changes
                 </>
@@ -225,8 +361,8 @@ const Page = () => (
               ]}
               description={
                 <>
-                  When the user interacts with the UI, the data gets updated,
-                  and in turn, the UI gets updated
+                  When a user interacts with the UI, the data gets updated, and
+                  in turn, the UI gets updated
                 </>
               }
             />
@@ -243,20 +379,36 @@ const Page = () => (
         content: (
           <>
             <P>
-              To implement the above functionality, we need to write code that
-              toggles the <Code>done</Code> property of a todo item. Let’s name
-              this function <Code>toggleTodo</Code>.{' '}
-              <Highlight>
-                When you call <Code>toggleTodo</Code> on a todo object, it needs
-                to return a new todo object with the opposite boolean value for
-                the <Code>done</Code> property.
-              </Highlight>
+              To implement the check/uncheck functionality, we need to write
+              code that toggles the <Code>done</Code> property of a single todo
+              item.
             </P>
+            <P>
+              Let’s name this function{' '}
+              <Code>
+                <strong>toggleTodo()</strong>
+              </Code>
+              . Here’s how it should work:
+            </P>
+            <Ul>
+              <UlLi>
+                <Highlight>
+                  When you call <Code>toggleTodo()</Code> on a single todo
+                  object…
+                </Highlight>
+              </UlLi>
+              <UlLi>
+                <Highlight>
+                  …it needs to return a new todo object with the opposite
+                  boolean value for the <Code>done</Code> property.
+                </Highlight>
+              </UlLi>
+            </Ul>
             <CodeBlock snippet={snippets.vpco} />
             <P>
               Now, let me introduce our junior developer,{' '}
-              <strong>Little Duckling</strong>. We’re going to use some
-              characters like him to make this article a bit more entertaining.
+              <strong>Little Duckling</strong>. He’s going to implement{' '}
+              <Code>toggleTodo()</Code> for us.
             </P>
             <EmojiSeparator
               emojis={['chickEgg']}
@@ -268,10 +420,6 @@ const Page = () => (
                 </>
               }
             />
-            <P>
-              And it looks like <strong>Little Duckling</strong> has implemented{' '}
-              <Code>toggleTodo</Code> for us:
-            </P>
             <BubbleQuotes
               quotes={[
                 {
@@ -279,8 +427,8 @@ const Page = () => (
                   children: (
                     <>
                       <P>
-                        I’ve implemented <Code>toggleTodo</Code> for you. Could
-                        you take a look?
+                        I’ve implemented <Code>toggleTodo()</Code> for you.
+                        Could you take a look?
                       </P>
                     </>
                   )
@@ -292,7 +440,7 @@ const Page = () => (
               caption={
                 <>
                   <Emoji type="chickEgg" /> Little Duckling’s{' '}
-                  <Code>toggleTodo</Code> implementation
+                  <Code>toggleTodo()</Code> implementation
                 </>
               }
             />
@@ -300,8 +448,8 @@ const Page = () => (
               Let’s check if Little Duckling’s implementation is correct.{' '}
               <Highlight>
                 Take a look at the following test case. What do you think the
-                output would be? Try to guess first and press Press{' '}
-                <RunButtonText /> below.
+                output would be? Try to guess first and press <RunButtonText />{' '}
+                below.
               </Highlight>
             </P>
             <CodeBlock
@@ -342,8 +490,7 @@ const Page = () => (
               ]}
             />
             <P>
-              Here’s the correct implementation. It preserves the{' '}
-              <Code>id</Code> property.
+              No worries, Little Duckling! Here’s the correct implementation:
             </P>
             <CodeBlock
               snippet={snippets.yxjg}
@@ -354,9 +501,11 @@ const Page = () => (
             />
             <P>
               <strong>Now, here’s a question:</strong>{' '}
-              <Highlight>How can we prevent mistakes like this?</Highlight>{' '}
-              Little Duckling is a junior developer, but we want to make sure
-              that he succeeds at his job by helping him make fewer mistakes.
+              <Highlight>
+                How can we prevent Little Duckling from making mistakes like
+                this?
+              </Highlight>{' '}
+              We want to help Little Duckling succeed at his job!
             </P>
             <EmojiSeparator
               emojis={['sweat', 'chickEgg', 'sweat']}
@@ -368,34 +517,40 @@ const Page = () => (
               }
             />
             <P>
-              This is where <strong>TypeScript</strong> comes in. Let’s take a
-              look!
+              This is where <strong>TypeScript</strong> comes in.
             </P>
           </>
         )
       },
       {
-        title: <>Using TypeScript to catch mistakes early</>,
+        title: <>Type checking</>,
         content: (
           <>
             <P>
-              By using <strong>TypeScript</strong>, we can prevent the mistake
-              Little Duckling made.
+              By using TypeScript, we can prevent the mistake Little Duckling
+              made by doing something called <strong>type checking</strong>.
             </P>
             <P>
-              First, <Highlight>we create a type</Highlight> for the data we
-              use. In this case, we need to create a type for a todo item. We’ll
-              call it <Code>Todo</Code> and define using the following
-              TypeScript syntax:
+              First,{' '}
+              <Highlight>
+                we create a <strong>type</strong>
+              </Highlight>{' '}
+              for the data we use. In our case, we need to create a type for a
+              todo item.{' '}
+              <Highlight>
+                We’ll call this type <Code>Todo</Code> and define it using the
+                following TypeScript syntax
+              </Highlight>
+              :
             </P>
             <CodeBlock snippet={snippets.lieq} />
             <P>
-              We can then use this type to check if an object is indeed a todo
-              item. The TypeScript syntax for that is:{' '}
-              <Code>variableName: TypeName</Code> (highlighted below). Let’s try
-              it—
+              We can then use this type to{' '}
+              <Highlight>check if a variable is indeed a todo item</Highlight>.
+              The TypeScript syntax to do this check is:{' '}
+              <Code>variableName: Todo</Code>. Here’s an example below—
               <Highlight>
-                press <RunButtonText compile />.
+                press <RunButtonText compile />
               </Highlight>
             </P>
             <CodeBlock
@@ -419,9 +574,6 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.tgvw}
-              shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 0 && tokenIndex >= 1 && tokenIndex <= 4
-              }
               tokenIndexIndentWorkaround={1}
               compile
               resultError
@@ -430,12 +582,16 @@ const Page = () => (
               }
             />
             <P>
-              This one failed to compile because the <Code>id</Code> property
-              was missing.{' '}
+              This one failed to compile{' '}
               <Highlight>
-                TypeScript can catch these small mistakes quickly, well before
-                running the code—without having to write unit tests.
+                because the <Code>id</Code> property was missing
               </Highlight>
+              .
+            </P>
+            <P>
+              <strong>The bottom line:</strong> TypeScript lets you type check a
+              variable against a specified type, which helps you catch mistakes
+              early.
             </P>
           </>
         )
@@ -450,14 +606,18 @@ const Page = () => (
           <>
             <P>
               Now, let’s use TypeScript to prevent the mistake Little Duckling
-              made earlier. To recap, here’s the <Code>Todo</Code> type we
-              created earlier:
+              made. To recap, here’s the <Code>Todo</Code> type we created
+              earlier (
+              <Highlight>
+                <Code>id</Code> is required
+              </Highlight>
+              ):
             </P>
             <CodeBlock snippet={snippets.lieq} />
             <P>
               First,{' '}
               <Highlight>
-                we specify that the input to <Code>toggleTodo</Code> must be{' '}
+                we specify that the input to <Code>toggleTodo()</Code> must be{' '}
                 <Code>Todo</Code>
               </Highlight>
               . We do this by adding <Code>: Todo</Code> next to the parameter{' '}
@@ -472,8 +632,8 @@ const Page = () => (
             <P>
               Next,{' '}
               <Highlight>
-                we specify that the return type of <Code>toggleTodo</Code> must
-                also be <Code>Todo</Code>
+                we specify that the return type of <Code>toggleTodo()</Code>{' '}
+                must also be <Code>Todo</Code>
               </Highlight>
               . We do this by adding <Code>: Todo</Code> after the parameter
               list.
@@ -486,7 +646,7 @@ const Page = () => (
             />
             <P>
               Now, let’s copy and paste the code Little Duckling wrote—the one
-              without the <Code>id</Code> property and see what happens.{' '}
+              without the <Code>id</Code> property—see what happens.{' '}
               <Highlight>
                 Press <RunButtonText compile /> below.
               </Highlight>
@@ -498,8 +658,8 @@ const Page = () => (
               result={`Property 'id' is missing in type '{ text: string; done: boolean; }' but required in type 'Todo'.`}
             />
             <P>
-              It fails with an error because the returned object is missing the{' '}
-              <Code>id</Code> property and therefore does not match the{' '}
+              <strong>It failed</strong> because the returned object is missing
+              the <Code>id</Code> property and therefore does not match the{' '}
               <Code>Todo</Code> type. So{' '}
               <Highlight>
                 TypeScript can prevent the mistake Little Duckling made!
@@ -528,14 +688,14 @@ const Page = () => (
             />
             <P>
               It compiled! As you can see, TypeScript is great at preventing
-              mistakes AND letting you know when everything is implemented
-              correctly.
+              mistakes AND letting you know when everything has the correct
+              type.
             </P>
           </>
         )
       },
       {
-        title: <>Bad refactor</>,
+        title: <>Bad refactoring</>,
         content: (
           <>
             <P>
@@ -549,7 +709,7 @@ const Page = () => (
                   children: (
                     <>
                       <P>
-                        I think I can refactor <Code>toggleTodo</Code> as
+                        I think I can refactor <Code>toggleTodo()</Code> as
                         follows. Could you take a look?
                       </P>
                     </>
@@ -559,7 +719,7 @@ const Page = () => (
             />
             <P>
               <Highlight>
-                Try pressing <RunButtonText /> to see if it compiles!
+                Try pressing <RunButtonText compile /> to see if it compiles!
               </Highlight>
             </P>
             <CodeBlock
@@ -577,55 +737,39 @@ const Page = () => (
             </P>
             <CodeBlock
               snippet={snippets.wymp}
-              compile
+              narrowText
               result={
                 <>
-                  Before toggleTodo()…
+                  Before toggleTodo(), argument is:
                   <br />
                   <ResultHighlight>{`{ id: 1, text: '…', done: true }`}</ResultHighlight>
-                  After toggleTodo()…
                   <br />
-                  Original Todo:
-                  <br />
-                  <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
-                  New Todo:
+                  After toggleTodo(), argument is:
                   <br />
                   <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
                 </>
               }
             />
-            <P>Here’s what happened:</P>
-            <Ul>
-              <UlLi>
-                <Code>originalTodo</Code> originally had <Code>done: true</Code>
-                .
-              </UlLi>
-              <UlLi>
-                After <Code>toggleTodo(),</Code> both <Code>originalTodo</Code>{' '}
-                and <Code>newTodo</Code> have <Code>done: false</Code>.
-              </UlLi>
-              <UlLi>
-                So <Code>originalTodo</Code> was modified!
-              </UlLi>
-            </Ul>
             <P>
-              However, we’ve said earlier on this page that{' '}
+              <Code>argument</Code> changed after running{' '}
+              <Code>toggleTodo()</Code> on it. This is NOT good because we’ve
+              said earlier that{' '}
               <Highlight>
-                <Code>toggleTodo()</Code> must return a new todo object. It
-                should NOT modify the original object.
-              </Highlight>
+                <Code>toggleTodo()</Code> must return a new todo object.
+              </Highlight>{' '}
+              It should NOT modify the argument (input) todo object.
             </P>
             <CodeBlock
               snippet={snippets.qbgu}
-              shouldHighlight={lineIndex => lineIndex === 0}
+              shouldHighlight={lineIndex => lineIndex === 1}
             />
             <P>
-              That’s why Little Duckling’s refactoring is a bad refactor—even
-              thought it compiles correctly.
+              That’s why Little Duckling’s refactoring is a bad refactoring—even
+              though it compiles correctly.
             </P>
             <CodeBlock
               snippet={snippets.njgr}
-              shouldHighlight={lineIndex => lineIndex === 2 || lineIndex === 3}
+              shouldHighlight={lineIndex => lineIndex === 4}
             />
             <BubbleQuotes
               quotes={[
@@ -663,8 +807,8 @@ const Page = () => (
               <Highlight>
                 you can use the <Code>readonly</Code> keyword in TypeScript.
               </Highlight>{' '}
-              In the following code, the <Code>readonly</Code> keyword is added
-              to all of the properties of <Code>Todo</Code>.
+              Here, the <Code>readonly</Code> keyword is added to all of the
+              properties of <Code>Todo</Code>.
             </P>
             <CodeBlock
               snippet={snippets.yhto}
@@ -674,7 +818,7 @@ const Page = () => (
             />
             <P>
               Now, let’s try to compile Little Duckling’s code again using the
-              updated definition of <Code>Todo</Code>. What happens this time?
+              above definition of <Code>Todo</Code>. What happens this time?
             </P>
             <CodeBlock
               snippet={snippets.dqwb}
@@ -709,12 +853,12 @@ const Page = () => (
               }
             />
             <P>
-              By the way, the previous implementation (before refactoring) will
-              continue to work because it does NOT modify the input todo item.
+              By the way, the earlier implementation we used will continue to
+              work because it does NOT modify the input todo item.
             </P>
             <CodeBlock
               snippet={snippets.vgnq}
-              shouldHighlight={lineIndex => lineIndex <= 1}
+              shouldHighlight={lineIndex => lineIndex === 6 || lineIndex === 7}
             />
           </>
         )
@@ -736,7 +880,10 @@ const Page = () => (
               First, here’s our read-only version of <Code>Todo</Code>:
             </P>
             <CodeBlock snippet={snippets.yhto} />
-            <P>The above code is equivalent to the following version:</P>
+            <P>
+              The above code is <strong>equivalent</strong> to the following
+              version:
+            </P>
             <CodeBlock
               snippet={snippets.nxyl}
               shouldHighlight={(lineIndex, tokenIndex) =>
@@ -745,60 +892,28 @@ const Page = () => (
               }
             />
             <P>
+              In TypeScript,{' '}
               <Highlight>
-                If you use <Code>Readonly&lt;...&gt;</Code> on an object type,
-                it makes all of its properties <Code>readonly</Code>
+                if you use the{' '}
+                <Code>
+                  <strong>Readonly&lt;...&gt;</strong>
+                </Code>{' '}
+                keyword on an object type, it makes all of its properties{' '}
+                <Code>readonly</Code>
               </Highlight>
-              . Here’s another example:
+              . This is often easier than manually adding <Code>readonly</Code>{' '}
+              to every property.
             </P>
+            <P>Here’s another example:</P>
             <CodeBlock snippet={snippets.qaqa} />
             <P>
-              This can be useful for <Code>toggleTodo()</Code>. For example, we
-              might want to:
-            </P>
-            <Ul>
-              <UlLi>
-                <Highlight>
-                  Make the properties of <Code>Todo</Code> to be NOT{' '}
-                  <Code>readonly</Code> by default, and…
-                </Highlight>
-              </UlLi>
-              <UlLi>
-                <Highlight>
-                  Make them <Code>readonly</Code> ONLY within{' '}
-                  <Code>toggleTodo()</Code>.
-                </Highlight>
-              </UlLi>
-            </Ul>
-            <P>In that case, we can write the following code:</P>
-            <CodeBlock
-              snippet={snippets.jkjo}
-              shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 11 && tokenIndex >= 1
-              }
-            />
-            <BubbleQuotes
-              quotes={[
-                {
-                  type: 'chickEgg',
-                  children: (
-                    <>
-                      <P>
-                        That’s so cool!{' '}
-                        <Highlight color="lightYellow1">
-                          So you can convert one type into another type in
-                          TypeScript?
-                        </Highlight>
-                      </P>
-                    </>
-                  )
-                }
-              ]}
-            />
-            <P>
-              Yes! In TypeScript, you can use keywords like{' '}
-              <Code>Readonly&lt;...&gt;</Code> to convert one type into another
-              type—in this case, it creates a new type with{' '}
+              <Highlight>
+                In TypeScript, you can use keywords like{' '}
+                <Code>Readonly&lt;...&gt;</Code> to convert one type into
+                another type.
+              </Highlight>{' '}
+              In this case, <Code>Readonly&lt;...&gt;</Code> takes an object
+              type (like <Code>Todo</Code>) and creates a new object type with{' '}
               <Code>readonly</Code> properties.
             </P>
             <EmojiSeparator
@@ -809,17 +924,21 @@ const Page = () => (
             />
             <P>
               And the keywords like <Code>Readonly&lt;...&gt;</Code> are called{' '}
-              <strong>Mapped Types</strong>. There are many built-in mapped
-              types (like <Code>Required&lt;...&gt;</Code>,{' '}
-              <Code>Partial&lt;...&gt;</Code>, etc). You can also create your
-              own mapped types. I won’t cover these topics here—you can google
-              them.
+              <strong>mapped types</strong>. Mapped types are kind of like
+              functions, except the input/output are TypeScript types.
+            </P>
+            <P>
+              There are many built-in mapped types (like{' '}
+              <Code>Required&lt;...&gt;</Code>, <Code>Partial&lt;...&gt;</Code>,
+              etc). You can also create your own mapped types. I won’t cover
+              these topics here—you can google them.
             </P>
           </>
         )
       },
       {
         color: 'green',
+        subtitle: <>Section 1 Summary:</>,
         title: <>Types are like lightweight, automatic unit tests</>,
         content: (
           <>
@@ -851,30 +970,30 @@ const Page = () => (
               }
             />
             <P>
-              Before TypeScript, you needed to write unit tests to verify these
-              things. So in a sense,{' '}
+              In JavaScript, you needed to write unit tests to test these
+              things. But TypeScript can check them automatically. So in a
+              sense,{' '}
               <Highlight>
-                TypeScript’s types act as lightweight unit tests that run
-                automatically every time you save (compile) the code.
+                TypeScript’s types act as lightweight unit tests that run every
+                time you save (compile) the code.
               </Highlight>{' '}
-              It helps you write less buggy code with very little overhead. (Of
-              course, this analogy is a simplification. You should still write
-              tests in TypeScript!)
+              (Of course, this analogy is a simplification. You should still
+              write tests in TypeScript!)
             </P>
             <P>
-              This especially useful{' '}
+              This is especially useful{' '}
               <Highlight>
                 when you’re using a UI library and need to transform data
               </Highlight>
               . For example, if you’re using React, you’ll need to transform
               data in state updates. You might also need to transform data when
-              passing data from a parent component to its child component.
-              TypeScript reduces bugs arising from these situations.
+              passing data from a parent component to its children. TypeScript
+              can reduce bugs arising from these situations.
             </P>
             <EmojiSeparator
               emojis={['data', 'transformTypechecked', 'updatedData']}
               description={
-                <>TypeScript reduces bugs when transforming/passing data</>
+                <>TypeScript can reduce bugs when transforming/passing data</>
               }
             />
 
@@ -897,14 +1016,22 @@ const Page = () => (
         )
       },
       {
+        title: (
+          <>
+            <strong>Section 2</strong> of 3
+          </>
+        ),
+        heading: section2,
+        color: 'darkGreen'
+      },
+      {
         title: <>Mark all as completed</>,
         content: (
           <>
             <P>
-              Some todo apps allow you to{' '}
-              <Highlight>mark all items as completed.</Highlight> On the
-              following todo app,{' '}
-              <Highlight>try pressing “Mark all as completed”:</Highlight>
+              Let’s talk about a new feature of our todo app: “
+              <strong>Mark all as completed</strong>”.{' '}
+              <Highlight>Try pressing “Mark all as completed” below:</Highlight>
             </P>
             <TodoWithData
               showData
@@ -922,20 +1049,20 @@ const Page = () => (
               shouldHighlight={tokenIndex => tokenIndex === 15}
             />
             <P>
-              After pressing “Mark all as completed”, all items will have{' '}
-              <Code>done: true</Code>.
+              After pressing <Highlight>“Mark all as completed”</Highlight>, all
+              items end up with <Code>done: true</Code>.
             </P>
             <P>
               Let’s implement this functionality using TypeScript. We’ll write a
               function called <Code>completeAll()</Code> which takes an array of
-              todo items and returns a new array where <Code>done</Code> is all{' '}
-              <Code>true</Code>.
+              todo items and returns a new array of todos where{' '}
+              <Code>done</Code> is all <Code>true</Code>.
             </P>
             <CodeBlock snippet={snippets.tdbp} />
             <P>
               Before implementing it,{' '}
               <Highlight>
-                let’s add some types for the input and output of this function
+                let’s specify the input/output types for this function
               </Highlight>{' '}
               to prevent mistakes!
             </P>
@@ -951,9 +1078,14 @@ const Page = () => (
         content: (
           <>
             <P>
-              <strong>First,</strong> we’ll specify the type for the input
-              parameter of <Code>completeAll()</Code>. It’s an array of{' '}
-              <Code>Todo</Code> items.{' '}
+              For <Code>completeAll()</Code>, we’ll use the{' '}
+              <Code>Readonly</Code> version of the <Code>Todo</Code> type:
+            </P>
+            <CodeBlock snippet={snippets.mxqy} />
+            <P>
+              <strong>First,</strong> we’ll specify the parameter type of{' '}
+              <Code>completeAll()</Code>, which is an array of <Code>Todo</Code>{' '}
+              items.{' '}
               <Highlight>
                 To specify an array type, we add <Code>[]</Code> next to the
                 type
@@ -963,7 +1095,7 @@ const Page = () => (
             <CodeBlock
               snippet={snippets.lgci}
               shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 8 && tokenIndex >= 5 && tokenIndex <= 9
+                lineIndex === 1 && tokenIndex >= 5 && tokenIndex <= 9
               }
             />
             <P>
@@ -999,14 +1131,14 @@ const Page = () => (
                 To make the array itself <Code>readonly</Code>,
               </strong>{' '}
               <Highlight>
-                we’ll add the <Code>readonly</Code> keyword to{' '}
+                we need to add the <Code>readonly</Code> keyword to{' '}
                 <Code>Todo[]</Code> like so:
               </Highlight>
             </P>
             <CodeBlock
               snippet={snippets.szan}
               shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 2 && tokenIndex >= 1
+                lineIndex === 2 && tokenIndex >= 2
               }
             />
             <BubbleQuotes
@@ -1068,7 +1200,972 @@ const Page = () => (
           </>
         )
       },
-      underConstructionCard
+      {
+        title: (
+          <>
+            The <Code>CompletedTodo</Code> type
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              Take a look at the following code. In addition to the{' '}
+              <Code>Todo</Code> type, we’ve defined a new type called{' '}
+              <Code>CompletedTodo</Code>.
+            </P>
+            <CodeBlock
+              snippet={snippets.rlya}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 9 && tokenIndex >= 0 && tokenIndex <= 4) ||
+                (lineIndex === 6 && tokenIndex >= 0 && tokenIndex <= 3)
+              }
+            />
+            <P>
+              The new <Code>CompletedTodo</Code> is almost identical to{' '}
+              <Code>Todo</Code>, except it has{' '}
+              <Code>
+                <strong>done: true</strong>
+              </Code>{' '}
+              instead of <Code>done: boolean</Code>.
+            </P>
+            <P>
+              <Highlight>
+                In TypeScript, you can use <em>exact values</em> (like{' '}
+                <Code>true</Code> or <Code>false</Code>) when specifying a type.
+              </Highlight>{' '}
+              This is called <strong>literal types</strong>.
+            </P>
+            <EmojiSeparator
+              emojis={['doneTrue']}
+              description={
+                <>
+                  You can use exact values when specifying a type. This is
+                  called <strong>literal types</strong>.
+                </>
+              }
+            />
+            <P>
+              Let’s take a look at an example. In the following code, we’ve
+              added <Code>CompletedTodo</Code> to a todo item that has{' '}
+              <Code>done: false</Code>. Let’s see what happens{' '}
+              <Highlight>
+                when you <RunButtonText compile /> it
+              </Highlight>
+              :
+            </P>
+            <CodeBlock
+              snippet={snippets.zswn}
+              compile
+              resultError
+              result={<>Type 'false' is not assignable to type 'true'.</>}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 1 && tokenIndex >= 3 && tokenIndex <= 5
+              }
+              shouldHighlightResult={lineIndex => lineIndex === 4}
+            />
+            <P>
+              It failed to compile because <Code>done</Code> is not{' '}
+              <Code>true</Code>. By using literal types, you can specify exactly
+              what value is allowed for a property.
+            </P>
+            <P>
+              Coming back to <Code>completeAll()</Code>, we can specify the
+              return type of <Code>completeAll()</Code> to be an array of{' '}
+              <Code>CompletedTodo</Code>’s:
+            </P>
+            <CodeBlock
+              snippet={snippets.oone}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 3 && tokenIndex >= 2 && tokenIndex <= 6
+              }
+            />
+            <P>
+              By doing this,{' '}
+              <Highlight>
+                TypeScript will force you to return an array of todo items where{' '}
+                <Code>done</Code> is all <Code>true</Code>
+              </Highlight>
+              —if not, it will result in a compile error.
+            </P>
+          </>
+        )
+      },
+      {
+        title: <>Intersection types</>,
+        content: (
+          <>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        <strong>Question:</strong> There seems to be some
+                        duplicate code between <Code>Todo</Code> and{' '}
+                        <Code>CompletedTodo</Code>. Can we refactor this?
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <P>
+              Good question, Little Duckling! If you look closely,{' '}
+              <Code>Todo</Code> and <Code>CompletedTodo</Code> have identical{' '}
+              <Code>id</Code> and <Code>text</Code> types.
+            </P>
+            <CodeBlock
+              snippet={snippets.xrwn}
+              shouldHighlight={lineIndex =>
+                lineIndex === 2 ||
+                lineIndex === 3 ||
+                lineIndex === 9 ||
+                lineIndex === 10
+              }
+            />
+            <P>
+              We can deduplicate the code by using a TypeScript feature called{' '}
+              <strong>intersection types</strong>.
+            </P>
+            <P>
+              In TypeScript,{' '}
+              <Highlight>
+                you can use the <Code>&amp;</Code> sign to create an{' '}
+                <strong>intersection type</strong> of two types.
+              </Highlight>
+            </P>
+            <EmojiSeparator
+              emojis={['a', 'ampersand', 'b']}
+              description={
+                <>
+                  <Code>&amp;</Code> creates an{' '}
+                  <strong>intersection type</strong> of two types.
+                </>
+              }
+            />
+            <P>
+              <Highlight>
+                The intersection type <Code>A &amp; B</Code> is a type that has{' '}
+                <strong>all</strong> of the properties of <Code>A</Code> and{' '}
+                <Code>B</Code>.
+              </Highlight>{' '}
+              Here’s an example:
+            </P>
+            <CodeBlock
+              snippet={snippets.wdjp}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 4 && tokenIndex >= 7
+              }
+            />
+            <P>
+              Furthermore,{' '}
+              <Highlight>
+                if the second type is more specific than the first type, the
+                second type overrides the first.
+              </Highlight>{' '}
+              Here’s an example:
+            </P>
+            <CodeBlock
+              snippet={snippets.qnwc}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 10 && tokenIndex >= 7 && tokenIndex <= 13
+              }
+            />
+            <P>
+              We can apply this idea to update the definition of{' '}
+              <Code>CompletedTodo</Code>. We’ll define{' '}
+              <Code>CompletedTodo</Code> using <Code>Todo</Code> like this:
+            </P>
+            <CodeBlock
+              snippet={snippets.rmuo}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 7 && tokenIndex >= 7) ||
+                lineIndex === 8 ||
+                lineIndex === 9
+              }
+            />
+            <P>
+              By doing the above, you can define <Code>CompletedTodo</Code> to
+              have the same properties as <Code>Todo</Code> except for{' '}
+              <Code>done</Code>—without duplicating code.
+            </P>
+            <P>
+              <strong>Summary:</strong>{' '}
+              <Highlight>
+                Just like JavaScript has boolean operators like{' '}
+                <Code>&amp;&amp;</Code>, TypeScript has{' '}
+                <strong>type operators</strong> like <Code>&amp;</Code> which
+                lets you combine two types.
+              </Highlight>
+            </P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            Finally implementing <Code>completeAll()</Code>
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              We’re finally ready to implement <Code>completeAll()</Code>.
+              Here’s the code—
+              <Highlight>
+                try pressing <RunButtonText compile />
+              </Highlight>
+              !
+            </P>
+            <CodeBlock
+              snippet={snippets.hszk}
+              compile
+              result={compileSuccess}
+              shouldHighlight={lineIndex => lineIndex >= 3 && lineIndex <= 6}
+            />
+            <P>
+              It compiled! Let’s run this function on an example todo list.{' '}
+              <Highlight>
+                Press <RunButtonText />:
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.okva}
+              result={
+                <ResultHighlight>
+                  {`[
+  { id: 1, text: '…', done: true },
+  { id: 2, text: '…', done: true }
+]`}
+                </ResultHighlight>
+              }
+            />
+            <P>
+              <Code>done</Code> all became <Code>true</Code>, as expected!
+            </P>
+            <P>
+              Now, let’s see what happens if we make a mistake and set{' '}
+              <Code>done</Code> to <Code>false</Code>:
+            </P>
+            <CodeBlock
+              snippet={snippets.whae}
+              compile
+              result={
+                <>
+                  Types of property 'done' are incompatible.
+                  <br />
+                  Type 'false' is not assignable to type 'true'.
+                </>
+              }
+              resultError
+              shouldHighlight={lineIndex => lineIndex === 6}
+              shouldHighlightResult={lineIndex => lineIndex === 6}
+            />
+            <P>
+              It failed because <Code>CompletedTodo</Code> must have{' '}
+              <Code>done: true</Code>. Once again, TypeScript caught an error
+              early.
+            </P>
+            <P>
+              <strong>That’s all for this section!</strong> By using{' '}
+              <Code>completeAll()</Code> with a UI library like React, we can
+              build the “Mark all as completed” feature we saw earlier.
+            </P>
+            <TodoWithData
+              showData
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false }
+              ]}
+              showMarkAllAsCompleted
+              highlightLineIndexOffset={1}
+              shouldHighlight={tokenIndex => tokenIndex === 15}
+            />
+          </>
+        )
+      },
+      {
+        color: 'green',
+        subtitle: <>Section 2 Summary:</>,
+        title: <>TypeScript can handle arrays and exact values</>,
+        content: (
+          <>
+            <P>
+              In this section, we’ve learned that TypeScript can handle arrays
+              and exact values:
+            </P>
+            <P>
+              <strong>
+                1. We can specify an array type by adding <Code>[]</Code>. We
+                can also set an array as <Code>readonly</Code>.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.ruga}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 2 && tokenIndex >= 2 && tokenIndex <= 6) ||
+                (lineIndex === 1 && tokenIndex >= 2)
+              }
+            />
+            <P>
+              <strong>
+                2. We can use literal types to specify exactly which value is
+                allowed for a property.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.bpmz}
+              shouldHighlight={lineIndex => lineIndex === 3}
+            />
+            <P>
+              Finally, we learned that{' '}
+              <strong>
+                we can use intersection types to override some properties and
+                remove code duplication.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.rmuo}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 7 && tokenIndex >= 7) ||
+                lineIndex === 8 ||
+                lineIndex === 9
+              }
+            />
+            <P>
+              In the next (and final) section, we’ll take a look at one of the
+              most powerful features of TypeScript: <strong>Unions</strong>.
+            </P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            <strong>Section 3</strong> of 3
+          </>
+        ),
+        heading: section3,
+        color: 'darkGreen'
+      },
+      {
+        title: <>New Feature: Place tags</>,
+        content: (
+          <>
+            <P>
+              Let’s add a new feature to our todo app:{' '}
+              <strong>Place tags</strong>.
+            </P>
+            <P>
+              <Highlight>
+                Each todo item can now <em>optionally</em> be tagged with one of
+                the following <em>pre-defined</em> tags:
+              </Highlight>
+            </P>
+            <Ul>
+              <UlLi>
+                <PlaceLabel place="home" />
+              </UlLi>
+              <UlLi>
+                <PlaceLabel place="work" />
+              </UlLi>
+            </Ul>
+            <P>
+              <Highlight>
+                Each todo item can also be tagged with a custom,{' '}
+                <em>user-defined</em> tags:
+              </Highlight>
+            </P>
+            <Ul>
+              <UlLi>
+                <PlaceLabel place={{ custom: 'Gym' }} />,{' '}
+                <PlaceLabel place={{ custom: 'Supermarket' }} />, etc—the user
+                can create any custom place they want.
+              </UlLi>
+            </Ul>
+            <P>
+              Users can use this feature to identify which tasks need to be done
+              at home, at work, or elsewhere.{' '}
+              <Highlight>
+                It’s <strong>optional</strong>, so there can be a todo item
+                without a place tag.
+              </Highlight>
+            </P>
+            <P>Here’s an example:</P>
+            <TodoWithData
+              caption={
+                <>
+                  Each todo item can now optionally be tagged with a{' '}
+                  <strong>place tag</strong>
+                </>
+              }
+              defaultData={placesExample}
+            />
+            <P>
+              Let’s take a look at the associated data.{' '}
+              <Highlight>
+                Each todo can now have an optional <Code>place</Code> property,
+                which determines the place tag:
+              </Highlight>
+            </P>
+            <Ul>
+              <UlLi>
+                <Code>
+                  place: <strong>'home'</strong>
+                </Code>{' '}
+                → <PlaceLabel place="home" />
+              </UlLi>
+              <UlLi>
+                <Code>
+                  place: <strong>'work'</strong>
+                </Code>{' '}
+                → <PlaceLabel place="work" />
+              </UlLi>
+            </Ul>
+            <P>
+              For custom places,{' '}
+              <Highlight>
+                the <Code>place</Code> property will be an object containing a
+                string <Code>custom</Code> property:
+              </Highlight>
+            </P>
+            <Ul>
+              <UlLi>
+                <Code>
+                  place: <strong>{`{ custom: 'Gym' }`}</strong>
+                </Code>{' '}
+                → <PlaceLabel place={{ custom: 'Gym' }} />
+              </UlLi>
+              <UlLi>
+                <Code>
+                  place: <strong>{`{ custom: 'Supermarket' }`}</strong>
+                </Code>{' '}
+                → <PlaceLabel place={{ custom: 'Supermarket' }} />
+              </UlLi>
+            </Ul>
+            <P>
+              The <Code>place</Code> property can also be missing if there’s no
+              place tag.
+            </P>
+            <P>Here’s the associated data for our previous example:</P>
+            <TodoWithData
+              showData
+              defaultData={placesExample}
+              shouldAlwaysHighlight={lineIndex =>
+                lineIndex === 5 ||
+                lineIndex === 11 ||
+                lineIndex === 17 ||
+                lineIndex === 23
+              }
+            />
+            <P>
+              To implement this in TypeScript, we first need to update our
+              definition of the <Code>Todo</Code> type. Let’s take a look at
+              this next!
+            </P>
+            <CodeBlock
+              snippet={snippets.yztr}
+              shouldHighlight={lineIndex => lineIndex === 0}
+            />
+          </>
+        )
+      },
+      {
+        title: <>Union types</>,
+        content: (
+          <>
+            <P>
+              To implement place tags, we can use a TypeScript feature called{' '}
+              <strong>union types</strong>.
+            </P>
+            <P>
+              In TypeScript,{' '}
+              <Highlight>
+                you can use the syntax <Code>A | B</Code> to create a{' '}
+                <strong>union type</strong>, which represents a type that’s{' '}
+                either <Code>A</Code> or <Code>B</Code>
+              </Highlight>
+              .
+            </P>
+            <EmojiSeparator
+              emojis={['a', 'verticalBar', 'b']}
+              description={
+                <>
+                  <Code>A | B</Code> is a <strong>union type</strong>, which
+                  means{' '}
+                  <Highlight>
+                    either <Code>A</Code> or <Code>B</Code>.
+                  </Highlight>
+                </>
+              }
+            />
+            <P>
+              For example, if you create a type that’s equal to{' '}
+              <Code>number | string</Code>, it can be either <Code>number</Code>{' '}
+              OR <Code>string</Code>:
+            </P>
+            <CodeBlock
+              snippet={snippets.mzyn}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 1 && tokenIndex >= 7
+              }
+            />
+            <P>
+              In our todo app,{' '}
+              <Highlight>
+                we’ll first create a new <Code>Place</Code> type as a union type
+              </Highlight>{' '}
+              as follows:
+            </P>
+            <CodeBlock
+              narrowText
+              caption={
+                <>
+                  <Code>Place</Code> can be either <Code>'home'</Code>,{' '}
+                  <Code>'work'</Code>, or an object containing a string{' '}
+                  <Code>custom</Code> property
+                </>
+              }
+              snippet={snippets.umjt}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 0 && tokenIndex >= 6
+              }
+            />
+            <P>
+              Here’s an example usage of the <Code>Place</Code> type:
+            </P>
+            <CodeBlock narrowText snippet={snippets.fawy} />
+            <P>
+              We can now assign the <Code>Place</Code> type to the{' '}
+              <Code>place</Code> property of <Code>Todo</Code>:
+            </P>
+            <CodeBlock
+              caption={
+                <>
+                  Assign <Code>Place</Code> to <Code>Todo</Code>’s{' '}
+                  <Code>place</Code> property
+                </>
+              }
+              snippet={snippets.npgx}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 4 && tokenIndex >= 3
+              }
+            />
+            <P>
+              That’s it! Next, we’ll take a look at{' '}
+              <strong>optional properties</strong>.
+            </P>
+          </>
+        )
+      },
+      {
+        title: <>Optional properties</>,
+        content: (
+          <>
+            <P>
+              We briefly mentioned that place tags like{' '}
+              <PlaceLabel place="home" /> or <PlaceLabel place="work" /> are{' '}
+              <strong>optional</strong>—we can have todo items without a place
+              tag.
+            </P>
+            <P>
+              In our previous example, <Highlight>“Read a book”</Highlight>{' '}
+              didn’t have any place tag, so it didn’t have any{' '}
+              <Code>place</Code> property:
+            </P>
+            <TodoWithData
+              showData
+              customSnippet={snippets.hquv}
+              caption={
+                <>
+                  Place tags are optional: <Highlight>“Read a book”</Highlight>{' '}
+                  didn’t have any place tag, so NO <Code>place</Code> property
+                </>
+              }
+              defaultData={placesExample}
+              shouldAlwaysHighlight={lineIndex => lineIndex === 6}
+            />
+            <P>
+              Can TypeScript describe these <em>optional properties</em>? Of
+              course it can. In TypeScript,{' '}
+              <Highlight>
+                you can add a <strong>question mark</strong> (<Code>?</Code>)
+                after a property name to make the property optional:
+              </Highlight>
+            </P>
+            <CodeBlock
+              snippet={snippets.yvpp}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 2 && tokenIndex <= 1
+              }
+            />
+            <P>
+              In our example, instead of <Code>place: Place</Code>, we can use{' '}
+              <Code>
+                <strong>place?</strong>: Place
+              </Code>{' '}
+              to make it optional:
+            </P>
+            <CodeBlock
+              narrowText
+              snippet={snippets.rvyq}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 7 && tokenIndex <= 1
+              }
+            />
+            <P>That’s it! We’re now ready to use these types in a function.</P>
+          </>
+        )
+      },
+      {
+        title: (
+          <>
+            Implementing <Code>placeToString()</Code>
+          </>
+        ),
+        content: (
+          <>
+            <P>
+              As mentioned before, UI libraries like React or Vue{' '}
+              <em>transform data into UI</em>.
+            </P>
+            <EmojiSeparator
+              emojis={['data', 'singleArrow', 'ui']}
+              description={<>UI libraries transform data into UI</>}
+            />
+            <P>
+              For place labels, we need to transform each <Code>Place</Code>{' '}
+              data into a place label UI:
+            </P>
+            <EmojiSeparator
+              size="sm"
+              customChildren={
+                <>
+                  <Code>'home'</Code>{' '}
+                  <ArrowWrapper>
+                    <Emoji type="singleArrow" noVerticalTransform />
+                  </ArrowWrapper>{' '}
+                  <PlaceLabel place="home" />
+                </>
+              }
+            />
+            <EmojiSeparator
+              size="sm"
+              customChildren={
+                <>
+                  <Code>'work'</Code>{' '}
+                  <ArrowWrapper>
+                    <Emoji type="singleArrow" noVerticalTransform />
+                  </ArrowWrapper>{' '}
+                  <PlaceLabel place="work" />
+                </>
+              }
+            />
+            <EmojiSeparator
+              size="sm"
+              customChildren={
+                <>
+                  <Code
+                    css={css`
+                      font-size: 0.8em;
+                    `}
+                  >{`{ custom: 'Gym' }`}</Code>{' '}
+                  <ArrowWrapper>
+                    <Emoji type="singleArrow" noVerticalTransform />
+                  </ArrowWrapper>{' '}
+                  <PlaceLabel place={{ custom: 'Gym' }} />
+                </>
+              }
+              description={
+                <>
+                  <div
+                    css={css`
+                      margin-top: 0.5em;
+                    `}
+                  >
+                    Transform <Code>Place</Code> into a place label UI
+                  </div>
+                </>
+              }
+            />
+            <P>
+              To do this, we’d like to implement a function called{' '}
+              <Code>
+                <strong>placeToString()</strong>
+              </Code>
+              , which has the following input and output:
+            </P>
+            <Ul>
+              <UlLi>
+                <strong>Input</strong> should be a <Code>Place</Code>.{' '}
+                <Highlight>
+                  Example: <Code>'work'</Code>.
+                </Highlight>
+              </UlLi>
+              <UlLi>
+                <strong>Return value</strong> should be a{' '}
+                <strong>string</strong> (with an emoji) that will be used for
+                the label UI.{' '}
+                <Highlight>
+                  Example:{' '}
+                  <Code>
+                    '<Emoji type="work" /> Work'
+                  </Code>
+                  .
+                </Highlight>
+              </UlLi>
+            </Ul>
+            <P>Here are the examples:</P>
+            <CodeBlock snippet={snippets.qnrh} />
+            <P>
+              We can then use its return value to render place label UIs:{' '}
+              <PlaceLabel place="home" />, <PlaceLabel place="work" />,{' '}
+              <PlaceLabel place={{ custom: 'Gym' }} />, etc in any UI library.
+              For example, in React, you can define a functional component and
+              call <Code>placeToString()</Code> inside it.
+            </P>
+            <P>
+              Let’s now implement <Code>placeToString()</Code>. Here’s the
+              starter code—can you figure out what goes inside?
+            </P>
+            <CodeBlock snippet={snippets.ybhj} />
+          </>
+        )
+      },
+      {
+        title: <>Little Duckling’s implementation</>,
+        content: (
+          <>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        I tried to implement <Code>placeToString()</Code>. Could
+                        you take a look?
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <P>
+              Let’s see if Little Duckling’s implementation compiles.{' '}
+              <Highlight>
+                Press <RunButtonText compile />!
+              </Highlight>
+            </P>
+            <CodeBlock
+              narrowText
+              snippet={snippets.vgja}
+              compile
+              resultError
+              result={`Property 'custom' does not exist on type '{ custom: string; } | "work"'.`}
+              shouldHighlightResult={(lineIndex, tokenIndex) =>
+                lineIndex === 7 && tokenIndex >= 7
+              }
+            />
+            <P>
+              <strong>It failed!</strong> TypeScript noticed that there’s a
+              logic error here.{' '}
+              <Highlight>
+                Specifically, inside <Code>else</Code>, TypeScript knows that{' '}
+                <Code>place</Code> is either <Code>'work'</Code> or{' '}
+                <Code>{`{ custom: string }`}</Code>
+              </Highlight>
+              :
+            </P>
+            <CodeBlock
+              narrowText
+              snippet={snippets.dhor}
+              shouldHighlight={lineIndex =>
+                lineIndex === 5 || lineIndex === 8 || lineIndex === 12
+              }
+            />
+            <P>Here’s what happened:</P>
+            <Ul>
+              <UlLi>
+                <Code>place</Code> is either <Code>'work'</Code> or{' '}
+                <Code>{`{ custom: string }`}</Code> inside <Code>else</Code>.
+              </UlLi>
+              <UlLi>
+                <Highlight>
+                  And <Code>place.custom</Code> is invalid if <Code>place</Code>{' '}
+                  is <Code>'work'</Code>
+                </Highlight>
+                .
+              </UlLi>
+            </Ul>
+            <P>That’s why TypeScript gave you a compile error.</P>
+            <CodeBlock
+              snippet={snippets.eega}
+              shouldHighlight={lineIndex => lineIndex === 2}
+            />
+            <P>
+              Of course, the fix is to add{' '}
+              <Code>else if (place === 'work')</Code>.{' '}
+              <Highlight>
+                Press <RunButtonText compile />!
+              </Highlight>
+            </P>
+            <CodeBlock
+              narrowText
+              snippet={snippets.szco}
+              compile
+              result={compileSuccess}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 4 && tokenIndex >= 3) ||
+                lineIndex === 5 ||
+                (lineIndex === 6 && tokenIndex <= 1)
+              }
+            />
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'chickEgg',
+                  children: (
+                    <>
+                      <P>
+                        Oops! <Emoji type="sweat" /> I forgot to check for{' '}
+                        <Code>place === 'work'</Code>!
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <P>
+              No worries, Little Duckling! TypeScript was able to catch the
+              error early.
+            </P>
+            <P>
+              <strong>Summary:</strong> As we just saw,{' '}
+              <Highlight>
+                union types are powerful when combined with conditional
+                statements (e.g. <Code>if/else</Code>)
+              </Highlight>
+              :
+            </P>
+            <UnionTypesSummary />
+            <P>
+              That’s everything! Let’s quickly summarize what we’ve learned.
+            </P>
+          </>
+        )
+      },
+      {
+        color: 'green',
+        subtitle: <>Section 3 Summary:</>,
+        title: <>Union types are powerful</>,
+        content: (
+          <>
+            <P>
+              In this section, we’ve learned about union types and optional
+              properties:
+            </P>
+            <P>
+              <strong>
+                1. We can use the syntax <Code>A | B</Code> to create a{' '}
+                <strong>union type</strong>, which represents a type that’s
+                either <Code>A</Code> or <Code>B</Code>.
+              </strong>
+            </P>
+            <CodeBlock
+              narrowText
+              caption={
+                <>
+                  <Code>Place</Code> can be either <Code>'home'</Code>,{' '}
+                  <Code>'work'</Code>, or an object containing a string{' '}
+                  <Code>custom</Code> property
+                </>
+              }
+              snippet={snippets.umjt}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 0 && tokenIndex >= 6
+              }
+            />
+            <P>
+              <strong>
+                2. We can add a question mark (<Code>?</Code>) after a property
+                name to make the property optional.
+              </strong>
+            </P>
+            <CodeBlock
+              snippet={snippets.npog}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 5 && tokenIndex <= 1
+              }
+            />
+            <P>
+              Finally,{' '}
+              <strong>
+                union types are powerful when combined with conditional
+                statements (e.g. <Code>if/else</Code>).
+              </strong>
+            </P>
+            <UnionTypesSummary />
+            <P>
+              Union types are one of the best ideas of TypeScript. You should
+              use them often. There are other powerful features of union types
+              (discriminated unions, combining them with mapped types, etc)
+              which I won’t cover here.
+            </P>
+          </>
+        )
+      },
+      {
+        title: <>Conclusion and next steps</>,
+        content: (
+          <>
+            <EmojiSeparator emojis={['sparkles', 'chickEgg', 'sparkles']} />
+            <P>
+              Thanks for reading! You should now know enough TypeScript to get
+              started with a project.
+            </P>
+            <Ul>
+              <UlLi>
+                <strong>Using React?</strong> If you’re using React,{' '}
+                <A href="https://github.com/typescript-cheatsheets/react-typescript-cheatsheet">
+                  React+TypeScript Cheatsheets
+                </A>{' '}
+                is a good reference.
+              </UlLi>
+              <UlLi>
+                <strong>What to learn next:</strong> Once you become more
+                familiar with TypeScript, you should learn{' '}
+                <strong>generics</strong> next. I’ve written an article on it
+                called “
+                <InternalLink href="/generics">
+                  TypeScript Generics for People Who Gave Up on Understanding
+                  Generics
+                </InternalLink>
+                ”.
+              </UlLi>
+              <UlLi>
+                <strong>Source code:</strong> <SourceAvailableText />
+              </UlLi>
+            </Ul>{' '}
+            <P>
+              I plan to write more TypeScript articles by continuing on the todo
+              app example I used here. To get notified when I publish a new
+              article,{' '}
+              <Highlight>
+                follow me on{' '}
+                <A href="https://twitter.com/chibicode">
+                  <Emoji type="twitter" /> Twitter at @chibicode
+                </A>
+              </Highlight>
+              .
+            </P>
+          </>
+        ),
+        footer: {
+          content: <AboutMe />
+        }
+      }
     ]}
   />
 )

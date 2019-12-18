@@ -3,6 +3,7 @@ import { css, jsx } from '@emotion/core'
 import Container from 'src/components/Container'
 import useTheme from 'src/hooks/useTheme'
 import { A } from 'src/components/ContentTags'
+import GitHubButton from 'src/components/GitHubButton'
 
 const Footer = () => {
   const { fontSizes, ns, spaces, colors } = useTheme()
@@ -11,7 +12,6 @@ const Footer = () => {
     <Container
       cssOverrides={css`
         font-size: ${fontSizes(0.85)};
-        text-align: center;
         margin-bottom: ${spaces(2)};
         color: ${colors('brown')};
 
@@ -20,11 +20,11 @@ const Footer = () => {
         }
       `}
     >
-      The source code for this site is{' '}
+      Source available on{' '}
       <A href="https://github.com/chibicode/TypeScript-for-Beginner-Programmers">
-        available on <strong>GitHub</strong>
+        <strong>GitHub</strong>
       </A>
-      .
+      : <GitHubButton />
     </Container>
   )
 }

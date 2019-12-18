@@ -23,7 +23,7 @@ const TodoBlank = ({
             y={2}
             width={32}
             height={32}
-            rx={4}
+            rx={2.25}
           />
         </g>
       </svg>

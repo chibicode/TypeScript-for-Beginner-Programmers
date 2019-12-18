@@ -9,6 +9,7 @@ const regenerate = () => {
         const contents = fs.readFileSync(file, 'utf8')
         return `export const ${file
           .replace(/\.\/snippets\/snippets\/\w+\//, '')
+          .replace(/longerWidth\//, '')
           .replace(/\.ts/, '')} = \`${contents
           .trim()
           .replace(/^;/m, '')

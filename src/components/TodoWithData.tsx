@@ -11,21 +11,22 @@ import CodeBlockHighlight from 'src/components/CodeBlockHighlight'
 import { format } from 'prettier/standalone'
 import parser from 'prettier/parser-babylon'
 
-const prettierFormat = (state: TodoType[]) =>
+const prettierFormat = (state: Todo[], narrowText = false) =>
   format(JSON.stringify(state), {
     semi: false,
     singleQuote: true,
-    printWidth: 48,
+    printWidth: narrowText ? 54 : 48,
     plugins: [parser],
     parser: 'babel'
   })
     .trim()
     .substring(1)
 
-export type TodoType = {
+export type Todo = {
   id: number
   text: string
   done: boolean
+  place?: 'home' | 'work' | { custom: string }
 }
 
 export type TodoAction =
@@ -38,24 +39,26 @@ export type TodoAction =
     }
 
 export type TodoState = {
-  todos: TodoType[]
+  todos: Todo[]
   lastChangedIndices: number[]
 }
 
 const reducer = (state: TodoState, action: TodoAction) => {
   switch (action.type) {
-    case 'toggle':
+    case 'toggle': {
+      const item = state.todos[action.index]
       return {
         todos: [
           ...state.todos.slice(0, action.index),
           {
             ...state.todos[action.index],
-            done: !state.todos[action.index].done
+            done: !item.done
           },
           ...state.todos.slice(action.index + 1)
         ],
         lastChangedIndices: [action.index]
       }
+    }
     case 'markAllAsCompleted':
       return {
         todos: state.todos.map(item => ({ ...item, done: true })),
@@ -75,9 +78,12 @@ const TodoWithData = ({
   showMarkAllAsCompleted,
   disabled,
   highlightLineIndexOffset,
-  shouldHighlight
+  shouldHighlight,
+  shouldAlwaysHighlight,
+  narrowText,
+  customSnippet
 }: {
-  defaultData: TodoType[]
+  defaultData: Todo[]
   caption?: React.ReactNode
   promptArrowText?: React.ReactNode
   showData?: boolean
@@ -86,8 +92,11 @@ const TodoWithData = ({
   disabled?: boolean
   highlightLineIndexOffset?: number
   shouldHighlight?: (tokenIndex: number) => boolean
+  shouldAlwaysHighlight?: (lineIndex: number, tokenIndex: number) => boolean
+  narrowText?: boolean
+  customSnippet?: string
 }) => {
-  const { spaces, ns, maxWidths, radii, colors } = useTheme()
+  const { spaces, ns, maxWidths, radii, colors, letterSpacings } = useTheme()
   const [state, dispatch] = useReducer<typeof reducer>(reducer, {
     todos: defaultData,
     lastChangedIndices: []
@@ -122,16 +131,35 @@ const TodoWithData = ({
           />
           {showData && (
             <CodeBlockHighlight
-              snippet={`${comment || ''}${comment ? '\n' : ''}${prettierFormat(
-                state.todos
-              )}`}
+              snippet={
+                customSnippet ||
+                `${comment || ''}${comment ? '\n' : ''}${prettierFormat(
+                  state.todos,
+                  narrowText
+                )}`
+              }
               language="javascript"
-              cssOverrides={css`
-                margin-top: ${0};
-                margin-bottom: ${spaces(1.75)};
-                border-bottom-left-radius: ${radii(0.5)};
-                border-bottom-right-radius: ${radii(0.5)};
-              `}
+              cssOverrides={[
+                css`
+                  margin-top: ${0};
+                  margin-bottom: ${spaces(1.75)};
+                  border-bottom-left-radius: ${radii(0.5)};
+                  border-bottom-right-radius: ${radii(0.5)};
+                `,
+                narrowText &&
+                  css`
+                    letter-spacing: ${letterSpacings('smallCode')};
+                  `
+              ]}
+              lineCssOverrides={(lineIndex, tokenIndex) =>
+                shouldAlwaysHighlight &&
+                shouldAlwaysHighlight(lineIndex, tokenIndex) &&
+                css`
+                  background: ${colors('yellowHighlight')};
+                  border-bottom: 2px solid ${colors('darkOrange')};
+                  font-weight: bold;
+                `
+              }
               lineCssOverridesAnimation={(lineIndex, tokenIndex) =>
                 shouldHighlight &&
                 state.lastChangedIndices

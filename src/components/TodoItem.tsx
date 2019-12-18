@@ -5,15 +5,19 @@ import Emoji from 'src/components/Emoji'
 import useTheme from 'src/hooks/useTheme'
 import { useState, useContext } from 'react'
 import TodoWithDataContext from 'src/components/TodoWithDataContext'
+import { Todo } from 'src/components/TodoWithData'
+import PlaceLabel from 'src/components/PlaceLabel'
 
-const Todo = ({
+const TodoItem = ({
   index,
   done,
-  text
+  text,
+  place
 }: {
   index: number
-  text: string
-  done: boolean
+  text: Todo['text']
+  done: Todo['done']
+  place: Todo['place']
 }) => {
   const { spaces, colors } = useTheme()
   const { dispatch, disabled } = useContext(TodoWithDataContext)
@@ -25,6 +29,7 @@ const Todo = ({
       css={css`
         padding: ${spaces(0.25)} ${spaces(0.5)};
         display: flex;
+        align-items: center;
       `}
     >
       <span
@@ -58,31 +63,38 @@ const Todo = ({
         {done ? <Emoji type="check" /> : <TodoBlank hovered={todoHovered} />}
       </span>
       <span
-        css={[
-          done &&
-            css`
-              color: ${colors('gray')};
-            `,
-          !disabled &&
-            css`
-              cursor: pointer;
-            `
-        ]}
-        onClick={() =>
-          disabled ? undefined : dispatch({ type: 'toggle', index })
-        }
-        onMouseOver={hoverOn}
-        onMouseOut={hoverOff}
-        onTouchStart={hoverOn}
-        onTouchEnd={hoverOff}
-        onTouchCancel={hoverOff}
-        onFocus={hoverOn}
-        onBlur={hoverOff}
+        css={css`
+          flex: 1;
+        `}
       >
-        {text}
+        <span
+          css={[
+            done &&
+              css`
+                color: ${colors('gray')};
+              `,
+            !disabled &&
+              css`
+                cursor: pointer;
+              `
+          ]}
+          onClick={() =>
+            disabled ? undefined : dispatch({ type: 'toggle', index })
+          }
+          onMouseOver={hoverOn}
+          onMouseOut={hoverOff}
+          onTouchStart={hoverOn}
+          onTouchEnd={hoverOff}
+          onTouchCancel={hoverOff}
+          onFocus={hoverOn}
+          onBlur={hoverOff}
+        >
+          {text}
+        </span>
       </span>
+      {place && <PlaceLabel place={place} />}
     </div>
   )
 }
 
-export default Todo
+export default TodoItem

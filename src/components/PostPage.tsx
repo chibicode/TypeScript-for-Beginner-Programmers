@@ -16,6 +16,8 @@ export interface EpisodeCardType {
   content?: React.ReactNode
   footer?: CardProps['footer']
   color?: CardProps['color']
+  heading?: React.ReactNode
+  subtitle?: React.ReactNode
 }
 
 const PostPage = ({
@@ -92,7 +94,7 @@ const PostPage = ({
             backgroundColor: 'pink',
             children: (
               <>
-                <FirstParagraph defaultVisible={false} />
+                <FirstParagraph />
               </>
             )
           }
@@ -103,19 +105,23 @@ const PostPage = ({
           margin-bottom: ${spaces(6)};
         `}
       >
-        {cards.map(({ title, content, footer, color }, index) => (
-          <Card
-            color={color}
-            key={`${articleKey}-${index}`}
-            title={title}
-            slideCount={cards.length}
-            slideNumber={index + 1}
-            footer={footer}
-            isLast={index === cards.length - 1}
-          >
-            {content}
-          </Card>
-        ))}
+        {cards.map(
+          ({ title, content, footer, color, heading, subtitle }, index) => (
+            <Card
+              color={color}
+              key={`${articleKey}-${index}`}
+              title={title}
+              slideCount={cards.length}
+              slideNumber={index + 1}
+              footer={footer}
+              isLast={index === cards.length - 1}
+              heading={heading}
+              subtitle={subtitle}
+            >
+              {content}
+            </Card>
+          )
+        )}
       </div>
       <ArticleList ignoreArticleKey={articleKey} />
     </Page>
