@@ -13,7 +13,13 @@ declare global {
 
 const EMBED_DELAY = 500
 
-const TwitterEmbed = ({ id, showCard }: { id: string; showCard?: boolean }) => {
+const TwitterEmbed = ({
+  id,
+  showCard = true
+}: {
+  id: string
+  showCard?: boolean
+}) => {
   const wrapperEl = useRef<HTMLDivElement>(null)
   const [twitterLoaded, setTwitterLoaded] = useState(false)
   const { spaces } = useTheme()

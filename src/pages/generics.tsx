@@ -839,6 +839,11 @@ const Page = () => (
               </A>
               .
             </P>
+            <P>
+              <Emoji type="twitter" /> I’d love it if you could{' '}
+              <Highlight>like</Highlight> or <Highlight>retweet</Highlight> the
+              tweet below! ↓
+            </P>
             <TwitterEmbed id="1197963887804436480" />
             <P>
               <SourceAvailableText />
