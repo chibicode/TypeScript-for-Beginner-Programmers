@@ -1329,8 +1329,11 @@ const Page = () => (
               <strong>intersection types</strong>.
             </P>
             <P>
-              In TypeScript, you can use the <Code>&amp;</Code> sign to create
-              an <strong>intersection type</strong> of two types.
+              In TypeScript,{' '}
+              <Highlight>
+                you can use the <Code>&amp;</Code> sign to create an{' '}
+                <strong>intersection type</strong> of two types.
+              </Highlight>
             </P>
             <EmojiSeparator
               emojis={['a', 'ampersand', 'b']}
@@ -1464,6 +1467,21 @@ const Page = () => (
               <Code>done: true</Code>. Once again, TypeScript caught an error
               early.
             </P>
+            <P>
+              <strong>That’s all for this section!</strong> By using{' '}
+              <Code>completeAll()</Code> with a UI library like React, we can
+              build the “Mark all as completed” feature we saw earlier.
+            </P>
+            <TodoWithData
+              showData
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false }
+              ]}
+              showMarkAllAsCompleted
+              highlightLineIndexOffset={1}
+              shouldHighlight={tokenIndex => tokenIndex === 15}
+            />
           </>
         )
       },

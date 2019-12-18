@@ -1,11 +1,11 @@
-// They booth have property x,
-// but B’s x (true) is
-// more specific than A’s x (boolean)
-type A = { x: boolean }
-type B = { x: true }
+// They booth have a property foo,
+// but B’s foo (true) is
+// more specific than A’s foo (boolean)
+type A = { foo: boolean }
+type B = { foo: true }
 
 // This intersection type…
 type AandB = A & B
 
 // …is equivalent to:
-type AandB = { x: true }
+type AandB = { foo: true }
