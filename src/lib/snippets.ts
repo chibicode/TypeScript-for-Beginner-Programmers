@@ -820,7 +820,7 @@ type CompletedTodo = Todo & {
 
 export const ruga = `function completeAll(
   todos: readonly Todo[]
-): Todo[] {
+): CompletedTodo[] {
   // ...
 }`
 
