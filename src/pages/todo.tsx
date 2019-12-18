@@ -1919,11 +1919,11 @@ const Page = () => (
             <P>Here are the examples:</P>
             <CodeBlock snippet={snippets.qnrh} />
             <P>
-              We can then use the return value of <Code>placeToString()</Code>{' '}
-              to render place label UIs: <PlaceLabel place="home" />,{' '}
-              <PlaceLabel place="work" />,{' '}
-              <PlaceLabel place={{ custom: 'Gym' }} />, etc in any UI library
-              (e.g. React).
+              We can then use its return value to render place label UIs:{' '}
+              <PlaceLabel place="home" />, <PlaceLabel place="work" />,{' '}
+              <PlaceLabel place={{ custom: 'Gym' }} />, etc in any UI library.
+              For example, in React, you can define a functional component and
+              call <Code>placeToString()</Code> inside it.
             </P>
             <P>
               Let’s now implement <Code>placeToString()</Code>. Here’s the
@@ -1985,14 +1985,21 @@ const Page = () => (
                 lineIndex === 5 || lineIndex === 8 || lineIndex === 12
               }
             />
-            <P>
-              Because <Code>place</Code> is either <Code>'work'</Code> or{' '}
-              <Code>{`{ custom: string }`}</Code> inside <Code>else</Code>, and{' '}
-              <Highlight>
-                you can’t do <Code>place.custom</Code> if <Code>place</Code> is{' '}
-                <Code>'work'</Code>, TypeScript gives you a compile error.
-              </Highlight>
-            </P>
+            <P>Here’s what happened:</P>
+            <Ul>
+              <UlLi>
+                <Code>place</Code> is either <Code>'work'</Code> or{' '}
+                <Code>{`{ custom: string }`}</Code> inside <Code>else</Code>.
+              </UlLi>
+              <UlLi>
+                <Highlight>
+                  And <Code>place.custom</Code> is invalid if <Code>place</Code>{' '}
+                  is <Code>'work'</Code>
+                </Highlight>
+                .
+              </UlLi>
+            </Ul>
+            <P>That’s why TypeScript gave you a compile error.</P>
             <CodeBlock
               snippet={snippets.eega}
               shouldHighlight={lineIndex => lineIndex === 2}
@@ -2035,10 +2042,10 @@ const Page = () => (
               error early.
             </P>
             <P>
-              As we just saw,{' '}
+              <strong>Summary:</strong> As we just saw,{' '}
               <Highlight>
                 union types are powerful when combined with conditional
-                statements (e.g. <Code>if/else</Code> or <Code>switch</Code>)
+                statements (e.g. <Code>if/else</Code>)
               </Highlight>
               :
             </P>
@@ -2096,7 +2103,7 @@ const Page = () => (
               Finally,{' '}
               <strong>
                 union types are powerful when combined with conditional
-                statements (e.g. <Code>if/else</Code> or <Code>switch</Code>).
+                statements (e.g. <Code>if/else</Code>).
               </strong>
             </P>
             <UnionTypesSummary />
@@ -2120,14 +2127,15 @@ const Page = () => (
             </P>
             <Ul>
               <UlLi>
-                If you’re using React,{' '}
+                <strong>Using React?</strong> If you’re using React,{' '}
                 <A href="https://github.com/typescript-cheatsheets/react-typescript-cheatsheet">
                   React+TypeScript Cheatsheets
                 </A>{' '}
                 is a good reference.
               </UlLi>
               <UlLi>
-                Once you become more familiar with TypeScript, you should learn{' '}
+                <strong>What to learn next:</strong> Once you become more
+                familiar with TypeScript, you should learn{' '}
                 <strong>generics</strong> next. I’ve written an article on it
                 called “
                 <InternalLink href="/generics">
@@ -2137,18 +2145,21 @@ const Page = () => (
                 ”.
               </UlLi>
               <UlLi>
-                <SourceAvailableText />
+                <strong>Source code:</strong> <SourceAvailableText />
               </UlLi>
-              <UlLi>
-                I plan to write more TypeScript articles by building on the todo
-                app example I used here. To get notified when I publish a new
-                article, follow me on{' '}
+            </Ul>{' '}
+            <P>
+              I plan to write more TypeScript articles by continuing on the todo
+              app example I used here. To get notified when I publish a new
+              article,{' '}
+              <Highlight>
+                follow me on{' '}
                 <A href="https://twitter.com/chibicode">
                   <Emoji type="twitter" /> Twitter at @chibicode
                 </A>
-                .
-              </UlLi>
-            </Ul>
+              </Highlight>
+              .
+            </P>
           </>
         ),
         footer: {
