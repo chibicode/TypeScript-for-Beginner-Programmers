@@ -20,10 +20,10 @@ const TodoItem = ({
   place: Todo['place']
 }) => {
   const { spaces, colors } = useTheme()
-  const { dispatch, disabled } = useContext(TodoWithDataContext)
+  const { dispatch } = useContext(TodoWithDataContext)
   const [todoHovered, setTodoHovered] = useState(false)
-  const hoverOn = () => (disabled ? undefined : setTodoHovered(true))
-  const hoverOff = () => (disabled ? undefined : setTodoHovered(false))
+  const hoverOn = () => setTodoHovered(true)
+  const hoverOff = () => setTodoHovered(false)
   return (
     <div
       css={css`
@@ -41,17 +41,12 @@ const TodoItem = ({
 
             display: inline-block;
             outline: none;
-          `,
-          !disabled &&
-            css`
-              cursor: pointer;
-            `
+            cursor: pointer;
+          `
         ]}
         role="button"
         tabIndex={0}
-        onClick={() =>
-          disabled ? undefined : dispatch({ type: 'toggle', index })
-        }
+        onClick={() => dispatch({ type: 'toggle', index })}
         onMouseOver={hoverOn}
         onMouseOut={hoverOff}
         onTouchStart={hoverOn}
@@ -72,15 +67,10 @@ const TodoItem = ({
             done &&
               css`
                 color: ${colors('gray')};
-              `,
-            !disabled &&
-              css`
                 cursor: pointer;
               `
           ]}
-          onClick={() =>
-            disabled ? undefined : dispatch({ type: 'toggle', index })
-          }
+          onClick={() => dispatch({ type: 'toggle', index })}
           onMouseOver={hoverOn}
           onMouseOut={hoverOff}
           onTouchStart={hoverOn}

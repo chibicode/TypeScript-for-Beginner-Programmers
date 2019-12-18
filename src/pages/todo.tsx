@@ -284,7 +284,6 @@ const Page = () => (
             </P>
             <TodoWithData
               caption={<>What data is associated with this UI?</>}
-              disabled
               defaultData={[
                 { id: 1, text: 'First todo', done: false },
                 { id: 2, text: 'Second todo', done: false }

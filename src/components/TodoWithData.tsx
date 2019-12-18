@@ -76,7 +76,6 @@ const TodoWithData = ({
   showData,
   comment,
   showMarkAllAsCompleted,
-  disabled,
   highlightLineIndexOffset,
   shouldHighlight,
   shouldAlwaysHighlight,
@@ -89,7 +88,6 @@ const TodoWithData = ({
   showData?: boolean
   comment?: string
   showMarkAllAsCompleted?: boolean
-  disabled?: boolean
   highlightLineIndexOffset?: number
   shouldHighlight?: (tokenIndex: number) => boolean
   shouldAlwaysHighlight?: (lineIndex: number, tokenIndex: number) => boolean
@@ -102,7 +100,7 @@ const TodoWithData = ({
     lastChangedIndices: []
   })
   return (
-    <TodoWithDataContext.Provider value={{ dispatch, disabled }}>
+    <TodoWithDataContext.Provider value={{ dispatch }}>
       <div
         css={css`
           margin: ${spaces(2)} auto;

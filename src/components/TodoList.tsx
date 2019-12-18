@@ -14,7 +14,7 @@ const TodoList = ({
   showMarkAllAsCompleted?: boolean
 }) => {
   const { fontSizes, spaces, colors } = useTheme()
-  const { dispatch, disabled } = useContext(TodoWithDataContext)
+  const { dispatch } = useContext(TodoWithDataContext)
   return (
     <>
       {items.map((item, index) => (
@@ -35,33 +35,31 @@ const TodoList = ({
           />
         </div>
       ))}
-      {showMarkAllAsCompleted &&
-        !disabled &&
-        items.filter(item => !item.done).length > 0 && (
-          <div
+      {showMarkAllAsCompleted && items.filter(item => !item.done).length > 0 && (
+        <div
+          css={css`
+            font-size: ${fontSizes(0.85)};
+            margin: ${spaces(0.75)} ${spaces(0.5)} ${spaces(0.25)};
+            color: ${colors('brown')};
+          `}
+        >
+          <span
             css={css`
-              font-size: ${fontSizes(0.85)};
-              margin: ${spaces(0.75)} ${spaces(0.5)} ${spaces(0.25)};
-              color: ${colors('brown')};
+              text-decoration: underline;
+              cursor: pointer;
+              &:hover {
+                background: ${colors('lightGreen')};
+              }
             `}
+            tabIndex={0}
+            role="button"
+            aria-pressed="false"
+            onClick={() => dispatch({ type: 'markAllAsCompleted' })}
           >
-            <span
-              css={css`
-                text-decoration: underline;
-                cursor: pointer;
-                &:hover {
-                  background: ${colors('lightGreen')};
-                }
-              `}
-              tabIndex={0}
-              role="button"
-              aria-pressed="false"
-              onClick={() => dispatch({ type: 'markAllAsCompleted' })}
-            >
-              Mark all as completed
-            </span>
-          </div>
-        )}
+            Mark all as completed
+          </span>
+        </div>
+      )}
     </>
   )
 }
