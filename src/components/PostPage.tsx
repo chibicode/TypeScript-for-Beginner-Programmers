@@ -23,10 +23,12 @@ export interface EpisodeCardType {
 
 const PostPage = ({
   articleKey,
-  cards
+  cards,
+  hideIntroQuote
 }: {
   articleKey: keyof typeof articlesData
   cards: readonly EpisodeCardType[]
+  hideIntroQuote?: boolean
 }) => {
   const url = `${baseUrl}/${articleKey}`
   const description = articlesData[articleKey]['description']
@@ -80,7 +82,7 @@ const PostPage = ({
       </div>
       <h1
         css={css`
-          margin: 0;
+          margin: 0 0 ${hideIntroQuote ? spaces(1.75) : 0};
           line-height: ${lineHeights(2)};
           font-size: ${fontSizes(2)};
           letter-spacing: ${letterSpacings('title')};
@@ -93,19 +95,21 @@ const PostPage = ({
       >
         {title}
       </h1>
-      <BubbleQuotes
-        quotes={[
-          {
-            type: 'bird',
-            backgroundColor: 'pink',
-            children: (
-              <>
-                <FirstParagraph />
-              </>
-            )
-          }
-        ]}
-      ></BubbleQuotes>
+      {!hideIntroQuote && (
+        <BubbleQuotes
+          quotes={[
+            {
+              type: 'bird',
+              backgroundColor: 'pink',
+              children: (
+                <>
+                  <FirstParagraph />
+                </>
+              )
+            }
+          ]}
+        ></BubbleQuotes>
+      )}
       <div
         css={css`
           margin-bottom: ${spaces(6)};

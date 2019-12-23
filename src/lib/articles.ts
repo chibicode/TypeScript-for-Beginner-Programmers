@@ -19,5 +19,11 @@ export const articlesData = {
     date: DateTime.fromISO('2019-11-22T12:00:00Z'),
     description: 'TypeScript Generics Too Hard?',
     ogImage: 'generics'
+  },
+  refactor: {
+    title: 'Your Coding Tutorial Might Need Some Refactoring',
+    date: DateTime.fromISO('2019-12-30T12:00:00Z'),
+    description: 'Why some tutorials are not so reader-friendly',
+    ogImage: 'refactor'
   }
 }
