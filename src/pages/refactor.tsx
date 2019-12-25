@@ -13,7 +13,7 @@ import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 import { SourceAvailableText } from 'src/components/GitHubButton'
 
-const techniques = ['Make snippets readable on small screens']
+const techniques = ['Make code snippets readable on small screens']
 
 const Page = () => (
   <PostPage
