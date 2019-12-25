@@ -13,7 +13,7 @@ import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 import { SourceAvailableText } from 'src/components/GitHubButton'
 
-const techniques = ['Make code snippets readable on small screens']
+const techniques = ['Make code examples readable on a small screen']
 
 const Page = () => (
   <PostPage
@@ -118,7 +118,48 @@ const Page = () => (
           </>
         ),
         title: <>{techniques[0]}</>,
-        content: <></>
+        content: (
+          <>
+            <P>
+              <Highlight>
+                I often discover coding tutorials shared on Twitter, mailing
+                lists, and online forums.
+              </Highlight>{' '}
+              I use my <strong>smartphone</strong> to check these sites, so
+              naturally I’d be using my phone instead of my laptop to read those
+              tutorials—at least for the first time.
+            </P>
+            <EmojiSeparator
+              emojis={['sparkles', 'smartphone', 'sparkles']}
+              description={
+                <>
+                  I often read a coding tutorial on my phone—at least for the
+                  first time
+                </>
+              }
+            />
+            <P>
+              <Highlight>
+                In these cases, it helps if the code examples in the article are
+                readable on a small screen.
+              </Highlight>{' '}
+              If you can easily read all the code examples on a phone, you can
+              actually finish reading the article on a phone. Even if you don’t
+              follow along on your laptop, you should still be able to develop a
+              rough understanding of the content.
+            </P>
+            <P>
+              However, if there are many code examples in a tutorial, and all of
+              them are unreadable on a phone,{' '}
+              <Highlight>
+                you probably would put the article on your “read later” list,
+                and you must remember to read it again on a laptop.
+              </Highlight>{' '}
+              And you probably won’t ever read it again.
+            </P>
+            <P>That’s why I believe that</P>
+          </>
+        )
       }
     ]}
   />

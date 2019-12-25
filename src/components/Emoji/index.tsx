@@ -31,6 +31,7 @@ import UglyCode from 'src/components/Emoji/UglyCode'
 import RefactorArrow from 'src/components/Emoji/RefactorArrow'
 import UglyTutorial from 'src/components/Emoji/UglyTutorial'
 import CleanTutorial from 'src/components/Emoji/CleanTutorial'
+import Smartphone from 'src/components/Emoji/Smartphone'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -63,7 +64,8 @@ export const emojiToComponent = {
   uglyCode: UglyCode,
   refactorArrow: RefactorArrow,
   uglyTutorial: UglyTutorial,
-  cleanTutorial: CleanTutorial
+  cleanTutorial: CleanTutorial,
+  smartphone: Smartphone
 }
 
 export const EmojiWrapper = ({
