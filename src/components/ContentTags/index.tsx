@@ -1,6 +1,9 @@
 export { default as P } from 'src/components/ContentTags/P'
 export { default as Code } from 'src/components/ContentTags/Code'
-export { default as Highlight } from 'src/components/ContentTags/Highlight'
+export {
+  default as Highlight,
+  ForegroundHighlight
+} from 'src/components/ContentTags/Highlight'
 export { default as Hr } from 'src/components/ContentTags/Hr'
 export { default as A } from 'src/components/ContentTags/A'
 export { default as Image } from 'src/components/ContentTags/Image'

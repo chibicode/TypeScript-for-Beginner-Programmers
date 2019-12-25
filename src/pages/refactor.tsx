@@ -1,7 +1,13 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
-import { P, Highlight, Ol, OlLi } from 'src/components/ContentTags'
+import {
+  P,
+  Highlight,
+  Ol,
+  OlLi,
+  ForegroundHighlight
+} from 'src/components/ContentTags'
 import TwitterLink from 'src/components/TwitterLink'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
@@ -104,6 +110,15 @@ const Page = () => (
             </>
           )
         }
+      },
+      {
+        subtitle: (
+          <>
+            <ForegroundHighlight>Refactoring Tip 1:</ForegroundHighlight>
+          </>
+        ),
+        title: <>{techniques[0]}</>,
+        content: <></>
       }
     ]}
   />

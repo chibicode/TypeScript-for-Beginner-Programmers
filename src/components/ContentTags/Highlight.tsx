@@ -20,4 +20,21 @@ const Highlight = ({
   )
 }
 
+export const ForegroundHighlight = ({
+  color,
+  ...props
+}: JSX.IntrinsicElements['span'] & { color?: keyof typeof allColors }) => {
+  const { colors } = useTheme()
+  return (
+    <span
+      {...props}
+      css={[
+        css`
+          color: ${color ? colors(color) : colors('red')};
+        `
+      ]}
+    />
+  )
+}
+
 export default Highlight
