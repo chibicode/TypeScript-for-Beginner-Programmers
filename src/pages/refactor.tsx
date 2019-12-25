@@ -155,7 +155,8 @@ const Page = () => (
                 you probably would put the article on your “read later” list,
                 and you must remember to read it again on a laptop.
               </Highlight>{' '}
-              And you probably won’t ever read it again.
+              When this happens to me, I usually won’t read the article
+              again—I’m too lazy!
             </P>
             <P>That’s why I believe that</P>
           </>
