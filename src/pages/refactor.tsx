@@ -1,5 +1,6 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
+import EmojiSeparator from 'src/components/EmojiSeparator'
 import { P, Highlight } from 'src/components/ContentTags'
 
 const Page = () => (
@@ -16,6 +17,12 @@ const Page = () => (
               <strong>refactor</strong> the code. And many programmers have
               written how-to guides on refactoring code.
             </P>
+            <EmojiSeparator
+              emojis={['uglyCode', 'refactorArrow', 'cleanCode']}
+              description={
+                <>Refactor the code to make it more understandable</>
+              }
+            />
             <P>
               <Highlight>
                 You’ve probably also come across a{' '}
@@ -24,6 +31,15 @@ const Page = () => (
               Maybe you wanted to learn a new language, library, or framework,
               but the tutorial you Google’d made you more confused as ever.
             </P>
+            <EmojiSeparator
+              emojis={['question', 'cryingCat', 'question']}
+              description={
+                <>
+                  You’ve probably come across a <strong>coding tutorial</strong>{' '}
+                  that’s hard to understand
+                </>
+              }
+            />
           </>
         )
       }

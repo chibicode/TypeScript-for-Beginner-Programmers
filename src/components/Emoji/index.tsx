@@ -26,6 +26,9 @@ import VerticalBar from 'src/components/Emoji/VerticalBar'
 import Work from 'src/components/Emoji/Work'
 import Home from 'src/components/Emoji/Home'
 import Pin from 'src/components/Emoji/Pin'
+import CleanCode from 'src/components/Emoji/CleanCode'
+import UglyCode from 'src/components/Emoji/UglyCode'
+import RefactorArrow from 'src/components/Emoji/RefactorArrow'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -53,7 +56,10 @@ export const emojiToComponent = {
   verticalBar: VerticalBar,
   work: Work,
   home: Home,
-  pin: Pin
+  pin: Pin,
+  cleanCode: CleanCode,
+  uglyCode: UglyCode,
+  refactorArrow: RefactorArrow
 }
 
 export const EmojiWrapper = ({
