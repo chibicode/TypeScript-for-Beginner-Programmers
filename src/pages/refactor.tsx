@@ -161,9 +161,10 @@ const Page = () => (
             <P>
               That’s why I believe that{' '}
               <strong>
-                code examples should be readable on a small screen
+                code examples in your tutorial should be readable on a small
+                screen
               </strong>
-              .
+              . Do not assume that everyone reading your tutorial...
             </P>
           </>
         )
