@@ -40,7 +40,7 @@ const Page = () => (
                 <strong>tutorial</strong> that’s not so reader-friendly.
               </Highlight>{' '}
               Maybe you wanted to learn a new language, library, or framework,
-              but the tutorial you found made you frustrated.
+              but the tutorial you found made you more frustrated than before.
             </P>
             <EmojiSeparator
               emojis={['uglyTutorial', 'cryingCat', 'question']}
