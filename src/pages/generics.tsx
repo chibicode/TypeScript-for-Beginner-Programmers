@@ -59,7 +59,7 @@ const Page = () => (
               <P>
                 <strong>Note:</strong> If you already understand generics, you
                 won’t find anything new in this tutorial. However,{' '}
-                <Highlight color="white85">
+                <Highlight>
                   you might know someone (maybe one of your Twitter followers)
                   who’s struggling with generics
                 </Highlight>

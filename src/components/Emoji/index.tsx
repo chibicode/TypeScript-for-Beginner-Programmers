@@ -29,6 +29,8 @@ import Pin from 'src/components/Emoji/Pin'
 import CleanCode from 'src/components/Emoji/CleanCode'
 import UglyCode from 'src/components/Emoji/UglyCode'
 import RefactorArrow from 'src/components/Emoji/RefactorArrow'
+import UglyTutorial from 'src/components/Emoji/UglyTutorial'
+import CleanTutorial from 'src/components/Emoji/CleanTutorial'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -59,7 +61,9 @@ export const emojiToComponent = {
   pin: Pin,
   cleanCode: CleanCode,
   uglyCode: UglyCode,
-  refactorArrow: RefactorArrow
+  refactorArrow: RefactorArrow,
+  uglyTutorial: UglyTutorial,
+  cleanTutorial: CleanTutorial
 }
 
 export const EmojiWrapper = ({

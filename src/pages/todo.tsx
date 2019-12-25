@@ -233,7 +233,7 @@ const Page = () => (
               <P>
                 <strong>Note:</strong> If you already know TypeScript basics,
                 you won’t find anything new in this tutorial. However,{' '}
-                <Highlight color="white85">
+                <Highlight>
                   you might know someone (maybe one of your Twitter followers)
                   who’re interested in learning TypeScript
                 </Highlight>

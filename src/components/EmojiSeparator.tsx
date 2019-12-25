@@ -20,7 +20,7 @@ const fontSize = (
 ): ReadonlyArray<keyof typeof allFontSizes> =>
   ({
     sm: [1, 1.2] as const,
-    md: [2, 2.5] as const,
+    md: [2.2, 2.5] as const,
     lg: [3, 4] as const
   }[size])
 
