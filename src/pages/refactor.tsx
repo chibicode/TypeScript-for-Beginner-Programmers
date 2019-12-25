@@ -158,7 +158,13 @@ const Page = () => (
               When this happens to me, I usually won’t read the article
               again—I’m too lazy!
             </P>
-            <P>That’s why I believe that</P>
+            <P>
+              That’s why I believe that{' '}
+              <strong>
+                code examples should be readable on a small screen
+              </strong>
+              .
+            </P>
           </>
         )
       }
