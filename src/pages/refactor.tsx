@@ -122,11 +122,11 @@ const Page = () => (
           <>
             <P>
               <Highlight>
-                I often discover coding tutorials shared on Twitter, mailing
-                lists, and online forums.
+                I often discover coding tutorials on Twitter, mailing lists, and
+                online forums.
               </Highlight>{' '}
               I use my <strong>phone</strong> to check these sites, so naturally
-              I’d be using my phone instead of my laptop to read those
+              I’d be using my phone instead of my laptop to read these
               tutorials—at least for the first time.
             </P>
             <EmojiSeparator
@@ -143,15 +143,18 @@ const Page = () => (
                 In these cases, it helps if the code examples in the tutorial
                 are readable on a small screen.
               </Highlight>{' '}
-              If you can easily read all the code examples on a phone, you’d be
-              able to understand the content without pulling out your laptop.
+              If you can easily read all the code examples on a phone, you might
+              be able to understand the content without pulling out your laptop.
+              Sometimes you need to follow along on your laptop to fully
+              understand the tutorial, but this is not always necessary.
             </P>
             <P>
-              But what if a tutorial has many code examples, and all of them are
-              unreadable on a phone?{' '}
+              But what if a tutorial has many code examples that are unreadable
+              on a phone?{' '}
               <Highlight>
-                You’d probably put the tutorial on your “read later” list, and
-                you must remember to read it again on a laptop.
+                You’d probably give up reading on your phone and put the
+                tutorial on your “read later” list, and you must remember to
+                read it again on a laptop.
               </Highlight>{' '}
               When this happens to me, I usually won’t ever read the tutorial
               again—I’m too forgetful!
