@@ -71,9 +71,7 @@ const Page = () => (
             <P>
               So, in this article, I’ll share some tecniques on refactoring
               coding tutorials. I’ve used these techniques when writing my
-              tutorials to make them more reader-friendly. They’re not meant to
-              be comprehensive but at least a good place to start. Here’s the
-              list:
+              tutorials to make them more reader-friendly. Here’s the list:
             </P>
             <Ol>
               {techniques.map(technique => (
