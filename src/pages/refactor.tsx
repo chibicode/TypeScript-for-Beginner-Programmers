@@ -125,8 +125,8 @@ const Page = () => (
                 I often discover coding tutorials shared on Twitter, mailing
                 lists, and online forums.
               </Highlight>{' '}
-              I use my <strong>smartphone</strong> to check these sites, so
-              naturally I’d be using my phone instead of my laptop to read those
+              I use my <strong>phone</strong> to check these sites, so naturally
+              I’d be using my phone instead of my laptop to read those
               tutorials—at least for the first time.
             </P>
             <EmojiSeparator
@@ -140,23 +140,21 @@ const Page = () => (
             />
             <P>
               <Highlight>
-                In these cases, it helps if the code examples in the article are
-                readable on a small screen.
+                In these cases, it helps if the code examples in the tutorial
+                are readable on a small screen.
               </Highlight>{' '}
-              If you can easily read all the code examples on a phone, you can
-              actually finish reading the article on a phone. Even if you don’t
-              follow along on your laptop, you should still be able to develop a
-              rough understanding of the content.
+              If you can easily read all the code examples on a phone, you’d be
+              able to understand the content without pulling out your laptop.
             </P>
             <P>
-              However, if there are many code examples in a tutorial, and all of
-              them are unreadable on a phone,{' '}
+              But what if a tutorial has many code examples, and all of them are
+              unreadable on a phone?{' '}
               <Highlight>
-                you probably would put the article on your “read later” list,
-                and you must remember to read it again on a laptop.
+                You’d probably put the tutorial on your “read later” list, and
+                you must remember to read it again on a laptop.
               </Highlight>{' '}
-              When this happens to me, I usually won’t read the article
-              again—I’m too lazy!
+              When this happens to me, I usually won’t ever read the tutorial
+              again—I’m too forgetful!
             </P>
             <P>
               That’s why I believe that{' '}
@@ -164,7 +162,11 @@ const Page = () => (
                 code examples in your tutorial should be readable on a small
                 screen
               </strong>
-              . Do not assume that everyone reading your tutorial...
+              .{' '}
+              <Highlight>
+                Do NOT assume that your readers will always be using their
+                laptop to follow along.
+              </Highlight>
             </P>
           </>
         )
