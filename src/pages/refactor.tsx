@@ -16,6 +16,7 @@ import {
 import * as snippets from 'src/lib/snippets'
 import TwitterLink from 'src/components/TwitterLink'
 import CodeBlock from 'src/components/CodeBlock'
+import Emoji from 'src/components/Emoji'
 import InternalLink from 'src/components/InternalLink'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
@@ -137,7 +138,8 @@ const Page = () => (
               snippet={snippets.rlya}
               caption={
                 <>
-                  Max line length: <strong>31 characters</strong>
+                  Max line length: <Emoji type="check" />{' '}
+                  <strong>31 characters</strong>
                 </>
               }
             />
@@ -147,17 +149,48 @@ const Page = () => (
               <Highlight>
                 Because each line length is short (max 31 chars),
               </Highlight>{' '}
-              it won’t require you to side-scroll for most phones.
+              you can read it without side-scrolling on most phones.
             </P>
             <P>
               If the above code was formatted like below instead, you’d have to
-              side-scroll to read all of the code on a phone:
+              side-scroll on a phone:
             </P>
             <CodeBlock
               snippet={snippets.zgvn}
               caption={
                 <>
-                  Max line length: <strong>69 characters</strong>
+                  Max line length: <Emoji type="cross" />{' '}
+                  <strong>69 characters</strong>
+                  <br />
+                  <Highlight>
+                    Line length is long; must side-scroll on a phone
+                  </Highlight>
+                </>
+              }
+            />
+            <P>
+              Here’s another example. This is <strong>good</strong> formatting
+              (fits on a small screen):
+            </P>
+            <CodeBlock
+              snippet={snippets.hszk}
+              caption={
+                <>
+                  Max line length: <Emoji type="check" />{' '}
+                  <strong>29 characters</strong>
+                </>
+              }
+            />
+            <P>
+              And this is <strong>BAD</strong> formatting (doesn’t fit on a
+              small screen):
+            </P>
+            <CodeBlock
+              snippet={snippets.mvsz}
+              caption={
+                <>
+                  Max line length: <Emoji type="cross" />{' '}
+                  <strong>63 characters</strong>
                   <br />
                   <Highlight>
                     Line length is long; must side-scroll on a phone
@@ -167,15 +200,18 @@ const Page = () => (
             />
             <P>
               So, here’s my first refactoring tip:{' '}
-              <strong>
-                Make code examples in your tutorial readable on a small screen.
-              </strong>{' '}
+              <Highlight>
+                <strong>
+                  Make code examples in your tutorial readable on a small
+                  screen.
+                </strong>
+              </Highlight>{' '}
               You can ensure this in several ways:
             </P>
             <Ul>
               <UlLi>
-                <strong>Keep line length short.</strong> I try to keep line
-                length under about <Highlight>50 characters</Highlight>.
+                <strong>Keep line length short.</strong> I try to keep it under
+                about <Highlight>50 characters</Highlight> (at 14px font size).
               </UlLi>
               <UlLi>
                 If you can customize the CSS,{' '}
@@ -183,8 +219,12 @@ const Page = () => (
                 <A href="https://typeof.net/Iosevka/">
                   <Highlight>Iosevka</Highlight>
                 </A>
-                —it’s very slim and looks great. You can also tighten{' '}
+                —it’s slim and looks great. You can also tighten{' '}
                 <Code>letter-spacing</Code> to fit more characters.
+              </UlLi>
+              <UlLi>
+                Prefer <strong>shorter variable names</strong> without
+                sacrificing readability.
               </UlLi>
             </Ul>
             <P>
@@ -198,62 +238,85 @@ const Page = () => (
                 Here’s the link to my <Code>.prettierrc</Code>
               </A>{' '}
               for this site. <A href="https://codesandbox.io/">CodeSandbox</A>{' '}
-              also lets you customize Prettier settings.
+              also lets you customize its Prettier settings.
             </P>
             <Hr />
             <P>
+              <strong>Why is this necessary?</strong>{' '}
               <Highlight>
-                I often discover coding tutorials on Twitter, mailing lists, and
-                online forums.
+                Because many people <em>actually</em> read coding tutorials on
+                their phone.
               </Highlight>{' '}
-              I use my <strong>phone</strong> to check these sites, so naturally
-              I’d be using my phone instead of my laptop to read these
-              tutorials—at least for the first time.
             </P>
             <EmojiSeparator
               emojis={['sparkles', 'smartphone', 'sparkles']}
               description={
+                <>Many people read coding tutorials on their phone</>
+              }
+            />
+            <P>
+              You might be tempted to assume that the readers will read your
+              coding tutorial on a laptop.{' '}
+              <Highlight>But that’s a bad assumption.</Highlight>
+            </P>
+            <P>
+              In the past, I’ve used Google Analytics to track desktop vs mobile
+              usage on my coding tutorials. Even though my tutorials are meant
+              to be done on a laptop, surprisingly many people accessed them
+              from a mobile device.
+            </P>
+            <P>
+              This is because{' '}
+              <Highlight>
+                many people <strong>discover</strong> coding tutorials while
+                they’re using a phone to browse Twitter, mailing lists, and
+                online forums.
+              </Highlight>
+            </P>
+            <EmojiSeparator
+              emojis={['smilingCat', 'smartphone', 'smilingCat']}
+              description={
                 <>
-                  I often read a coding tutorial on my phone—at least for the
-                  first time
+                  People <strong>discover</strong> coding tutorials on their
+                  phone
                 </>
               }
             />
             <P>
+              That’s why it helps if the code examples in a tutorial are
+              readable on a small screen.{' '}
               <Highlight>
-                In these cases, it helps if the code examples in the tutorial
-                are readable on a small screen.
+                If you can easily read all the code examples on a phone, you
+                might be able to read through the tutorial without pulling out
+                your laptop.
               </Highlight>{' '}
-              If you can easily read all the code examples on a phone, you might
-              be able to understand the content without pulling out your laptop.
-              Sometimes you need to follow along on your laptop to fully
-              understand the tutorial, but this is not always necessary.
+              No need to put it on your “read later” list. Sometimes you need to
+              follow along on your laptop to fully understand the tutorial, but
+              that’s not always the case.
             </P>
             <P>
-              But what if a tutorial has many code examples that are unreadable
-              on a phone?{' '}
               <Highlight>
-                You’d probably give up reading on your phone and put the
-                tutorial on your “read later” list, and you must remember to
-                read it again on a laptop.
-              </Highlight>{' '}
-              When this happens to me, I usually won’t ever read the tutorial
-              again—I’m too forgetful!
-            </P>
-            <P>
-              That’s why I believe that{' '}
-              <strong>
-                code examples in your tutorial should be readable on a small
-                screen
-              </strong>
-              .{' '}
-              <Highlight>
-                Do NOT assume that your readers will always be using their
-                laptop to follow along.
+                If you’ve ever opened a coding tutorial on Twitter while on your
+                phone, and got frustrated because the code examples are
+                unreadable on a small screen
               </Highlight>
+              —don’t repeat the same mistake on your own tutorial!
             </P>
           </>
-        )
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>Note:</strong> The above advice is for text-based
+                tutorials.{' '}
+                <Highlight>For video tutorials (screencasts)</Highlight>, make
+                sure that the fonts are large enough to be legible on a phone
+                (in a landscape mode).
+              </P>
+            </>
+          )
+        }
       }
     ]}
   />
