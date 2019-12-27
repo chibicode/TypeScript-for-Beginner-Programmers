@@ -476,6 +476,8 @@ export const mvsz = `function completeAll(todos: readonly Todo[]): CompletedTodo
 export const zgvn = `type Todo = Readonly<{ id: number text: string done: boolean }>
 type CompletedTodo = Readonly<{ id: number text: string done: true }>`
 
+export const lplh = `console.log(1 + 2)`
+
 export const ampt = `function toggleTodo(todo: Todo): Todo {
   return {
     // This line was missing

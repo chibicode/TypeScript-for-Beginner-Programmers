@@ -3,10 +3,14 @@ import { css, jsx } from '@emotion/core'
 import { A } from 'src/components/ContentTags'
 import useTheme from 'src/hooks/useTheme'
 
-export const SourceAvailableText = () => (
+export const SourceAvailableText = ({ page }: { page?: string }) => (
   <>
-    The source code for this site is on{' '}
-    <A href="https://github.com/chibicode/TypeScript-for-Beginner-Programmers">
+    The source code for this {page ? 'page' : 'site'} is on{' '}
+    <A
+      href={`https://github.com/chibicode/TypeScript-for-Beginner-Programmers${
+        page ? `/tree/master/src/pages/${page}.tsx` : ''
+      }`}
+    >
       GitHub
     </A>
     : <GitHubButton />

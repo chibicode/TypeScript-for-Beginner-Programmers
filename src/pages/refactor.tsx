@@ -1,6 +1,7 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
+import RunButtonText from 'src/components/RunButtonText'
 import {
   P,
   Highlight,
@@ -21,8 +22,23 @@ import InternalLink from 'src/components/InternalLink'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 import { SourceAvailableText } from 'src/components/GitHubButton'
+import BubbleQuotes from 'src/components/BubbleQuotes'
 
-const techniques = ['Make code examples readable on a small screen']
+const techniques = [
+  'Make code samples readable on a small screen',
+  'Emphasize important parts in code samples',
+  'Use minimum viable code samples'
+]
+
+const RefactorSubtitle = ({ index }: { index: number }) => (
+  <ForegroundHighlight>Refactoring Tip {index + 1}:</ForegroundHighlight>
+)
+
+const refactoringCardProps = (index: number) => ({
+  subtitle: <RefactorSubtitle index={index} />,
+  title: techniques[index],
+  anchor: `tip${index + 1}`
+})
 
 const Page = () => (
   <PostPage
@@ -83,13 +99,27 @@ const Page = () => (
               tutorials to make them more reader-friendly. Here’s the list:
             </P>
             <Ol>
-              {techniques.map(technique => (
+              {techniques.map((technique, index) => (
                 <OlLi key={technique}>
-                  <strong>{technique}</strong>
+                  <Highlight>
+                    <A href={`#tip${index + 1}`}>{technique}</A>
+                  </Highlight>
                 </OlLi>
               ))}
             </Ol>
-            <P>Let’s take a look!</P>
+            <P>
+              Let’s take a look! Our friend, <strong>Refactoring Rhino</strong>{' '}
+              will guide you.
+            </P>
+            <EmojiSeparator
+              emojis={['rhino']}
+              size="lg"
+              description={
+                <>
+                  I’m <strong>Refactoring Rhino</strong>. I’ll be your guide!
+                </>
+              }
+            />
           </>
         ),
         footer: {
@@ -111,22 +141,30 @@ const Page = () => (
                   click here to tweet this article.
                 </TwitterLink>
               </P>
-              <P>
-                <SourceAvailableText />
-              </P>
             </>
           )
         }
       },
       {
-        subtitle: (
-          <>
-            <ForegroundHighlight>Refactoring Tip 1:</ForegroundHighlight>
-          </>
-        ),
-        title: <>{techniques[0]}</>,
+        ...refactoringCardProps(0),
         content: (
           <>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'rhino',
+                  children: (
+                    <>
+                      <P>
+                        This one is a <strong>visual refactoring</strong>{' '}
+                        technique. You don’t have to change the content—just
+                        need to update how it’s presented. It’d be a quick fix!
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
             <P>
               Take a look at this piece of code I used for my article called “
               <InternalLink href="/todo">
@@ -202,15 +240,13 @@ const Page = () => (
               So, here’s my first refactoring tip:{' '}
               <Highlight>
                 <strong>
-                  Make code examples in your tutorial readable on a small
-                  screen.
+                  Make code samples in your tutorial readable on a small screen.
                 </strong>
               </Highlight>{' '}
             </P>
-
             <EmojiSeparator
               emojis={['check', 'smartphone', 'check']}
-              description={<>Make code examples readable on a small screen</>}
+              description={<>Make code samples readable on a small screen</>}
             />
             <P>You can ensure this in several ways:</P>
             <Ul>
@@ -237,8 +273,8 @@ const Page = () => (
               <A href="https://prettier.io/">
                 <Highlight>Prettier</Highlight>
               </A>{' '}
-              with custom <Code>printWidth</Code> to format the snippets I use
-              for my tutorials.{' '}
+              with custom <Code>printWidth</Code> to format the code I use for
+              my tutorials.{' '}
               <A href="https://github.com/chibicode/TypeScript-for-Beginner-Programmers/blob/master/.prettierrc">
                 Here’s the link to my <Code>.prettierrc</Code>
               </A>{' '}
@@ -288,10 +324,10 @@ const Page = () => (
               }
             />
             <P>
-              That’s why it helps if the code examples in a tutorial are
-              readable on a small screen.{' '}
+              That’s why it helps if the code samples in a tutorial are readable
+              on a small screen.{' '}
               <Highlight>
-                If you can easily read all the code examples on a phone, you
+                If you can easily read all the code samples on a phone, you
                 might be able to read through the tutorial without pulling out
                 your laptop.
               </Highlight>{' '}
@@ -302,10 +338,28 @@ const Page = () => (
             <P>
               <Highlight>
                 If you’ve ever opened a coding tutorial on Twitter while on your
-                phone, and got frustrated because the code examples are
+                phone, and got frustrated because the code samples are
                 unreadable on a small screen
               </Highlight>
               —don’t repeat the same mistake on your own tutorial!
+            </P>
+            <Hr />
+            <P>
+              <strong>Bonus:</strong> It’d be great if you can{' '}
+              <strong>easily run</strong> code samples from a mobile device. My
+              tutorials support that—
+              <Highlight>
+                try pressing <RunButtonText />
+              </Highlight>
+              :
+            </P>
+            <CodeBlock
+              snippet={snippets.lplh}
+              result={<>3</>}
+              pointToRunButton
+            />
+            <P>
+              <SourceAvailableText page="refactor" />
             </P>
           </>
         ),
@@ -313,8 +367,8 @@ const Page = () => (
           content: (
             <>
               <P>
-                <strong>Note:</strong> The above advice is for text-based
-                tutorials.{' '}
+                <strong>Note:</strong> What I’ve said so far applies to
+                text-based tutorials.{' '}
                 <Highlight>For video tutorials (screencasts)</Highlight>, make
                 sure that the fonts are large enough to be legible on a phone
                 (in a landscape mode).
@@ -322,6 +376,10 @@ const Page = () => (
             </>
           )
         }
+      },
+      {
+        ...refactoringCardProps(1),
+        content: <></>
       }
     ]}
   />

@@ -12,10 +12,11 @@ export interface CardProps {
   color?: 'default' | 'pink' | 'green' | 'darkGreen'
   slideNumber?: number
   slideCount?: number
-  isLast?: boolean
+  isFirst?: boolean
   title?: React.ReactNode
   heading?: React.ReactNode
   subtitle?: React.ReactNode
+  anchor?: string
   footer?: {
     content: React.ReactNode
     color?: CardProps['color']
@@ -42,14 +43,26 @@ const Card = ({
   children,
   slideNumber,
   slideCount,
-  isLast,
+  isFirst,
   footer,
   heading,
-  subtitle
+  subtitle,
+  anchor
 }: CardProps) => {
   const { ns, colors, fontSizes, spaces, radii, lineHeights } = useTheme()
   return (
     <>
+      {!isFirst && (
+        <div
+          id={anchor}
+          css={css`
+            width: 1.25rem;
+            height: 2rem;
+            margin: 0 auto;
+            background: ${colors('paleGreen')};
+          `}
+        />
+      )}
       <div
         css={css`
           position: relative;
@@ -204,16 +217,6 @@ const Card = ({
           )}
         </div>
       </div>
-      {!isLast && (
-        <div
-          css={css`
-            width: 1.25rem;
-            height: 2rem;
-            margin: 0 auto;
-            background: ${colors('paleGreen')};
-          `}
-        />
-      )}
     </>
   )
 }

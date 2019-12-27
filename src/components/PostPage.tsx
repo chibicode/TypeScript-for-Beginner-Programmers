@@ -19,6 +19,7 @@ export interface EpisodeCardType {
   color?: CardProps['color']
   heading?: React.ReactNode
   subtitle?: React.ReactNode
+  anchor?: CardProps['anchor']
 }
 
 const PostPage = ({
@@ -116,7 +117,10 @@ const PostPage = ({
         `}
       >
         {cards.map(
-          ({ title, content, footer, color, heading, subtitle }, index) => (
+          (
+            { title, content, footer, color, heading, subtitle, anchor },
+            index
+          ) => (
             <Card
               color={color}
               key={`${articleKey}-${index}`}
@@ -124,9 +128,10 @@ const PostPage = ({
               slideCount={cards.length}
               slideNumber={index + 1}
               footer={footer}
-              isLast={index === cards.length - 1}
+              isFirst={index === 0}
               heading={heading}
               subtitle={subtitle}
+              anchor={anchor}
             >
               {content}
             </Card>
