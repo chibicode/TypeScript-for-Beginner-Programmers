@@ -157,8 +157,9 @@ const Page = () => (
                     <>
                       <P>
                         This one is a <strong>visual refactoring</strong>{' '}
-                        technique. You don’t have to change the content—just
-                        need to update how it’s presented. It’d be a quick fix!
+                        technique. You don’t have to change the content of yout
+                        tutorial—just need to update how it’s presented. It’d be
+                        a quick fix!
                       </P>
                     </>
                   )
@@ -166,7 +167,8 @@ const Page = () => (
               ]}
             />
             <P>
-              Take a look at this piece of code I used for my article called “
+              Take a look at this piece of code below. I used it for my tutorial
+              called “
               <InternalLink href="/todo">
                 <em>{articlesData['todo']['title']}</em>
               </InternalLink>
@@ -379,7 +381,35 @@ const Page = () => (
       },
       {
         ...refactoringCardProps(1),
-        content: <></>
+        content: (
+          <>
+            <BubbleQuotes
+              quotes={[
+                {
+                  type: 'rhino',
+                  children: (
+                    <>
+                      <P>
+                        This is another <strong>visual refactoring</strong>{' '}
+                        technique. It’s simple but not many people do this.
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <P>
+              Take a look at this piece of code below. I used it for my tutorial
+              called “
+              <InternalLink href="/generics">
+                <em>{articlesData['generics']['title']}</em>
+              </InternalLink>
+              ”:
+            </P>
+            <CodeBlock snippet={snippets.cupt} />
+            <CodeBlock snippet={snippets.aujy} />
+          </>
+        )
       }
     ]}
   />
