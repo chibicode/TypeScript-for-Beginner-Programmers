@@ -206,8 +206,13 @@ const Page = () => (
                   screen.
                 </strong>
               </Highlight>{' '}
-              You can ensure this in several ways:
             </P>
+
+            <EmojiSeparator
+              emojis={['check', 'smartphone', 'check']}
+              description={<>Make code examples readable on a small screen</>}
+            />
+            <P>You can ensure this in several ways:</P>
             <Ul>
               <UlLi>
                 <strong>Keep line length short.</strong> I try to keep it under
@@ -249,7 +254,7 @@ const Page = () => (
               </Highlight>{' '}
             </P>
             <EmojiSeparator
-              emojis={['sparkles', 'smartphone', 'sparkles']}
+              emojis={['smilingCat', 'smartphone', 'uglyTutorial']}
               description={
                 <>Many people read coding tutorials on their phone</>
               }
@@ -269,16 +274,16 @@ const Page = () => (
               This is because{' '}
               <Highlight>
                 many people <strong>discover</strong> coding tutorials while
-                they’re using a phone to browse Twitter, mailing lists, and
-                online forums.
+                using a phone to browse Twitter, mailing lists, and online
+                forums.
               </Highlight>
             </P>
             <EmojiSeparator
-              emojis={['smilingCat', 'smartphone', 'smilingCat']}
+              emojis={['twitter', 'smartphone', 'uglyTutorial']}
               description={
                 <>
-                  People <strong>discover</strong> coding tutorials on their
-                  phone
+                  Many people <strong>discover</strong> coding tutorials while
+                  using a phone to browse Twitter, forums, etc.
                 </>
               }
             />
