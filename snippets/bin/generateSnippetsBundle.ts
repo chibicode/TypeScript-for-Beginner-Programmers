@@ -4,12 +4,17 @@ const chokidar = require('chokidar')
 
 const regenerate = () => {
   glob('./snippets/snippets/**/*.ts', (_: any, files: readonly string[]) => {
+    if (new Set(files).size !== files.length) {
+      throw new Error('Duplicate file name')
+    }
+
     const result = files
       .map(file => {
         const contents = fs.readFileSync(file, 'utf8')
         return `export const ${file
           .replace(/\.\/snippets\/snippets\/\w+\//, '')
           .replace(/longerWidth\//, '')
+          .replace(/ignoreWidth\//, '')
           .replace(/\.ts/, '')} = \`${contents
           .trim()
           .replace(/^;/m, '')

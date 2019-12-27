@@ -13,6 +13,12 @@
       "options": {
         "printWidth": 53
       }
+    },
+    {
+      "files": ["snippets/snippets/**/ignoreWidth/*.ts"],
+      "options": {
+        "printWidth": 120
+      }
     }
   ]
 }

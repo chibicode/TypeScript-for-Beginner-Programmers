@@ -469,6 +469,9 @@ const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
+export const zgvn = `type Todo = Readonly<{ id: number text: string done: boolean }>
+type CompletedTodo = Readonly<{ id: number text: string done: true }>`
+
 export const ampt = `function toggleTodo(todo: Todo): Todo {
   return {
     // This line was missing

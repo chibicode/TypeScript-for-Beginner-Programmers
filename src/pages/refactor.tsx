@@ -6,9 +6,17 @@ import {
   Highlight,
   Ol,
   OlLi,
-  ForegroundHighlight
+  Ul,
+  UlLi,
+  ForegroundHighlight,
+  A,
+  Code,
+  Hr
 } from 'src/components/ContentTags'
+import * as snippets from 'src/lib/snippets'
 import TwitterLink from 'src/components/TwitterLink'
+import CodeBlock from 'src/components/CodeBlock'
+import InternalLink from 'src/components/InternalLink'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 import { SourceAvailableText } from 'src/components/GitHubButton'
@@ -118,6 +126,81 @@ const Page = () => (
         title: <>{techniques[0]}</>,
         content: (
           <>
+            <P>
+              Take a look at this piece of code I used for my article called “
+              <InternalLink href="/todo">
+                <em>{articlesData['todo']['title']}</em>
+              </InternalLink>
+              ”:
+            </P>
+            <CodeBlock
+              snippet={snippets.rlya}
+              caption={
+                <>
+                  Max line length: <strong>31 characters</strong>
+                </>
+              }
+            />
+            <P>
+              Did you notice that the above code is{' '}
+              <strong>formatted to fit on a small screen</strong>?{' '}
+              <Highlight>
+                Because each line length is short (max 31 chars),
+              </Highlight>{' '}
+              it won’t require you to side-scroll for most phones.
+            </P>
+            <P>
+              If the above code was formatted like below instead, you’d have to
+              side-scroll to read all of the code on a phone:
+            </P>
+            <CodeBlock
+              snippet={snippets.zgvn}
+              caption={
+                <>
+                  Max line length: <strong>69 characters</strong>
+                  <br />
+                  <Highlight>
+                    Line length is long; must side-scroll on a phone
+                  </Highlight>
+                </>
+              }
+            />
+            <P>
+              So, here’s my first refactoring tip:{' '}
+              <strong>
+                Make code examples in your tutorial readable on a small screen.
+              </strong>{' '}
+              You can ensure this in several ways:
+            </P>
+            <Ul>
+              <UlLi>
+                <strong>Keep line length short.</strong> I try to keep line
+                length under about <Highlight>50 characters</Highlight>.
+              </UlLi>
+              <UlLi>
+                If you can customize the CSS,{' '}
+                <strong>use narrow coding fonts</strong>. I use{' '}
+                <A href="https://typeof.net/Iosevka/">
+                  <Highlight>Iosevka</Highlight>
+                </A>
+                —it’s very slim and looks great. You can also tighten{' '}
+                <Code>letter-spacing</Code> to fit more characters.
+              </UlLi>
+            </Ul>
+            <P>
+              I use{' '}
+              <A href="https://prettier.io/">
+                <Highlight>Prettier</Highlight>
+              </A>{' '}
+              with custom <Code>printWidth</Code> to format the snippets I use
+              for my tutorials.{' '}
+              <A href="https://github.com/chibicode/TypeScript-for-Beginner-Programmers/blob/master/.prettierrc">
+                Here’s the link to my <Code>.prettierrc</Code>
+              </A>{' '}
+              for this site. <A href="https://codesandbox.io/">CodeSandbox</A>{' '}
+              also lets you customize Prettier settings.
+            </P>
+            <Hr />
             <P>
               <Highlight>
                 I often discover coding tutorials on Twitter, mailing lists, and
