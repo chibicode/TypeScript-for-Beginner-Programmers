@@ -1,7 +1,6 @@
 import React from 'react'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
-import RunButtonText from 'src/components/RunButtonText'
 import {
   P,
   Highlight,
@@ -140,6 +139,9 @@ const Page = () => (
                 >
                   click here to tweet this article.
                 </TwitterLink>
+              </P>
+              <P>
+                <SourceAvailableText />
               </P>
             </>
           )
@@ -344,24 +346,6 @@ const Page = () => (
                 unreadable on a small screen
               </Highlight>
               —don’t repeat the same mistake on your own tutorial!
-            </P>
-            <Hr />
-            <P>
-              <strong>Bonus:</strong> It’d be great if you can{' '}
-              <strong>easily run</strong> code samples from a mobile device. My
-              tutorials support that—
-              <Highlight>
-                try pressing <RunButtonText />
-              </Highlight>
-              :
-            </P>
-            <CodeBlock
-              snippet={snippets.lplh}
-              result={<>3</>}
-              pointToRunButton
-            />
-            <P>
-              <SourceAvailableText page="refactor" />
             </P>
           </>
         ),
