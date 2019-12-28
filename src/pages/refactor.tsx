@@ -284,13 +284,26 @@ const Page = () => (
                 <Highlight>Prettier</Highlight>
               </A>{' '}
               with custom <Code>printWidth</Code> to format the code I use for
-              my tutorials.{' '}
-              <A href="https://github.com/chibicode/TypeScript-for-Beginner-Programmers/blob/master/.prettierrc">
-                Here’s the link to my <Code>.prettierrc</Code>
-              </A>{' '}
-              for this site. <A href="https://codesandbox.io/">CodeSandbox</A>{' '}
-              also lets you customize its Prettier settings.
+              my tutorials.
             </P>
+            <Ul>
+              <UlLi>
+                <A href="https://github.com/chibicode/TypeScript-for-Beginner-Programmers/blob/master/.prettierrc">
+                  Here’s the link to my <Code>.prettierrc</Code>
+                </A>{' '}
+                for this site.
+              </UlLi>
+              <UlLi>
+                If you’re a perfectionist, you can use Prettier in the browser
+                to dynamically reformat the code samples as the screen size
+                changes.
+              </UlLi>
+              <UlLi>
+                <A href="https://codesandbox.io/">CodeSandbox</A> also lets you
+                customize its Prettier settings.
+              </UlLi>
+            </Ul>
+
             <Hr />
             <P>
               <strong>Why is this necessary?</strong>{' '}
@@ -361,12 +374,6 @@ const Page = () => (
                 <Highlight>For video tutorials (screencasts)</Highlight>, it’d
                 be ideal if the fonts are large enough to be legible on a phone
                 (in a landscape mode).
-              </P>
-              <P>
-                <strong>Responsive formatting:</strong> If you’re a
-                perfectionist, you can use Prettier in the browser to
-                dynamically reformat the code samples as the screen size
-                changes.
               </P>
             </>
           )
