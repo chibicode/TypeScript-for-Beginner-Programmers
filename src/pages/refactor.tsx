@@ -346,12 +346,9 @@ const Page = () => (
               that’s not always the case.
             </P>
             <P>
-              <Highlight>
-                If you’ve ever discovered a coding tutorial on Twitter while
-                using your phone, and got frustrated because the code samples
-                are unreadable on a small screen
-              </Highlight>
-              —don’t repeat the same mistake on your own tutorial!
+              <strong>Bottom line:</strong> Assume that people will discover
+              your coding tutorial on their phone and try to deliver the best
+              possible first impression.
             </P>
           </>
         ),
