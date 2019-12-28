@@ -469,19 +469,6 @@ const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
-export const aujy = `function makeState() {
-  let state: string
-
-  function getState() {
-    return state
-  }
-
-  function setState(x: string) {
-    state = x
-  }
-  return { getState, setState }
-}`
-
 export const mvsz = `function completeAll(todos: readonly Todo[]): CompletedTodo[] {
   return todos.map(todo => ({ ...todo, done: true }))
 }`

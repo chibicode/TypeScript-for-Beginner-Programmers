@@ -24,8 +24,9 @@ import { SourceAvailableText } from 'src/components/GitHubButton'
 
 const techniques = [
   'Make code samples fit on a small screen',
-  'Emphasize important parts in code samples',
-  'Use minimum viable code samples'
+  'Start with a failing example'
+  // 'Emphasize important parts in code samples',
+  // 'Use minimum viable code samples'
 ]
 
 const RefactorSubtitle = ({ index }: { index: number }) => (
@@ -102,9 +103,7 @@ const Page = () => (
             <Ol>
               {techniques.map((technique, index) => (
                 <OlLi key={technique}>
-                  <Highlight>
-                    <A href={`#tip${index + 1}`}>{technique}</A>
-                  </Highlight>
+                  <A href={`#tip${index + 1}`}>{technique}</A>
                 </OlLi>
               ))}
             </Ol>
@@ -336,39 +335,7 @@ const Page = () => (
       },
       {
         ...refactoringCardProps(1),
-        content: (
-          <>
-            <P>
-              Take a look at this piece of code below, which is used for my
-              tutorial called “
-              <InternalLink href="/generics">
-                <em>{articlesData['generics']['title']}</em>
-              </InternalLink>
-              ”:
-            </P>
-            <CodeBlock snippet={snippets.cupt} />
-            <P>
-              Later in the tutorial, I showed{' '}
-              <Highlight>slightly different code</Highlight>. To emphasize what
-              changed, I{' '}
-              <Highlight color="yellowHighlight">
-                <strong>highlighted</strong>
-              </Highlight>{' '}
-              the difference and added some comments .
-            </P>
-            <CodeBlock
-              snippet={snippets.gkgi}
-              shouldHighlight={(lineIndex, tokenIndex) =>
-                (lineIndex === 9 && tokenIndex > 4 && tokenIndex < 8) ||
-                (lineIndex === 2 && tokenIndex > 4 && tokenIndex < 6)
-              }
-            />
-            <P>
-              <strong>Answer:</strong> The{' '}
-              <Highlight>highlighted parts</Highlight> are different.
-            </P>
-          </>
-        )
+        content: <></>
       }
     ]}
   />
