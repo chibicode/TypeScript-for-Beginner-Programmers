@@ -24,7 +24,7 @@ import { SourceAvailableText } from 'src/components/GitHubButton'
 import BubbleQuotes from 'src/components/BubbleQuotes'
 
 const techniques = [
-  'Make code samples readable on a small screen',
+  'Make code samples fit on a small screen',
   'Emphasize important parts in code samples',
   'Use minimum viable code samples'
 ]
@@ -77,9 +77,12 @@ const Page = () => (
             />
             <P>
               But they can be improved. As someone who’s written many coding
-              tutorials, I realized that most coding tutorials can be{' '}
-              <strong>refactored</strong> to be more reader-friendly—just like
-              refactoring code.
+              tutorials, I realized that{' '}
+              <Highlight>
+                most coding tutorials can be <strong>refactored</strong> to be
+                more reader-friendly
+              </Highlight>
+              —just like refactoring code.
             </P>
             <EmojiSeparator
               emojis={['uglyTutorial', 'refactorArrow', 'cleanTutorial']}
@@ -94,8 +97,8 @@ const Page = () => (
             </P>
             <P>
               So, in this article, I’ll share some tecniques on refactoring
-              coding tutorials. I’ve used these techniques when writing my
-              tutorials to make them more reader-friendly. Here’s the list:
+              coding tutorials. I’ve used these techniques on my own tutorials
+              to make them more reader-friendly. Here’s the list:
             </P>
             <Ol>
               {techniques.map((technique, index) => (
@@ -169,8 +172,7 @@ const Page = () => (
               ]}
             />
             <P>
-              Take a look at this piece of code below. I used it for my tutorial
-              called “
+              Take a look at the code below. I used it for my tutorial called “
               <InternalLink href="/todo">
                 <em>{articlesData['todo']['title']}</em>
               </InternalLink>
@@ -193,6 +195,10 @@ const Page = () => (
               </Highlight>{' '}
               you can read it without side-scrolling on most phones.
             </P>
+            <EmojiSeparator
+              emojis={['sparkles', 'smartphone', 'sparkles']}
+              description={<>The above code fits on a small screen</>}
+            />
             <P>
               If the above code was formatted like below instead, you’d have to
               side-scroll on a phone:
@@ -224,8 +230,8 @@ const Page = () => (
               }
             />
             <P>
-              And this is <strong>BAD</strong> formatting (doesn’t fit on a
-              small screen):
+              And this is the same code in <strong>BAD</strong> formatting
+              (doesn’t fit on a small screen):
             </P>
             <CodeBlock
               snippet={snippets.mvsz}
@@ -244,13 +250,13 @@ const Page = () => (
               So, here’s my first refactoring tip:{' '}
               <Highlight>
                 <strong>
-                  Make code samples in your tutorial readable on a small screen.
+                  Make code samples in your tutorial fit on a small screen.
                 </strong>
               </Highlight>{' '}
             </P>
             <EmojiSeparator
               emojis={['check', 'smartphone', 'check']}
-              description={<>Make code samples readable on a small screen</>}
+              description={<>Make code samples fit on a small screen</>}
             />
             <P>You can ensure this in several ways:</P>
             <Ul>
@@ -268,8 +274,8 @@ const Page = () => (
                 <Code>letter-spacing</Code> to fit more characters.
               </UlLi>
               <UlLi>
-                Prefer <strong>shorter variable names</strong> without
-                sacrificing readability.
+                Prefer <strong>shorter variable names</strong> (but don’t
+                sacrifice code readability).
               </UlLi>
             </Ul>
             <P>
@@ -300,8 +306,8 @@ const Page = () => (
               }
             />
             <P>
-              You might be tempted to assume that the readers will read your
-              coding tutorial on a laptop.{' '}
+              You might be tempted to assume that the readers will read (and
+              follow along) your coding tutorial on a laptop.{' '}
               <Highlight>But that’s a bad assumption.</Highlight>
             </P>
             <P>
@@ -323,13 +329,13 @@ const Page = () => (
               description={
                 <>
                   Many people <strong>discover</strong> coding tutorials while
-                  using a phone to browse Twitter, forums, etc.
+                  using a phone to browse Twitter, etc.
                 </>
               }
             />
             <P>
-              That’s why it helps if the code samples in a tutorial are readable
-              on a small screen.{' '}
+              That’s why it helps if the code samples in a tutorial fit on a
+              small screen.{' '}
               <Highlight>
                 If you can easily read all the code samples on a phone, you
                 might be able to read through the tutorial without pulling out
@@ -341,9 +347,9 @@ const Page = () => (
             </P>
             <P>
               <Highlight>
-                If you’ve ever opened a coding tutorial on Twitter while on your
-                phone, and got frustrated because the code samples are
-                unreadable on a small screen
+                If you’ve ever discovered a coding tutorial on Twitter while
+                using your phone, and got frustrated because the code samples
+                are unreadable on a small screen
               </Highlight>
               —don’t repeat the same mistake on your own tutorial!
             </P>
@@ -353,11 +359,17 @@ const Page = () => (
           content: (
             <>
               <P>
-                <strong>Note:</strong> What I’ve said so far applies to
-                text-based tutorials.{' '}
-                <Highlight>For video tutorials (screencasts)</Highlight>, make
-                sure that the fonts are large enough to be legible on a phone
+                <strong>Video tutorials:</strong> What I’ve said so far applies
+                to text-based tutorials.{' '}
+                <Highlight>For video tutorials (screencasts)</Highlight>, it’d
+                be ideal if the fonts are large enough to be legible on a phone
                 (in a landscape mode).
+              </P>
+              <P>
+                <strong>Responsive formatting:</strong> If you’re a
+                perfectionist, you can use Prettier in the browser to
+                dynamically reformat the code samples as the screen size
+                changes.
               </P>
             </>
           )
