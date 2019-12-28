@@ -288,6 +288,10 @@ const Page = () => (
             <P>Here are some other techniques:</P>
             <Ul>
               <UlLi>
+                Prefer <strong>shorter variable names</strong> (but don’t
+                sacrifice code readability).
+              </UlLi>
+              <UlLi>
                 If you can customize the CSS,{' '}
                 <strong>use narrow coding fonts</strong>. I use{' '}
                 <A href="https://typeof.net/Iosevka/">
@@ -296,14 +300,10 @@ const Page = () => (
                 —it’s slim and looks great. You can also tighten{' '}
                 <Code>letter-spacing</Code> to fit more characters.
               </UlLi>
-              <UlLi>
-                Prefer <strong>shorter variable names</strong> (but don’t
-                sacrifice code readability).
-              </UlLi>
             </Ul>
             <Hr />
             <P>
-              <strong>Why is this necessary?</strong>{' '}
+              <strong>Why is this refactoring necessary?</strong>{' '}
               <Highlight>
                 Because many people <em>actually</em> read coding tutorials on
                 their phone.
