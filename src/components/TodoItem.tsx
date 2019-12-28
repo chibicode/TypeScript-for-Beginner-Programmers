@@ -64,10 +64,12 @@ const TodoItem = ({
       >
         <span
           css={[
+            css`
+              cursor: pointer;
+            `,
             done &&
               css`
                 color: ${colors('gray')};
-                cursor: pointer;
               `
           ]}
           onClick={() => dispatch({ type: 'toggle', index })}
