@@ -309,7 +309,7 @@ const Page = () => (
                 laptop.
               </Highlight>{' '}
               Sometimes you need to follow along on your laptop to fully
-              understand the tutorial, but that’s not always the case.
+              understand the content, but that’s not always the case.
             </P>
             <P>
               <strong>Bottom line:</strong>{' '}
@@ -328,7 +328,7 @@ const Page = () => (
                 to text-based tutorials.{' '}
                 <Highlight>For video tutorials (screencasts)</Highlight>, it’d
                 be ideal if the fonts are large enough to be legible on a phone
-                (in a landscape mode).
+                (in landscape mode).
               </P>
             </>
           )
