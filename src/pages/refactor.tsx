@@ -258,34 +258,16 @@ const Page = () => (
               emojis={['check', 'smartphone', 'check']}
               description={<>Make code samples fit on a small screen</>}
             />
-            <P>You can ensure this in several ways:</P>
-            <Ul>
-              <UlLi>
-                <strong>Keep line length short.</strong> I try to keep it under
-                about <Highlight>50 characters</Highlight> (at 14px font size).
-              </UlLi>
-              <UlLi>
-                If you can customize the CSS,{' '}
-                <strong>use narrow coding fonts</strong>. I use{' '}
-                <A href="https://typeof.net/Iosevka/">
-                  <Highlight>Iosevka</Highlight>
-                </A>
-                —it’s slim and looks great. You can also tighten{' '}
-                <Code>letter-spacing</Code> to fit more characters.
-              </UlLi>
-              <UlLi>
-                Prefer <strong>shorter variable names</strong> (but don’t
-                sacrifice code readability).
-              </UlLi>
-            </Ul>
             <P>
-              I use{' '}
+              You can ensure this by <strong>keeping line length short.</strong>{' '}
+              I try to keep it under about <Highlight>50 characters</Highlight>{' '}
+              (at 14px font size). I use{' '}
               <A href="https://prettier.io/">
                 <Highlight>Prettier</Highlight>
               </A>{' '}
-              with custom <Code>printWidth</Code> to format the code I use for
-              my tutorials.
+              with custom <Code>printWidth</Code> to automate this.
             </P>
+            <EmojiSeparator emojis={['prettier']} />
             <Ul>
               <UlLi>
                 <A href="https://github.com/chibicode/TypeScript-for-Beginner-Programmers/blob/master/.prettierrc">
@@ -303,7 +285,22 @@ const Page = () => (
                 customize its Prettier settings.
               </UlLi>
             </Ul>
-
+            <P>Here are some other techniques:</P>
+            <Ul>
+              <UlLi>
+                If you can customize the CSS,{' '}
+                <strong>use narrow coding fonts</strong>. I use{' '}
+                <A href="https://typeof.net/Iosevka/">
+                  <Highlight>Iosevka</Highlight>
+                </A>
+                —it’s slim and looks great. You can also tighten{' '}
+                <Code>letter-spacing</Code> to fit more characters.
+              </UlLi>
+              <UlLi>
+                Prefer <strong>shorter variable names</strong> (but don’t
+                sacrifice code readability).
+              </UlLi>
+            </Ul>
             <Hr />
             <P>
               <strong>Why is this necessary?</strong>{' '}
@@ -351,17 +348,19 @@ const Page = () => (
               small screen.{' '}
               <Highlight>
                 If you can easily read all the code samples on a phone, you
-                might be able to read through the tutorial without pulling out
-                your laptop.
+                might be able to finish the tutorial without pulling out your
+                laptop.
               </Highlight>{' '}
               No need to put it on your “read later” list. Sometimes you need to
               follow along on your laptop to fully understand the tutorial, but
               that’s not always the case.
             </P>
             <P>
-              <strong>Bottom line:</strong> Assume that people will discover
-              your coding tutorial on their phone and try to deliver the best
-              possible first impression.
+              <strong>Bottom line:</strong>{' '}
+              <Highlight>
+                Assume that people will discover your coding tutorial on their
+                phone and try to deliver the best possible first impression.
+              </Highlight>
             </P>
           </>
         ),

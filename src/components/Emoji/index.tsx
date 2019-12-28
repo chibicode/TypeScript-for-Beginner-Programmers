@@ -34,6 +34,7 @@ import CleanTutorial from 'src/components/Emoji/CleanTutorial'
 import Smartphone from 'src/components/Emoji/Smartphone'
 import Cross from 'src/components/Emoji/Cross'
 import Rhino from 'src/components/Emoji/Rhino'
+import Prettier from 'src/components/Emoji/Prettier'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -69,7 +70,8 @@ export const emojiToComponent = {
   cleanTutorial: CleanTutorial,
   smartphone: Smartphone,
   cross: Cross,
-  rhino: Rhino
+  rhino: Rhino,
+  prettier: Prettier
 }
 
 export const EmojiWrapper = ({
