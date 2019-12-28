@@ -21,7 +21,6 @@ import InternalLink from 'src/components/InternalLink'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 import { SourceAvailableText } from 'src/components/GitHubButton'
-import BubbleQuotes from 'src/components/BubbleQuotes'
 
 const techniques = [
   'Make code samples fit on a small screen',
@@ -109,19 +108,7 @@ const Page = () => (
                 </OlLi>
               ))}
             </Ol>
-            <P>
-              Let’s take a look! Our friend, <strong>Refactoring Rhino</strong>{' '}
-              will guide you.
-            </P>
-            <EmojiSeparator
-              emojis={['rhino']}
-              size="lg"
-              description={
-                <>
-                  I’m <strong>Refactoring Rhino</strong>. I’ll be your guide!
-                </>
-              }
-            />
+            <P>Let’s take a look!</P>
           </>
         ),
         footer: {
@@ -154,23 +141,6 @@ const Page = () => (
         ...refactoringCardProps(0),
         content: (
           <>
-            <BubbleQuotes
-              quotes={[
-                {
-                  type: 'rhino',
-                  children: (
-                    <>
-                      <P>
-                        This one is a <strong>visual refactoring</strong>{' '}
-                        technique. You don’t have to change the content of yout
-                        tutorial—just need to update how it’s presented. It’d be
-                        a quick fix!
-                      </P>
-                    </>
-                  )
-                }
-              ]}
-            />
             <P>
               Take a look at the code below. I used it for my tutorial called “
               <InternalLink href="/todo">
@@ -196,7 +166,7 @@ const Page = () => (
               you can read it without side-scrolling on most phones.
             </P>
             <EmojiSeparator
-              emojis={['sparkles', 'smartphone', 'sparkles']}
+              emojis={['check', 'smartphone', 'check']}
               description={<>The above code fits on a small screen</>}
             />
             <P>
@@ -252,12 +222,8 @@ const Page = () => (
                 <strong>
                   Make code samples in your tutorial fit on a small screen.
                 </strong>
-              </Highlight>{' '}
+              </Highlight>
             </P>
-            <EmojiSeparator
-              emojis={['check', 'smartphone', 'check']}
-              description={<>Make code samples fit on a small screen</>}
-            />
             <P>
               You can ensure this by <strong>keeping line length short.</strong>{' '}
               I try to keep it under about <Highlight>50 characters</Highlight>{' '}
@@ -265,26 +231,17 @@ const Page = () => (
               <A href="https://prettier.io/">
                 <Highlight>Prettier</Highlight>
               </A>{' '}
-              with custom <Code>printWidth</Code> to automate this.
+              with custom <Code>printWidth</Code> to automate this (my{' '}
+              <Code>.prettierrc</Code> is{' '}
+              <A href="https://github.com/chibicode/TypeScript-for-Beginner-Programmers/blob/master/.prettierrc">
+                here
+              </A>
+              ).
             </P>
-            <EmojiSeparator emojis={['prettier']} />
-            <Ul>
-              <UlLi>
-                <A href="https://github.com/chibicode/TypeScript-for-Beginner-Programmers/blob/master/.prettierrc">
-                  Here’s the link to my <Code>.prettierrc</Code>
-                </A>{' '}
-                for this site.
-              </UlLi>
-              <UlLi>
-                If you’re a perfectionist, you can use Prettier in the browser
-                to dynamically reformat the code samples as the screen size
-                changes.
-              </UlLi>
-              <UlLi>
-                <A href="https://codesandbox.io/">CodeSandbox</A> also lets you
-                customize its Prettier settings.
-              </UlLi>
-            </Ul>
+            <EmojiSeparator
+              emojis={['prettier']}
+              description={<>I use Prettier to keep line length short</>}
+            />
             <P>Here are some other techniques:</P>
             <Ul>
               <UlLi>
@@ -303,7 +260,7 @@ const Page = () => (
             </Ul>
             <Hr />
             <P>
-              <strong>Why is this refactoring necessary?</strong>{' '}
+              <strong>Why is this necessary?</strong>{' '}
               <Highlight>
                 Because many people <em>actually</em> read coding tutorials on
                 their phone.
@@ -351,9 +308,8 @@ const Page = () => (
                 might be able to finish the tutorial without pulling out your
                 laptop.
               </Highlight>{' '}
-              No need to put it on your “read later” list. Sometimes you need to
-              follow along on your laptop to fully understand the tutorial, but
-              that’s not always the case.
+              Sometimes you need to follow along on your laptop to fully
+              understand the tutorial, but that’s not always the case.
             </P>
             <P>
               <strong>Bottom line:</strong>{' '}
@@ -382,31 +338,35 @@ const Page = () => (
         ...refactoringCardProps(1),
         content: (
           <>
-            <BubbleQuotes
-              quotes={[
-                {
-                  type: 'rhino',
-                  children: (
-                    <>
-                      <P>
-                        This is another <strong>visual refactoring</strong>{' '}
-                        technique. It’s simple but not many people do this.
-                      </P>
-                    </>
-                  )
-                }
-              ]}
-            />
             <P>
-              Take a look at this piece of code below. I used it for my tutorial
-              called “
+              Take a look at this piece of code below, which is used for my
+              tutorial called “
               <InternalLink href="/generics">
                 <em>{articlesData['generics']['title']}</em>
               </InternalLink>
               ”:
             </P>
             <CodeBlock snippet={snippets.cupt} />
-            <CodeBlock snippet={snippets.aujy} />
+            <P>
+              Later in the tutorial, I showed{' '}
+              <Highlight>slightly different code</Highlight>. To emphasize what
+              changed, I{' '}
+              <Highlight color="yellowHighlight">
+                <strong>highlighted</strong>
+              </Highlight>{' '}
+              the difference and added some comments .
+            </P>
+            <CodeBlock
+              snippet={snippets.gkgi}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 9 && tokenIndex > 4 && tokenIndex < 8) ||
+                (lineIndex === 2 && tokenIndex > 4 && tokenIndex < 6)
+              }
+            />
+            <P>
+              <strong>Answer:</strong> The{' '}
+              <Highlight>highlighted parts</Highlight> are different.
+            </P>
           </>
         )
       }
