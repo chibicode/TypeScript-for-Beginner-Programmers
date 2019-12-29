@@ -481,8 +481,10 @@ const Page = () => (
               <P>
                 <strong>Fail unexpectedly:</strong> It’s also more effective if
                 the failure is <Highlight>surprising</Highlight>. Trick your
-                reader into thinking that a code sample would work perfectly—and
-                then make it fail. Unexpected failure = more memorable learning
+                reader into thinking that a code sample would work
+                perfectly…then make it fail. Make the reader think,{' '}
+                <em>“WTF? How come it doesn’t work?”</em>—and they’ll be more
+                curious. Unexpected failure = more memorable learning
                 experience.
               </P>
             </>
