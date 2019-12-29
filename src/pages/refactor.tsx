@@ -11,7 +11,8 @@ import {
   UlLi,
   ForegroundHighlight,
   A,
-  Code
+  Code,
+  Hr
 } from 'src/components/ContentTags'
 import * as snippets from 'src/lib/snippets'
 import TwitterLink from 'src/components/TwitterLink'
@@ -25,7 +26,6 @@ import InternalLink from 'src/components/InternalLink'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 import { SourceAvailableText } from 'src/components/GitHubButton'
-import RunButtonText from 'src/components/RunButtonText'
 
 const techniques = [
   {
@@ -303,18 +303,9 @@ const Page = () => (
                 <Code>letter-spacing</Code> to fit more characters.
               </UlLi>
             </Ul>
+            <Hr />
             <P>
-              <strong>Extra Credit:</strong>{' '}
-              <Highlight>
-                It’d be ideal if you can easily <strong>run (or test)</strong>{' '}
-                code examples on mobile.
-              </Highlight>{' '}
-              My tutorials support this—you can run code by pressing{' '}
-              <RunButtonText /> on mobile or desktop.
-            </P>
-            <CodeBlock snippet={snippets.lplh} result="3" />
-            <P>
-              <strong>Now, why is mobile reading experience important?</strong>{' '}
+              <strong>Why is this necessary?</strong>{' '}
               <Highlight>
                 Because many people <em>actually</em> read coding tutorials on
                 their phone.
@@ -464,6 +455,7 @@ const Page = () => (
               be solved by generics…without using generics. And fail. Then, I
               use generics to successfully solve the problem.
             </P>
+            <Hr />
             <P>
               In a way, this is similar to{' '}
               <strong>test driven development (TDD)</strong>. In TDD, you write
