@@ -1,4 +1,5 @@
-import React from 'react'
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import PostPage from 'src/components/PostPage'
 import EmojiSeparator from 'src/components/EmojiSeparator'
 import {
@@ -23,12 +24,21 @@ import { baseUrl } from 'src/lib/meta'
 import { SourceAvailableText } from 'src/components/GitHubButton'
 
 const techniques = [
-  'Make code samples fit on a small screen',
-  'Use the “Red, Green, Refactor” strategy',
-  'Bad analogy is better than no analogy'
+  {
+    title: 'Make code samples fit on a small screen',
+    emojis: ['check', 'smartphone', 'check']
+  },
+  {
+    title: 'Fail fast, fail often',
+    emojis: ['cross', 'scaryCat', 'cross']
+  },
+  {
+    title: 'Bad analogy is better than no analogy',
+    emojis: ['check', 'smartphone', 'check']
+  }
   // 'Emphasize important parts in code samples',
   // 'Use minimum viable code samples'
-]
+] as const
 
 const RefactorSubtitle = ({ index }: { index: number }) => (
   <ForegroundHighlight>Refactoring Tip {index + 1}:</ForegroundHighlight>
@@ -36,7 +46,7 @@ const RefactorSubtitle = ({ index }: { index: number }) => (
 
 const refactoringCardProps = (index: number) => ({
   subtitle: <RefactorSubtitle index={index} />,
-  title: techniques[index],
+  title: techniques[index].title,
   anchor: `tip${index + 1}`
 })
 
@@ -103,8 +113,29 @@ const Page = () => (
             </P>
             <Ol>
               {techniques.map((technique, index) => (
-                <OlLi key={technique}>
-                  <A href={`#tip${index + 1}`}>{technique}</A>
+                <OlLi
+                  key={technique.title}
+                  css={css`
+                    text-align: center;
+                  `}
+                >
+                  <A
+                    href={`#tip${index + 1}`}
+                    css={css`
+                      text-decoration: none;
+                      font-weight: bold;
+                    `}
+                  >
+                    {technique.title}
+                  </A>
+                  <br />
+                  <EmojiSeparator
+                    emojis={technique.emojis}
+                    size="sm"
+                    cssOverrides={css`
+                      margin-top: 0;
+                    `}
+                  />
                 </OlLi>
               ))}
             </Ol>
@@ -141,6 +172,7 @@ const Page = () => (
         ...refactoringCardProps(0),
         content: (
           <>
+            <EmojiSeparator emojis={techniques[0].emojis} />
             <P>
               Take a look at the code below. I used it for my tutorial called “
               <InternalLink href="/todo">
@@ -165,10 +197,6 @@ const Page = () => (
               </Highlight>{' '}
               you can read it without side-scrolling on most phones.
             </P>
-            <EmojiSeparator
-              emojis={['check', 'smartphone', 'check']}
-              description={<>The above code fits on a small screen</>}
-            />
             <P>
               If the above code was formatted like below instead, you’d have to
               side-scroll on a phone:
@@ -336,7 +364,37 @@ const Page = () => (
       },
       {
         ...refactoringCardProps(1),
-        content: <></>
+        content: (
+          <>
+            <EmojiSeparator emojis={techniques[1].emojis} />
+            <P>
+              In test driven development, you’re supposed to follow the{' '}
+              <strong>“red, green, refactor”</strong> approach.{' '}
+              <Highlight>
+                You first write a failing test (“red” <Emoji type="cross" />
+                ), then you make the test pass (“green” <Emoji type="check" />
+                ), and finally you refactor <Emoji type="sparkles" /> the code.
+              </Highlight>
+            </P>
+            <P>
+              This approach can also be used when you explain something in a
+              coding tutorial. Here’s how:
+            </P>
+            <Ol>
+              <OlLi>
+                <Emoji type="cross" /> <strong>“Red”:</strong>{' '}
+                <Highlight>
+                  First, talk through a scenario where you try to do something
+                  but it <strong>fails</strong>.
+                </Highlight>{' '}
+                In other words, start with a failure.
+              </OlLi>
+              <OlLi>
+                <Emoji type="check" /> <strong>“Green”:</strong>{' '}
+              </OlLi>
+            </Ol>
+          </>
+        )
       }
     ]}
   />

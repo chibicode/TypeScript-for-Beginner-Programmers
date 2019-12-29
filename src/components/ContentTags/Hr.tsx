@@ -11,7 +11,7 @@ const Hr = (props: JSX.IntrinsicElements['hr']) => {
         border-top: none;
         border-left: none;
         border-right: none;
-        border-bottom: 5px solid ${colors('white85')};
+        border-bottom: 5px solid ${colors('white')};
         margin: ${spaces(2)} auto ${spaces(2)};
         max-width: 8rem;
       `}
