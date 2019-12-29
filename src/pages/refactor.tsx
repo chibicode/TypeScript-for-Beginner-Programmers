@@ -346,8 +346,7 @@ const Page = () => (
               }
             />
             <P>
-              That’s why it helps if the code samples in a tutorial fit on a
-              small screen.{' '}
+              That’s why mobile reading experience is important.{' '}
               <Highlight>
                 If you can easily read all the code samples on a phone, you
                 might be able to finish the tutorial without pulling out your
