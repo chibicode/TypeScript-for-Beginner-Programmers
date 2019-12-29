@@ -507,6 +507,46 @@ const Page = () => (
             </>
           )
         }
+      },
+      {
+        ...refactoringCardProps(2),
+        content: (
+          <>
+            <EmojiSeparator emojis={techniques[2].emojis} />
+          </>
+        )
+      },
+      {
+        ...refactoringCardProps(3),
+        content: (
+          <>
+            <EmojiSeparator emojis={techniques[3].emojis} />
+          </>
+        )
+      },
+      {
+        ...refactoringCardProps(4),
+        content: (
+          <>
+            <EmojiSeparator emojis={techniques[4].emojis} />
+          </>
+        )
+      },
+      {
+        ...refactoringCardProps(5),
+        content: (
+          <>
+            <EmojiSeparator emojis={techniques[5].emojis} />
+          </>
+        )
+      },
+      {
+        ...refactoringCardProps(6),
+        content: (
+          <>
+            <EmojiSeparator emojis={techniques[6].emojis} />
+          </>
+        )
       }
     ]}
   />
