@@ -14,6 +14,7 @@ interface EmojiSeparatorProps {
   description?: React.ReactNode
   customChildren?: React.ReactNode
   leftAlign?: boolean
+  href?: string
 }
 
 const fontSize = (
@@ -51,9 +52,12 @@ const EmojiSeparator = ({
   cssOverrides,
   description,
   customChildren,
-  leftAlign
+  leftAlign,
+  href
 }: EmojiSeparatorProps) => {
   const { spaces, ns, fontSizes } = useTheme()
+  const EmojiWrapperComponent = href ? 'a' : 'span'
+  const emojiWrapperComponentAttrs = href ? { href } : {}
   return (
     <div
       css={[
@@ -72,7 +76,8 @@ const EmojiSeparator = ({
       ]}
     >
       <>
-        <span
+        <EmojiWrapperComponent
+          {...emojiWrapperComponentAttrs}
           css={[
             css`
               display: flex;
@@ -90,7 +95,7 @@ const EmojiSeparator = ({
                 <Emoji type={emoji} />
               </SideSpace>
             ))}
-        </span>
+        </EmojiWrapperComponent>
         {description && (
           <Caption
             cssOverrides={

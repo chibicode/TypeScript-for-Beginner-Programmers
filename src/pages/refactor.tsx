@@ -151,6 +151,7 @@ const Page = () => (
                       margin-top: 0;
                     `}
                     leftAlign
+                    href={`#tip${index + 1}`}
                   />
                 </OlLi>
               ))}
