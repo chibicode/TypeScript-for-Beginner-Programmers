@@ -6,12 +6,12 @@ const CodeResult = ({
   resultText,
   resultComponent,
   resultError,
-  resultType
+  resultType = 'default'
 }: {
   resultText?: React.ReactNode
   resultError?: boolean
   resultComponent?: React.ReactNode
-  resultType: 'default' | 'top' | 'bottom'
+  resultType?: 'default' | 'top' | 'bottom'
   caption?: React.ReactNode
   belowResult?: React.ReactNode
 }) => {

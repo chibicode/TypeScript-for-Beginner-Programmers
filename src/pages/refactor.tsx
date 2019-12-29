@@ -17,6 +17,10 @@ import {
 import * as snippets from 'src/lib/snippets'
 import TwitterLink from 'src/components/TwitterLink'
 import CodeBlock from 'src/components/CodeBlock'
+import Caption from 'src/components/Caption'
+import CodeResult from 'src/components/CodeResult'
+import CodeResultWrapper from 'src/components/CodeResultWrapper'
+import ResultHighlight from 'src/components/ResultHighlight'
 import Emoji from 'src/components/Emoji'
 import InternalLink from 'src/components/InternalLink'
 import { articlesData } from 'src/lib/articles'
@@ -199,7 +203,8 @@ const Page = () => (
             </P>
             <P>
               If the above code was formatted like below instead, you’d have to
-              side-scroll on a phone:
+              side-scroll or wrap text on a small screen, which hurts
+              readability.
             </P>
             <CodeBlock
               snippet={snippets.zgvn}
@@ -368,31 +373,29 @@ const Page = () => (
           <>
             <EmojiSeparator emojis={techniques[1].emojis} />
             <P>
-              In test driven development, you’re supposed to follow the{' '}
-              <strong>“red, green, refactor”</strong> approach.{' '}
-              <Highlight>
-                You first write a failing test (“red” <Emoji type="cross" />
-                ), then you make the test pass (“green” <Emoji type="check" />
-                ), and finally you refactor <Emoji type="sparkles" /> the code.
-              </Highlight>
+              <strong>Use failure to capture your readers’ attention.</strong>{' '}
+              When things fail, people will pay more attention than when
+              everything goes smoothly.
             </P>
             <P>
-              This approach can also be used when you explain something in a
-              coding tutorial. Here’s how:
+              <strong>Fail fast:</strong> I try to show a failing scenario{' '}
+              <Highlight>as early as possible</Highlight> in your article.
             </P>
-            <Ol>
-              <OlLi>
-                <Emoji type="cross" /> <strong>“Red”:</strong>{' '}
-                <Highlight>
-                  First, talk through a scenario where you try to do something
-                  but it <strong>fails</strong>.
-                </Highlight>{' '}
-                In other words, start with a failure.
-              </OlLi>
-              <OlLi>
-                <Emoji type="check" /> <strong>“Green”:</strong>{' '}
-              </OlLi>
-            </Ol>
+            <CodeResultWrapper>
+              <Caption>?</Caption>
+              <CodeResult
+                resultText={
+                  <>
+                    Expected:
+                    <br />
+                    <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
+                    Actual:
+                    <br />
+                    <ResultHighlight>{`{ text: '…', done: false }`}</ResultHighlight>
+                  </>
+                }
+              />
+            </CodeResultWrapper>
           </>
         )
       }
