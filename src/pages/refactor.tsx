@@ -34,30 +34,28 @@ const techniques = [
   },
   {
     title: 'Fail fast',
-    emojis: ['cross', 'scaryCat', 'cross']
+    emojis: ['cross', 'running', 'dash']
   },
   {
     title: 'Prefer more minimal and practical examples',
-    emojis: []
+    emojis: ['badExample', 'singleArrow', 'star']
   },
   {
     title: 'Build on top of earlier examples',
-    emojis: []
+    emojis: ['star', 'singleArrow', 'shootingStar']
   },
   {
-    title: 'Bad analogy is better than no analogy',
-    emojis: []
+    title: 'Engage the brain: Use analogies and quizzes',
+    emojis: ['doubleArrow', 'brain', 'question']
   },
   {
     title: 'Visuals: Use arrows and faces',
-    emojis: []
+    emojis: ['scaryCat', 'singleArrow', 'heartCat']
   },
   {
     title: 'Add a touch of empathy',
-    emojis: []
+    emojis: ['sparkles', 'heartLetter', 'sparkles']
   }
-  // 'Emphasize important parts in code samples',
-  // 'Use minimum viable code samples'
 ] as const
 
 const RefactorSubtitle = ({ index }: { index: number }) => (

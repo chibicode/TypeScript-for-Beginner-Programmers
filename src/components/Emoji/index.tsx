@@ -36,6 +36,15 @@ import Cross from 'src/components/Emoji/Cross'
 import Rhino from 'src/components/Emoji/Rhino'
 import Prettier from 'src/components/Emoji/Prettier'
 import ScaryCat from 'src/components/Emoji/ScaryCat'
+import BadExample from 'src/components/Emoji/BadExample'
+import Running from 'src/components/Emoji/Running'
+import Dash from 'src/components/Emoji/Dash'
+import Star from 'src/components/Emoji/Star'
+import HeartCat from 'src/components/Emoji/HeartCat'
+import ShootingStar from 'src/components/Emoji/ShootingStar'
+import HeartLetter from 'src/components/Emoji/HeartLetter'
+import DoubleArrow from 'src/components/Emoji/DoubleArrow'
+import Brain from 'src/components/Emoji/Brain'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -73,7 +82,16 @@ export const emojiToComponent = {
   cross: Cross,
   rhino: Rhino,
   prettier: Prettier,
-  scaryCat: ScaryCat
+  scaryCat: ScaryCat,
+  badExample: BadExample,
+  running: Running,
+  dash: Dash,
+  star: Star,
+  heartCat: HeartCat,
+  shootingStar: ShootingStar,
+  heartLetter: HeartLetter,
+  brain: Brain,
+  doubleArrow: DoubleArrow
 }
 
 export const EmojiWrapper = ({
