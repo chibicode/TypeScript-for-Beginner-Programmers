@@ -478,10 +478,11 @@ const Page = () => (
             />
             <P>
               It’s tempting to be lazy and skip writing a failing test in TDD.
-              Similarly, it’s tempting to skip showing a failing example in a
-              coding tutorial—many writers start with a successful example. But
-              try not to skip it—
-              <Highlight>failure is your friend</Highlight> in teaching.
+              Similarly, when writing a coding tutorial, it’s tempting to skip
+              showing a failing example and just start with a successful
+              example. But try not to skip it—
+              <Highlight>failure is your friend</Highlight> in expository
+              writing.
             </P>
             <P>
               <strong>The bottom line:</strong>{' '}
