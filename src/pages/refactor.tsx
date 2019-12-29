@@ -37,8 +37,24 @@ const techniques = [
     emojis: ['cross', 'scaryCat', 'cross']
   },
   {
+    title: 'Prefer more minimal and practical examples',
+    emojis: []
+  },
+  {
+    title: 'Build on top of earlier examples',
+    emojis: []
+  },
+  {
     title: 'Bad analogy is better than no analogy',
-    emojis: ['check', 'smartphone', 'check']
+    emojis: []
+  },
+  {
+    title: 'Visuals: Use arrows and faces',
+    emojis: []
+  },
+  {
+    title: 'Add a touch of empathy',
+    emojis: []
   }
   // 'Emphasize important parts in code samples',
   // 'Use minimum viable code samples'
@@ -111,9 +127,9 @@ const Page = () => (
               </Highlight>{' '}
             </P>
             <P>
-              So, in this article, I’ll share some tecniques on refactoring
-              coding tutorials. I’ve used these techniques on my own tutorials
-              to make them more reader-friendly. Here’s the list:
+              So, in this article, I’ll share <strong>seven</strong> tecniques
+              on refactoring coding tutorials. I’ve used these techniques on my
+              own tutorials to make them more reader-friendly. Here’s the list:
             </P>
             <Ol>
               {techniques.map((technique, index) => (
