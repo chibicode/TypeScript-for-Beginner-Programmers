@@ -117,12 +117,7 @@ const Page = () => (
             </P>
             <Ol>
               {techniques.map((technique, index) => (
-                <OlLi
-                  key={technique.title}
-                  css={css`
-                    text-align: center;
-                  `}
-                >
+                <OlLi key={technique.title}>
                   <A
                     href={`#tip${index + 1}`}
                     css={css`
@@ -139,6 +134,7 @@ const Page = () => (
                     cssOverrides={css`
                       margin-top: 0;
                     `}
+                    leftAlign
                   />
                 </OlLi>
               ))}
@@ -464,9 +460,10 @@ const Page = () => (
               }
             />
             <P>
-              It’s tempting to skip writing a failing test in TDD. Similarly,
-              it’s tempting to skip showing a failing example in a coding
-              tutorial. But try not to skip it—
+              It’s tempting to be lazy and skip writing a failing test in TDD.
+              Similarly, it’s tempting to skip showing a failing example in a
+              coding tutorial—many writers start with a successful example. But
+              try not to skip it—
               <Highlight>failure is your friend</Highlight> in teaching.
             </P>
             <P>

@@ -13,6 +13,7 @@ interface EmojiSeparatorProps {
   cssOverrides?: SerializedStyles
   description?: React.ReactNode
   customChildren?: React.ReactNode
+  leftAlign?: boolean
 }
 
 const fontSize = (
@@ -49,30 +50,39 @@ const EmojiSeparator = ({
   size = 'md',
   cssOverrides,
   description,
-  customChildren
+  customChildren,
+  leftAlign
 }: EmojiSeparatorProps) => {
   const { spaces, ns, fontSizes } = useTheme()
   return (
     <div
       css={[
         css`
-          text-align: center;
           margin: ${spaces(margins(size)[0])} 0 ${spaces(margins(size)[1])};
           font-size: ${fontSizes(fontSize(size)[0])};
           ${ns} {
             font-size: ${fontSizes(fontSize(size)[1])};
           }
         `,
-        cssOverrides
+        cssOverrides,
+        !leftAlign &&
+          css`
+            text-align: center;
+          `
       ]}
     >
       <>
         <span
-          css={css`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          `}
+          css={[
+            css`
+              display: flex;
+            `,
+            !leftAlign &&
+              css`
+                align-items: center;
+                justify-content: center;
+              `
+          ]}
         >
           {customChildren ||
             (emojis || []).map((emoji, index) => (
