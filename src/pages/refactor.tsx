@@ -24,7 +24,8 @@ import { SourceAvailableText } from 'src/components/GitHubButton'
 
 const techniques = [
   'Make code samples fit on a small screen',
-  'Start with a failing example'
+  'Use the “Red, Green, Refactor” strategy',
+  'Bad analogy is better than no analogy'
   // 'Emphasize important parts in code samples',
   // 'Use minimum viable code samples'
 ]
@@ -186,8 +187,8 @@ const Page = () => (
               }
             />
             <P>
-              Here’s another example. This is <strong>good</strong> formatting
-              (fits on a small screen):
+              Here’s another example. This is <strong>good</strong> formatting (
+              <Emoji type="check" /> fits on a small screen):
             </P>
             <CodeBlock
               snippet={snippets.hszk}
@@ -199,8 +200,8 @@ const Page = () => (
               }
             />
             <P>
-              And this is the same code in <strong>BAD</strong> formatting
-              (doesn’t fit on a small screen):
+              And this is the same code in <strong>BAD</strong> formatting (
+              <Emoji type="cross" /> doesn’t fit on a small screen):
             </P>
             <CodeBlock
               snippet={snippets.mvsz}
@@ -311,7 +312,7 @@ const Page = () => (
               understand the content, but that’s not always the case.
             </P>
             <P>
-              <strong>Bottom line:</strong>{' '}
+              <strong>The bottom line:</strong>{' '}
               <Highlight>
                 Assume that people will discover your coding tutorial on their
                 phone and try to deliver the best possible first impression.
