@@ -487,8 +487,8 @@ const Page = () => (
             <P>
               <strong>The bottom line:</strong>{' '}
               <Highlight>
-                Double check to see where the first failure occurs in your
-                tutorial. If missing, add one near the beginning.
+                Double check to see where the first failing example appears in
+                your tutorial. If missing, add one near the beginning.
               </Highlight>
             </P>
           </>
