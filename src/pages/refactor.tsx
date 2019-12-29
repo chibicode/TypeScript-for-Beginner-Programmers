@@ -33,7 +33,7 @@ const techniques = [
     emojis: ['check', 'smartphone', 'check']
   },
   {
-    title: 'Fail fast, fail often',
+    title: 'Fail fast',
     emojis: ['cross', 'scaryCat', 'cross']
   },
   {
@@ -150,8 +150,7 @@ const Page = () => (
           content: (
             <>
               <P>
-                <strong>Note:</strong> Even if you’ve never written coding
-                tutorials,{' '}
+                Even if you’ve never written coding tutorials,{' '}
                 <Highlight>
                   you might know someone who has (maybe one of your Twitter
                   followers)
@@ -373,31 +372,125 @@ const Page = () => (
           <>
             <EmojiSeparator emojis={techniques[1].emojis} />
             <P>
-              <strong>Use failure to capture your readers’ attention.</strong>{' '}
-              When things fail, people will pay more attention than when
-              everything goes smoothly.
+              One of the best ways to capture your readers’ attention is to{' '}
+              <strong>FAIL</strong>. When things don’t go according to plan,
+              people will pay more attention than when everything goes smoothly.
+              Use this to your advantage.
             </P>
             <P>
-              <strong>Fail fast:</strong> I try to show a failing scenario{' '}
-              <Highlight>as early as possible</Highlight> in your article.
+              Furthermore, it’s more effective if you <strong>fail fast</strong>
+              .{' '}
+              <Highlight>
+                Try to show a failing scenario{' '}
+                <strong>as early as possible</strong> in your article.
+              </Highlight>{' '}
+              By doing so, you’ll be able to capture your readers’ attention
+              right off the bat.
+            </P>
+            <P>
+              For example, in{' '}
+              <InternalLink href="/todo">
+                one of my TypeScript tutorials
+              </InternalLink>
+              , I start with an example where, if you run the code, the actual
+              result is different from the expected result.
             </P>
             <CodeResultWrapper>
-              <Caption>?</Caption>
+              <Caption>
+                The <strong>first</strong> example in one of my tutorials: The
+                actual result is different from the expected result
+              </Caption>
               <CodeResult
                 resultText={
                   <>
-                    Expected:
+                    <Highlight color="lightGreen">Expected:</Highlight>
                     <br />
                     <ResultHighlight>{`{ id: 1, text: '…', done: false }`}</ResultHighlight>
-                    Actual:
+                    <Highlight color="lightPink2">Actual:</Highlight>
                     <br />
                     <ResultHighlight>{`{ text: '…', done: false }`}</ResultHighlight>
                   </>
                 }
               />
             </CodeResultWrapper>
+            <P>Here’s a simple technique you can use to fail fast:</P>
+            <Ol>
+              <OlLi>
+                If you want to teach a new concept—let’s call this{' '}
+                <strong>X</strong>, then…
+              </OlLi>
+              <OlLi>
+                <Highlight>
+                  Start with a <strong>concrete</strong> scenario where things
+                  fail or aren’t ideal when you don’t use <strong>X</strong>.
+                </Highlight>
+              </OlLi>
+              <OlLi>
+                Then,{' '}
+                <Highlight>
+                  use <strong>X</strong> to successfully solve the problem.
+                </Highlight>{' '}
+                By doing this, your readers will be more engaged and also
+                understand why <strong>X</strong> is worth learning.
+              </OlLi>
+            </Ol>
+            <P>
+              I used this technique on{' '}
+              <InternalLink href="/generics">
+                my TypeScript generics tutorial
+              </InternalLink>
+              . Early in the article, I attempt to solve a problem that can only
+              be solved by generics…without using generics. And fail. Then, I
+              use generics to successfully solve the problem.
+            </P>
+            <Hr />
+            <P>
+              In a way, this is similar to{' '}
+              <strong>test driven development (TDD)</strong>. In TDD, you write
+              a failing test first, and then after you watch it fail, you try to
+              make it pass. Similarly, in a coding tutorial,{' '}
+              <Highlight>
+                it’s more effective if readers go through a failing example
+                before a successful example.
+              </Highlight>
+            </P>
+            <EmojiSeparator
+              emojis={['cross', 'singleArrow', 'check']}
+              description={
+                <>
+                  In TDD, you write a failing test first. In a coding tutorial,
+                  make readers go through a failing example first
+                </>
+              }
+            />
+            <P>
+              It’s tempting to skip writing a failing test in TDD. Similarly,
+              it’s tempting to skip showing a failing example in a coding
+              tutorial. But try not to skip it—
+              <Highlight>failure is your friend</Highlight> in teaching.
+            </P>
+            <P>
+              <strong>The bottom line:</strong>{' '}
+              <Highlight>
+                Double check to see where the first failure occurs in your
+                tutorial. If missing, add one near the beginning.
+              </Highlight>
+            </P>
           </>
-        )
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>Fail unexpectedly:</strong> It’s also more effective if
+                the failure is <Highlight>surprising</Highlight>. Trick your
+                reader into thinking that a code sample would work perfectly—and
+                then make it fail. Unexpected failure = more memorable learning
+                experience.
+              </P>
+            </>
+          )
+        }
       }
     ]}
   />

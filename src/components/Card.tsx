@@ -49,7 +49,15 @@ const Card = ({
   subtitle,
   anchor
 }: CardProps) => {
-  const { ns, colors, fontSizes, spaces, radii, lineHeights } = useTheme()
+  const {
+    ns,
+    colors,
+    fontSizes,
+    spaces,
+    radii,
+    lineHeights,
+    letterSpacings
+  } = useTheme()
   return (
     <>
       {!isFirst && (
@@ -202,7 +210,7 @@ const Card = ({
                 padding: ${spaces(0.75)};
 
                 ${ns} {
-                  padding-top: ${spaces(1.25)};
+                  padding-top: ${spaces(1)};
                   padding-left: ${spaces(1.5)};
                   padding-right: ${spaces(1.5)};
                   padding-bottom: ${spaces(1)};
@@ -212,6 +220,21 @@ const Card = ({
                 border-bottom-left-radius: ${radii(0.5)};
               `}
             >
+              <h4
+                css={css`
+                  text-align: center;
+
+                  margin: ${spaces(0.25)} 0 ${spaces(0.75)};
+                  line-height: ${lineHeights(0.85)};
+                  font-size: ${fontSizes(0.85)};
+
+                  letter-spacing: ${letterSpacings('wide')};
+                  text-transform: uppercase;
+                  color: ${colors('brown')};
+                `}
+              >
+                Side Note
+              </h4>
               {footer.content}
             </div>
           )}
