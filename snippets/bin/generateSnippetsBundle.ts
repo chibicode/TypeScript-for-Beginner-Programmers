@@ -23,7 +23,8 @@ const regenerate = () => {
         return `export const ${filePathToKey(file)} = \`${contents
           .trim()
           .replace(/^;/m, '')
-          .replace(/`/g, '\\`')}\``
+          .replace(/`/g, '\\`')
+          .replace(/\$/g, '\\$')}\``
       })
       .join('\n\n')
 

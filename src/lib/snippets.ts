@@ -478,6 +478,18 @@ type CompletedTodo = Readonly<{ id: number text: string done: true }>`
 
 export const lplh = `console.log(1 + 2)`
 
+export const vnfq = `type Person = { name: string }
+type Loggable = { log: () => void }
+
+const jim: Person & Loggable = {
+  name: 'Jim',
+  log: function() {
+    console.log(\`Hello, I’m \${this.name}.\`)
+  }
+}
+
+jim.log()`
+
 export const ampt = `function toggleTodo(todo: Todo): Todo {
   return {
     // This line was missing
