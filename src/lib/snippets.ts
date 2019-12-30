@@ -469,12 +469,9 @@ const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
-export const mvsz = `function completeAll(todos: readonly Todo[]): CompletedTodo[] {
-  return todos.map(todo => ({ ...todo, done: true }))
-}`
+export const mvsz = `function makePair<F extends number | string, S extends boolean | F>() {}`
 
-export const zgvn = `type Todo = Readonly<{ id: number text: string done: boolean }>
-type CompletedTodo = Readonly<{ id: number text: string done: true }>`
+export const zgvn = `type Todo = Readonly<{ id: number; text: string; done: boolean; place: Place }>`
 
 export const lplh = `console.log(1 + 2)`
 
@@ -489,6 +486,11 @@ const jim: Person & Loggable = {
 }
 
 jim.log()`
+
+export const xwbz = `function makePair<
+  F extends number | string,
+  S extends boolean | F
+>() {}`
 
 export const ampt = `function toggleTodo(todo: Todo): Todo {
   return {

@@ -33,16 +33,16 @@ const techniques = [
     emojis: ['check', 'smartphone', 'check']
   },
   {
-    title: 'Fail fast',
-    emojis: ['cross', 'running', 'dash']
-  },
-  {
     title: 'Prefer more minimal and practical examples',
     emojis: ['badExample', 'singleArrow', 'star']
   },
   {
     title: 'Build on top of earlier examples',
     emojis: ['star', 'singleArrow', 'shootingStar']
+  },
+  {
+    title: 'Fail fast',
+    emojis: ['cross', 'running', 'dash']
   },
   {
     title: 'Engage the brain: Use analogies and quizzes',
@@ -163,7 +163,7 @@ const Page = () => (
           content: (
             <>
               <P>
-                Even if you’ve never written coding tutorials,{' '}
+                Even if you’ve never written a coding tutorial,{' '}
                 <Highlight>
                   you might know someone who has (maybe one of your Twitter
                   followers)
@@ -197,7 +197,7 @@ const Page = () => (
               ”:
             </P>
             <CodeBlock
-              snippet={snippets.rlya}
+              snippet={snippets.npgx}
               caption={
                 <>
                   Max line length: <Emoji type="check" />{' '}
@@ -214,33 +214,37 @@ const Page = () => (
               you can read it without side-scrolling on most phones.
             </P>
             <P>
-              If the above code was formatted like below instead, you’d have to
-              side-scroll or wrap text on a small screen, which hurts
-              readability.
+              If the above code was formatted in a single line like below
+              instead, you’d have to side-scroll or wrap text on a small screen,
+              which hurts readability.
             </P>
             <CodeBlock
               snippet={snippets.zgvn}
               caption={
                 <>
                   Max line length: <Emoji type="cross" />{' '}
-                  <strong>69 characters</strong>
+                  <strong>79 characters</strong>
                   <br />
                   <Highlight>
-                    Line length is long; must side-scroll on a phone
+                    Line is too long; must scroll or wrap on a phone
                   </Highlight>
                 </>
               }
             />
             <P>
-              Here’s another example. This is <strong>good</strong> formatting (
+              Here’s another example I used for my tutorial called “
+              <InternalLink href="/generics">
+                <em>{articlesData['generics']['title']}</em>
+              </InternalLink>
+              ”. This is <strong>good</strong> formatting (
               <Emoji type="check" /> fits on a small screen):
             </P>
             <CodeBlock
-              snippet={snippets.hszk}
+              snippet={snippets.xwbz}
               caption={
                 <>
                   Max line length: <Emoji type="check" />{' '}
-                  <strong>29 characters</strong>
+                  <strong>28 characters</strong>
                 </>
               }
             />
@@ -253,10 +257,10 @@ const Page = () => (
               caption={
                 <>
                   Max line length: <Emoji type="cross" />{' '}
-                  <strong>63 characters</strong>
+                  <strong>72 characters</strong>
                   <br />
                   <Highlight>
-                    Line length is long; must side-scroll on a phone
+                    Line is too long; must scroll or wrap on a phone
                   </Highlight>
                 </>
               }
@@ -301,6 +305,11 @@ const Page = () => (
                 </A>
                 —it’s slim and looks great. You can also tighten{' '}
                 <Code>letter-spacing</Code> to fit more characters.
+              </UlLi>
+              <UlLi>
+                If you want code samples to have longer line length on desktop,{' '}
+                <Highlight>you can use Prettier in the browser</Highlight> to
+                dynamically adjust line length based on window width.
               </UlLi>
             </Ul>
             <Hr />
@@ -383,6 +392,22 @@ const Page = () => (
         content: (
           <>
             <EmojiSeparator emojis={techniques[1].emojis} />
+          </>
+        )
+      },
+      {
+        ...refactoringCardProps(2),
+        content: (
+          <>
+            <EmojiSeparator emojis={techniques[2].emojis} />
+          </>
+        )
+      },
+      {
+        ...refactoringCardProps(3),
+        content: (
+          <>
+            <EmojiSeparator emojis={techniques[3].emojis} />
             <P>
               One of the best ways to capture your readers’ attention is to{' '}
               <strong>FAIL</strong>. When things don’t go according to plan,
@@ -507,22 +532,6 @@ const Page = () => (
             </>
           )
         }
-      },
-      {
-        ...refactoringCardProps(2),
-        content: (
-          <>
-            <EmojiSeparator emojis={techniques[2].emojis} />
-          </>
-        )
-      },
-      {
-        ...refactoringCardProps(3),
-        content: (
-          <>
-            <EmojiSeparator emojis={techniques[3].emojis} />
-          </>
-        )
       },
       {
         ...refactoringCardProps(4),
