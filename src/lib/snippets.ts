@@ -514,16 +514,16 @@ const jim = extend(
 jim.log(jim.name)`
 
 export const vnfq = `type Person = { name: string }
-type Loggable = { log: () => void }
+type Loggable = { log: (name: string) => void }
 
 const jim: Person & Loggable = {
   name: 'Jim',
-  log: function() {
-    console.log(\`Hello, I’m \${this.name}.\`)
+  log: name => {
+    console.log(\`Hello, I'm \${name}.\`)
   }
 }
 
-jim.log()`
+jim.log(jim.name)`
 
 export const xwbz = `function makePair<
   F extends number | string,

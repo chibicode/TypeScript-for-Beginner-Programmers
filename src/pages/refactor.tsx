@@ -33,11 +33,15 @@ const techniques = [
     emojis: ['check', 'smartphone', 'check']
   },
   {
-    title: 'Prefer more minimal and practical examples',
+    title: 'Prefer minimal code samples',
     emojis: ['badExample', 'singleArrow', 'star']
   },
   {
-    title: 'Build on top of earlier examples',
+    title: 'Prefer practical code samples',
+    emojis: ['badExample', 'singleArrow', 'star']
+  },
+  {
+    title: 'Prefer iterative code samples',
     emojis: ['star', 'singleArrow', 'shootingStar']
   },
   {
@@ -45,11 +49,11 @@ const techniques = [
     emojis: ['cross', 'running', 'dash']
   },
   {
-    title: 'Engage the brain: Use analogies and quizzes',
+    title: 'Use analogies and quizzes',
     emojis: ['doubleArrow', 'brain', 'question']
   },
   {
-    title: 'Visuals: Use arrows and faces',
+    title: 'Use arrows and faces',
     emojis: ['scaryCat', 'singleArrow', 'heartCat']
   },
   {
@@ -125,7 +129,7 @@ const Page = () => (
               </Highlight>{' '}
             </P>
             <P>
-              So, in this article, I’ll share <strong>seven</strong> tips on
+              So, in this article, I’ll share <strong>eight</strong> tips on
               refactoring coding tutorials. I’ve used these techniques on my own
               tutorials to make them more reader-friendly. Here’s the list:
             </P>
@@ -387,45 +391,29 @@ const Page = () => (
           <>
             <EmojiSeparator emojis={techniques[1].emojis} />
             <P>
-              Before we talk about this tip, let me give you a{' '}
-              <strong>quick quiz!</strong>
+              <strong>Let’s start with a quiz!</strong>{' '}
+              <A href="/images/refactor/asOfWriting.png">As of writing</A>, the
+              following code appears on the official{' '}
+              <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
+                TypeScript documentation
+              </A>
+              . And the documentation{' '}
+              <Highlight>
+                uses this code to explain how to use a particular TypeScript{' '}
+                <strong>keyword/operator</strong>.
+              </Highlight>
             </P>
-            <Ul>
-              <UlLi>
-                <strong>Check out the code below.</strong> Again, it’s in
-                TypeScript, but you DO NOT need to know TypeScript to answer
-                this quiz.
-              </UlLi>
-              <UlLi>
-                Here’s the deal: Someone (not me) wrote this code to explain{' '}
-                <Highlight>
-                  how to use a <strong>particular keyword/operator</strong> in
-                  TypeScript.
-                </Highlight>
-              </UlLi>
-              <UlLi>
-                <Highlight>
-                  That particular keyword is used in the code below.
-                </Highlight>{' '}
-                <strong>
-                  Question: Can you guess what that keyword/operator is?
-                </strong>
-              </UlLi>
-            </Ul>
-            <CodeBlock
-              snippet={snippets.onux}
-              smallText
-              caption={
-                <>
-                  Someone wrote this code to explain how to use a particular
-                  keyword/operator in TypeScript.{' '}
-                  <strong>What’s that keyword/operator?</strong>
-                </>
-              }
-            />
             <P>
-              <strong>Answer:</strong> The above code As of writing, the
-              official{' '}
+              <strong>Question:</strong>{' '}
+              <Highlight>
+                Can you tell which keyword/operator is being explained through
+                this code?
+              </Highlight>{' '}
+              (You don’t need to know TypeScript—just guess!)
+            </P>
+            <CodeBlock snippet={snippets.onux} smallText />
+            <P>
+              <strong>Answer:</strong> The official{' '}
               <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
                 TypeScript documentation
               </A>{' '}
@@ -436,9 +424,7 @@ const Page = () => (
                   “<Code>&amp;</Code>” operator
                 </strong>{' '}
                 in TypeScript.
-              </Highlight>{' '}
-              (It’s used to create an <Highlight>“intersection type”</Highlight>
-              , but you don’t need to know that.)
+              </Highlight>
             </P>
             <EmojiSeparator
               emojis={['ampersand']}
@@ -452,9 +438,8 @@ const Page = () => (
                 </>
               }
             />
-            <P></P>
             <P>
-              If you look at the code again, only{' '}
+              But it’s hard to tell! If you look at the code again, only{' '}
               <Highlight color="yellowHighlight">
                 <strong>the highlighted part</strong>
               </Highlight>{' '}
@@ -462,7 +447,11 @@ const Page = () => (
               <strong>
                 “<Code>&amp;</Code>” operator
               </strong>
-              .
+              . There are too many other keywords that are just noise (e.g.{' '}
+              <Code>Partial&lt;&gt;</Code>, <Code>hasOwnProperty</Code>,{' '}
+              <Code>as</Code>, <Code>constructor</Code>, <Code>public</Code>,{' '}
+              <Code>interface</Code>, <Code>void</Code>, <Code>implements</Code>
+              , <Code>prototype</Code>, etc).
             </P>
             <CodeBlock
               snippet={snippets.onux}
@@ -483,19 +472,62 @@ const Page = () => (
                   <strong>
                     “<Code>&amp;</Code>”
                   </strong>
+                  , the topic being explained through this code. Every other
+                  keyword is just noise!
                 </>
               }
             />
             <P>
-              <Highlight>
-                there are too many special keywords that aren’t the focus of the
-                explanation
-              </Highlight>{' '}
-              (e.g. <Code>Partial&lt;&gt;</Code>, <Code>hasOwnProperty</Code>,{' '}
-              <Code>as</Code>, <Code>constructor</Code>, <Code>public</Code>,{' '}
-              <Code>interface</Code>, <Code>void</Code>, <Code>implements</Code>
-              , <Code>prototype</Code>, etc).
+              So, in my opinion, the above code sample is{' '}
+              <em>NOT a great way</em> to explain how to use the{' '}
+              <strong>
+                “<Code>&amp;</Code>” operator
+              </strong>{' '}
+              in TypeScript.{' '}
             </P>
+            <P>
+              If I were to explain how the “<Code>&amp;</Code>” operator works
+              in TypeScript,{' '}
+              <Highlight>I’d rewrite the above code as follows</Highlight>
+              —it’s basically equivalent to the above code (same output) but is
+              more minimal and focused on the “<Code>&amp;</Code>” operator:
+            </P>
+            <CodeBlock
+              snippet={snippets.vnfq}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 3 && tokenIndex >= 5 && tokenIndex <= 9
+              }
+              caption={
+                <>
+                  If I were to explain how the “<Code>&amp;</Code>” operator
+                  works, I’d rewrite the above code as follows
+                </>
+              }
+            />
+            <P>
+              (In TypeScript, the “<Code>&amp;</Code>” operator creates an
+              intersection of two types. You can learn more on{' '}
+              <InternalLink href="/todo">my tutorial</InternalLink>.)
+            </P>
+            <P>
+              <strong>
+                What I want to say is: Prefer minimal code samples.
+              </strong>{' '}
+              <Highlight>
+                If you’re trying to teach <strong>X</strong> through a code
+                sample, just focus on <strong>X</strong> in the code and don’t
+                add too much extra stuff.
+              </Highlight>{' '}
+              Add extra stuff only when it <em>really</em> helps the reader’s
+              understanding.
+            </P>
+            <P>
+              You might be thinking: <em>“Well, that’s obvious.”</em> But trust
+              me, so many tutorials fail at keeping things simple and end up
+              with too much noise in code samples, making them hard to follow.
+            </P>
+            <Hr />
+            <P>Stackoverflow or GitHub issues...</P>
           </>
         )
       },
@@ -512,6 +544,14 @@ const Page = () => (
         content: (
           <>
             <EmojiSeparator emojis={techniques[3].emojis} />
+          </>
+        )
+      },
+      {
+        ...refactoringCardProps(4),
+        content: (
+          <>
+            <EmojiSeparator emojis={techniques[4].emojis} />
             <P>
               One of the best ways to capture your readers’ attention is to{' '}
               <strong>FAIL</strong>. When things don’t go according to plan,
@@ -639,14 +679,6 @@ const Page = () => (
         }
       },
       {
-        ...refactoringCardProps(4),
-        content: (
-          <>
-            <EmojiSeparator emojis={techniques[4].emojis} />
-          </>
-        )
-      },
-      {
         ...refactoringCardProps(5),
         content: (
           <>
@@ -659,6 +691,14 @@ const Page = () => (
         content: (
           <>
             <EmojiSeparator emojis={techniques[6].emojis} />
+          </>
+        )
+      },
+      {
+        ...refactoringCardProps(7),
+        content: (
+          <>
+            <EmojiSeparator emojis={techniques[7].emojis} />
           </>
         )
       }
