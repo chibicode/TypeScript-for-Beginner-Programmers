@@ -154,7 +154,9 @@ const Page = () => (
                 </OlLi>
               ))}
             </Ol>
-            <P>Let’s take a look!</P>
+            <P>
+              Let’s take a look! Warning: My tips are <em>very opinionated</em>.
+            </P>
           </>
         ),
         footer: {
@@ -450,8 +452,8 @@ const Page = () => (
                 my TypeScript generics tutorial
               </InternalLink>
               . Early in the article, I attempt to solve a problem that can only
-              be solved by generics…without using generics. And fail. Then, I
-              use generics to successfully solve the problem.
+              be solved by generics…without using generics. Of course, it fails.
+              Then, I use generics to successfully solve the problem.
             </P>
             <Hr />
             <P>
