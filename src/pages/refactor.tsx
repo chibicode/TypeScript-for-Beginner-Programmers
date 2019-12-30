@@ -430,11 +430,10 @@ const Page = () => (
               emojis={['ampersand']}
               description={
                 <>
-                  The above code is used to explain how to use the{' '}
-                  <strong>
-                    “<Code>&amp;</Code>”
-                  </strong>{' '}
-                  operator in TypeScript
+                  (Brief explanation: In TypeScript, the “<Code>&amp;</Code>”
+                  operator creates an intersection of two types. You can learn
+                  more on <InternalLink href="/todo">my tutorial</InternalLink>
+                  .)
                 </>
               }
             />
@@ -500,15 +499,10 @@ const Page = () => (
               caption={
                 <>
                   If I were to explain how the “<Code>&amp;</Code>” operator
-                  works, I’d rewrite the above code as follows
+                  works, I’d rewrite the above code as follows—much simpler!
                 </>
               }
             />
-            <P>
-              (In TypeScript, the “<Code>&amp;</Code>” operator creates an
-              intersection of two types. You can learn more on{' '}
-              <InternalLink href="/todo">my tutorial</InternalLink>.)
-            </P>
             <P>
               <strong>
                 What I want to say is: Prefer minimal code samples.
