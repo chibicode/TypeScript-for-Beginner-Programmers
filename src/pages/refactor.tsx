@@ -12,8 +12,7 @@ import {
   ForegroundHighlight,
   A,
   Code,
-  Hr,
-  Image
+  Hr
 } from 'src/components/ContentTags'
 import * as snippets from 'src/lib/snippets'
 import TwitterLink from 'src/components/TwitterLink'
@@ -126,9 +125,9 @@ const Page = () => (
               </Highlight>{' '}
             </P>
             <P>
-              So, in this article, I’ll share <strong>seven</strong> tecniques
-              on refactoring coding tutorials. I’ve used these techniques on my
-              own tutorials to make them more reader-friendly. Here’s the list:
+              So, in this article, I’ll share <strong>seven</strong> tips on
+              refactoring coding tutorials. I’ve used these techniques on my own
+              tutorials to make them more reader-friendly. Here’s the list:
             </P>
             <Ol>
               {techniques.map((technique, index) => (
@@ -388,51 +387,115 @@ const Page = () => (
           <>
             <EmojiSeparator emojis={techniques[1].emojis} />
             <P>
-              Let me give you a <strong>quick quiz!</strong>
+              Before we talk about this tip, let me give you a{' '}
+              <strong>quick quiz!</strong>
             </P>
             <Ul>
               <UlLi>
                 <strong>Check out the code below.</strong> Again, it’s in
-                TypeScript, but you DO NOT need to understand how the code works
-                to answer this quiz.
+                TypeScript, but you DO NOT need to know TypeScript to answer
+                this quiz.
               </UlLi>
               <UlLi>
-                This code is actually used in the official{' '}
-                <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
-                  TypeScript documentation
-                </A>{' '}
-                (as of writing) to{' '}
+                Here’s the deal: Someone (not me) wrote this code to explain{' '}
                 <Highlight>
-                  show how to use a <strong>particular keyword</strong> in
+                  how to use a <strong>particular keyword/operator</strong> in
                   TypeScript.
                 </Highlight>
               </UlLi>
               <UlLi>
                 <Highlight>
-                  That particular keyword is used in the code.
+                  That particular keyword is used in the code below.
                 </Highlight>{' '}
-                <strong>Question: Can you guess what that keyword is?</strong>
+                <strong>
+                  Question: Can you guess what that keyword/operator is?
+                </strong>
               </UlLi>
             </Ul>
-            <CodeBlock snippet={snippets.onux} smallText />
-            <P>
-              I write <InternalLink href="/">TypeScript tutorials</InternalLink>{' '}
-              on this site, so I’m going to use{' '}
-              <A href="https://www.typescriptlang.org/docs/home.html">
-                <Highlight>TypeScript’s official documentation</Highlight>
-              </A>{' '}
-              as a case study. As of writing, if you open its page called{' '}
-              <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
-                “Advanced Types”
-              </A>
-              , the very first thing you see is its explanation of TypeScript’s
-              feature called <strong>“Intersection Types”</strong>:
-            </P>
-            <Image
-              src="/images/refactor/tsdoc.gif"
-              customWidth="smmd"
-              caption={<>“Advanced Types” on official TypeScript doc</>}
+            <CodeBlock
+              snippet={snippets.onux}
+              smallText
+              caption={
+                <>
+                  Someone wrote this code to explain how to use a particular
+                  keyword/operator in TypeScript.{' '}
+                  <strong>What’s that keyword/operator?</strong>
+                </>
+              }
             />
+            <P>
+              <strong>Answer:</strong> The above code As of writing, the
+              official{' '}
+              <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
+                TypeScript documentation
+              </A>{' '}
+              uses the above code to explain{' '}
+              <Highlight>
+                how to use the{' '}
+                <strong>
+                  “<Code>&amp;</Code>” operator
+                </strong>{' '}
+                in TypeScript.
+              </Highlight>{' '}
+              (It’s used to create an <Highlight>“intersection type”</Highlight>
+              , but you don’t need to know that.)
+            </P>
+            <EmojiSeparator
+              emojis={['ampersand']}
+              description={
+                <>
+                  The above code is used to explain how to use the{' '}
+                  <strong>
+                    “<Code>&amp;</Code>”
+                  </strong>{' '}
+                  operator in TypeScript
+                </>
+              }
+            />
+            <P></P>
+            <P>
+              If you look at the code again, only{' '}
+              <Highlight color="yellowHighlight">
+                <strong>the highlighted part</strong>
+              </Highlight>{' '}
+              below is related to the{' '}
+              <strong>
+                “<Code>&amp;</Code>” operator
+              </strong>
+              .
+            </P>
+            <CodeBlock
+              snippet={snippets.onux}
+              smallText
+              semiTransparentTextExceptHighlight
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 3 && tokenIndex >= 4 && tokenIndex <= 8) ||
+                (lineIndex === 4 && tokenIndex >= 7 && tokenIndex <= 11) ||
+                (lineIndex === 15 && tokenIndex >= 5)
+              }
+              caption={
+                <>
+                  Only{' '}
+                  <Highlight color="yellowHighlight">
+                    <strong>the highlighted part</strong>
+                  </Highlight>{' '}
+                  is related to{' '}
+                  <strong>
+                    “<Code>&amp;</Code>”
+                  </strong>
+                </>
+              }
+            />
+            <P>
+              <Highlight>
+                there are too many special keywords that aren’t the focus of the
+                explanation
+              </Highlight>{' '}
+              (e.g. <Code>Partial&lt;&gt;</Code>, <Code>hasOwnProperty</Code>,{' '}
+              <Code>as</Code>, <Code>constructor</Code>, <Code>public</Code>,{' '}
+              <Code>interface</Code>, <Code>void</Code>, <Code>implements</Code>
+              , <Code>prototype</Code>, etc).
+            </P>
           </>
         )
       },
@@ -518,18 +581,18 @@ const Page = () => (
                 my TypeScript generics tutorial
               </InternalLink>
               . Early in the article, I attempt to solve a problem that can only
-              be solved by generics…without using generics. Of course, it fails.
+              be solved by generics…without using generics. Of course, I fail.
               Then, I use generics to successfully solve the problem.
             </P>
             <Hr />
             <P>
               In a way, this is similar to{' '}
               <strong>test driven development (TDD)</strong>. In TDD, you write
-              a failing test first, and then after you watch it fail, you try to
-              make it pass. Similarly, in a coding tutorial,{' '}
+              a failing test first, and after you watch the test fail, you try
+              to make it pass. Similarly, in a coding tutorial,{' '}
               <Highlight>
-                it’s more effective if readers go through a failing example
-                before a successful example.
+                it’s more effective if you show a failing example first and have
+                the readers watch it fail.
               </Highlight>
             </P>
             <EmojiSeparator
@@ -553,7 +616,8 @@ const Page = () => (
               <strong>The bottom line:</strong>{' '}
               <Highlight>
                 Double check to see where the first failing example appears in
-                your tutorial. If missing, add one near the beginning.
+                your tutorial. If it’s missing, add one near the beginning of
+                your tutorial.
               </Highlight>
             </P>
           </>

@@ -23,7 +23,8 @@ const CodeBlock = ({
   tokenIndexIndentWorkaround,
   defaultErrorHighlight,
   narrowText,
-  smallText
+  smallText,
+  semiTransparentTextExceptHighlight
 }: {
   snippet: string
   shouldHighlight?: (lineIndex: number, tokenIndex: number) => boolean
@@ -39,6 +40,7 @@ const CodeBlock = ({
   defaultErrorHighlight?: boolean
   narrowText?: boolean
   smallText?: boolean
+  semiTransparentTextExceptHighlight?: boolean
 }) => {
   const [resultVisible, setResultVisible] = useState(defaultResultVisible)
   const {
@@ -106,27 +108,32 @@ const CodeBlock = ({
               }
             `
         ]}
-        lineCssOverrides={(lineIndex, tokenIndex) =>
+        lineCssOverrides={(lineIndex, tokenIndex) => [
+          semiTransparentTextExceptHighlight &&
+            css`
+              opacity: 0.5;
+            `,
           ((!!shouldHighlight &&
             !resultVisible &&
             shouldHighlight(lineIndex, tokenIndex)) ||
             (!!shouldHighlightResult &&
               resultVisible &&
               shouldHighlightResult(lineIndex, tokenIndex))) &&
-          css`
-            font-weight: bold;
-            background: ${((shouldHighlightResult && resultVisible) ||
-              defaultErrorHighlight) &&
-            resultError
-              ? colors('white')
-              : colors('yellowHighlight')};
-            border-bottom: ${((shouldHighlightResult && resultVisible) ||
-              defaultErrorHighlight) &&
-            resultError
-              ? `3px solid ${colors('red')}`
-              : `2px solid ${colors('darkOrange')}`};
-          `
-        }
+            css`
+              opacity: 1;
+              font-weight: bold;
+              background: ${((shouldHighlightResult && resultVisible) ||
+                defaultErrorHighlight) &&
+              resultError
+                ? colors('white')
+                : colors('yellowHighlight')};
+              border-bottom: ${((shouldHighlightResult && resultVisible) ||
+                defaultErrorHighlight) &&
+              resultError
+                ? `3px solid ${colors('red')}`
+                : `2px solid ${colors('darkOrange')}`};
+            `
+        ]}
         language={noHighlight ? 'diff' : 'typescript'}
       />
       {result && (
