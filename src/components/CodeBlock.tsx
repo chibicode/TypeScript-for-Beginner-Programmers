@@ -22,7 +22,8 @@ const CodeBlock = ({
   resultError,
   tokenIndexIndentWorkaround,
   defaultErrorHighlight,
-  narrowText
+  narrowText,
+  smallText
 }: {
   snippet: string
   shouldHighlight?: (lineIndex: number, tokenIndex: number) => boolean
@@ -37,6 +38,7 @@ const CodeBlock = ({
   tokenIndexIndentWorkaround?: number
   defaultErrorHighlight?: boolean
   narrowText?: boolean
+  smallText?: boolean
 }) => {
   const [resultVisible, setResultVisible] = useState(defaultResultVisible)
   const {
@@ -46,7 +48,8 @@ const CodeBlock = ({
     maxWidths,
     spaces,
     fontSizes,
-    letterSpacings
+    letterSpacings,
+    nt
   } = useTheme()
   const buttonOnClick = () => setResultVisible(true)
 
@@ -93,6 +96,14 @@ const CodeBlock = ({
           narrowText &&
             css`
               letter-spacing: ${letterSpacings('smallCode')};
+            `,
+          smallText &&
+            css`
+              font-size: ${fontSizes(0.75)};
+
+              ${nt} {
+                font-size: ${fontSizes(0.75)};
+              }
             `
         ]}
         lineCssOverrides={(lineIndex, tokenIndex) =>

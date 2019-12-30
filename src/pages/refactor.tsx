@@ -191,21 +191,15 @@ const Page = () => (
           <>
             <EmojiSeparator emojis={techniques[0].emojis} />
             <P>
-              Take a look at the code below. I used it for my tutorial called “
+              <strong>Take a look at the code below.</strong> It’s in
+              TypeScript, but don’t worry if you don’t know TypeScript. I used
+              it for my tutorial called “
               <InternalLink href="/todo">
                 <em>{articlesData['todo']['title']}</em>
               </InternalLink>
               ”:
             </P>
-            <CodeBlock
-              snippet={snippets.npgx}
-              caption={
-                <>
-                  Max line length: <Emoji type="check" />{' '}
-                  <strong>31 characters</strong>
-                </>
-              }
-            />
+            <CodeBlock snippet={snippets.npgx} />
             <P>
               Did you notice that the above code is{' '}
               <strong>formatted to fit on a small screen</strong>?{' '}
@@ -393,6 +387,34 @@ const Page = () => (
         content: (
           <>
             <EmojiSeparator emojis={techniques[1].emojis} />
+            <P>
+              Let me give you a <strong>quick quiz!</strong>
+            </P>
+            <Ul>
+              <UlLi>
+                <strong>Check out the code below.</strong> Again, it’s in
+                TypeScript, but you DO NOT need to understand how the code works
+                to answer this quiz.
+              </UlLi>
+              <UlLi>
+                This code is actually used in the official{' '}
+                <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
+                  TypeScript documentation
+                </A>{' '}
+                (as of writing) to{' '}
+                <Highlight>
+                  show how to use a <strong>particular keyword</strong> in
+                  TypeScript.
+                </Highlight>
+              </UlLi>
+              <UlLi>
+                <Highlight>
+                  That particular keyword is used in the code.
+                </Highlight>{' '}
+                <strong>Question: Can you guess what that keyword is?</strong>
+              </UlLi>
+            </Ul>
+            <CodeBlock snippet={snippets.onux} smallText />
             <P>
               I write <InternalLink href="/">TypeScript tutorials</InternalLink>{' '}
               on this site, so I’m going to use{' '}
