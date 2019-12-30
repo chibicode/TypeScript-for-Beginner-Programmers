@@ -12,7 +12,8 @@ import {
   ForegroundHighlight,
   A,
   Code,
-  Hr
+  Hr,
+  Image
 } from 'src/components/ContentTags'
 import * as snippets from 'src/lib/snippets'
 import TwitterLink from 'src/components/TwitterLink'
@@ -392,6 +393,24 @@ const Page = () => (
         content: (
           <>
             <EmojiSeparator emojis={techniques[1].emojis} />
+            <P>
+              I write <InternalLink href="/">TypeScript tutorials</InternalLink>{' '}
+              on this site, so I’m going to use{' '}
+              <A href="https://www.typescriptlang.org/docs/home.html">
+                <Highlight>TypeScript’s official documentation</Highlight>
+              </A>{' '}
+              as a case study. As of writing, if you open its page called{' '}
+              <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
+                “Advanced Types”
+              </A>
+              , the very first thing you see is its explanation of TypeScript’s
+              feature called <strong>“Intersection Types”</strong>:
+            </P>
+            <Image
+              src="/images/refactor/tsdoc.gif"
+              customWidth="smmd"
+              caption={<>“Advanced Types” on official TypeScript doc</>}
+            />
           </>
         )
       },
