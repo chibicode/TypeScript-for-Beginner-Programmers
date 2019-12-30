@@ -96,7 +96,7 @@ const Page = () => (
               but the tutorial you found made you more frustrated than before.
             </P>
             <EmojiSeparator
-              emojis={['uglyTutorial', 'cryingCat', 'question']}
+              emojis={['uglyTutorial', 'cryingCat']}
               description={
                 <>
                   You’ve probably come across a coding tutorial that’s not so
