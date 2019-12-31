@@ -519,7 +519,7 @@ const Page = () => (
               </strong>{' '}
               in TypeScript. To make matters worse,{' '}
               <A href="/images/refactor/asOfWriting.png">as of writing</A>, this
-              is the ONLY code example used to explain the “<Code>&amp;</Code>”
+              is the ONLY code sample used to explain the “<Code>&amp;</Code>”
               operator on the official doc!
             </P>
             <P>
@@ -703,10 +703,11 @@ const Page = () => (
               }
             />
             <P>
-              <strong>You probably would not</strong>.{' '}
+              <strong>You probably would not</strong>. It just does simple
+              string concatenation backwards.{' '}
               <Highlight>
                 You probably would just use other standard way to concatenate
-                two strings, like <Code>'Jim: ' + 'Hello World'</Code>
+                strings, like <Code>'Jim: ' + 'Hello World'</Code>
               </Highlight>
               . There’s no good reason why this API should exist.
             </P>
@@ -735,9 +736,13 @@ const Page = () => (
             <P>
               So, here’s my third refactoring tip:{' '}
               <strong>Prefer practical code samples</strong>.{' '}
-              <Highlight>Avoid code or API that no one would use.</Highlight> If
-              you’re trying to teach a new concept <strong>X</strong>,{' '}
-              <Highlight>...</Highlight>{' '}
+              <Highlight>Avoid showing code that no one would write.</Highlight>{' '}
+              If you’re trying to teach a new concept <strong>X</strong>,{' '}
+              <Highlight>
+                come up with a <em>practical</em> code sample where{' '}
+                <strong>X</strong> is <em>actually</em> useful in solving the
+                problem.
+              </Highlight>{' '}
             </P>
           </>
         )
