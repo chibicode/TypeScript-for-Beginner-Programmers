@@ -477,24 +477,34 @@ const Page = () => (
               }
             />
             <P>
-              So, in my opinion, the above code sample is{' '}
-              <em>NOT a great way</em> to explain how to use the{' '}
+              So, in my opinion,{' '}
+              <Highlight>
+                the above code sample is <em>NOT a great way</em>
+              </Highlight>{' '}
+              to explain how to use the{' '}
               <strong>
                 “<Code>&amp;</Code>” operator
               </strong>{' '}
-              in TypeScript.{' '}
+              in TypeScript. To make matters worse,{' '}
+              <A href="/images/refactor/asOfWriting.png">as of writing</A>, this
+              is the ONLY code example used to explain the “<Code>&amp;</Code>”
+              operator on the official doc!
             </P>
             <P>
               If I were to explain how the “<Code>&amp;</Code>” operator works
               in TypeScript,{' '}
-              <Highlight>I’d rewrite the above code as follows</Highlight>
-              —it’s basically equivalent to the above code (same output) but is
-              more minimal and focused on the “<Code>&amp;</Code>” operator:
+              <Highlight>
+                I’d <strong>refactor</strong> the earlier code as follows
+              </Highlight>
+              —it basically does the same thing, but in a simpler way. You don’t
+              need to understand TypeScript to know that this is more minimal
+              and focused on explaining how to use the “<Code>&amp;</Code>”
+              operator.
             </P>
             <CodeBlock
               snippet={snippets.vnfq}
               shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 3 && tokenIndex >= 5 && tokenIndex <= 9
+                lineIndex === 4 && tokenIndex >= 5 && tokenIndex <= 9
               }
               caption={
                 <>
@@ -517,8 +527,9 @@ const Page = () => (
             </P>
             <P>
               You might be thinking: <em>“Well, that’s obvious.”</em> But trust
-              me, so many tutorials fail at keeping things simple and end up
-              with too much noise in code samples, making them hard to follow.
+              me, so many tutorials (including the official TypeScript doc!)
+              fail at keeping things simple and end up with too much noise in
+              code samples, making them hard to follow.
             </P>
             <Hr />
             <P>Stackoverflow or GitHub issues...</P>

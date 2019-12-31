@@ -516,6 +516,7 @@ jim.log(jim.name)`
 export const vnfq = `type Person = { name: string }
 type Loggable = { log: (name: string) => void }
 
+// Use & to make jim BOTH Person AND Loggable
 const jim: Person & Loggable = {
   name: 'Jim',
   log: name => {
