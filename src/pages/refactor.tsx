@@ -534,7 +534,16 @@ const Page = () => (
             <Hr />
             <P>Stackoverflow or GitHub issues...</P>
           </>
-        )
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <strong>Tutorials vs Documentations</strong>:{' '}
+              </P>
+            </>
+          )
+        }
       },
       {
         ...refactoringCardProps(2),

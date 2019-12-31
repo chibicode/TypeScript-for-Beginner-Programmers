@@ -524,6 +524,7 @@ const jim: Person & Loggable = {
   }
 }
 
+// "Hello, I’m Jim."
 jim.log(jim.name)`
 
 export const xwbz = `function makePair<
