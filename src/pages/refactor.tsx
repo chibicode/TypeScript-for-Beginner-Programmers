@@ -55,10 +55,10 @@ const techniques = [
   {
     title: (
       <>
-        Prefer <Highlight>iterative</Highlight> code samples
+        Stick to <Highlight>one theme</Highlight>
       </>
     ),
-    emojis: ['star', 'singleArrow', 'shootingStar']
+    emojis: ['seeMonkey', 'hearMonkey', 'speakMonkey']
   },
   {
     title: (
@@ -818,6 +818,11 @@ const Page = () => (
         content: (
           <>
             <EmojiSeparator emojis={techniques[3].emojis} />
+            <P>
+              If you can, try to <strong>stick to one theme</strong> and{' '}
+              <Highlight>generate as many code samples as possible</Highlight>{' '}
+              from that theme.
+            </P>
           </>
         )
       },
