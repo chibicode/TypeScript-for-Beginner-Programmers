@@ -79,15 +79,7 @@ const techniques = [
   {
     title: (
       <>
-        Use <Highlight>arrows</Highlight> and <Highlight>faces</Highlight>
-      </>
-    ),
-    emojis: ['scaryCat', 'singleArrow', 'heartCat']
-  },
-  {
-    title: (
-      <>
-        Add a touch of <Highlight>empathy</Highlight>
+        Add a <Highlight>human</Highlight> touch
       </>
     ),
     emojis: ['sparkles', 'heartLetter', 'sparkles']
@@ -96,7 +88,7 @@ const techniques = [
 
 const RefactorSubtitle = ({ index }: { index: number }) => (
   <ForegroundHighlight color="gray">
-    Refactoring Tip <ForegroundHighlight>{index + 1}</ForegroundHighlight> of 8:
+    Refactoring Tip <ForegroundHighlight>{index + 1}</ForegroundHighlight> of 7:
   </ForegroundHighlight>
 )
 
@@ -163,7 +155,7 @@ const Page = () => (
               </Highlight>{' '}
             </P>
             <P>
-              So, in this article, I’ll share <strong>eight</strong> tips on
+              So, in this article, I’ll share <strong>seven</strong> tips on
               refactoring coding tutorials. I’ve used these techniques on my own
               tutorials to make them more reader-friendly. Here’s the list:
             </P>
@@ -714,18 +706,6 @@ const Page = () => (
               . There’s no good reason why this API should exist.
             </P>
             <P>
-              It <em>could</em> have been useful if you could pass both a{' '}
-              <Code>number</Code> and a <Code>string</Code>, and have it repeat
-              the string the specified number of times (see below). But that’s
-              not what we have.
-            </P>
-            <CodeBlock
-              snippet={snippets.bxzx}
-              shouldHighlight={(lineIndex, tokenIndex) =>
-                lineIndex === 3 && tokenIndex >= 6 && tokenIndex <= 9
-              }
-            />
-            <P>
               <strong>The bottom line:</strong>{' '}
               <Code>padLeft(value, padding)</Code> is useful if{' '}
               <Code>padding</Code> is <Code>number</Code> but is{' '}
@@ -744,10 +724,88 @@ const Page = () => (
                 come up with a <em>practical</em> code sample where{' '}
                 <strong>X</strong> is <em>actually</em> useful in solving the
                 problem.
+              </Highlight>
+            </P>
+            <P>
+              By showing a practical example,{' '}
+              <Highlight>
+                readers will understand why <strong>X</strong> is worth
+                learning.
               </Highlight>{' '}
+              If you show them a useless example, they’d be like,{' '}
+              <em>
+                “What’s the point of learning <strong>X</strong>?”
+              </em>
+            </P>
+            <P>
+              <strong>Example:</strong> If I were to explain how to use{' '}
+              <Code>number | string</Code> in TypeScript, instead of the earlier{' '}
+              <Code>padLeft()</Code> example, I would use the following{' '}
+              <Code>
+                <strong>paddingLeftCss()</strong>
+              </Code>{' '}
+              function:
+            </P>
+            <CodeBlock snippet={snippets.hfdq} />
+            <P>
+              <Code>paddingLeftCss()</Code> can take a <Code>number</Code> or{' '}
+              <Code>string</Code>:
+            </P>
+            <Ul>
+              <UlLi>
+                If it’s <Code>number</Code>, it returns{' '}
+                <Code>padding-left</Code> CSS that’s a multiple of a predefined
+                spacing unit. In this case, <Code>1 = 0.25rem</Code>,{' '}
+                <Code>2 = 0.5rem</Code>, etc. This would be helpful for visual
+                consistency when designing UI.
+              </UlLi>
+              <UlLi>
+                If it’s <Code>string</Code>, it just uses that string as{' '}
+                <Code>padding-left</Code>.
+              </UlLi>
+            </Ul>
+            <P>
+              This is similar to how UI libraries like{' '}
+              <A href="https://github.com/styled-system/styled-system">
+                styled-system
+              </A>{' '}
+              work. In other words, it’s a <strong>practical</strong> example.{' '}
+              <Highlight>
+                It <em>actually makes sense</em> to have the parameter be either{' '}
+                <Code>number</Code> or <Code>string</Code>,
+              </Highlight>{' '}
+              unlike the previous example.
+            </P>
+            <Hr />
+            <P>
+              <strong>To summarize, always ask yourself:</strong>{' '}
+              <Highlight>
+                Is my code example practical? Would anyone ever write code like
+                this?
+              </Highlight>
             </P>
           </>
-        )
+        ),
+        footer: {
+          content: (
+            <>
+              <P>
+                <Code color="white75">padLeft()</Code> <em>could</em> have been
+                useful if you could pass both a{' '}
+                <Code color="white75">number</Code> and a{' '}
+                <Code color="white75">string</Code>, and have it repeat the
+                string the specified number of times (see below). But that’s not
+                what we had.
+              </P>
+              <CodeBlock
+                snippet={snippets.bxzx}
+                shouldHighlight={(lineIndex, tokenIndex) =>
+                  lineIndex === 3 && tokenIndex >= 6 && tokenIndex <= 9
+                }
+              />
+            </>
+          )
+        }
       },
       {
         ...refactoringCardProps(3),
@@ -893,14 +951,6 @@ const Page = () => (
         content: (
           <>
             <EmojiSeparator emojis={techniques[6].emojis} />
-          </>
-        )
-      },
-      {
-        ...refactoringCardProps(7),
-        content: (
-          <>
-            <EmojiSeparator emojis={techniques[7].emojis} />
           </>
         )
       }
