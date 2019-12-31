@@ -73,7 +73,7 @@ const techniques = [
   {
     title: (
       <>
-        Add a <Highlight>human</Highlight> touch
+        Add a <Highlight>thoughtful</Highlight> touch
       </>
     ),
     emojis: ['sparkles', 'heartLetter', 'sparkles']
@@ -935,8 +935,8 @@ const Page = () => (
           <>
             <EmojiSeparator emojis={techniques[4].emojis} />
             <P>
-              Let’s talk about the 3 simple techniques you can use to engage the
-              readers’ brain. <Emoji type="brain"></Emoji>
+              Let’s talk about the <strong>3 simple techniques</strong> you can
+              use to engage the readers’ brain. <Emoji type="brain"></Emoji>
             </P>
             <Hr />
             <P>
@@ -1073,6 +1073,70 @@ const Page = () => (
         content: (
           <>
             <EmojiSeparator emojis={techniques[5].emojis} />
+            <P>
+              This is the final section! Here are some mini tips to add a
+              thoughtful touch on your tutorial.
+            </P>
+            <Hr />
+            <P>
+              <strong>
+                Visually emphasize important parts in your code samples.
+              </strong>{' '}
+              <Highlight color="yellowHighlight">Highlight</Highlight> or{' '}
+              <strong>bold</strong> important words/lines so your readers know
+              what to pay attention to. You can also{' '}
+              <Highlight>add a comment</Highlight> next to the emphasized
+              words/lines to make it even clearer.
+            </P>
+            <CodeBlock
+              snippet={snippets.yxjg}
+              caption={
+                <>
+                  <Highlight color="yellowHighlight">Highlight</Highlight> or{' '}
+                  <strong>bold</strong> important words/lines
+                </>
+              }
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 3 && tokenIndex >= 0 && tokenIndex <= 4
+              }
+            />
+            <Hr />
+            <P>
+              <strong>Use graphics that represent faces.</strong> There’s a
+              reason a lot of ads have someone’s face in it. People’s brain is
+              wired to pay attention to faces. Take advantage of this to grab
+              your readers’ attention.
+            </P>
+            <P>
+              One of the easiest ways to do this is to use{' '}
+              <strong>emojis</strong>. Just insert a happy{' '}
+              <Emoji type="heartCat" /> emoji when things are going well, and
+              insert a scared <Emoji type="scaryCat" /> emoji when things don’t
+              go as expected.
+            </P>
+            <EmojiSeparator
+              emojis={['heartCat', 'smilingCat', 'scaryCat']}
+              description={
+                <>
+                  Use emojis to express emotions your readers should be feeling
+                </>
+              }
+            />
+            <Hr />
+            <P>
+              <strong>Use text-only graphics.</strong> One of the simplest yet
+              very effective graphics is the text-only ones like below (which I
+              used earlier):
+            </P>
+            <EmojiSeparator
+              emojis={['uglyCode', 'refactorArrow', 'cleanCode']}
+            />
+            <P>
+              It’s very simple—two squares with text and one arrow with text.
+              But it’s great for emphasis and helps your readers visually
+              remember the concept.
+            </P>
+            <Hr />
           </>
         )
       }
