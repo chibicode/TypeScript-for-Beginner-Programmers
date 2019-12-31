@@ -1054,15 +1054,13 @@ const Page = () => (
               <Emoji type="question" /> Finally,{' '}
               <Highlight>
                 <strong>use quizzes</strong>
-              </Highlight>
-              . In your tutorial,{' '}
+              </Highlight>{' '}
+              to make your readers pause and think. In your tutorial,{' '}
               <Highlight>
                 count how many times you ask your readers{' '}
                 <em>“what would happen if you do X?”</em>
               </Highlight>
-              . If that count is zero, add some quizzes in order to make your
-              readers pause and think. Even simple yes-no quizzes are better
-              than having no quiz!
+              . Even simple yes-no quizzes are better than having zero quiz!
             </P>
           </>
         )
