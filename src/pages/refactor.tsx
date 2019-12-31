@@ -26,6 +26,7 @@ import InternalLink from 'src/components/InternalLink'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 import { SourceAvailableText } from 'src/components/GitHubButton'
+import TodoWithData from 'src/components/TodoWithData'
 
 const techniques = [
   {
@@ -935,7 +936,15 @@ const Page = () => (
           <>
             <EmojiSeparator emojis={techniques[4].emojis} />
             <P>
-              <Emoji type="pumpkin" /> <strong>Use themes:</strong>{' '}
+              Let’s talk about the 3 simple techniques you can use to engage the
+              readers’ brain. <Emoji type="brain"></Emoji>
+            </P>
+            <Hr />
+            <P>
+              <Emoji type="pumpkin" /> First,{' '}
+              <Highlight>
+                <strong>use themes:</strong>
+              </Highlight>{' '}
               <Highlight>
                 If your tutorial doesn’t have a <strong>theme</strong> that ties
                 together your examples, try to add one
@@ -955,6 +964,105 @@ const Page = () => (
                 I use a simple theme of <strong>building a todo app</strong> to
                 explain all those 8 topics.
               </Highlight>
+            </P>
+            <P>
+              In my tutorial, you implement the{' '}
+              <Highlight>“toggle todo”</Highlight> feature of a todo app first:
+            </P>
+            <TodoWithData
+              promptArrowText={<>↑ Check and uncheck the checkboxes!</>}
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false }
+              ]}
+            />
+            <P>
+              To implement this feature, you need to write the{' '}
+              <Code>toggleTodo()</Code> function, and in that process I explain
+              <em>TypeScript types, read-only properties, and mapped types</em>.
+            </P>
+            <P>
+              After this, you then implement the{' '}
+              <Highlight>“mark all as completed”</Highlight> feature:
+            </P>
+            <TodoWithData
+              promptArrowText={
+                <>
+                  ↑ Try pressing <Highlight>“Mark all as completed”</Highlight>
+                </>
+              }
+              defaultData={[
+                { id: 1, text: 'First todo', done: false },
+                { id: 2, text: 'Second todo', done: false }
+              ]}
+              showMarkAllAsCompleted
+            />
+            <P>
+              To implement this feature, you need to write the{' '}
+              <Code>completeAll()</Code> function, and in that process I explain{' '}
+              <em>array types, literal types, and intersection types</em> in
+              TypeScript.
+            </P>
+            <P>
+              You get the idea.{' '}
+              <Highlight>
+                When I want to teach many concepts at once, I prefer to use{' '}
+                <strong>one theme</strong> to explain them all.
+              </Highlight>{' '}
+              By doing so, readers won’t have to do as much context switching in
+              their brain, thus reducing their cognitive load.
+            </P>
+            <Hr />
+            <P>
+              <Emoji type="doubleArrow" /> Second,{' '}
+              <Highlight>
+                <strong>use analogies</strong> to explain new concepts.
+              </Highlight>{' '}
+              Tie a new concept with the concept your reader already knows.
+            </P>
+            <P>
+              For example, did you notice that I used several analogies in this
+              article?
+            </P>
+            <Ul>
+              <UlLi>
+                I compared <Highlight>refactoring code</Highlight> with{' '}
+                <Highlight>refactoring a coding tutorial</Highlight>.
+              </UlLi>
+              <UlLi>
+                I compared <Highlight>minimum reproducible example</Highlight>{' '}
+                with <Highlight>minimal code samples</Highlight>.
+              </UlLi>
+              <UlLi>
+                I compared <Highlight>TDD</Highlight> with{' '}
+                <Highlight>using failing examples in a tutorial</Highlight>.
+              </UlLi>
+            </Ul>
+            <P>
+              <strong>Note:</strong>{' '}
+              <Highlight>
+                If your analogy isn’t perfect, use it anyway but say “it’s not a
+                perfect comparison.”
+              </Highlight>{' '}
+              It would still help your reader remember the concept better. I do
+              this on my{' '}
+              <InternalLink href="/todo">TypeScript tutorial</InternalLink> when
+              I compare TypeScript’s type-checking with unit tests.
+            </P>
+            <Hr />
+            <P>
+              <Emoji type="question" /> Finally,{' '}
+              <Highlight>
+                <strong>use quizzes</strong>
+              </Highlight>
+              . In your tutorial,{' '}
+              <Highlight>
+                count how many times you ask your readers{' '}
+                <em>“what would happen if you do X?”</em>
+              </Highlight>
+              . If that count is zero, add some quizzes in order to make your
+              readers pause and think. Even simple yes-no quizzes are better
+              than having no quiz!
             </P>
           </>
         )

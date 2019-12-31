@@ -169,7 +169,7 @@ const TodoWithData = ({
             }
           ></CodeBlockHighlight>
         )}
-        {promptArrowText && (
+        {promptArrowText && state.lastChangedIndices.length === 0 && (
           <PromptArrowText>{promptArrowText}</PromptArrowText>
         )}
       </CodeResultWrapper>

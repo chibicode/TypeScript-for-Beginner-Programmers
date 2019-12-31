@@ -22,7 +22,7 @@ export const articlesData = {
   },
   refactor: {
     title: 'Your Coding Tutorial Might Need Some Refactoring',
-    date: DateTime.fromISO('2019-12-31T12:00:00Z'),
+    date: DateTime.fromISO('2020-01-01T12:00:00Z'),
     description: 'Seven Opinionated Tips',
     ogImage: 'refactor'
   }
