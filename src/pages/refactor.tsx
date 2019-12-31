@@ -395,9 +395,9 @@ const Page = () => (
               <A href="/images/refactor/asOfWriting.png">As of writing</A>, the
               following code appears on the official{' '}
               <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
-                TypeScript documentation
+                TypeScript handbook
               </A>
-              . And the documentation{' '}
+              . And the handbook{' '}
               <Highlight>
                 uses this code to explain how to use a particular TypeScript{' '}
                 <strong>keyword/operator</strong>.
@@ -415,7 +415,7 @@ const Page = () => (
             <P>
               <strong>Answer:</strong> The official{' '}
               <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
-                TypeScript documentation
+                TypeScript handbook
               </A>{' '}
               uses the above code to explain{' '}
               <Highlight>
@@ -533,7 +533,24 @@ const Page = () => (
             </P>
             <Hr />
             <P>
-              <strong>Minimal reproducible example:</strong> When
+              <strong>Minimal reproducible example:</strong> When you ask a
+              question on StackOverflow or file an issue on GitHub, you’re often
+              asked to create a{' '}
+              <Highlight>minimal reproducible example</Highlight>. Your code
+              needs to be{' '}
+              <A href="https://en.wikipedia.org/wiki/Minimal_working_example">
+                as small as possible, such that it is just sufficient to
+                demonstrate the problem, but without any additional complexity
+              </A>
+              .
+            </P>
+            <P>
+              You should use the same principle when writing code samples for
+              your tutorials. Ask yourself:{' '}
+              <Highlight>
+                Can I make this code sample more minimal, without sacrificing
+                the learning experience?
+              </Highlight>
             </P>
           </>
         ),
@@ -541,7 +558,17 @@ const Page = () => (
           content: (
             <>
               <P>
-                <strong>Tutorials vs Documentations</strong>:{' '}
+                <strong>Tutorials vs Documentations</strong>: There is a
+                difference in what should code samples be like for{' '}
+                <em>tutorials</em> vs <em>documentations</em>.{' '}
+                <strong>Tutorials</strong> are for{' '}
+                <Highlight>learning</Highlight>, so it’s often better to keep
+                code samples minimal to remove confusion (except for advanced
+                topics). <strong>Documentations</strong> are{' '}
+                <Highlight>references</Highlight>, so it’s often better to have
+                comprehensive code samples. (The official TypeScript handbook I
+                mentioned earlier is written more like a tutorial than a
+                documentation.)
               </P>
             </>
           )
