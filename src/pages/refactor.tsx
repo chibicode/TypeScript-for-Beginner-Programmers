@@ -1060,7 +1060,8 @@ const Page = () => (
                 count how many times you ask your readers{' '}
                 <em>“what would happen if you do X?”</em>
               </Highlight>
-              . Even simple yes-no quizzes are better than having zero quiz!
+              . Even non-interactive, simple yes-no quizzes are better than
+              having zero quiz!
             </P>
           </>
         )
