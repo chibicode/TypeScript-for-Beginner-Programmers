@@ -29,7 +29,7 @@ import { SourceAvailableText } from 'src/components/GitHubButton'
 
 const techniques = [
   {
-    title: 'Make code samples fit on a small screen',
+    title: 'Make code samples mobile-ready',
     emojis: ['check', 'smartphone', 'check']
   },
   {
@@ -38,7 +38,7 @@ const techniques = [
   },
   {
     title: 'Prefer practical code samples',
-    emojis: ['badExample', 'singleArrow', 'star']
+    emojis: ['rocket', 'singleArrow', 'plane']
   },
   {
     title: 'Prefer iterative code samples',
@@ -267,7 +267,7 @@ const Page = () => (
               So, here’s my first refactoring tip:{' '}
               <Highlight>
                 <strong>
-                  Make code samples in your tutorial fit on a small screen.
+                  Make code samples in your tutorial mobile-ready.
                 </strong>
               </Highlight>
             </P>
