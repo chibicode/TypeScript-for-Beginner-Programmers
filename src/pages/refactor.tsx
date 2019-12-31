@@ -95,7 +95,9 @@ const techniques = [
 ] as const
 
 const RefactorSubtitle = ({ index }: { index: number }) => (
-  <ForegroundHighlight>Refactoring Tip {index + 1}:</ForegroundHighlight>
+  <ForegroundHighlight color="gray">
+    Refactoring Tip <ForegroundHighlight>{index + 1}</ForegroundHighlight> of 8:
+  </ForegroundHighlight>
 )
 
 const refactoringCardProps = (index: number) => ({
