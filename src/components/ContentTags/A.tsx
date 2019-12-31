@@ -5,7 +5,7 @@ import colors from 'src/lib/theme/colors'
 
 export const baseLinkCss = (themeColors: typeof colors) => css`
   &:hover {
-    background: ${themeColors('white75')};
+    background: ${themeColors('white70')};
   }
 `
 

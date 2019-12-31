@@ -29,7 +29,7 @@ const ReadMore = ({
                 text-decoration: underline;
                 cursor: pointer;
                 &:hover {
-                  background: ${colors('white75')};
+                  background: ${colors('white70')};
                 }
               `}
               tabIndex={0}

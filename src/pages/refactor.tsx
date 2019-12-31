@@ -790,10 +790,10 @@ const Page = () => (
           content: (
             <>
               <P>
-                <Code color="white75">padLeft()</Code> <em>could</em> have been
+                <Code color="white70">padLeft()</Code> <em>could</em> have been
                 useful if you could pass both a{' '}
-                <Code color="white75">number</Code> and a{' '}
-                <Code color="white75">string</Code>, and have it repeat the
+                <Code color="white70">number</Code> and a{' '}
+                <Code color="white70">string</Code>, and have it repeat the
                 string the specified number of times (see below). But that’s not
                 what we had.
               </P>
