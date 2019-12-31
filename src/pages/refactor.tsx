@@ -29,35 +29,67 @@ import { SourceAvailableText } from 'src/components/GitHubButton'
 
 const techniques = [
   {
-    title: 'Make code samples mobile-ready',
+    title: (
+      <>
+        Make code samples <Highlight>mobile-ready</Highlight>
+      </>
+    ),
     emojis: ['check', 'smartphone', 'check']
   },
   {
-    title: 'Prefer minimal code samples',
+    title: (
+      <>
+        Prefer <Highlight>minimal</Highlight> code samples
+      </>
+    ),
     emojis: ['badExample', 'singleArrow', 'star']
   },
   {
-    title: 'Prefer practical code samples',
+    title: (
+      <>
+        Prefer <Highlight>practical</Highlight> code samples
+      </>
+    ),
     emojis: ['rocket', 'singleArrow', 'plane']
   },
   {
-    title: 'Prefer iterative code samples',
+    title: (
+      <>
+        Prefer <Highlight>iterative</Highlight> code samples
+      </>
+    ),
     emojis: ['star', 'singleArrow', 'shootingStar']
   },
   {
-    title: 'Fail fast',
+    title: (
+      <>
+        Fail <Highlight>fast</Highlight>
+      </>
+    ),
     emojis: ['cross', 'running', 'dash']
   },
   {
-    title: 'Use analogies and quizzes',
+    title: (
+      <>
+        Use <Highlight>analogies</Highlight> and <Highlight>quizzes</Highlight>
+      </>
+    ),
     emojis: ['doubleArrow', 'brain', 'question']
   },
   {
-    title: 'Use arrows and faces',
+    title: (
+      <>
+        Use <Highlight>arrows</Highlight> and <Highlight>faces</Highlight>
+      </>
+    ),
     emojis: ['scaryCat', 'singleArrow', 'heartCat']
   },
   {
-    title: 'Add a touch of empathy',
+    title: (
+      <>
+        Add a touch of <Highlight>empathy</Highlight>
+      </>
+    ),
     emojis: ['sparkles', 'heartLetter', 'sparkles']
   }
 ] as const
@@ -135,7 +167,7 @@ const Page = () => (
             </P>
             <Ol>
               {techniques.map((technique, index) => (
-                <OlLi key={technique.title}>
+                <OlLi key={technique.emojis.join()}>
                   <A
                     href={`#tip${index + 1}`}
                     css={css`
