@@ -41,6 +41,7 @@ import Running from 'src/components/Emoji/Running'
 import Dash from 'src/components/Emoji/Dash'
 import Star from 'src/components/Emoji/Star'
 import HeartCat from 'src/components/Emoji/HeartCat'
+import ShootingStar from 'src/components/Emoji/ShootingStar'
 import HeartLetter from 'src/components/Emoji/HeartLetter'
 import DoubleArrow from 'src/components/Emoji/DoubleArrow'
 import Brain from 'src/components/Emoji/Brain'
@@ -48,9 +49,6 @@ import Plane from 'src/components/Emoji/Plane'
 import Rocket from 'src/components/Emoji/Rocket'
 import StringText from 'src/components/Emoji/StringText'
 import NumberText from 'src/components/Emoji/NumberText'
-import SpeakMonkey from 'src/components/Emoji/SpeakMonkey'
-import SeeMonkey from 'src/components/Emoji/SeeMonkey'
-import HearMonkey from 'src/components/Emoji/HearMonkey'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -94,16 +92,14 @@ export const emojiToComponent = {
   dash: Dash,
   star: Star,
   heartCat: HeartCat,
+  shootingStar: ShootingStar,
   heartLetter: HeartLetter,
   brain: Brain,
   doubleArrow: DoubleArrow,
   rocket: Rocket,
   plane: Plane,
   stringText: StringText,
-  numberText: NumberText,
-  hearMonkey: HearMonkey,
-  seeMonkey: SeeMonkey,
-  speakMonkey: SpeakMonkey
+  numberText: NumberText
 }
 
 export const EmojiWrapper = ({
