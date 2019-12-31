@@ -47,6 +47,8 @@ import DoubleArrow from 'src/components/Emoji/DoubleArrow'
 import Brain from 'src/components/Emoji/Brain'
 import Plane from 'src/components/Emoji/Plane'
 import Rocket from 'src/components/Emoji/Rocket'
+import StringText from 'src/components/Emoji/StringText'
+import NumberText from 'src/components/Emoji/NumberText'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -95,7 +97,9 @@ export const emojiToComponent = {
   brain: Brain,
   doubleArrow: DoubleArrow,
   rocket: Rocket,
-  plane: Plane
+  plane: Plane,
+  stringText: StringText,
+  numberText: NumberText
 }
 
 export const EmojiWrapper = ({

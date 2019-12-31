@@ -611,6 +611,74 @@ const Page = () => (
         content: (
           <>
             <EmojiSeparator emojis={techniques[2].emojis} />
+            <P>
+              <A href="/images/refactor/asOfWriting.png">As of writing</A>, the
+              following code appears on the official{' '}
+              <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
+                TypeScript handbook
+              </A>{' '}
+              (right after the example we showed earlier). And the handbook{' '}
+              <Highlight>
+                uses this code to explain how to use the{' '}
+                <strong>union operator</strong> in TypeScript,
+              </Highlight>{' '}
+              which is the{' '}
+              <strong>
+                “<Code>|</Code>”
+              </strong>{' '}
+              symbol <Highlight color="yellowHighlight">highlighted</Highlight>{' '}
+              below.
+            </P>
+            <CodeBlock
+              snippet={snippets.riis}
+              narrowText
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 11 && tokenIndex >= 2
+              }
+              caption={
+                <>(Slightly modified from the original for readability)</>
+              }
+            />
+            <P>
+              In TypeScript,{' '}
+              <Highlight>
+                you can write{' '}
+                <Code>
+                  <strong>number | string</strong>
+                </Code>{' '}
+                to specify that a parameter can either be <Code>number</Code> OR{' '}
+                <Code>string</Code>
+              </Highlight>
+              . So in this case, the second <Code>padding</Code> parameter can
+              be either <Code>number</Code> or <Code>string</Code>.
+            </P>
+            <Ul>
+              <UlLi>
+                If <Code>padding</Code> is <Code>number</Code>, then that number
+                of spaces is added to the left side of <Code>value</Code>.
+              </UlLi>
+              <UlLi>
+                If <Code>padding</Code> is <Code>string</Code>, then{' '}
+                <Code>padding</Code> is added to the left side of{' '}
+                <Code>value</Code>.
+              </UlLi>
+            </Ul>
+            <P>
+              <strong>Now, a question for you:</strong>{' '}
+              <Highlight>
+                Is the above code a <em>good</em> example to explain how{' '}
+                <Code>number | string</Code> works in TypeScript?
+              </Highlight>
+            </P>
+            <EmojiSeparator
+              emojis={['numberText', 'verticalBar', 'stringText']}
+              description={
+                <>
+                  Is the above code a <em>good</em> example?
+                </>
+              }
+            />
+            <P>You don’t need to know TypeScript to...</P>
           </>
         )
       },

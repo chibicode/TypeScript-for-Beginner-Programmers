@@ -473,6 +473,26 @@ export const mvsz = `function makePair<F extends number | string, S extends bool
 
 export const zgvn = `type Todo = Readonly<{ id: number; text: string; done: boolean; place: Place }>`
 
+export const riis = `/**
+ * Takes a string and adds "padding" to the left.
+ *
+ * If 'padding' is a number, then that number of
+ * spaces is added to the left side.
+ *
+ * If 'padding' is a string, then 'padding' is
+ * appended to the left side.
+ */
+function padLeft(
+  value: string,
+  padding: number | string
+) {
+  if (typeof padding === 'number') {
+    return Array(padding + 1).join(' ') + value
+  } else {
+    return padding + value
+  }
+}`
+
 export const lplh = `console.log(1 + 2)`
 
 export const onux = `function extend<First, Second>(
