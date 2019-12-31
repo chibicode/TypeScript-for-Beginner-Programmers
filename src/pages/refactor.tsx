@@ -744,9 +744,15 @@ const Page = () => (
               <Code>
                 <strong>paddingLeftCss()</strong>
               </Code>{' '}
-              function:
+              function. The name is similar, but this one is used to generate a
+              CSS string:
             </P>
-            <CodeBlock snippet={snippets.hfdq} />
+            <CodeBlock
+              snippet={snippets.hfdq}
+              shouldHighlight={(lineNumber, tokenNumber) =>
+                lineNumber === 0 && tokenNumber >= 6 && tokenNumber <= 8
+              }
+            />
             <P>
               <Code>paddingLeftCss()</Code> can take a <Code>number</Code> or{' '}
               <Code>string</Code>:
