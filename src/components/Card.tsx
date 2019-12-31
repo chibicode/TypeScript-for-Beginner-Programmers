@@ -74,8 +74,8 @@ const Card = ({
       <div
         css={css`
           position: relative;
-          margin-left: ${spaces('-0.75')};
-          margin-right: ${spaces('-0.75')};
+          margin-left: -0.6rem;
+          margin-right: -0.6rem;
 
           ${ns} {
             margin-left: ${spaces('-1.5')};

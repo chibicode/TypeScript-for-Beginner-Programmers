@@ -532,7 +532,9 @@ const Page = () => (
               code samples, making them hard to follow.
             </P>
             <Hr />
-            <P>Stackoverflow or GitHub issues...</P>
+            <P>
+              <strong>Minimal reproducible example:</strong> When
+            </P>
           </>
         ),
         footer: {
