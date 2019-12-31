@@ -41,7 +41,7 @@ import Running from 'src/components/Emoji/Running'
 import Dash from 'src/components/Emoji/Dash'
 import Star from 'src/components/Emoji/Star'
 import HeartCat from 'src/components/Emoji/HeartCat'
-import ShootingStar from 'src/components/Emoji/ShootingStar'
+import Pumpkin from 'src/components/Emoji/Pumpkin'
 import HeartLetter from 'src/components/Emoji/HeartLetter'
 import DoubleArrow from 'src/components/Emoji/DoubleArrow'
 import Brain from 'src/components/Emoji/Brain'
@@ -92,7 +92,7 @@ export const emojiToComponent = {
   dash: Dash,
   star: Star,
   heartCat: HeartCat,
-  shootingStar: ShootingStar,
+  pumpkin: Pumpkin,
   heartLetter: HeartLetter,
   brain: Brain,
   doubleArrow: DoubleArrow,

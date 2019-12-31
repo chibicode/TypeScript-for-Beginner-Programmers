@@ -55,14 +55,6 @@ const techniques = [
   {
     title: (
       <>
-        Prefer <Highlight>iterative</Highlight> code samples
-      </>
-    ),
-    emojis: ['star', 'singleArrow', 'shootingStar']
-  },
-  {
-    title: (
-      <>
         Fail <Highlight>fast</Highlight>
       </>
     ),
@@ -71,10 +63,11 @@ const techniques = [
   {
     title: (
       <>
-        Use <Highlight>analogies</Highlight> and <Highlight>quizzes</Highlight>
+        Use <Highlight>themes</Highlight>, <Highlight>analogies</Highlight> and{' '}
+        <Highlight>quizzes</Highlight>
       </>
     ),
-    emojis: ['doubleArrow', 'brain', 'question']
+    emojis: ['pumpkin', 'doubleArrow', 'question']
   },
   {
     title: (
@@ -88,7 +81,7 @@ const techniques = [
 
 const RefactorSubtitle = ({ index }: { index: number }) => (
   <ForegroundHighlight color="gray">
-    Refactoring Tip <ForegroundHighlight>{index + 1}</ForegroundHighlight> of 7:
+    Refactoring Tip <ForegroundHighlight>{index + 1}</ForegroundHighlight> of 6:
   </ForegroundHighlight>
 )
 
@@ -155,7 +148,7 @@ const Page = () => (
               </Highlight>{' '}
             </P>
             <P>
-              So, in this article, I’ll share <strong>seven</strong> tips on
+              So, in this article, I’ll share <strong>six</strong> tips on
               refactoring coding tutorials. I’ve used these techniques on my own
               tutorials to make them more reader-friendly. Here’s the list:
             </P>
@@ -818,14 +811,6 @@ const Page = () => (
         content: (
           <>
             <EmojiSeparator emojis={techniques[3].emojis} />
-          </>
-        )
-      },
-      {
-        ...refactoringCardProps(4),
-        content: (
-          <>
-            <EmojiSeparator emojis={techniques[4].emojis} />
             <P>
               One of the best ways to capture your readers’ attention is to{' '}
               <strong>FAIL</strong>. When things don’t go according to plan,
@@ -945,18 +930,40 @@ const Page = () => (
         }
       },
       {
-        ...refactoringCardProps(5),
+        ...refactoringCardProps(4),
         content: (
           <>
-            <EmojiSeparator emojis={techniques[5].emojis} />
+            <EmojiSeparator emojis={techniques[4].emojis} />
+            <P>
+              <Emoji type="pumpkin" /> <strong>Use themes:</strong>{' '}
+              <Highlight>
+                If your tutorial doesn’t have a <strong>theme</strong> that ties
+                together your examples, try to add one
+              </Highlight>
+              . Having an extremely simple theme is better than having no theme.
+            </P>
+            <P>
+              For example, on my{' '}
+              <InternalLink href="/todo">TypeScript tutorial</InternalLink>, I
+              teach 8 beginner topics{' '}
+              <ForegroundHighlight color="gray">
+                (types, read-only properties, mapped types, array types, literal
+                types, intersection types, union types and optional properties)
+              </ForegroundHighlight>
+              . Instead of covering each topic separately,{' '}
+              <Highlight>
+                I use a simple theme of <strong>building a todo app</strong> to
+                explain all those 8 topics.
+              </Highlight>
+            </P>
           </>
         )
       },
       {
-        ...refactoringCardProps(6),
+        ...refactoringCardProps(5),
         content: (
           <>
-            <EmojiSeparator emojis={techniques[6].emojis} />
+            <EmojiSeparator emojis={techniques[5].emojis} />
           </>
         )
       }
