@@ -149,9 +149,10 @@ const Page = () => (
               </Highlight>{' '}
             </P>
             <P>
-              So, in this article, I’ll share <strong>six</strong> tips on
-              refactoring coding tutorials. I’ve used these techniques on my own
-              tutorials to make them more reader-friendly. Here’s the list:
+              So, in this article, I’ll share <strong>six</strong> opinionated
+              tips on refactoring coding tutorials. I’ve used these techniques
+              on my own tutorials to make them more reader-friendly. Here’s the
+              list:
             </P>
             <Ol>
               {techniques.map((technique, index) => (
@@ -178,9 +179,7 @@ const Page = () => (
                 </OlLi>
               ))}
             </Ol>
-            <P>
-              Let’s take a look! Warning: My tips are <em>very opinionated</em>.
-            </P>
+            <P>Let’s take a look!</P>
           </>
         ),
         footer: {
@@ -508,7 +507,7 @@ const Page = () => (
               in TypeScript. To make matters worse,{' '}
               <A href="/images/refactor/asOfWriting.png">as of writing</A>, this
               is the ONLY code sample used to explain the “<Code>&amp;</Code>”
-              operator on the official doc!
+              operator on the official handbook!
             </P>
             <P>
               If I were to explain how the “<Code>&amp;</Code>” operator works
@@ -547,9 +546,9 @@ const Page = () => (
             </P>
             <P>
               You might be thinking: <em>“Well, that’s obvious.”</em> But trust
-              me, so many tutorials (including the official TypeScript doc!)
-              fail at keeping things simple and end up with too much noise in
-              code samples, making them hard to follow.
+              me, so many tutorials (including the official TypeScript
+              handbook!) fail at keeping things simple and end up with too much
+              noise in code samples, making them hard to follow.
             </P>
             <Hr />
             <P>
@@ -1055,13 +1054,16 @@ const Page = () => (
               <Highlight>
                 <strong>use quizzes</strong>
               </Highlight>{' '}
-              to make your readers pause and think. In your tutorial,{' '}
+              to make your readers pause, think, and be engaged. In your
+              tutorial,{' '}
               <Highlight>
                 count how many times you ask your readers{' '}
                 <em>“what would happen if you do X?”</em>
               </Highlight>
               . Even non-interactive, simple yes-no quizzes are better than
-              having zero quiz!
+              having zero quiz! (You noticed that I asked you a quiz about
+              TypeScript’s <Code>“&amp;”</Code> operator earlier on this
+              article, right?)
             </P>
           </>
         )
