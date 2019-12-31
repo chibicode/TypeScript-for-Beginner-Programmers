@@ -469,6 +469,12 @@ const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
+export const bxzx = `// It could have been useful if you could pass
+// both number AND string, and have it repeat
+// the string the specified number of times
+padLeft('Hello world', 4, '#')
+// → "####Hello world"`
+
 export const crgn = `// If the second parameter is string, then
 // that string is appended to the left side
 padLeft('Hello world', 'Jim: ')

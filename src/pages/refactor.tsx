@@ -550,9 +550,9 @@ const Page = () => (
                 What I want to say is: Prefer minimal code samples.
               </strong>{' '}
               <Highlight>
-                If you’re trying to teach <strong>X</strong> through a code
-                sample, just focus on <strong>X</strong> in the code and don’t
-                add too much extra stuff.
+                If you’re trying to teach a new concept <strong>X</strong>{' '}
+                through a code sample, just focus on <strong>X</strong> in the
+                code and don’t add too much extra stuff.
               </Highlight>{' '}
               Add extra stuff only when it <em>really</em> helps the reader’s
               understanding.
@@ -693,7 +693,7 @@ const Page = () => (
             />
             <P>
               <strong>Now, ask yourself:</strong> Would you EVER use{' '}
-              <Code>padLeft</Code> for the bottom case, where the second
+              <Code>padLeft</Code> for the latter case, where the second
               parameter is <Code>string</Code>?
             </P>
             <CodeBlock
@@ -702,7 +702,43 @@ const Page = () => (
                 (lineIndex === 2 && tokenIndex === 6) || lineIndex === 5
               }
             />
-            <P>?</P>
+            <P>
+              <strong>You probably would not</strong>.{' '}
+              <Highlight>
+                You probably would just use other standard way to concatenate
+                two strings, like <Code>'Jim: ' + 'Hello World'</Code>
+              </Highlight>
+              . There’s no good reason why this API should exist.
+            </P>
+            <P>
+              It <em>could</em> have been useful if you could pass both a{' '}
+              <Code>number</Code> and a <Code>string</Code>, and have it repeat
+              the string the specified number of times (see below). But that’s
+              not what we have.
+            </P>
+            <CodeBlock
+              snippet={snippets.bxzx}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                lineIndex === 3 && tokenIndex >= 6 && tokenIndex <= 9
+              }
+            />
+            <P>
+              <strong>The bottom line:</strong>{' '}
+              <Code>padLeft(value, padding)</Code> is useful if{' '}
+              <Code>padding</Code> is <Code>number</Code> but is{' '}
+              <Highlight>
+                pretty useless if <Code>padding</Code> is <Code>string</Code>.
+              </Highlight>{' '}
+              That’s why this is NOT a good example.
+            </P>
+            <Hr />
+            <P>
+              So, here’s my third refactoring tip:{' '}
+              <strong>Prefer practical code samples</strong>.{' '}
+              <Highlight>Avoid code or API that no one would use.</Highlight> If
+              you’re trying to teach a new concept <strong>X</strong>,{' '}
+              <Highlight>...</Highlight>{' '}
+            </P>
           </>
         )
       },
@@ -761,27 +797,19 @@ const Page = () => (
                 }
               />
             </CodeResultWrapper>
-            <P>Here’s a simple technique you can use to fail fast:</P>
-            <Ol>
-              <OlLi>
-                If you want to teach a new concept—let’s call this{' '}
-                <strong>X</strong>, then…
-              </OlLi>
-              <OlLi>
-                <Highlight>
-                  Start with a <strong>concrete</strong> scenario where things
-                  fail or aren’t ideal when you don’t use <strong>X</strong>.
-                </Highlight>
-              </OlLi>
-              <OlLi>
-                Then,{' '}
-                <Highlight>
-                  use <strong>X</strong> to successfully solve the problem.
-                </Highlight>{' '}
-                By doing this, your readers will be more engaged and also
-                understand why <strong>X</strong> is worth learning.
-              </OlLi>
-            </Ol>
+            <P>
+              If you’re trying to teach a new concept <strong>X</strong>,{' '}
+              <Highlight>
+                start with a <strong>concrete</strong> scenario where things
+                fail or aren’t ideal when you don’t use <strong>X</strong>.
+              </Highlight>{' '}
+              Then,{' '}
+              <Highlight>
+                use <strong>X</strong> to successfully solve the problem.
+              </Highlight>{' '}
+              By doing this, your readers will be more engaged and also
+              understand why <strong>X</strong> is worth learning.
+            </P>
             <P>
               I used this technique on{' '}
               <InternalLink href="/generics">
