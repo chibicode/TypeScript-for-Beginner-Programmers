@@ -674,11 +674,35 @@ const Page = () => (
               emojis={['numberText', 'verticalBar', 'stringText']}
               description={
                 <>
-                  Is the above code a <em>good</em> example?
+                  Is the above code a <em>good</em> example to explain how{' '}
+                  <Code>number | string</Code> works?
                 </>
               }
             />
-            <P>You don’t need to know TypeScript to...</P>
+            <P>
+              <strong>I’d say No—it’s NOT a good example</strong>. You don’t
+              need to know TypeScript to see why. Let’s look at how{' '}
+              <Code>padLeft</Code> works again:
+            </P>
+            <CodeBlock
+              snippet={snippets.lcfe}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 2 && tokenIndex === 6) ||
+                (lineIndex === 7 && tokenIndex === 6)
+              }
+            />
+            <P>
+              <strong>Now, ask yourself:</strong> Would you EVER use{' '}
+              <Code>padLeft</Code> for the bottom case, where the second
+              parameter is <Code>string</Code>?
+            </P>
+            <CodeBlock
+              snippet={snippets.crgn}
+              shouldHighlight={(lineIndex, tokenIndex) =>
+                (lineIndex === 2 && tokenIndex === 6) || lineIndex === 5
+              }
+            />
+            <P>?</P>
           </>
         )
       },

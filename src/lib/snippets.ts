@@ -469,9 +469,26 @@ const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
+export const crgn = `// If the second parameter is string, then
+// that string is appended to the left side
+padLeft('Hello world', 'Jim: ')
+// → "Jim: Hello world"
+
+// Ask yourself: Would you EVER do this?`
+
 export const mvsz = `function makePair<F extends number | string, S extends boolean | F>() {}`
 
 export const zgvn = `type Todo = Readonly<{ id: number; text: string; done: boolean; place: Place }>`
+
+export const lcfe = `// If the second parameter is number, then that
+// number of spaces is added to the left side
+padLeft('Hello world', 4)
+// → "    Hello world"
+
+// If the second parameter is string, then
+// that string is appended to the left side
+padLeft('Hello world', 'Jim: ')
+// → "Jim: Hello world"`
 
 export const riis = `/**
  * Takes a string and adds "padding" to the left.
