@@ -652,27 +652,6 @@ const Page = () => (
                 <Code>value</Code>.
               </UlLi>
             </Ul>
-            <P>
-              <strong>Now, a question for you:</strong>{' '}
-              <Highlight>
-                Is the above code a <em>good</em> example to explain how{' '}
-                <Code>number | string</Code> works in TypeScript?
-              </Highlight>
-            </P>
-            <EmojiSeparator
-              emojis={['numberText', 'verticalBar', 'stringText']}
-              description={
-                <>
-                  Is the above code a <em>good</em> example to explain how{' '}
-                  <Code>number | string</Code> works?
-                </>
-              }
-            />
-            <P>
-              <strong>I’d say NO—it’s NOT a good example</strong>. You don’t
-              need to know TypeScript to see why. Let’s look at how{' '}
-              <Code>padLeft</Code> works again:
-            </P>
             <CodeBlock
               snippet={snippets.lcfe}
               shouldHighlight={(lineIndex, tokenIndex) =>
@@ -681,9 +660,38 @@ const Page = () => (
               }
             />
             <P>
-              <strong>Now, ask yourself:</strong> Would you EVER use{' '}
-              <Code>padLeft</Code> for the latter case, where the second
-              parameter is <Code>string</Code>?
+              <strong>Now, a question for you:</strong>{' '}
+              <Highlight>
+                Is <Code>padLeft()</Code> a <em>good</em> example to explain how{' '}
+                the{' '}
+                <strong>
+                  “<Code>|</Code>”
+                </strong>{' '}
+                operator works in TypeScript?
+              </Highlight>
+            </P>
+            <EmojiSeparator
+              emojis={['numberText', 'verticalBar', 'stringText']}
+              description={
+                <>
+                  Is the above code a <em>good</em> example to explain how the{' '}
+                  <strong>
+                    “<Code>|</Code>”
+                  </strong>{' '}
+                  operator works?
+                </>
+              }
+            />
+            <P>
+              <strong>I’d say NO—it’s NOT a good example</strong>. You don’t
+              need to know TypeScript to see why.
+            </P>
+            <P>
+              Take a look below and ask yourself:{' '}
+              <Highlight>
+                Would you EVER use <Code>padLeft()</Code> for the case where the
+                second parameter is <Code>string</Code>?
+              </Highlight>
             </P>
             <CodeBlock
               snippet={snippets.crgn}
@@ -696,9 +704,10 @@ const Page = () => (
               string concatenation in reverse.{' '}
               <Highlight>
                 You probably would just use other standard ways to concatenate
-                strings, like <Code>'Jim: ' + 'Hello World'</Code>
-              </Highlight>
-              . There’s no good reason why this API should exist.
+                strings, such as <Code>'Jim: ' + 'Hello World'</Code>.
+              </Highlight>{' '}
+              There’s no good reason why <Code>padLeft()</Code> should support
+              the second string parameter.
             </P>
             <P>
               <strong>The bottom line:</strong>{' '}
@@ -707,14 +716,16 @@ const Page = () => (
               <Highlight>
                 pretty useless if <Code>padding</Code> is <Code>string</Code>.
               </Highlight>{' '}
-              That’s why this is NOT a good example.
+              So setting <Code>padding</Code>’s type as{' '}
+              <Code>number | string</Code> is not useful—it could just be{' '}
+              <Code>number</Code>. That’s why this is NOT a good example.
             </P>
             <Hr />
             <P>
               So, here’s my third refactoring tip:{' '}
               <strong>Prefer practical code samples</strong>.{' '}
-              <Highlight>Avoid showing code that no one would write.</Highlight>{' '}
-              If you’re trying to teach a new concept (let’s call this “
+              <Highlight>Avoid showing code no one would write.</Highlight> If
+              you’re trying to teach a new concept (let’s call this “
               <strong>X</strong>”),{' '}
               <Highlight>
                 come up with a <em>practical</em> code sample where{' '}
@@ -728,7 +739,7 @@ const Page = () => (
                 readers will understand why <strong>X</strong> is worth
                 learning.
               </Highlight>{' '}
-              If you show them a useless example, they’d be like,{' '}
+              If you show them a useless example, they’d think:{' '}
               <em>
                 “What’s the point of learning <strong>X</strong>?”
               </em>
@@ -741,7 +752,7 @@ const Page = () => (
                 <strong>paddingLeftCss()</strong>
               </Code>{' '}
               function. The name is similar, but this one is used to generate a
-              CSS string:
+              CSS <Code>padding-left</Code> string:
             </P>
             <CodeBlock
               snippet={snippets.hfdq}
@@ -782,7 +793,7 @@ const Page = () => (
             <P>
               <strong>To summarize, always ask yourself:</strong>{' '}
               <Highlight>
-                Is my code example practical? Would anyone ever write code like
+                Is my code sample practical? Would anyone ever write code like
                 this?
               </Highlight>
             </P>
@@ -794,10 +805,10 @@ const Page = () => (
               <P>
                 <Code color="white70">padLeft()</Code> <em>could</em> have been
                 useful if you could pass both a{' '}
-                <Code color="white70">number</Code> and a{' '}
+                <Code color="white70">number</Code> AND a{' '}
                 <Code color="white70">string</Code>, and have it repeat the
                 string the specified number of times (see below). But that’s not
-                what we had.
+                what was in the handbook.
               </P>
               <CodeBlock
                 snippet={snippets.bxzx}
