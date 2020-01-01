@@ -1261,19 +1261,19 @@ const Page = () => (
                   children: (
                     <>
                       <P>
-                        If you’re building tools like me, there’s this fact that
-                        we have become the new gatekeepers to one of the largest
-                        programming communities in the world.
+                        “If you’re building tools like me, there’s this fact
+                        that we have become the new gatekeepers to one of the
+                        largest programming communities in the world.
                       </P>
                       <P>
                         And this is scary stuff. Because it means that every
                         time our tool prints an incomprehensible error message,
                         somebody somewhere decides that they’re just not cut out
-                        for programming. And this is a big responsibility.
+                        for programming. And this is a big responsibility.”
                       </P>
-                      <P>[...]</P>
+                      <Hr color="lightYellow1" />
                       <P>
-                        If you’re a maintainer of an open-source project it is
+                        “If you’re a maintainer of an open-source project it is
                         invaluable to go out there in the field and see what
                         they struggle with as they try to use your projects.
                       </P>
@@ -1283,7 +1283,7 @@ const Page = () => (
                         field you will see that it makes a real difference in
                         people’s lives, and what they can learn, and what they
                         can build with it. So it’s not just polish. Take this
-                        seriously.
+                        seriously.”
                       </P>
                     </>
                   )
