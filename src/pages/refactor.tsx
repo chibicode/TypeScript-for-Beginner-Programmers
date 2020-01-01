@@ -122,15 +122,6 @@ const Page = () => (
               Maybe you wanted to learn a new language, library, or framework,
               but the tutorial you found made you more frustrated than before.
             </P>
-            <EmojiSeparator
-              emojis={['uglyTutorial', 'cryingCat']}
-              description={
-                <>
-                  You’ve probably come across a coding tutorial that’s not so
-                  reader-friendly
-                </>
-              }
-            />
             <P>
               But they can be improved. As someone who’s written many coding
               tutorials, I realized that{' '}
@@ -344,12 +335,6 @@ const Page = () => (
                 their phones.
               </Highlight>{' '}
             </P>
-            <EmojiSeparator
-              emojis={['smilingCat', 'smartphone', 'uglyTutorial']}
-              description={
-                <>Many people read coding tutorials on their phones</>
-              }
-            />
             <P>
               You might be tempted to assume that your readers will read (and
               follow along) your coding tutorial on a computer.{' '}
