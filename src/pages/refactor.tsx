@@ -1355,17 +1355,15 @@ const Page = () => (
             </P>
             <Hr />
             <P>
-              If you have feedback, including other ways to improve coding
-              tutorials, please let me know on{' '}
-              <A href="https://twitter.com/chibicode">
-                <Emoji type="twitter" /> Twitter at @chibicode
-              </A>
-              .
-            </P>
-            <P>
-              <Emoji type="twitter" /> I’d love it if you could{' '}
-              <Highlight>like</Highlight> or <Highlight>retweet</Highlight> the
-              tweet below! ↓
+              You can{' '}
+              <TwitterLink
+                title={articlesData['refactor']['title']}
+                url={`${baseUrl}/refactor`}
+              >
+                click here to tweet this article.
+              </TwitterLink>{' '}
+              Also, I’d love it if you could <Highlight>like</Highlight> or{' '}
+              <Highlight>retweet</Highlight> the tweet below! ↓
             </P>
             <TwitterEmbed id="1212327903473459200" hideCard />
           </>
