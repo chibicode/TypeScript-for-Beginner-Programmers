@@ -144,14 +144,6 @@ const Page = () => (
               many JS programmers already know how to build one. There should be
               more TypeScript tutorials featuring a todo app.
             </P>
-            <EmojiSeparator
-              emojis={['check', 'smilingCat', 'check']}
-              description={
-                <>
-                  There should be more TypeScript tutorials featuring a todo app
-                </>
-              }
-            />
             <P>
               In this tutorial,{' '}
               <Highlight>
@@ -200,15 +192,6 @@ const Page = () => (
                 more.
               </UlLi>
             </Ul>
-            <EmojiSeparator
-              emojis={['sparkles', 'bird', 'sparkles']}
-              description={
-                <>
-                  I’m only going to cover essentials. My goal is to make you
-                  want to learn more.
-                </>
-              }
-            />
             <P>
               There are <strong>3 sections</strong> total in this article. Here
               are the topics covered in each section:
@@ -665,12 +648,6 @@ const Page = () => (
                 TypeScript can prevent the mistake Little Duckling made!
               </Highlight>
             </P>
-            <EmojiSeparator
-              emojis={['sparkles', 'chickEgg', 'sparkles']}
-              description={
-                <>TypeScript can prevent the mistake Little Duckling made!</>
-              }
-            />
             <P>
               Just to make sure, let’s try again with the correct code. I’ve
               added the <Code>id</Code> property to the returned object.{' '}
@@ -843,15 +820,6 @@ const Page = () => (
                 TypeScript can prevent the mistake Little Duckling made!
               </Highlight>
             </P>
-            <EmojiSeparator
-              emojis={['sparkles', 'chickEgg', 'sparkles']}
-              description={
-                <>
-                  TypeScript’s <Code>readonly</Code> keyword can prevent the
-                  mistake Little Duckling made!
-                </>
-              }
-            />
             <P>
               By the way, the earlier implementation we used will continue to
               work because it does NOT modify the input todo item.
