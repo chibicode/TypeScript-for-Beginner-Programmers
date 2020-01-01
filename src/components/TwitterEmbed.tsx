@@ -13,13 +13,7 @@ declare global {
 
 const EMBED_DELAY = 500
 
-const TwitterEmbed = ({
-  id,
-  showCard = true
-}: {
-  id: string
-  showCard?: boolean
-}) => {
+const TwitterEmbed = ({ id, hideCard }: { id: string; hideCard?: boolean }) => {
   const wrapperEl = useRef<HTMLDivElement>(null)
   const [twitterLoaded, setTwitterLoaded] = useState(false)
   const { spaces } = useTheme()
@@ -35,7 +29,7 @@ const TwitterEmbed = ({
         window.twttr.widgets
           .createTweet(id, wrapperEl.current, {
             dnt: true,
-            cards: showCard ? undefined : 'hidden',
+            cards: hideCard ? 'hidden' : undefined,
             align: 'center',
             conversation: 'none'
           })

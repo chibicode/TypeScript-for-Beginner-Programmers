@@ -29,6 +29,7 @@ import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 import { SourceAvailableText } from 'src/components/GitHubButton'
 import TodoWithData from 'src/components/TodoWithData'
+import TwitterEmbed from 'src/components/TwitterEmbed'
 
 const techniques = [
   {
@@ -1361,6 +1362,12 @@ const Page = () => (
               </A>
               .
             </P>
+            <P>
+              <Emoji type="twitter" /> I’d love it if you could{' '}
+              <Highlight>like</Highlight> or <Highlight>retweet</Highlight> the
+              tweet below! ↓
+            </P>
+            <TwitterEmbed id="1212327903473459200" hideCard />
           </>
         ),
         footer: {
