@@ -1109,7 +1109,7 @@ const Page = () => (
               <strong>bold</strong> important words/lines so your readers know
               what to pay attention to. You can also{' '}
               <Highlight>add a comment</Highlight> next to the emphasized
-              words/lines to make it even clearer.
+              words/lines for more clarity.
             </P>
             <CodeBlock
               snippet={snippets.yxjg}
@@ -1125,17 +1125,16 @@ const Page = () => (
             />
             <Hr />
             <P>
-              <strong>Use graphics that represent faces.</strong> There’s a
-              reason a lot of ads have someone’s face in it. People’s brains are
-              wired to pay attention to faces. Take advantage of this to grab
-              your reader’s attention.
+              <strong>Use graphics that show faces.</strong> There’s a reason a
+              lot of ads have someone’s face in it. Our brains are wired to pay
+              attention to faces. Take advantage of this to grab your reader’s
+              attention.
             </P>
             <P>
               One of the easiest ways to do this is to use{' '}
               <strong>emojis</strong>. Just insert a happy{' '}
-              <Emoji type="heartCat" /> emoji when things are going well, and
-              insert a scared <Emoji type="scaryCat" /> emoji when things don’t
-              go as expected.
+              <Emoji type="heartCat" /> emoji when things are going well and a
+              scared <Emoji type="scaryCat" /> emoji when things fail.
             </P>
             <EmojiSeparator
               emojis={['heartCat', 'smilingCat', 'scaryCat']}
@@ -1147,17 +1146,16 @@ const Page = () => (
             />
             <Hr />
             <P>
-              <strong>Use text-only graphics.</strong> One of the simplest yet
-              very effective graphics is the text-only ones like below (which I
-              used earlier):
+              <strong>Use mostly-text graphics.</strong> Graphics made of basic
+              shapes and texts are simple yet effective. For example, I used
+              this graphic earlier:
             </P>
             <EmojiSeparator
               emojis={['uglyCode', 'refactorArrow', 'cleanCode']}
             />
             <P>
-              It’s very simple—two squares with text and one arrow with text.
-              But it’s great for emphasis and helps your readers visually
-              remember the concept.
+              It takes a only few minutes to create, but it helps your readers
+              visually remember the idea.
             </P>
             <Hr />
             <P>
@@ -1167,15 +1165,19 @@ const Page = () => (
               </A>
               , and one thing I learned is that{' '}
               <Highlight>
-                so many people in the world can speak English, but many don’t
-                speak English well
+                so many people in the world can speak some English, but many
+                don’t speak English well
               </Highlight>
               . Globally,{' '}
               <A href="https://www.weforum.org/agenda/2015/10/which-languages-are-most-widely-spoken/">
                 there are 3x as many non-native English speakers as native
                 English speakers
               </A>
-              . So when in doubt, use simpler English words/phrases.
+              .
+            </P>
+            <P>
+              So when in doubt, use simpler English words/phrases. It will
+              increase the size of your audience.
             </P>
             <EmojiSeparator
               emojis={['a', 'b', 'letterC']}
@@ -1189,33 +1191,44 @@ const Page = () => (
               </Highlight>
               . Always ask yourself:{' '}
               <em>
-                “Would someone living far, far away from here understand what
-                I’m writing?”
+                “Would someone living far, far away from where I live understand
+                what I’m writing?”
               </em>
             </P>
             <P>
-              (<strong>Note:</strong> I’m an English-Japanese translator, and
-              it’s really hard to translate some cultural references into
-              Japanese. If you write a good technical article, people will
-              volunteer to translate it. Minimize cultural references to make it
-              easy for people to translate!)
+              (<strong>Note:</strong> I’m an English-Japanese translator, and I
+              often find it really hard to translate some cultural references
+              into Japanese. If you write a good technical article, people will
+              volunteer to translate it. Try to make it easy for the translators
+              by minimizing the number of cultural references you use!)
             </P>
             <Hr />
             <P>
               <strong>
                 When you skip a step or assume prerequisite knowledge, say so.
               </strong>{' '}
-              Sometimes you have to skip some steps to keep your tutorial short.
-              But it can also lead to confusion. So if possible,{' '}
+              Sometimes you have to skip some steps to keep your tutorial
+              concise. But skipping steps can also lead to confusion.
+            </P>
+            <P>
+              So if possible,{' '}
               <Highlight>
                 let your reader know what steps you’re skipping
               </Highlight>
               —by doing so, they won’t be as confused, and they can Google how
-              to do the missing steps.
+              to do the missing steps if necessary.
             </P>
             <EmojiSeparator
               emojis={['a', 'fastForward', 'letterC']}
-              description={<>Be explicit when skipping a step</>}
+              description={
+                <>
+                  Be explicit:{' '}
+                  <em>
+                    “Skipping <Emoji type="b" />
+                    !”
+                  </em>
+                </>
+              }
             />
             <P>
               Also,{' '}
@@ -1223,45 +1236,45 @@ const Page = () => (
                 if your tutorial requires some prerequisite knowledge,
                 explicitly list them
               </Highlight>
-              . For example, in my{' '}
+              . For example,{' '}
               <InternalLink href="/generics">
-                TypeScript generics tutorial
-              </InternalLink>
-              , you need to know closure and ES2015 syntax in advance. I mention
-              this on a side note and added MDN documentation links for each
-              topic in case my readers didn’t know about them.
+                my TypeScript generics tutorial
+              </InternalLink>{' '}
+              assumes prior knowledge of closure and ES2015 syntax. I mention
+              this and added MDN documentation links in case the reader is
+              unfamiliar with them.
             </P>
             <P>
               Finally,{' '}
               <Highlight>
-                check if you’re using a convention that your readers may not
-                know about.
+                check if you’re using a convention that newcomers may not know
+                about.
               </Highlight>{' '}
-              For example, on my{' '}
+              On{' '}
               <InternalLink href="/generics">
-                TypeScript generics tutorial
+                my TypeScript generics tutorial
               </InternalLink>
-              , I explain why generic type parameters are often a single
-              uppercase letter (like <Code>T</Code>, <Code>E</Code>,{' '}
-              <Code>K</Code>, <Code>V</Code>, etc). This is actually borrowed
-              from Java and{' '}
+              , I explain why generic type parameters are often written using a
+              single uppercase letter (like <Code>T</Code>, <Code>E</Code>,{' '}
+              <Code>K</Code>, <Code>V</Code>, etc). This convention is actually
+              borrowed from Java—it’s{' '}
               <A href="https://docs.oracle.com/javase/tutorial/java/generics/types.html">
-                mentioned in Oracle’s Java documentation.
+                mentioned in the official Java documentation.
               </A>{' '}
               Beginner programmers who have never touched Java may not know
-              about this, so I explained this convention on my tutorial.
+              about this, so I explained it on my tutorial.
             </P>
             <Hr />
             <P>
-              <strong>
-                Finally, when things get hard, say encouraging words.
-              </strong>{' '}
+              <strong>Finally, when things get hard, be encouraging.</strong>{' '}
               Use phrases like:{' '}
               <Highlight>
                 “This topic is harder than other topics we’ve covered. Don’t
-                worry if you don’t get immediately—just keep reading!”
+                worry if you don’t get immediately—just keep reading and you’ll
+                get it eventually!”
               </Highlight>{' '}
-              A little touch of empathy can go a long way.
+              A little touch of empathy can go a long way.{' '}
+              <Emoji type="heartLetter" />
             </P>
           </>
         )
