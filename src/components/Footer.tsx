@@ -12,7 +12,7 @@ const Footer = () => {
     <Container
       cssOverrides={css`
         font-size: ${fontSizes(0.85)};
-        margin-bottom: ${spaces(4)};
+        margin-bottom: ${spaces(5)};
         color: ${colors('brown')};
       `}
     >
