@@ -1053,9 +1053,10 @@ const Page = () => (
                 If your analogy isn’t perfect, use it anyway but say “it’s not a
                 perfect comparison.”
               </Highlight>{' '}
-              It would still help your reader memorize the concept. I do this on
-              my <InternalLink href="/todo">TypeScript tutorial</InternalLink>{' '}
-              when I compare TypeScript’s type-checking feature with unit tests.
+              It would still help your reader memorize the concept. I did this
+              on my{' '}
+              <InternalLink href="/todo">TypeScript tutorial</InternalLink> when
+              I compare TypeScript’s type-checking feature with unit tests.
               Here’s what I wrote:
             </P>
             <Blockquote>
@@ -1075,16 +1076,17 @@ const Page = () => (
               <Highlight>
                 <strong>use quizzes</strong>
               </Highlight>{' '}
-              to make your readers pause, think, and be engaged. In your
-              tutorial,{' '}
+              to make your readers pause, think, and be engaged.
+            </P>
+            <P>
+              In your tutorial,{' '}
               <Highlight>
-                count how many times you ask your readers{' '}
-                <em>“what would happen if you do X?”</em>
+                count how many times you ask simple questions, such as{' '}
+                <em>“what would happen if you do X?”</em> or{' '}
+                <em>“what’s wrong with the following code?”</em>
               </Highlight>
               . Even non-interactive, simple yes-no quizzes are better than
-              having no quiz! (You noticed that I asked you a quiz about
-              TypeScript’s <Code>“&amp;”</Code> operator earlier on this
-              article, right?)
+              having no quiz!
             </P>
           </>
         )
@@ -1095,7 +1097,7 @@ const Page = () => (
           <>
             <EmojiSeparator emojis={techniques[5].emojis} />
             <P>
-              This is the final section! Here are some mini tips to add a
+              This is the final section! Here are some mini-tips to add a
               thoughtful touch to your tutorials.
             </P>
             <Hr />
@@ -1279,7 +1281,8 @@ const Page = () => (
               <A href="https://github.com/facebook/create-react-app">
                 create-react-app
               </A>
-              , etc) that beginners might use. Here’s his quote:
+              , etc) that <Highlight>many beginners/newcomers use</Highlight>.
+              Here’s his quote:
             </P>
             <Blockquote>
               <P>
@@ -1313,9 +1316,9 @@ const Page = () => (
             <P>
               You don’t have to follow all the guidelines I mentioned on this
               page. Sometimes you have to break the rule when refactoring
-              code—and the same applies to writing tutorials. But do try to
-              refine your tutorials after you’re done writing them. As the
-              saying goes, “Writing is rewriting”.
+              code—and the same is true for refactoring tutorials. But do try to
+              revise as much as possible. As the saying goes, “Writing is
+              rewriting”.
             </P>
             <Hr />
             <P>
