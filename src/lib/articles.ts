@@ -25,6 +25,6 @@ export const articlesData = {
     title: 'Your Coding Tutorial Might Need Some Refactoring',
     date: DateTime.fromISO('2020-01-01T09:00:00Z'),
     description: 'Seven Opinionated Tips',
-    ogImage: 'refactor'
+    ogImage: 'refactor-v2'
   }
 }

@@ -9,7 +9,7 @@ This is the repository for the TypeScript tutorial website called **[TypeScript 
 ## Article 3: [Your Coding Tutorial Might Need Some Refactoring](https://ts.chibicode.com/refactor)
 
 <p>
-  <a href="https://ts.chibicode.com/refactor"><img src="public/images/og-refactor.png" width="600" /></a>
+  <a href="https://ts.chibicode.com/refactor"><img src="public/images/og-refactor-v2.png" width="600" /></a>
 </p>
 
 ## Article 2: [TypeScript Tutorial for JS Programmers Who Know How to Build a Todo App](https://ts.chibicode.com/todo)
