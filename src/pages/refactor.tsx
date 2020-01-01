@@ -1163,14 +1163,21 @@ const Page = () => (
             <P>
               Also: If you’re living in the US,{' '}
               <Highlight>
-                avoid cultural references that only people familiar with
-                American culture would understand
+                avoid cultural references and humor that only people familiar
+                with American culture would understand
               </Highlight>
               . Always ask yourself:{' '}
               <em>
                 “Would someone living far, far away from here understand what
                 I’m writing?”
               </em>
+            </P>
+            <P>
+              (<strong>Note:</strong> I’m an English-Japanese translator, and
+              it’s really hard to translate some cultural references into
+              Japanese. If you write a good technical article, people will
+              volunteer to translate it. Minimize cultural references to make it
+              easy for people to translate!)
             </P>
             <Hr />
             <P>
