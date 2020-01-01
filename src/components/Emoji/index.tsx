@@ -36,10 +36,8 @@ import Cross from 'src/components/Emoji/Cross'
 import Rhino from 'src/components/Emoji/Rhino'
 import Prettier from 'src/components/Emoji/Prettier'
 import ScaryCat from 'src/components/Emoji/ScaryCat'
-import BadExample from 'src/components/Emoji/BadExample'
 import Running from 'src/components/Emoji/Running'
 import Dash from 'src/components/Emoji/Dash'
-import Star from 'src/components/Emoji/Star'
 import HeartCat from 'src/components/Emoji/HeartCat'
 import Pumpkin from 'src/components/Emoji/Pumpkin'
 import HeartLetter from 'src/components/Emoji/HeartLetter'
@@ -51,6 +49,8 @@ import StringText from 'src/components/Emoji/StringText'
 import NumberText from 'src/components/Emoji/NumberText'
 import LetterC from 'src/components/Emoji/LetterC'
 import FastForward from 'src/components/Emoji/FastForward'
+import One from 'src/components/Emoji/One'
+import OneTwoThreeFour from 'src/components/Emoji/OneTwoThreeFour'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -89,10 +89,8 @@ export const emojiToComponent = {
   rhino: Rhino,
   prettier: Prettier,
   scaryCat: ScaryCat,
-  badExample: BadExample,
   running: Running,
   dash: Dash,
-  star: Star,
   heartCat: HeartCat,
   pumpkin: Pumpkin,
   heartLetter: HeartLetter,
@@ -103,7 +101,9 @@ export const emojiToComponent = {
   stringText: StringText,
   numberText: NumberText,
   letterC: LetterC,
-  fastForward: FastForward
+  fastForward: FastForward,
+  one: One,
+  oneTwoThreeFour: OneTwoThreeFour
 }
 
 export const EmojiWrapper = ({

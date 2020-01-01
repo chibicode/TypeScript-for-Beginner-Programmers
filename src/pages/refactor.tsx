@@ -45,7 +45,7 @@ const techniques = [
         Prefer <Highlight>minimal</Highlight> code samples
       </>
     ),
-    emojis: ['badExample', 'singleArrow', 'star']
+    emojis: ['oneTwoThreeFour', 'singleArrow', 'one']
   },
   {
     title: (
@@ -164,6 +164,9 @@ const Page = () => (
                     css={css`
                       text-decoration: none;
                       font-weight: bold;
+                      &:hover {
+                        text-decoration: underline;
+                      }
                     `}
                   >
                     {technique.title}
