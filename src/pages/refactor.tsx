@@ -408,8 +408,9 @@ const Page = () => (
               following code appears on the official{' '}
               <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
                 TypeScript handbook
-              </A>
-              . And the handbook{' '}
+              </A>{' '}
+              (which is written in a way that’s both a tutorial and
+              documentation). And the handbook{' '}
               <Highlight>
                 uses this code to explain how to use{' '}
                 <strong>a particular TypeScript keyword/operator</strong>.
@@ -451,8 +452,7 @@ const Page = () => (
               }
             />
             <P>
-              I know what you’re thinking: It’s hard to tell! If you look at the
-              code again, only{' '}
+              But it’s hard to tell! If you look at the code again, only{' '}
               <Highlight color="yellowHighlight">
                 <strong>the highlighted part</strong>
               </Highlight>{' '}
@@ -464,7 +464,13 @@ const Page = () => (
               <Code>Partial&lt;&gt;</Code>, <Code>hasOwnProperty</Code>,{' '}
               <Code>as</Code>, <Code>constructor</Code>, <Code>public</Code>,{' '}
               <Code>interface</Code>, <Code>void</Code>, <Code>implements</Code>
-              , <Code>prototype</Code>, etc).
+              , <Code>prototype</Code>, etc). You also need to pause and read
+              carefully to understand what’s going on, even though most of the
+              code isn’t directly related to the{' '}
+              <strong>
+                “<Code>&amp;</Code>” operator
+              </strong>
+              .
             </P>
             <CodeBlock
               snippet={snippets.onux}
@@ -486,7 +492,7 @@ const Page = () => (
                     “<Code>&amp;</Code>”
                   </strong>
                   , the topic being explained through this code. Every other
-                  keyword is just noise!
+                  keyword is just noise.
                 </>
               }
             />
@@ -499,10 +505,9 @@ const Page = () => (
               <strong>
                 “<Code>&amp;</Code>” operator
               </strong>{' '}
-              in TypeScript. To make matters worse,{' '}
-              <A href="/images/refactor/asOfWriting.png">as of writing</A>, this
-              is the ONLY code sample used to explain the “<Code>&amp;</Code>”
-              operator on the official handbook!
+              in TypeScript. It does show a few places where the “
+              <Code>&amp;</Code>” operator can be used, which is good, but it
+              could have been done without adding so much noise.
             </P>
             <P>
               If I were to explain how the “<Code>&amp;</Code>” operator works
@@ -513,7 +518,8 @@ const Page = () => (
               —it basically does the same thing in a simpler way. You don’t need
               to understand TypeScript to know that this is more minimal and
               focused on explaining how to use the “<Code>&amp;</Code>”
-              operator.
+              operator. The amount it takes to understand this code is also much
+              shorter.
             </P>
             <CodeBlock
               snippet={snippets.vnfq}
@@ -528,29 +534,33 @@ const Page = () => (
               }
             />
             <P>
+              If you want to talk about more advanced usage, you could add the
+              earlier, more complicated example AFTER my simple example.
+            </P>
+            <P>
               <strong>
-                What I want to say is: Prefer minimal code samples.
+                What I want to say is: Prefer minimal code samples, at least
+                initially.
               </strong>{' '}
               <Highlight>
                 If you’re trying to teach a new concept (let’s call this “
                 <strong>X</strong>”), just focus on <strong>X</strong> in the
                 code sample and don’t add too much extra stuff.
               </Highlight>{' '}
-              Add extra stuff only when it <em>really</em> helps the reader’s
-              understanding.
+              Add extra stuff only (1) after you showed a simple example and (2)
+              when it <em>really</em> helps the reader’s understanding.
             </P>
             <P>
               You might be thinking: <em>“Well, that’s obvious.”</em> But trust
-              me, so many tutorials (including the official TypeScript
-              handbook!) fail at keeping things simple and end up with too much
-              noise in code samples, making them hard to follow.
+              me, so many tutorials fail at keeping things simple and end up
+              with too much noise in code samples, making them hard to follow.
             </P>
             <Hr />
             <P>
               <strong>Minimal reproducible example:</strong> When you ask a
               question on StackOverflow or file an issue on GitHub, you’re often
               asked to create a{' '}
-              <Highlight>minimal reproducible example</Highlight>. WYour code
+              <Highlight>minimal reproducible example</Highlight>. Your code
               needs to be as small as possible, such that it is just sufficient
               to demonstrate the problem, but without any additional complexity
               (
@@ -581,9 +591,14 @@ const Page = () => (
                 code samples minimal to reduce confusion (except for advanced
                 topics). <strong>Documentations</strong> are{' '}
                 <Highlight>references</Highlight>, so it’s often better to have
-                comprehensive code samples. (The official TypeScript handbook I
-                mentioned earlier is written more like a tutorial than
-                documentation.)
+                comprehensive code samples.
+              </P>
+              <P>
+                The official TypeScript handbook I mentioned earlier is written
+                as something that's in between a tutorial and documentation. As
+                of writing, I believe it’s subpar as a tutorial (because of what
+                I said above) and as documentation (it isn’t as focused and
+                detailed as it should be).
               </P>
             </>
           )
