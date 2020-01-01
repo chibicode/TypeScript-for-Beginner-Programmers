@@ -326,7 +326,8 @@ const Page = () => (
                 <Code>letter-spacing</Code> to fit more characters.
               </UlLi>
               <UlLi>
-                If you want code samples to have longer line length on desktop,{' '}
+                If you want code samples to have longer line length on a larger
+                screen,{' '}
                 <Highlight>you can use Prettier in the browser</Highlight> to
                 dynamically adjust line length based on window width.
               </UlLi>
@@ -346,14 +347,14 @@ const Page = () => (
               }
             />
             <P>
-              You might be tempted to assume that the readers will read (and
-              follow along) your coding tutorial on a laptop.{' '}
+              You might be tempted to assume that your readers will read (and
+              follow along) your coding tutorial on a computer.{' '}
               <Highlight>But that’s a bad assumption.</Highlight>
             </P>
             <P>
               In the past, I’ve used Google Analytics to track desktop vs mobile
               usage on my coding tutorials. Even though my tutorials are meant
-              to be done on a laptop, surprisingly many people accessed them
+              to be done on a computer, surprisingly many people accessed them
               from a mobile device.
             </P>
             <P>
@@ -378,9 +379,9 @@ const Page = () => (
               <Highlight>
                 If you can easily read all the code samples on a phone, you
                 might be able to finish the tutorial without pulling out your
-                laptop.
+                computer.
               </Highlight>{' '}
-              Sometimes you need to follow along on your laptop to fully
+              Sometimes you need to follow along on your computer to fully
               understand the content, but that’s not always the case.
             </P>
             <P>
@@ -400,7 +401,9 @@ const Page = () => (
                 to text-based tutorials.{' '}
                 <Highlight>For video tutorials (screencasts)</Highlight>, it’d
                 be ideal if the fonts are large enough to be legible on a phone
-                (in landscape mode).
+                (in landscape mode). I like watching coding tutorials on
+                YouTube, but sometimes the fonts are too small when viewed on my
+                phone.
               </P>
             </>
           )
@@ -412,7 +415,6 @@ const Page = () => (
           <>
             <EmojiSeparator emojis={techniques[1].emojis} />
             <P>
-              <strong>Let’s start with a quiz!</strong>{' '}
               <A href="/images/refactor/asOfWriting.png">As of writing</A>, the
               following code appears on the official{' '}
               <A href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">
@@ -420,8 +422,8 @@ const Page = () => (
               </A>
               . And the handbook{' '}
               <Highlight>
-                uses this code to explain how to use a particular TypeScript{' '}
-                <strong>keyword/operator</strong>.
+                uses this code to explain how to use{' '}
+                <strong>a particular TypeScript keyword/operator</strong>.
               </Highlight>
             </P>
             <P>
@@ -430,7 +432,8 @@ const Page = () => (
                 Can you tell which keyword/operator is being explained through
                 this code?
               </Highlight>{' '}
-              (You don’t need to know TypeScript—just guess!)
+              Hint: It is one of the keywords/operators used in the code. (You
+              don’t need to know TypeScript—just guess!)
             </P>
             <CodeBlock snippet={snippets.onux} smallText />
             <P>
@@ -459,7 +462,8 @@ const Page = () => (
               }
             />
             <P>
-              But it’s hard to tell! If you look at the code again, only{' '}
+              I know what you’re thinking: It’s hard to tell! If you look at the
+              code again, only{' '}
               <Highlight color="yellowHighlight">
                 <strong>the highlighted part</strong>
               </Highlight>{' '}
@@ -517,9 +521,9 @@ const Page = () => (
               <Highlight>
                 I’d <strong>refactor</strong> the earlier code as follows
               </Highlight>
-              —it basically does the same thing but in a simpler way. You don’t
-              need to understand TypeScript to know that this is more minimal
-              and focused on explaining how to use the “<Code>&amp;</Code>”
+              —it basically does the same thing in a simpler way. You don’t need
+              to understand TypeScript to know that this is more minimal and
+              focused on explaining how to use the “<Code>&amp;</Code>”
               operator.
             </P>
             <CodeBlock
@@ -541,7 +545,7 @@ const Page = () => (
               <Highlight>
                 If you’re trying to teach a new concept (let’s call this “
                 <strong>X</strong>”), just focus on <strong>X</strong> in the
-                code and don’t add too much extra stuff.
+                code sample and don’t add too much extra stuff.
               </Highlight>{' '}
               Add extra stuff only when it <em>really</em> helps the reader’s
               understanding.
@@ -557,20 +561,21 @@ const Page = () => (
               <strong>Minimal reproducible example:</strong> When you ask a
               question on StackOverflow or file an issue on GitHub, you’re often
               asked to create a{' '}
-              <Highlight>minimal reproducible example</Highlight>. Your code
-              needs to be{' '}
+              <Highlight>minimal reproducible example</Highlight>. WYour code
+              needs to be as small as possible, such that it is just sufficient
+              to demonstrate the problem, but without any additional complexity
+              (
               <A href="https://en.wikipedia.org/wiki/Minimal_working_example">
-                as small as possible, such that it is just sufficient to
-                demonstrate the problem, but without any additional complexity
+                Wikipedia’s definition
               </A>
-              .
+              ).
             </P>
             <P>
               You should use the same principle when writing code samples for
               your tutorials. Ask yourself:{' '}
               <Highlight>
-                Can I make this code sample more minimal, without sacrificing
-                the learning experience?
+                Can I make this code sample more minimal while maintaining the
+                learning experience?
               </Highlight>
             </P>
           </>
@@ -584,7 +589,7 @@ const Page = () => (
                 <em>tutorials</em> vs <em>documentations</em>.{' '}
                 <strong>Tutorials</strong> are for{' '}
                 <Highlight>learning</Highlight>, so it’s often better to keep
-                code samples minimal to remove confusion (except for advanced
+                code samples minimal to reduce confusion (except for advanced
                 topics). <strong>Documentations</strong> are{' '}
                 <Highlight>references</Highlight>, so it’s often better to have
                 comprehensive code samples. (The official TypeScript handbook I
