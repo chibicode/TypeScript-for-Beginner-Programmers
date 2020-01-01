@@ -12,11 +12,11 @@ import {
   ForegroundHighlight,
   A,
   Code,
-  Hr
+  Hr,
+  Blockquote
 } from 'src/components/ContentTags'
 import * as snippets from 'src/lib/snippets'
 import TwitterLink from 'src/components/TwitterLink'
-import BubbleQuotes from 'src/components/BubbleQuotes'
 import AboutMe from 'src/components/AboutMe'
 import CodeBlock from 'src/components/CodeBlock'
 import Caption from 'src/components/Caption'
@@ -948,15 +948,16 @@ const Page = () => (
                 <strong>use themes:</strong>
               </Highlight>{' '}
               <Highlight>
-                If your tutorial doesn’t have a <strong>theme</strong> that ties
-                together your examples, try to add one
+                If your tutorial doesn’t have an underlying{' '}
+                <strong>theme</strong> that ties together your examples, try to
+                add one
               </Highlight>
               . Having an extremely simple theme is better than having no theme.
             </P>
             <P>
-              For example, on my{' '}
-              <InternalLink href="/todo">TypeScript tutorial</InternalLink>, I
-              teach 8 beginner topics{' '}
+              For example, on{' '}
+              <InternalLink href="/todo">one of my tutorials</InternalLink>, I
+              teach 8 beginner TypeScript topics{' '}
               <ForegroundHighlight color="gray">
                 (types, read-only properties, mapped types, array types, literal
                 types, intersection types, union types, and optional properties)
@@ -965,11 +966,14 @@ const Page = () => (
               <Highlight>
                 I use a simple theme of <strong>building a todo app</strong> to
                 explain all those 8 topics.
-              </Highlight>
+              </Highlight>{' '}
+              The idea is to add features to a todo app one by one using
+              TypeScript.
             </P>
             <P>
-              On my tutorial, you implement the{' '}
-              <Highlight>“toggle todo”</Highlight> feature of a todo app first:
+              First, you implement the <Highlight>“toggle todo”</Highlight>{' '}
+              feature of a todo app. This lets you check and uncheck the
+              checkboxes—try it below!
             </P>
             <TodoWithData
               promptArrowText={<>↑ Check and uncheck the checkboxes!</>}
@@ -984,8 +988,9 @@ const Page = () => (
               <em>TypeScript types, read-only properties, and mapped types</em>.
             </P>
             <P>
-              After this, you then implement the{' '}
-              <Highlight>“mark all as completed”</Highlight> feature:
+              After that, you implement the{' '}
+              <Highlight>“mark all as completed”</Highlight> feature, which
+              checks all the checkboxes at once.
             </P>
             <TodoWithData
               promptArrowText={
@@ -1010,10 +1015,11 @@ const Page = () => (
               You get the idea.{' '}
               <Highlight>
                 When I want to teach many concepts at once, I prefer to use{' '}
-                <strong>one theme</strong> to explain them all.
+                <strong>a specific theme</strong> to explain them all—in this
+                case, building a todo app.
               </Highlight>{' '}
               By doing so, readers won’t have to do as much context switching in
-              their brain, thus reducing their cognitive load.
+              their head.
             </P>
             <Hr />
             <P>
@@ -1024,7 +1030,7 @@ const Page = () => (
               Tie a new concept with the concept your reader already knows.
             </P>
             <P>
-              For example, did you notice that I used several analogies in this
+              By the way, did you notice that I used several analogies in this
               article?
             </P>
             <Ul>
@@ -1047,11 +1053,22 @@ const Page = () => (
                 If your analogy isn’t perfect, use it anyway but say “it’s not a
                 perfect comparison.”
               </Highlight>{' '}
-              It would still help your reader remember the concept better. I do
-              this on my{' '}
-              <InternalLink href="/todo">TypeScript tutorial</InternalLink> when
-              I compare TypeScript’s type-checking feature with unit tests.
+              It would still help your reader memorize the concept. I do this on
+              my <InternalLink href="/todo">TypeScript tutorial</InternalLink>{' '}
+              when I compare TypeScript’s type-checking feature with unit tests.
+              Here’s what I wrote:
             </P>
+            <Blockquote>
+              <P>
+                So in a sense, TypeScript’s types act as lightweight unit tests
+                that run every time you save (compile) the code. (
+                <Highlight>
+                  Of course, this analogy is a simplification. You should still
+                  write tests in TypeScript!
+                </Highlight>
+                )
+              </P>
+            </Blockquote>
             <Hr />
             <P>
               <Emoji type="question" /> Finally,{' '}
@@ -1264,41 +1281,31 @@ const Page = () => (
               </A>
               , etc) that beginners might use. Here’s his quote:
             </P>
-            <BubbleQuotes
-              quotes={[
-                {
-                  children: (
-                    <>
-                      <P>
-                        “If you’re building tools like me, there’s this fact
-                        that we have become the new gatekeepers to one of the
-                        largest programming communities in the world.
-                      </P>
-                      <P>
-                        And this is scary stuff. Because it means that every
-                        time our tool prints an incomprehensible error message,
-                        somebody somewhere decides that they’re just not cut out
-                        for programming. And this is a big responsibility.”
-                      </P>
-                      <Hr color="lightYellow1" />
-                      <P>
-                        “If you’re a maintainer of an open-source project it is
-                        invaluable to go out there in the field and see what
-                        they struggle with as they try to use your projects.
-                      </P>
-                      <P>
-                        And if you think improving newcomer experience is
-                        polish, it’s not polish. If you go out there in the
-                        field you will see that it makes a real difference in
-                        people’s lives, and what they can learn, and what they
-                        can build with it. So it’s not just polish. Take this
-                        seriously.”
-                      </P>
-                    </>
-                  )
-                }
-              ]}
-            />
+            <Blockquote>
+              <P>
+                If you’re building tools like me, there’s this fact that we have
+                become the new gatekeepers to one of the largest programming
+                communities in the world.
+              </P>
+              <P>
+                And this is scary stuff. Because it means that every time our
+                tool prints an incomprehensible error message, somebody
+                somewhere decides that they’re just not cut out for programming.
+                And this is a big responsibility. ...
+              </P>
+              <P>
+                If you’re a maintainer of an open-source project it is
+                invaluable to go out there in the field and see what they
+                struggle with as they try to use your projects.
+              </P>
+              <P>
+                And if you think improving newcomer experience is polish, it’s
+                not polish. If you go out there in the field you will see that
+                it makes a real difference in people’s lives, and what they can
+                learn, and what they can build with it. So it’s not just polish.
+                Take this seriously.
+              </P>
+            </Blockquote>
             <P>
               I think his quote applies not just to coding tools, but also to
               coding tutorials.

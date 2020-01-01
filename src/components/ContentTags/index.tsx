@@ -6,5 +6,6 @@ export {
 } from 'src/components/ContentTags/Highlight'
 export { default as Hr } from 'src/components/ContentTags/Hr'
 export { default as A } from 'src/components/ContentTags/A'
+export { default as Blockquote } from 'src/components/ContentTags/Blockquote'
 export { default as Image } from 'src/components/ContentTags/Image'
 export { Ul, Ol, UlLi, OlLi } from 'src/components/ContentTags/List'
