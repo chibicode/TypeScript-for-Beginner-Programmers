@@ -14,7 +14,7 @@ const CodeBlockPre = ({
     <pre
       css={[
         css`
-          padding: ${spaces(0.75)} ${spaces(0.5)};
+          padding: 0 ${spaces(0.5)};
           line-height: 1.45;
           border: 2px solid ${colors('lightBrown')};
           background-color: ${colors('lightPink1')};
@@ -25,7 +25,7 @@ const CodeBlockPre = ({
           }
 
           ${ns} {
-            padding: ${spaces(1)} ${spaces(1)};
+            padding: 0 ${spaces(1)};
             margin-left: 0;
             margin-right: 0;
           }
@@ -35,8 +35,12 @@ const CodeBlockPre = ({
     >
       <div
         css={css`
+          padding: ${spaces(0.75)} 0;
           overflow-x: auto;
           overflow-y: hidden;
+          ${ns} {
+            padding: ${spaces(1)} 0;
+          }
         `}
       >
         {children}
