@@ -1171,6 +1171,68 @@ const Page = () => (
               </em>
             </P>
             <Hr />
+            <P>
+              <strong>
+                When you skip a step or assume prerequisite knowledge, say so.
+              </strong>{' '}
+              Sometimes you have to skip some steps to keep your tutorial short.
+              But it can also lead to confusion. So if possible,{' '}
+              <Highlight>
+                let your reader know what steps you’re skipping
+              </Highlight>
+              —by doing so, they won’t be as confused, and they can Google how
+              to do the missing steps.
+            </P>
+            <EmojiSeparator
+              emojis={['a', 'fastForward', 'letterC']}
+              description={<>Be explicit when skipping a step</>}
+            />
+            <P>
+              Also,{' '}
+              <Highlight>
+                if your tutorial requires some prerequisite knowledge,
+                explicitly list them
+              </Highlight>
+              . For example, in my{' '}
+              <InternalLink href="/generics">
+                TypeScript generics tutorial
+              </InternalLink>
+              , you need to know closure and ES2015 syntax in advance. I mention
+              this on a side note and added MDN documentation links for each
+              topic in case my readers didn’t know about them.
+            </P>
+            <P>
+              Finally,{' '}
+              <Highlight>
+                check if you’re using a convention that your readers may not
+                know about.
+              </Highlight>{' '}
+              For example, in my{' '}
+              <InternalLink href="/generics">
+                TypeScript generics tutorial
+              </InternalLink>
+              , I explain why generic type parameters are often a single
+              uppercase letter (like <Code>T</Code>, <Code>E</Code>,{' '}
+              <Code>K</Code>, <Code>V</Code>, etc). This is actually borrowed
+              from Java and{' '}
+              <A href="https://docs.oracle.com/javase/tutorial/java/generics/types.html">
+                mentioned in Oracle’s Java documentation.
+              </A>{' '}
+              Beginner programmers who have never touched Java may not know
+              about this, so I explained this convention in my tutorial.
+            </P>
+            <Hr />
+            <P>
+              <strong>
+                Finally, when things get hard, say encouraging words.
+              </strong>{' '}
+              Use phrases like:{' '}
+              <Highlight>
+                “This topic is harder than other topics we’ve covered. Don’t
+                worry if you don’t get immediately—just keep reading!”
+              </Highlight>{' '}
+              A little touch of empathy can go a long way.
+            </P>
           </>
         )
       }

@@ -50,6 +50,7 @@ import Rocket from 'src/components/Emoji/Rocket'
 import StringText from 'src/components/Emoji/StringText'
 import NumberText from 'src/components/Emoji/NumberText'
 import LetterC from 'src/components/Emoji/LetterC'
+import FastForward from 'src/components/Emoji/FastForward'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -101,7 +102,8 @@ export const emojiToComponent = {
   plane: Plane,
   stringText: StringText,
   numberText: NumberText,
-  letterC: LetterC
+  letterC: LetterC,
+  fastForward: FastForward
 }
 
 export const EmojiWrapper = ({
