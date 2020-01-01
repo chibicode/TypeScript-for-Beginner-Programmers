@@ -1291,10 +1291,10 @@ const Page = () => (
                 And this is scary stuff. Because it means that every time our
                 tool prints an incomprehensible error message, somebody
                 somewhere decides that they’re just not cut out for programming.
-                And this is a big responsibility. ...
+                And this is a big responsibility.
               </P>
               <P>
-                If you’re a maintainer of an open-source project it is
+                [...] If you’re a maintainer of an open-source project it is
                 invaluable to go out there in the field and see what they
                 struggle with as they try to use your projects.
               </P>
