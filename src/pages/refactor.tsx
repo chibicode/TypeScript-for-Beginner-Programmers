@@ -66,7 +66,7 @@ const techniques = [
   {
     title: (
       <>
-        Use <Highlight>themes</Highlight>, <Highlight>analogies</Highlight> and{' '}
+        Use <Highlight>themes</Highlight>, <Highlight>analogies</Highlight>, and{' '}
         <Highlight>quizzes</Highlight>
       </>
     ),
@@ -288,7 +288,7 @@ const Page = () => (
               So, here’s my first refactoring tip:{' '}
               <Highlight>
                 <strong>
-                  Make code samples in your tutorial mobile-ready.
+                  Make code samples in your tutorials mobile-ready.
                 </strong>
               </Highlight>
             </P>
@@ -336,13 +336,13 @@ const Page = () => (
               <strong>Why is this necessary?</strong>{' '}
               <Highlight>
                 Because many people <em>actually</em> read coding tutorials on
-                their phone.
+                their phones.
               </Highlight>{' '}
             </P>
             <EmojiSeparator
               emojis={['smilingCat', 'smartphone', 'uglyTutorial']}
               description={
-                <>Many people read coding tutorials on their phone</>
+                <>Many people read coding tutorials on their phones</>
               }
             />
             <P>
@@ -517,7 +517,7 @@ const Page = () => (
               <Highlight>
                 I’d <strong>refactor</strong> the earlier code as follows
               </Highlight>
-              —it basically does the same thing, but in a simpler way. You don’t
+              —it basically does the same thing but in a simpler way. You don’t
               need to understand TypeScript to know that this is more minimal
               and focused on explaining how to use the “<Code>&amp;</Code>”
               operator.
@@ -588,7 +588,7 @@ const Page = () => (
                 topics). <strong>Documentations</strong> are{' '}
                 <Highlight>references</Highlight>, so it’s often better to have
                 comprehensive code samples. (The official TypeScript handbook I
-                mentioned earlier is written more like a tutorial than a
+                mentioned earlier is written more like a tutorial than
                 documentation.)
               </P>
             </>
@@ -669,7 +669,7 @@ const Page = () => (
               }
             />
             <P>
-              <strong>I’d say No—it’s NOT a good example</strong>. You don’t
+              <strong>I’d say NO—it’s NOT a good example</strong>. You don’t
               need to know TypeScript to see why. Let’s look at how{' '}
               <Code>padLeft</Code> works again:
             </P>
@@ -693,9 +693,9 @@ const Page = () => (
             />
             <P>
               <strong>You probably would not</strong>. It just does simple
-              string concatenation backwards.{' '}
+              string concatenation in reverse.{' '}
               <Highlight>
-                You probably would just use other standard way to concatenate
+                You probably would just use other standard ways to concatenate
                 strings, like <Code>'Jim: ' + 'Hello World'</Code>
               </Highlight>
               . There’s no good reason why this API should exist.
@@ -814,7 +814,7 @@ const Page = () => (
           <>
             <EmojiSeparator emojis={techniques[3].emojis} />
             <P>
-              One of the best ways to capture your readers’ attention is to{' '}
+              One of the best ways to capture your reader’s attention is to{' '}
               <strong>FAIL</strong>. When things don’t go according to plan,
               people will pay more attention than when everything goes smoothly.
               Use this to your advantage.
@@ -826,21 +826,19 @@ const Page = () => (
                 Try to show a failing scenario{' '}
                 <strong>as early as possible</strong> in your article.
               </Highlight>{' '}
-              By doing so, you’ll be able to capture your readers’ attention
+              By doing so, you’ll be able to capture your reader’s attention
               right off the bat.
             </P>
             <P>
-              For example, in{' '}
-              <InternalLink href="/todo">
-                one of my TypeScript tutorials
-              </InternalLink>
-              , I start with an example where, if you run the code, the actual
+              For example, on{' '}
+              <InternalLink href="/todo">my TypeScript tutorial</InternalLink>,
+              I start with an example where, if you run the code, the actual
               result is different from the expected result.
             </P>
             <CodeResultWrapper>
               <Caption>
-                The <strong>first</strong> example in one of my tutorials: The
-                actual result is different from the expected result
+                The <strong>first</strong> example on my tutorial: The actual
+                result is different from the expected result
               </Caption>
               <CodeResult
                 resultText={
@@ -908,7 +906,7 @@ const Page = () => (
             <P>
               <strong>The bottom line:</strong>{' '}
               <Highlight>
-                Double check to see where the first failing example appears in
+                Double-check to see where the first failing example appears in
                 your tutorial. If it’s missing, add one near the beginning of
                 your tutorial.
               </Highlight>
@@ -938,7 +936,7 @@ const Page = () => (
             <EmojiSeparator emojis={techniques[4].emojis} />
             <P>
               Let’s talk about the <strong>3 simple techniques</strong> you can
-              use to engage the readers’ brain. <Emoji type="brain"></Emoji>
+              use to engage the reader’s brain. <Emoji type="brain"></Emoji>
             </P>
             <Hr />
             <P>
@@ -958,7 +956,7 @@ const Page = () => (
               teach 8 beginner topics{' '}
               <ForegroundHighlight color="gray">
                 (types, read-only properties, mapped types, array types, literal
-                types, intersection types, union types and optional properties)
+                types, intersection types, union types, and optional properties)
               </ForegroundHighlight>
               . Instead of covering each topic separately,{' '}
               <Highlight>
@@ -967,7 +965,7 @@ const Page = () => (
               </Highlight>
             </P>
             <P>
-              In my tutorial, you implement the{' '}
+              On my tutorial, you implement the{' '}
               <Highlight>“toggle todo”</Highlight> feature of a todo app first:
             </P>
             <TodoWithData
@@ -979,7 +977,7 @@ const Page = () => (
             />
             <P>
               To implement this feature, you need to write the{' '}
-              <Code>toggleTodo()</Code> function, and in that process I explain
+              <Code>toggleTodo()</Code> function, and in that process, I explain
               <em>TypeScript types, read-only properties, and mapped types</em>.
             </P>
             <P>
@@ -1000,7 +998,8 @@ const Page = () => (
             />
             <P>
               To implement this feature, you need to write the{' '}
-              <Code>completeAll()</Code> function, and in that process I explain{' '}
+              <Code>completeAll()</Code> function, and in that process, I
+              explain{' '}
               <em>array types, literal types, and intersection types</em> in
               TypeScript.
             </P>
@@ -1031,12 +1030,12 @@ const Page = () => (
                 <Highlight>refactoring a coding tutorial</Highlight>.
               </UlLi>
               <UlLi>
-                I compared <Highlight>minimum reproducible example</Highlight>{' '}
+                I compared <Highlight>minimum reproducible examples</Highlight>{' '}
                 with <Highlight>minimal code samples</Highlight>.
               </UlLi>
               <UlLi>
                 I compared <Highlight>TDD</Highlight> with{' '}
-                <Highlight>using failing examples in a tutorial</Highlight>.
+                <Highlight>using failing examples</Highlight>.
               </UlLi>
             </Ul>
             <P>
@@ -1048,7 +1047,7 @@ const Page = () => (
               It would still help your reader remember the concept better. I do
               this on my{' '}
               <InternalLink href="/todo">TypeScript tutorial</InternalLink> when
-              I compare TypeScript’s type-checking with unit tests.
+              I compare TypeScript’s type-checking feature with unit tests.
             </P>
             <Hr />
             <P>
@@ -1063,7 +1062,7 @@ const Page = () => (
                 <em>“what would happen if you do X?”</em>
               </Highlight>
               . Even non-interactive, simple yes-no quizzes are better than
-              having zero quiz! (You noticed that I asked you a quiz about
+              having no quiz! (You noticed that I asked you a quiz about
               TypeScript’s <Code>“&amp;”</Code> operator earlier on this
               article, right?)
             </P>
@@ -1077,7 +1076,7 @@ const Page = () => (
             <EmojiSeparator emojis={techniques[5].emojis} />
             <P>
               This is the final section! Here are some mini tips to add a
-              thoughtful touch on your tutorial.
+              thoughtful touch to your tutorials.
             </P>
             <Hr />
             <P>
@@ -1105,9 +1104,9 @@ const Page = () => (
             <Hr />
             <P>
               <strong>Use graphics that represent faces.</strong> There’s a
-              reason a lot of ads have someone’s face in it. People’s brain is
+              reason a lot of ads have someone’s face in it. People’s brains are
               wired to pay attention to faces. Take advantage of this to grab
-              your readers’ attention.
+              your reader’s attention.
             </P>
             <P>
               One of the easiest ways to do this is to use{' '}
@@ -1216,7 +1215,7 @@ const Page = () => (
                 check if you’re using a convention that your readers may not
                 know about.
               </Highlight>{' '}
-              For example, in my{' '}
+              For example, on my{' '}
               <InternalLink href="/generics">
                 TypeScript generics tutorial
               </InternalLink>
@@ -1228,7 +1227,7 @@ const Page = () => (
                 mentioned in Oracle’s Java documentation.
               </A>{' '}
               Beginner programmers who have never touched Java may not know
-              about this, so I explained this convention in my tutorial.
+              about this, so I explained this convention on my tutorial.
             </P>
             <Hr />
             <P>
@@ -1304,7 +1303,7 @@ const Page = () => (
             <P>
               You don’t have to follow all the guidelines I mentioned on this
               page. Sometimes you have to break the rule when refactoring
-              code—and the same applies for writing tutorials. But do try to
+              code—and the same applies to writing tutorials. But do try to
               refine your tutorials after you’re done writing them. As the
               saying goes, “Writing is rewriting”.
             </P>
