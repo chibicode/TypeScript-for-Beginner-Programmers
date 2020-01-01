@@ -13,6 +13,8 @@ interface EmojiSeparatorProps {
   cssOverrides?: SerializedStyles
   description?: React.ReactNode
   customChildren?: React.ReactNode
+  leftAlign?: boolean
+  href?: string
 }
 
 const fontSize = (
@@ -20,7 +22,7 @@ const fontSize = (
 ): ReadonlyArray<keyof typeof allFontSizes> =>
   ({
     sm: [1, 1.2] as const,
-    md: [2, 2.5] as const,
+    md: [2.2, 2.5] as const,
     lg: [3, 4] as const
   }[size])
 
@@ -49,30 +51,43 @@ const EmojiSeparator = ({
   size = 'md',
   cssOverrides,
   description,
-  customChildren
+  customChildren,
+  leftAlign,
+  href
 }: EmojiSeparatorProps) => {
   const { spaces, ns, fontSizes } = useTheme()
+  const EmojiWrapperComponent = href ? 'a' : 'span'
+  const emojiWrapperComponentAttrs = href ? { href } : {}
   return (
     <div
       css={[
         css`
-          text-align: center;
           margin: ${spaces(margins(size)[0])} 0 ${spaces(margins(size)[1])};
           font-size: ${fontSizes(fontSize(size)[0])};
           ${ns} {
             font-size: ${fontSizes(fontSize(size)[1])};
           }
         `,
-        cssOverrides
+        cssOverrides,
+        !leftAlign &&
+          css`
+            text-align: center;
+          `
       ]}
     >
       <>
-        <span
-          css={css`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          `}
+        <EmojiWrapperComponent
+          {...emojiWrapperComponentAttrs}
+          css={[
+            css`
+              display: flex;
+            `,
+            !leftAlign &&
+              css`
+                align-items: center;
+                justify-content: center;
+              `
+          ]}
         >
           {customChildren ||
             (emojis || []).map((emoji, index) => (
@@ -80,7 +95,7 @@ const EmojiSeparator = ({
                 <Emoji type={emoji} />
               </SideSpace>
             ))}
-        </span>
+        </EmojiWrapperComponent>
         {description && (
           <Caption
             cssOverrides={

@@ -12,10 +12,11 @@ export interface CardProps {
   color?: 'default' | 'pink' | 'green' | 'darkGreen'
   slideNumber?: number
   slideCount?: number
-  isLast?: boolean
+  isFirst?: boolean
   title?: React.ReactNode
   heading?: React.ReactNode
   subtitle?: React.ReactNode
+  anchor?: string
   footer?: {
     content: React.ReactNode
     color?: CardProps['color']
@@ -42,19 +43,39 @@ const Card = ({
   children,
   slideNumber,
   slideCount,
-  isLast,
+  isFirst,
   footer,
   heading,
-  subtitle
+  subtitle,
+  anchor
 }: CardProps) => {
-  const { ns, colors, fontSizes, spaces, radii, lineHeights } = useTheme()
+  const {
+    ns,
+    colors,
+    fontSizes,
+    spaces,
+    radii,
+    lineHeights,
+    letterSpacings
+  } = useTheme()
   return (
     <>
+      {!isFirst && (
+        <div
+          id={anchor}
+          css={css`
+            width: 1.25rem;
+            height: 2rem;
+            margin: 0 auto;
+            background: ${colors('paleGreen')};
+          `}
+        />
+      )}
       <div
         css={css`
           position: relative;
-          margin-left: ${spaces('-0.75')};
-          margin-right: ${spaces('-0.75')};
+          margin-left: -0.6rem;
+          margin-right: -0.6rem;
 
           ${ns} {
             margin-left: ${spaces('-1.5')};
@@ -80,7 +101,7 @@ const Card = ({
             <>
               <span
                 css={css`
-                  color: ${colors('white85')};
+                  color: ${colors('white70')};
                 `}
               >
                 Slide{' '}
@@ -94,7 +115,7 @@ const Card = ({
               </span>{' '}
               <span
                 css={css`
-                  color: ${colors('white85')};
+                  color: ${colors('white70')};
                   font-weight: bold;
                 `}
               >
@@ -189,7 +210,7 @@ const Card = ({
                 padding: ${spaces(0.75)};
 
                 ${ns} {
-                  padding-top: ${spaces(1.25)};
+                  padding-top: ${spaces(1)};
                   padding-left: ${spaces(1.5)};
                   padding-right: ${spaces(1.5)};
                   padding-bottom: ${spaces(1)};
@@ -199,21 +220,26 @@ const Card = ({
                 border-bottom-left-radius: ${radii(0.5)};
               `}
             >
+              <h4
+                css={css`
+                  text-align: center;
+
+                  margin: ${spaces(0.25)} 0 ${spaces(0.75)};
+                  line-height: ${lineHeights(0.85)};
+                  font-size: ${fontSizes(0.85)};
+
+                  letter-spacing: ${letterSpacings('wide')};
+                  text-transform: uppercase;
+                  color: ${colors('brown')};
+                `}
+              >
+                Side Note
+              </h4>
               {footer.content}
             </div>
           )}
         </div>
       </div>
-      {!isLast && (
-        <div
-          css={css`
-            width: 1.25rem;
-            height: 2rem;
-            margin: 0 auto;
-            background: ${colors('paleGreen')};
-          `}
-        />
-      )}
     </>
   )
 }

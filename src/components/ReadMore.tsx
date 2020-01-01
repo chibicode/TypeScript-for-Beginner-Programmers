@@ -29,7 +29,7 @@ const ReadMore = ({
                 text-decoration: underline;
                 cursor: pointer;
                 &:hover {
-                  background: ${colors('white85')};
+                  background: ${colors('white70')};
                 }
               `}
               tabIndex={0}
@@ -41,7 +41,17 @@ const ReadMore = ({
             </span>
           </>
         ) : (
-          <>{showReadMoreTextWhenVisible && <> {readMoreText}</>}</>
+          <>
+            {showReadMoreTextWhenVisible && (
+              <span
+                css={css`
+                  text-decoration: underline;
+                `}
+              >
+                {readMoreText}
+              </span>
+            )}
+          </>
         )
       )}
       {visible && rest}

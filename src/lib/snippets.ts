@@ -469,6 +469,129 @@ const { getState, setState } = makeState()
 setState('foo')
 console.log(getState())`
 
+export const bxzx = `// It could have been useful if you could pass
+// both number AND string, and have it repeat
+// the string the specified number of times
+padLeft('Hello world', 4, '#')
+// → "####Hello world"`
+
+export const crgn = `// If the second parameter is string, then
+// that string is appended to the left side
+padLeft('Hello world', 'Jim: ')
+// → "Jim: Hello world"
+
+// Ask yourself: Would you EVER do this?`
+
+export const hfdq = `function paddingLeftCss(val: number | string) {
+  if (typeof val === 'number') {
+    return \`padding-left: \${val * 0.25}rem;\`
+  } else {
+    return \`padding-left: \${val};\`
+  }
+}
+
+// padding-left: 0.25rem;
+paddingLeftCss(1)
+
+// padding-left: 0.5rem;
+paddingLeftCss(2)
+
+// padding-left: 10%;
+paddingLeftCss('10%')`
+
+export const mvsz = `function makePair<F extends number | string, S extends boolean | F>() {}`
+
+export const zgvn = `type Todo = Readonly<{ id: number; text: string; done: boolean; place: Place }>`
+
+export const lcfe = `// If the second parameter is number, then that
+// number of spaces is added to the left side
+padLeft('Hello world', 4)
+// → "    Hello world"
+
+// If the second parameter is string, then
+// that string is appended to the left side
+padLeft('Hello world', 'Jim: ')
+// → "Jim: Hello world"`
+
+export const riis = `/**
+ * Takes a string and adds "padding" to the left.
+ *
+ * If 'padding' is a number, then that number of
+ * spaces is added to the left side.
+ *
+ * If 'padding' is a string, then 'padding' is
+ * appended to the left side.
+ */
+function padLeft(
+  value: string,
+  padding: number | string
+) {
+  if (typeof padding === 'number') {
+    return Array(padding + 1).join(' ') + value
+  } else {
+    return padding + value
+  }
+}`
+
+export const lplh = `console.log(1 + 2)`
+
+export const onux = `function extend<First, Second>(
+  first: First,
+  second: Second
+): First & Second {
+  const result: Partial<First & Second> = {}
+  for (const prop in first) {
+    if (first.hasOwnProperty(prop)) {
+      ;(result as First)[prop] = first[prop]
+    }
+  }
+  for (const prop in second) {
+    if (second.hasOwnProperty(prop)) {
+      ;(result as Second)[prop] = second[prop]
+    }
+  }
+  return result as First & Second
+}
+
+class Person {
+  constructor(public name: string) {}
+}
+
+interface Loggable {
+  log(name: string): void
+}
+
+class ConsoleLogger implements Loggable {
+  log(name) {
+    console.log(\`Hello, I'm \${name}.\`)
+  }
+}
+
+const jim = extend(
+  new Person('Jim'),
+  ConsoleLogger.prototype
+)
+jim.log(jim.name)`
+
+export const vnfq = `type Person = { name: string }
+type Loggable = { log: (name: string) => void }
+
+// Use & to make jim BOTH Person AND Loggable
+const jim: Person & Loggable = {
+  name: 'Jim',
+  log: name => {
+    console.log(\`Hello, I'm \${name}.\`)
+  }
+}
+
+// "Hello, I’m Jim."
+jim.log(jim.name)`
+
+export const xwbz = `function makePair<
+  F extends number | string,
+  S extends boolean | F
+>() {}`
+
 export const ampt = `function toggleTodo(todo: Todo): Todo {
   return {
     // This line was missing

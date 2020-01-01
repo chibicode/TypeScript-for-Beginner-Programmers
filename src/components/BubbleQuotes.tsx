@@ -5,7 +5,7 @@ import useTheme from 'src/hooks/useTheme'
 import { allColors } from 'src/lib/theme/colors'
 
 interface BubbleQuoteProps {
-  type: keyof typeof emojiToComponent
+  type?: keyof typeof emojiToComponent
   children: React.ReactNode
   backgroundColor?: keyof typeof allColors
 }
@@ -39,21 +39,23 @@ const BubbleQuotes = ({
             display: flex;
           `}
         >
-          <div
-            css={css`
-              font-size: ${size === 'lg' ? fontSizes(2) : fontSizes(1.6)};
-              margin-right: ${size === 'lg' ? spaces(0.5) : spaces(0.25)};
-              padding-top: ${spaces(0.5)};
+          {type && (
+            <div
+              css={css`
+                font-size: ${size === 'lg' ? fontSizes(2) : fontSizes(1.6)};
+                margin-right: ${size === 'lg' ? spaces(0.5) : spaces(0.25)};
+                padding-top: ${spaces(0.5)};
 
-              ${ns} {
-                padding-top: ${size === 'lg' ? spaces(0) : spaces(0.25)};
-                margin-right: ${size === 'lg' ? spaces(1) : spaces(0.75)};
-                font-size: ${size === 'lg' ? fontSizes(4) : fontSizes(2)};
-              }
-            `}
-          >
-            <Emoji type={type} />
-          </div>
+                ${ns} {
+                  padding-top: ${size === 'lg' ? spaces(0) : spaces(0.25)};
+                  margin-right: ${size === 'lg' ? spaces(1) : spaces(0.75)};
+                  font-size: ${size === 'lg' ? fontSizes(4) : fontSizes(2)};
+                }
+              `}
+            >
+              <Emoji type={type} />
+            </div>
+          )}
           <div
             css={css`
               background: ${colors(backgroundColor)};

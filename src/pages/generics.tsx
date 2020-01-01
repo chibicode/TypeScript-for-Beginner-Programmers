@@ -57,9 +57,9 @@ const Page = () => (
           content: (
             <>
               <P>
-                <strong>Note:</strong> If you already understand generics, you
-                won’t find anything new in this tutorial. However,{' '}
-                <Highlight color="white85">
+                If you already understand generics, you won’t find anything new
+                in this tutorial. However,{' '}
+                <Highlight>
                   you might know someone (maybe one of your Twitter followers)
                   who’s struggling with generics
                 </Highlight>
@@ -129,10 +129,9 @@ const Page = () => (
           content: (
             <>
               <P>
-                <strong>Note:</strong> If you’ve used React, you might have
-                realized that <Code color="lightYellow1">makeState()</Code> is
-                similar to the <Code color="lightYellow1">useState()</Code>{' '}
-                hook.
+                If you’ve used React, you might have realized that{' '}
+                <Code color="lightYellow1">makeState()</Code> is similar to the{' '}
+                <Code color="lightYellow1">useState()</Code> hook.
               </P>
               <P></P>
               <ReadMore
@@ -810,7 +809,7 @@ const Page = () => (
           content: (
             <>
               <P>
-                <strong>Note:</strong> You need to set{' '}
+                You need to set{' '}
                 <Code color="lightYellow1">
                   "strictPropertyInitialization": false
                 </Code>{' '}

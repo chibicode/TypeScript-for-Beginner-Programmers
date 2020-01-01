@@ -26,6 +26,31 @@ import VerticalBar from 'src/components/Emoji/VerticalBar'
 import Work from 'src/components/Emoji/Work'
 import Home from 'src/components/Emoji/Home'
 import Pin from 'src/components/Emoji/Pin'
+import CleanCode from 'src/components/Emoji/CleanCode'
+import UglyCode from 'src/components/Emoji/UglyCode'
+import RefactorArrow from 'src/components/Emoji/RefactorArrow'
+import UglyTutorial from 'src/components/Emoji/UglyTutorial'
+import CleanTutorial from 'src/components/Emoji/CleanTutorial'
+import Smartphone from 'src/components/Emoji/Smartphone'
+import Cross from 'src/components/Emoji/Cross'
+import Rhino from 'src/components/Emoji/Rhino'
+import Prettier from 'src/components/Emoji/Prettier'
+import ScaryCat from 'src/components/Emoji/ScaryCat'
+import BadExample from 'src/components/Emoji/BadExample'
+import Running from 'src/components/Emoji/Running'
+import Dash from 'src/components/Emoji/Dash'
+import Star from 'src/components/Emoji/Star'
+import HeartCat from 'src/components/Emoji/HeartCat'
+import Pumpkin from 'src/components/Emoji/Pumpkin'
+import HeartLetter from 'src/components/Emoji/HeartLetter'
+import DoubleArrow from 'src/components/Emoji/DoubleArrow'
+import Brain from 'src/components/Emoji/Brain'
+import Plane from 'src/components/Emoji/Plane'
+import Rocket from 'src/components/Emoji/Rocket'
+import StringText from 'src/components/Emoji/StringText'
+import NumberText from 'src/components/Emoji/NumberText'
+import LetterC from 'src/components/Emoji/LetterC'
+import FastForward from 'src/components/Emoji/FastForward'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -53,7 +78,32 @@ export const emojiToComponent = {
   verticalBar: VerticalBar,
   work: Work,
   home: Home,
-  pin: Pin
+  pin: Pin,
+  cleanCode: CleanCode,
+  uglyCode: UglyCode,
+  refactorArrow: RefactorArrow,
+  uglyTutorial: UglyTutorial,
+  cleanTutorial: CleanTutorial,
+  smartphone: Smartphone,
+  cross: Cross,
+  rhino: Rhino,
+  prettier: Prettier,
+  scaryCat: ScaryCat,
+  badExample: BadExample,
+  running: Running,
+  dash: Dash,
+  star: Star,
+  heartCat: HeartCat,
+  pumpkin: Pumpkin,
+  heartLetter: HeartLetter,
+  brain: Brain,
+  doubleArrow: DoubleArrow,
+  rocket: Rocket,
+  plane: Plane,
+  stringText: StringText,
+  numberText: NumberText,
+  letterC: LetterC,
+  fastForward: FastForward
 }
 
 export const EmojiWrapper = ({

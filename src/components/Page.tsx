@@ -56,7 +56,7 @@ const Page = ({
         <Header useH1={index} />
         <Container
           cssOverrides={css`
-            margin-bottom: ${spaces(8)};
+            margin-bottom: ${spaces(6)};
           `}
         >
           {children}

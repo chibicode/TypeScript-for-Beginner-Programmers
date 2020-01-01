@@ -3,6 +3,7 @@ import { css, jsx } from '@emotion/core'
 import useTheme from 'src/hooks/useTheme'
 import { useReducer } from 'react'
 import CodeResult from 'src/components/CodeResult'
+import CodeResultWrapper from 'src/components/CodeResultWrapper'
 import Caption from 'src/components/Caption'
 import TodoList from 'src/components/TodoList'
 import PromptArrowText from 'src/components/PromptArrowText'
@@ -94,100 +95,84 @@ const TodoWithData = ({
   narrowText?: boolean
   customSnippet?: string
 }) => {
-  const { spaces, ns, maxWidths, radii, colors, letterSpacings } = useTheme()
+  const { spaces, radii, colors, letterSpacings } = useTheme()
   const [state, dispatch] = useReducer<typeof reducer>(reducer, {
     todos: defaultData,
     lastChangedIndices: []
   })
   return (
     <TodoWithDataContext.Provider value={{ dispatch }}>
-      <div
-        css={css`
-          margin: ${spaces(2)} auto;
-          max-width: ${maxWidths('sm')};
-        `}
-      >
-        <div
-          css={css`
-            margin-left: ${spaces('-0.5')};
-            margin-right: ${spaces('-0.5')};
-            ${ns} {
-              margin-left: ${spaces(0)};
-              margin-right: ${spaces(0)};
+      <CodeResultWrapper>
+        <Caption>{caption}</Caption>
+        <CodeResult
+          resultType={showData ? 'top' : 'default'}
+          resultComponent={
+            <TodoList
+              showMarkAllAsCompleted={showMarkAllAsCompleted}
+              todos={state.todos}
+            />
+          }
+        />
+        {showData && (
+          <CodeBlockHighlight
+            snippet={
+              customSnippet ||
+              `${comment || ''}${comment ? '\n' : ''}${prettierFormat(
+                state.todos,
+                narrowText
+              )}`
             }
-          `}
-        >
-          <Caption>{caption}</Caption>
-          <CodeResult
-            resultType={showData ? 'top' : 'default'}
-            resultComponent={
-              <TodoList
-                showMarkAllAsCompleted={showMarkAllAsCompleted}
-                todos={state.todos}
-              />
-            }
-          />
-          {showData && (
-            <CodeBlockHighlight
-              snippet={
-                customSnippet ||
-                `${comment || ''}${comment ? '\n' : ''}${prettierFormat(
-                  state.todos,
-                  narrowText
-                )}`
-              }
-              language="javascript"
-              cssOverrides={[
+            language="javascript"
+            cssOverrides={[
+              css`
+                margin-top: ${0};
+                margin-bottom: ${spaces(1.75)};
+                border-bottom-left-radius: ${radii(0.5)};
+                border-bottom-right-radius: ${radii(0.5)};
+              `,
+              narrowText &&
                 css`
-                  margin-top: ${0};
-                  margin-bottom: ${spaces(1.75)};
-                  border-bottom-left-radius: ${radii(0.5)};
-                  border-bottom-right-radius: ${radii(0.5)};
-                `,
-                narrowText &&
-                  css`
-                    letter-spacing: ${letterSpacings('smallCode')};
-                  `
-              ]}
-              lineCssOverrides={(lineIndex, tokenIndex) =>
-                shouldAlwaysHighlight &&
-                shouldAlwaysHighlight(lineIndex, tokenIndex) &&
-                css`
-                  background: ${colors('yellowHighlight')};
-                  border-bottom: 2px solid ${colors('darkOrange')};
-                  font-weight: bold;
+                  letter-spacing: ${letterSpacings('smallCode')};
                 `
-              }
-              lineCssOverridesAnimation={(lineIndex, tokenIndex) =>
-                shouldHighlight &&
-                state.lastChangedIndices
-                  .map(
-                    lastChangedIndex =>
-                      lastChangedIndex + (highlightLineIndexOffset || 0)
-                  )
-                  .includes(lineIndex) &&
-                shouldHighlight(tokenIndex)
-                  ? {
-                      background: `${colors('yellowHighlight')}`,
-                      borderBottom: `2px solid ${colors('darkOrange')}`,
-                      reset: true,
-                      fontWeight: 'bold',
-                      from: {
-                        background: `${colors('yellowHighlightTransparent')}`,
-                        borderBottom: `1px solid ${colors(
-                          'darkOrangeTransparent'
-                        )}`
-                      }
+            ]}
+            lineCssOverrides={(lineIndex, tokenIndex) =>
+              shouldAlwaysHighlight &&
+              shouldAlwaysHighlight(lineIndex, tokenIndex) &&
+              css`
+                background: ${colors('yellowHighlight')};
+                border-bottom: 2px solid ${colors('darkOrange')};
+                font-weight: bold;
+              `
+            }
+            lineCssOverridesAnimation={(lineIndex, tokenIndex) =>
+              shouldHighlight &&
+              state.lastChangedIndices
+                .map(
+                  lastChangedIndex =>
+                    lastChangedIndex + (highlightLineIndexOffset || 0)
+                )
+                .includes(lineIndex) &&
+              shouldHighlight(tokenIndex)
+                ? {
+                    background: `${colors('yellowHighlight')}`,
+                    borderBottom: `2px solid ${colors('darkOrange')}`,
+                    reset: true,
+                    fontWeight: 'bold',
+                    from: {
+                      background: `${colors('yellowHighlightTransparent')}`,
+                      borderBottom: `1px solid ${colors(
+                        'darkOrangeTransparent'
+                      )}`
                     }
-                  : undefined
-              }
-            ></CodeBlockHighlight>
-          )}
-          {promptArrowText && (
-            <PromptArrowText>{promptArrowText}</PromptArrowText>
-          )}
-        </div>
-      </div>
+                  }
+                : undefined
+            }
+          ></CodeBlockHighlight>
+        )}
+        {promptArrowText && state.lastChangedIndices.length === 0 && (
+          <PromptArrowText>{promptArrowText}</PromptArrowText>
+        )}
+      </CodeResultWrapper>
     </TodoWithDataContext.Provider>
   )
 }
