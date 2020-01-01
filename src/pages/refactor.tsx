@@ -16,6 +16,8 @@ import {
 } from 'src/components/ContentTags'
 import * as snippets from 'src/lib/snippets'
 import TwitterLink from 'src/components/TwitterLink'
+import BubbleQuotes from 'src/components/BubbleQuotes'
+import AboutMe from 'src/components/AboutMe'
 import CodeBlock from 'src/components/CodeBlock'
 import Caption from 'src/components/Caption'
 import CodeResult from 'src/components/CodeResult'
@@ -1235,6 +1237,84 @@ const Page = () => (
             </P>
           </>
         )
+      },
+      {
+        title: <>Parting thoughts</>,
+        content: (
+          <>
+            <P>
+              In 2017, Dan Abramov from the React.js team gave an excellent talk
+              called “
+              <A href="https://www.youtube.com/watch?v=G39lKaONAlA">
+                The Melting Pot of JavaScript
+              </A>
+              ”. He talked about how one should approach building tools (like
+              React,{' '}
+              <A href="https://github.com/facebook/create-react-app">
+                create-react-app
+              </A>
+              , etc) that beginners might use. Here’s his quote:
+            </P>
+            <BubbleQuotes
+              quotes={[
+                {
+                  children: (
+                    <>
+                      <P>
+                        If you’re building tools like me, there’s this fact that
+                        we have become the new gatekeepers to one of the largest
+                        programming communities in the world.
+                      </P>
+                      <P>
+                        And this is scary stuff. Because it means that every
+                        time our tool prints an incomprehensible error message,
+                        somebody somewhere decides that they’re just not cut out
+                        for programming. And this is a big responsibility.
+                      </P>
+                      <P>[...]</P>
+                      <P>
+                        If you’re a maintainer of an open-source project it is
+                        invaluable to go out there in the field and see what
+                        they struggle with as they try to use your projects.
+                      </P>
+                      <P>
+                        And if you think improving newcomer experience is
+                        polish, it’s not polish. If you go out there in the
+                        field you will see that it makes a real difference in
+                        people’s lives, and what they can learn, and what they
+                        can build with it. So it’s not just polish. Take this
+                        seriously.
+                      </P>
+                    </>
+                  )
+                }
+              ]}
+            />
+            <P>
+              I think his quote applies not just to coding tools, but also to
+              coding tutorials.
+            </P>
+            <P>
+              You don’t have to follow all the guidelines I mentioned on this
+              page. Sometimes you have to break the rule when refactoring
+              code—and the same applies for writing tutorials. But do try to
+              refine your tutorials after you’re done writing them. As the
+              saying goes, “Writing is rewriting”.
+            </P>
+            <Hr />
+            <P>
+              If you have feedback, including other ways to improve coding
+              tutorials, please let me know on{' '}
+              <A href="https://twitter.com/chibicode">
+                <Emoji type="twitter" /> Twitter at @chibicode
+              </A>
+              .
+            </P>
+          </>
+        ),
+        footer: {
+          content: <AboutMe />
+        }
       }
     ]}
   />
