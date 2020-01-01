@@ -1137,6 +1137,40 @@ const Page = () => (
               remember the concept.
             </P>
             <Hr />
+            <P>
+              <strong>Avoid difficult English words/phrases.</strong>{' '}
+              <A href="https://2018.chibicode.com/posts/world-travel-2017-2018/">
+                I spent a year traveling the world in 2018
+              </A>
+              , and one thing I learned is that{' '}
+              <Highlight>
+                so many people in the world can speak English, but many don’t
+                speak English well
+              </Highlight>
+              . Globally,{' '}
+              <A href="https://www.weforum.org/agenda/2015/10/which-languages-are-most-widely-spoken/">
+                there are 3x as many non-native English speakers as native
+                English speakers
+              </A>
+              . So when in doubt, use simpler English words/phrases.
+            </P>
+            <EmojiSeparator
+              emojis={['a', 'b', 'letterC']}
+              description={<>Use simple English</>}
+            />
+            <P>
+              Also: If you’re living in the US,{' '}
+              <Highlight>
+                avoid cultural references that only people familiar with
+                American culture would understand
+              </Highlight>
+              . Always ask yourself:{' '}
+              <em>
+                “Would someone living far, far away from here understand what
+                I’m writing?”
+              </em>
+            </P>
+            <Hr />
           </>
         )
       }
