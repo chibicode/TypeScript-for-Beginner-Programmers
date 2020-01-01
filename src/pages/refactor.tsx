@@ -539,8 +539,8 @@ const Page = () => (
                 What I want to say is: Prefer minimal code samples.
               </strong>{' '}
               <Highlight>
-                If you’re trying to teach a new concept <strong>X</strong>{' '}
-                through a code sample, just focus on <strong>X</strong> in the
+                If you’re trying to teach a new concept (let’s call this “
+                <strong>X</strong>”), just focus on <strong>X</strong> in the
                 code and don’t add too much extra stuff.
               </Highlight>{' '}
               Add extra stuff only when it <em>really</em> helps the reader’s
@@ -714,7 +714,8 @@ const Page = () => (
               So, here’s my third refactoring tip:{' '}
               <strong>Prefer practical code samples</strong>.{' '}
               <Highlight>Avoid showing code that no one would write.</Highlight>{' '}
-              If you’re trying to teach a new concept <strong>X</strong>,{' '}
+              If you’re trying to teach a new concept (let’s call this “
+              <strong>X</strong>”),{' '}
               <Highlight>
                 come up with a <em>practical</em> code sample where{' '}
                 <strong>X</strong> is <em>actually</em> useful in solving the
@@ -833,7 +834,9 @@ const Page = () => (
               For example, on{' '}
               <InternalLink href="/todo">my TypeScript tutorial</InternalLink>,
               I start with an example where, if you run the code, the actual
-              result is different from the expected result.
+              result is different from the expected result (failure). Then I
+              talk about how to prevent failures like this using TypeScript’s
+              features.
             </P>
             <CodeResultWrapper>
               <Caption>
@@ -854,17 +857,18 @@ const Page = () => (
               />
             </CodeResultWrapper>
             <P>
-              If you’re trying to teach a new concept <strong>X</strong>,{' '}
+              Here’s a simple technique you can use. If you want to teach a new
+              concept (let’s call this “<strong>X</strong>”),{' '}
               <Highlight>
-                start with a <strong>concrete</strong> scenario where things
-                fail or aren’t ideal when you don’t use <strong>X</strong>.
+                start with a <em>concrete</em> scenario where things fail or
+                aren’t ideal when you don’t use <strong>X</strong>.
               </Highlight>{' '}
               Then,{' '}
               <Highlight>
-                use <strong>X</strong> to successfully solve the problem.
+                use <strong>X</strong> to solve the problem.
               </Highlight>{' '}
-              By doing this, your readers will be more engaged and also
-              understand why <strong>X</strong> is worth learning.
+              Your readers will pay more attention and also understand why{' '}
+              <strong>X</strong> is worth learning.
             </P>
             <P>
               I used this technique on{' '}
@@ -879,8 +883,8 @@ const Page = () => (
             <P>
               In a way, this is similar to{' '}
               <strong>test driven development (TDD)</strong>. In TDD, you write
-              a failing test first, and after you watch the test fail, you try
-              to make it pass. Similarly, in a coding tutorial,{' '}
+              a failing test first, and after you watch it fail, you try to make
+              it pass. Similarly, in a coding tutorial,{' '}
               <Highlight>
                 it’s more effective if you show a failing example first and have
                 the readers watch it fail.
@@ -899,7 +903,7 @@ const Page = () => (
               It’s tempting to be lazy and skip writing a failing test in TDD.
               Similarly, when writing a coding tutorial, it’s tempting to skip
               showing a failing example and just start with a successful
-              example. But try not to skip it—
+              example. But resist this temptation—
               <Highlight>failure is your friend</Highlight> in expository
               writing.
             </P>
@@ -907,8 +911,7 @@ const Page = () => (
               <strong>The bottom line:</strong>{' '}
               <Highlight>
                 Double-check to see where the first failing example appears in
-                your tutorial. If it’s missing, add one near the beginning of
-                your tutorial.
+                your tutorial. If it’s missing, add one near the beginning.
               </Highlight>
             </P>
           </>
@@ -920,7 +923,7 @@ const Page = () => (
                 <strong>Fail unexpectedly:</strong> It’s also more effective if
                 the failure is <Highlight>surprising</Highlight>. Trick your
                 reader into thinking that a code sample would work
-                perfectly…then make it fail. Make the reader think,{' '}
+                perfectly…then make it fail. Make your readers think,{' '}
                 <em>“WTF? How come it doesn’t work?”</em>—and they’ll be more
                 curious. Unexpected failure = more memorable learning
                 experience.
