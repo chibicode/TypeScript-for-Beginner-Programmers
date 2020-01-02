@@ -466,11 +466,7 @@ const Page = () => (
               <Code>interface</Code>, <Code>void</Code>, <Code>implements</Code>
               , <Code>prototype</Code>, etc). You also need to pause and read
               carefully to understand what’s going on, even though most of the
-              code isn’t directly related to the{' '}
-              <strong>
-                “<Code>&amp;</Code>” operator
-              </strong>
-              .
+              code isn’t directly related to the “<Code>&amp;</Code>” operator.
             </P>
             <CodeBlock
               snippet={snippets.onux}
@@ -535,7 +531,7 @@ const Page = () => (
             />
             <P>
               If you want to talk about more advanced usage, you could add the
-              earlier, more complicated example AFTER my simple example.
+              advanced example AFTER my simple example.
             </P>
             <P>
               <strong>
@@ -549,11 +545,6 @@ const Page = () => (
               </Highlight>{' '}
               Add extra stuff only (1) after you showed a simple example and (2)
               when it <em>really</em> helps the reader’s understanding.
-            </P>
-            <P>
-              You might be thinking: <em>“Well, that’s obvious.”</em> But trust
-              me, so many tutorials fail at keeping things simple and end up
-              with too much noise in code samples, making them hard to follow.
             </P>
             <Hr />
             <P>
