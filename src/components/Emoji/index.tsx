@@ -39,7 +39,6 @@ import ScaryCat from 'src/components/Emoji/ScaryCat'
 import Running from 'src/components/Emoji/Running'
 import Dash from 'src/components/Emoji/Dash'
 import HeartCat from 'src/components/Emoji/HeartCat'
-import Pumpkin from 'src/components/Emoji/Pumpkin'
 import HeartLetter from 'src/components/Emoji/HeartLetter'
 import DoubleArrow from 'src/components/Emoji/DoubleArrow'
 import Brain from 'src/components/Emoji/Brain'
@@ -51,6 +50,7 @@ import LetterC from 'src/components/Emoji/LetterC'
 import FastForward from 'src/components/Emoji/FastForward'
 import One from 'src/components/Emoji/One'
 import OneTwoThreeFour from 'src/components/Emoji/OneTwoThreeFour'
+import Ghost from 'src/components/Emoji/Ghost'
 
 export const emojiToComponent = {
   bird: Bird,
@@ -92,7 +92,6 @@ export const emojiToComponent = {
   running: Running,
   dash: Dash,
   heartCat: HeartCat,
-  pumpkin: Pumpkin,
   heartLetter: HeartLetter,
   brain: Brain,
   doubleArrow: DoubleArrow,
@@ -103,7 +102,8 @@ export const emojiToComponent = {
   letterC: LetterC,
   fastForward: FastForward,
   one: One,
-  oneTwoThreeFour: OneTwoThreeFour
+  oneTwoThreeFour: OneTwoThreeFour,
+  ghost: Ghost
 }
 
 export const EmojiWrapper = ({

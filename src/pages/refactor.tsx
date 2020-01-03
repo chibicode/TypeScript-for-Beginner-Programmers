@@ -71,7 +71,7 @@ const techniques = [
         <Highlight>quizzes</Highlight>
       </>
     ),
-    emojis: ['pumpkin', 'doubleArrow', 'question']
+    emojis: ['ghost', 'doubleArrow', 'question']
   },
   {
     title: (
@@ -954,7 +954,7 @@ const Page = () => (
             </P>
             <Hr />
             <P>
-              <Emoji type="pumpkin" /> First,{' '}
+              <Emoji type="ghost" /> First,{' '}
               <Highlight>
                 <strong>use themes:</strong>
               </Highlight>{' '}
