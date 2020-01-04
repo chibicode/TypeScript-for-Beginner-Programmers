@@ -16,7 +16,7 @@ const Code = ({
           font-size: 0.95em;
           font-style: normal;
           word-break: break-word;
-          background: ${color ? colors(color) : colors('lightPink2')};
+          background: ${color ? colors(color) : colors('lightPink1')};
         `
       ]}
     />
