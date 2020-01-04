@@ -58,13 +58,9 @@ const Page = () => (
             <>
               <P>
                 If you already understand generics, you won’t find anything new
-                in this tutorial. However,{' '}
-                <Highlight>
-                  you might know someone (maybe one of your Twitter followers)
-                  who’s struggling with generics
-                </Highlight>
-                . I’d appreciate it if you could share this article with them.
-                You can{' '}
+                in this tutorial. However, you might know someone (maybe one of
+                your Twitter followers) who’s struggling with generics. I’d
+                appreciate it if you could share this article with them. You can{' '}
                 <TwitterLink
                   title={articlesData['generics']['title']}
                   url={`${baseUrl}/generics`}
@@ -99,12 +95,8 @@ const Page = () => (
               <Code>state</Code>.
             </P>
             <P>
-              Let’s try it out!{' '}
-              <Highlight>
-                What gets printed out to the console when you run the following
-                code?
-              </Highlight>{' '}
-              Try to guess first, and then{' '}
+              Let’s try it out! What gets printed out to the console when you
+              run the following code? Try to guess first, and then{' '}
               <Highlight>
                 press the <RunButtonText /> button
               </Highlight>
@@ -130,8 +122,8 @@ const Page = () => (
             <>
               <P>
                 If you’ve used React, you might have realized that{' '}
-                <Code color="lightYellow1">makeState()</Code> is similar to the{' '}
-                <Code color="lightYellow1">useState()</Code> hook.
+                <Code>makeState()</Code> is similar to the{' '}
+                <Code>useState()</Code> hook.
               </P>
               <P></P>
               <ReadMore
@@ -141,9 +133,7 @@ const Page = () => (
                   <P>
                     <strong>Confused?</strong> Some people might be wondering:
                     “Why do we have functions inside another function?” or
-                    “What’s the{' '}
-                    <Code color="lightYellow1">{`{ getState, setState }`}</Code>{' '}
-                    syntax?”
+                    “What’s the <Code>{`{ getState, setState }`}</Code> syntax?”
                     {readMore}
                   </P>
                 )}
@@ -151,24 +141,21 @@ const Page = () => (
                   <>
                     <Ul>
                       <UlLi>
-                        The above code has functions (
-                        <Code color="lightYellow1">getState()</Code>,{' '}
-                        <Code color="lightYellow1">setState()</Code>) inside
-                        another function (
-                        <Code color="lightYellow1">makeState()</Code>). This is
-                        because I’m using <strong>closure</strong>, which is one
-                        of the most important concepts in JavaScript. If you’ve
-                        never heard of closure, I highly recommend you to Google
-                        it. Here’s a{' '}
+                        The above code has functions (<Code>getState()</Code>,{' '}
+                        <Code>setState()</Code>) inside another function (
+                        <Code>makeState()</Code>). This is because I’m using{' '}
+                        <strong>closure</strong>, which is one of the most
+                        important concepts in JavaScript. If you’ve never heard
+                        of closure, I highly recommend you to Google it. Here’s
+                        a{' '}
                         <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">
                           MDN article
                         </A>
                         .
                       </UlLi>
                       <UlLi>
-                        The{' '}
-                        <Code color="lightYellow1">{`{ getState, setState }`}</Code>{' '}
-                        syntax is the ES2015 feature of JavaScript (
+                        The <Code>{`{ getState, setState }`}</Code> syntax is
+                        the ES2015 feature of JavaScript (
                         <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer">
                           shorthand property names
                         </A>{' '}
@@ -197,8 +184,8 @@ const Page = () => (
           <>
             <P>
               Now, instead of numbers like <Code>1</Code> or <Code>2</Code>,{' '}
-              <Highlight>what happens if we use a string</Highlight> like{' '}
-              <Code>'foo'</Code>? Try to guess first, and then{' '}
+              what happens if we use a <em>string</em> like <Code>'foo'</Code>?
+              Try to guess first, and then{' '}
               <Highlight>
                 press the <RunButtonText compile /> button
               </Highlight>
@@ -258,13 +245,9 @@ const Page = () => (
           <>
             <P>Now that we got the basics down, here’s a challenge for you:</P>
             <P>
-              <strong>Question:</strong>{' '}
-              <Highlight>
-                Can we modify <Code>makeState()</Code> such that, it can create
-                two different states:
-              </Highlight>{' '}
-              one that only allows numbers, and the other that only allows
-              strings?
+              <strong>Question:</strong> Can we modify <Code>makeState()</Code>{' '}
+              such that, it can create <em>two different states</em>: one that
+              only allows numbers, and the other that only allows strings?
             </P>
             <P>Here’s what I mean:</P>
             <CodeBlock snippet={snippets.bfka} />
@@ -379,31 +362,30 @@ const Page = () => (
             <>
               <P>
                 <strong>You might be wondering:</strong> Why did we name the
-                type parameter as “<Code color="lightYellow1">S</Code>”?
+                type parameter as “<Code>S</Code>”?
               </P>
               <P>
                 <strong>Answer:</strong> It could actually be any name, but
                 usually people use the first letter of a word that describes
                 what the type is representing. In this case, I chose “
-                <Code color="lightYellow1">S</Code>” because it’s describing the
-                type of a <strong>“S”</strong>tate. The following names are also
-                common:
+                <Code>S</Code>” because it’s describing the type of a{' '}
+                <strong>“S”</strong>tate. The following names are also common:
               </P>
               <Ul>
                 <UlLi>
-                  <Code color="lightYellow1">T</Code> (for <strong>“T”</strong>
+                  <Code>T</Code> (for <strong>“T”</strong>
                   ype)
                 </UlLi>
                 <UlLi>
-                  <Code color="lightYellow1">E</Code> (for <strong>“E”</strong>
+                  <Code>E</Code> (for <strong>“E”</strong>
                   lement)
                 </UlLi>
                 <UlLi>
-                  <Code color="lightYellow1">K</Code> (for <strong>“K”</strong>
+                  <Code>K</Code> (for <strong>“K”</strong>
                   ey)
                 </UlLi>
                 <UlLi>
-                  <Code color="lightYellow1">V</Code> (for <strong>“V”</strong>
+                  <Code>V</Code> (for <strong>“V”</strong>
                   alue)
                 </UlLi>
               </Ul>
@@ -438,13 +420,11 @@ const Page = () => (
               }
             />
             <P>
-              <strong>The solution:</strong>{' '}
-              <Highlight>
-                When you declare <Code>makeState()</Code>, you change the type
-                parameter <Code>&lt;S&gt;</Code> to{' '}
-                <Code>&lt;S extends number | string&gt;</Code>
-              </Highlight>
-              . That’s the only change you need to make.
+              <strong>The solution:</strong> When you declare{' '}
+              <Code>makeState()</Code>, you change the type parameter{' '}
+              <Code>&lt;S&gt;</Code> to{' '}
+              <Code>&lt;S extends number | string&gt;</Code>. That’s the only
+              change you need to make.
             </P>
             <CodeBlock
               snippet={snippets.mngc}
@@ -506,12 +486,10 @@ const Page = () => (
               time you call <Code>makeState()</Code>.
             </P>
             <P>
-              <strong>So here’s an idea:</strong>{' '}
-              <Highlight>
-                Can we make it so that <Code>&lt;number&gt;</Code> is the
-                default type parameter of <Code>makeState()</Code>?
-              </Highlight>{' '}
-              We want to make it so that, if <Code>S</Code> is unspecified, it’s
+              <strong>So here’s an idea:</strong> Can we make it so that{' '}
+              <Code>&lt;number&gt;</Code> is the
+              <em>default type parameter</em> of <Code>makeState()</Code>? We
+              want to make it so that, if <Code>S</Code> is unspecified, it’s
               set as <Code>number</Code> by default.
             </P>
             <CodeBlock snippet={snippets.xfwf} />
@@ -546,14 +524,9 @@ const Page = () => (
             </P>
             <P>
               What you should remember is that{' '}
-              <Highlight>
-                generics are just like regular function parameters.
-              </Highlight>{' '}
-              The difference is that{' '}
-              <Highlight>
-                regular function parameters deal with values, but generics deal
-                with type parameters.
-              </Highlight>
+              <em>generics are just like regular function parameters.</em> The
+              difference is that regular function parameters deal with values,
+              but generics deal with type parameters.
             </P>
             <Hr />
             <P>
@@ -608,21 +581,14 @@ const Page = () => (
             <P>
               Let’s take a look at the new function called{' '}
               <Code>makePair()</Code>. It’s similar to <Code>makeState()</Code>,
-              but instead of storing a single value,{' '}
-              <Highlight>
-                this one stores a pair of values as{' '}
-                <Code>{`{ first: ?, second: ? }`}</Code>
-              </Highlight>
-              . Right now, it only supports numbers.
+              but instead of storing a single value, this one stores a pair of
+              values as <Code>{`{ first: ?, second: ? }`}</Code>. Right now, it
+              only supports numbers.
             </P>
             <CodeBlock snippet={snippets.ugeb} />
             <P>
-              Let’s try it out!{' '}
-              <Highlight>
-                What gets printed out to the console when you run the following
-                code?
-              </Highlight>{' '}
-              Try to guess first, and then{' '}
+              Let’s try it out! What gets printed out to the console when you
+              run the following code? Try to guess first, and then{' '}
               <Highlight>
                 press the <RunButtonText /> button
               </Highlight>
@@ -711,12 +677,10 @@ const Page = () => (
               }
             />
             <P>
-              This works as is, but if we want to,{' '}
-              <Highlight>
-                we can refactor <Code>{`{ first: F, second: S }`}</Code> into an{' '}
-                <strong>interface</strong> or a <strong>type alias</strong> so
-                it can be reused.
-              </Highlight>
+              This works as is, but if we want to, we can refactor{' '}
+              <Code>{`{ first: F, second: S }`}</Code> into an{' '}
+              <strong>interface</strong> or a <strong>type alias</strong> so it
+              can be reused.
             </P>
             <P>
               Let’s first extract the type of <Code>pair</Code> into a{' '}
@@ -772,9 +736,7 @@ const Page = () => (
         content: (
           <>
             <P>
-              <Highlight>
-                The last thing we’ll cover is <strong>generic classes</strong>.
-              </Highlight>{' '}
+              The last thing we’ll cover is <strong>generic classes</strong>.
               First, let’s revisit the code for <Code>makeState()</Code>. This
               is the generic version that doesn’t use <Code>extends</Code> or
               default type parameters.
@@ -810,12 +772,9 @@ const Page = () => (
             <>
               <P>
                 You need to set{' '}
-                <Code color="lightYellow1">
-                  "strictPropertyInitialization": false
-                </Code>{' '}
-                on TypeScript config (
-                <Code color="lightYellow1">tsconfig.json</Code>) to get the
-                above code to compile.
+                <Code>"strictPropertyInitialization": false</Code> on TypeScript
+                config (<Code>tsconfig.json</Code>) to get the above code to
+                compile.
               </P>
             </>
           )
@@ -839,9 +798,8 @@ const Page = () => (
               .
             </P>
             <P>
-              <Emoji type="twitter" /> I’d love it if you could{' '}
-              <Highlight>like</Highlight> or <Highlight>retweet</Highlight> the
-              tweet below! ↓
+              <Emoji type="twitter" /> I’d love it if you could like or retweet
+              the tweet below! ↓
             </P>
             <TwitterEmbed id="1197963887804436480" />
             <P>

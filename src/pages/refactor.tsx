@@ -523,6 +523,14 @@ const Page = () => (
                 I said above) and as documentation (it isn’t as focused and
                 detailed as it should be).
               </P>
+              <P>
+                To learn more about different kinds of documentation, take a
+                look at this excellent post by Daniele Procida: “
+                <A href="https://www.divio.com/blog/documentation/">
+                  What nobody tells you about documentation
+                </A>
+                ”.
+              </P>
             </>
           )
         }
@@ -994,27 +1002,6 @@ const Page = () => (
               }
               shouldHighlight={(lineIndex, tokenIndex) =>
                 lineIndex === 3 && tokenIndex >= 0 && tokenIndex <= 4
-              }
-            />
-            <Hr />
-            <P>
-              <strong>Use graphics that show faces.</strong> There’s a reason a
-              lot of ads have someone’s face in it. Our brains are wired to pay
-              attention to faces. Take advantage of this to grab your reader’s
-              attention.
-            </P>
-            <P>
-              One of the easiest ways to do this is to use{' '}
-              <strong>emojis</strong>. Just insert a happy{' '}
-              <Emoji type="heartCat" /> emoji when things are going well and a
-              scared <Emoji type="scaryCat" /> emoji when things fail.
-            </P>
-            <EmojiSeparator
-              emojis={['heartCat', 'smilingCat', 'scaryCat']}
-              description={
-                <>
-                  Use emojis to express emotions your readers should be feeling
-                </>
               }
             />
             <Hr />
