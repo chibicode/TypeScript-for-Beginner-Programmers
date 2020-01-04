@@ -523,6 +523,14 @@ const Page = () => (
                 I said above) and as documentation (it isn’t as focused and
                 detailed as it should be).
               </P>
+              <P>
+                To learn more about different kinds of documentation, take a
+                look at this excellent post by Daniele Procida: “
+                <A href="https://www.divio.com/blog/documentation/">
+                  What nobody tells you about documentation
+                </A>
+                ”.
+              </P>
             </>
           )
         }
