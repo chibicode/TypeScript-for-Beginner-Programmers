@@ -13,6 +13,7 @@ export const allColors = {
   pink: '#FFD9CC',
   white: '#FFFFFF',
   white75: 'rgba(255, 255, 255, 0.75)',
+  white50: 'rgba(255, 232, 191, 0.50)',
   paleGreen: '#C8DCC7',
   darkGreen: '#009795',
   red: '#DB4003',
