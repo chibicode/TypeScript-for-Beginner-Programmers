@@ -101,7 +101,7 @@ const Card = ({
             <>
               <span
                 css={css`
-                  color: ${colors('white70')};
+                  color: ${colors('white75')};
                 `}
               >
                 Slide{' '}
@@ -115,7 +115,7 @@ const Card = ({
               </span>{' '}
               <span
                 css={css`
-                  color: ${colors('white70')};
+                  color: ${colors('white75')};
                   font-weight: bold;
                 `}
               >

@@ -12,7 +12,7 @@ export const allColors = {
   darkOrangeTransparent: 'rgba(236, 150, 2, 0)',
   pink: '#FFD9CC',
   white: '#FFFFFF',
-  white70: 'rgba(255, 255, 255, 0.7)',
+  white75: 'rgba(255, 255, 255, 0.75)',
   paleGreen: '#C8DCC7',
   darkGreen: '#009795',
   red: '#DB4003',
