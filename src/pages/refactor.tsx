@@ -998,27 +998,6 @@ const Page = () => (
             />
             <Hr />
             <P>
-              <strong>Use graphics that show faces.</strong> There’s a reason a
-              lot of ads have someone’s face in it. Our brains are wired to pay
-              attention to faces. Take advantage of this to grab your reader’s
-              attention.
-            </P>
-            <P>
-              One of the easiest ways to do this is to use{' '}
-              <strong>emojis</strong>. Just insert a happy{' '}
-              <Emoji type="heartCat" /> emoji when things are going well and a
-              scared <Emoji type="scaryCat" /> emoji when things fail.
-            </P>
-            <EmojiSeparator
-              emojis={['heartCat', 'smilingCat', 'scaryCat']}
-              description={
-                <>
-                  Use emojis to express emotions your readers should be feeling
-                </>
-              }
-            />
-            <Hr />
-            <P>
               <strong>Use mostly-text graphics.</strong> Graphics made of basic
               shapes and texts are simple yet effective. For example, I used
               this graphic earlier:
