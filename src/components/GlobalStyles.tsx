@@ -29,7 +29,9 @@ const GlobalStyles = ({ children }: { children: React.ReactNode }) => {
             textarea,
             select,
             button {
-              font-family: system-ui, sans-serif;
+              font-family: -apple-system, 'Helvetica Neue', 'Segoe UI', Roboto,
+                Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+                'Segoe UI Emoji', 'Segoe UI Symbol';
             }
 
             ${ns} {
