@@ -8,7 +8,7 @@
     "@emotion/styled": "^10.0.23",
     "color": "^3.1.2",
     "luxon": "^1.21.3",
-    "next": "^9.1.6",
+    "next": "^9.3.2",
     "prettier": "^1.19.1",
     "prism-react-renderer": "^1.0.2",
     "react": "^16.12.0",
