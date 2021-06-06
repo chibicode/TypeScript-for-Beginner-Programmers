@@ -36,6 +36,9 @@ const TwitterEmbed = ({ id, hideCard }: { id: string; hideCard?: boolean }) => {
           .then(() => {
             setTwitterLoaded(true)
           })
+          .catch(() => {
+            setTwitterLoaded(true)
+          })
       }
     },
     twitterLoaded ? null : EMBED_DELAY
