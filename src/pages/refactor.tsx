@@ -29,7 +29,6 @@ import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
 import { SourceAvailableText } from 'src/components/GitHubButton'
 import TodoWithData from 'src/components/TodoWithData'
-import TwitterEmbed from 'src/components/TwitterEmbed'
 
 const techniques = [
   {
@@ -1185,10 +1184,8 @@ const Page = () => (
                 url={`${baseUrl}/refactor`}
               >
                 click here to tweet this article.
-              </TwitterLink>{' '}
-              Also, I’d love it if you could like or retweet the tweet below! ↓
+              </TwitterLink>
             </P>
-            <TwitterEmbed id="1212327903473459200" hideCard />
           </>
         ),
         footer: {

@@ -25,7 +25,6 @@ import { SourceAvailableText } from 'src/components/GitHubButton'
 import TwitterLink from 'src/components/TwitterLink'
 import { articlesData } from 'src/lib/articles'
 import { baseUrl } from 'src/lib/meta'
-import TwitterEmbed from 'src/components/TwitterEmbed'
 
 const compileSuccess = 'Compiled successfully!'
 const section1 = 'Types, Read-only Properties, and Mapped Types'
@@ -1970,11 +1969,6 @@ const Page = () => (
               </A>
               .
             </P>
-            <P>
-              <Emoji type="twitter" /> I’d love it if you could like or retweet
-              the tweet below! ↓
-            </P>
-            <TwitterEmbed id="1207248902354718721" />
           </>
         ),
         footer: {
