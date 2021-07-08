@@ -1,6 +1,6 @@
 # [TypeScript for Beginner Programmers](https://ts.chibicode.com)
 
-This is the repository for the TypeScript tutorial website called **[TypeScript for Beginner Programmers](https://ycombinator.chibicode.com/)**.
+This is the repository for the TypeScript tutorial website called **[TypeScript for Beginner Programmers](https://ts.chibicode.com/)**.
 
 <p>
   <a href="https://ts.chibicode.com/"><img src="public/images/og-index.png" width="600" /></a>
