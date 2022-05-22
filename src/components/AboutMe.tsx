@@ -15,7 +15,7 @@ const AboutMe = () => (
     <P>
       You can learn more about me on{' '}
       <A href="https://chibicode.com/">my personal website</A>. My email is{' '}
-      <A href="mailto:shu@chibicode.com">shu@chibicode.com</A>.
+      <A href="mailto:shu.chibicode@gmail.com">shu.chibicode@gmail.com</A>.
     </P>
   </>
 )
