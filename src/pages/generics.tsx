@@ -487,7 +487,7 @@ const Page = () => (
             <P>
               <strong>So here’s an idea:</strong> Can we make it so that{' '}
               <Code>&lt;number&gt;</Code> is the
-              <em>default type parameter</em> of <Code>makeState()</Code>? We
+              <em> default type parameter</em> of <Code>makeState()</Code>? We
               want to make it so that, if <Code>S</Code> is unspecified, it’s
               set as <Code>number</Code> by default.
             </P>
