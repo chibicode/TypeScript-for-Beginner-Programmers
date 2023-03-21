@@ -907,7 +907,7 @@ placeToString({ custom: 'Gym' })
 placeToString({ custom: 'Supermarket' })
 // __supermarket__`
 
-export const qnwc = `// They booth have a property foo,
+export const qnwc = `// They both have a property foo,
 // but B’s foo (true) is
 // more specific than A’s foo (boolean)
 type A = { foo: boolean }
