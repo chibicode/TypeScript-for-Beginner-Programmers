@@ -36,4 +36,3 @@ This is the repository for the TypeScript tutorial website called **[TypeScript 
 
 - [Website](https://chibicode.com)
 - Twitter: [@chibicode](https://twitter.com/chibicode)
-- Email: [shu.chibicode@gmail.com](mailto:shu.chibicode@gmail.com)
